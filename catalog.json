@@ -1,0 +1,1127 @@
+{
+ "pack": "gamedev-skills-merged",
+ "built": "2026-11-07",
+ "count": 160,
+ "skills": [
+  {
+   "name": "adopt",
+   "layer": "studio",
+   "group": "Getting started and navigation",
+   "origin": "Claude Code Game Studios",
+   "description": "Brownfield audit — do existing artifacts actually work? Numbered migration plan. Unlike /project-stage-detect, checks compliance not existence."
+  },
+  {
+   "name": "ai-behavior-trees-utility-ai",
+   "layer": "craft",
+   "group": "Disciplines",
+   "origin": "awesome-gamedev-agent-skills",
+   "description": "Build a production behavior-tree runtime (Blackboard, action/condition leaves, sequence/selector/parallel composites, decorators) and a Utility AI system (response curves — linear, exponential, sigmoid, quadratic — considerations, and action evaluators), plus hybrid BT-drives-Utility agents. Use when implementing a reusable behavior-tree or utility-based decision system, or tuning enemy/NPC decisions beyond a simple FSM, or when the user mentions behavior tree, blackboard, decorator, selector, sequence, tick status, utility AI, response/scoring curve, or consideration. For choosing between FSM/BT/steering or for pathfinding, use game-ai; for Unreal's BehaviorTree/Blackboard assets, use unreal-behavior-trees."
+  },
+  {
+   "name": "architecture-decision",
+   "layer": "studio",
+   "group": "Architecture and planning",
+   "origin": "Claude Code Game Studios",
+   "description": "Create an ADR documenting a technical decision: context, alternatives considered, consequences."
+  },
+  {
+   "name": "architecture-review",
+   "layer": "studio",
+   "group": "Architecture and planning",
+   "origin": "Claude Code Game Studios",
+   "description": "Traceability matrix mapping GDD requirements to ADRs. Finds gaps, cross-ADR conflicts, engine compatibility. PASS/CONCERNS/NOT ASSESSED/FAIL."
+  },
+  {
+   "name": "art-bible",
+   "layer": "studio",
+   "group": "Concept and design",
+   "origin": "Claude Code Game Studios",
+   "description": "Author the Art Bible — visual identity gating asset production. Run before /map-systems."
+  },
+  {
+   "name": "asset-audit",
+   "layer": "studio",
+   "group": "Building stories",
+   "origin": "Claude Code Game Studios",
+   "description": "Audit assets against naming conventions, file size budgets, format standards. Finds orphaned assets, missing references."
+  },
+  {
+   "name": "asset-spec",
+   "layer": "studio",
+   "group": "Concept and design",
+   "origin": "Claude Code Game Studios",
+   "description": "Per-asset visual specs plus AI generation prompts from GDDs and character profiles. After the art bible."
+  },
+  {
+   "name": "audio-design",
+   "layer": "craft",
+   "group": "Disciplines",
+   "origin": "awesome-gamedev-agent-skills",
+   "description": "Implement game audio practice — bus/mixer architecture and gain in decibels, ducking (sidechain), adaptive/dynamic music via layering and re-sequencing, SFX variation, and beat synchronization. Engine-neutral. Use when the user mentions audio mixing, audio buses, adaptive/dynamic music, ducking, SFX variation, music layers, or syncing gameplay to the beat."
+  },
+  {
+   "name": "balance-check",
+   "layer": "studio",
+   "group": "Concept and design",
+   "origin": "Claude Code Game Studios",
+   "description": "Find balance outliers, broken progressions, degenerate strategies, economy imbalances in formulas and data. 'Check game balance'."
+  },
+  {
+   "name": "bevy-ecs",
+   "layer": "craft",
+   "group": "Other engines",
+   "origin": "awesome-gamedev-agent-skills",
+   "description": "Structure a Bevy app around its Entity Component System: build the App with plugins, define Component/Resource types, write systems with Query/Res/Commands, filter and order systems, and use the Time resource for frame-rate-independent motion. Use when building or debugging a Bevy game in Rust — when the user mentions Bevy, ECS, App::new, add_systems, Query, Commands, components/systems, or a Cargo.toml depending on bevy."
+  },
+  {
+   "name": "brainstorm",
+   "layer": "studio",
+   "group": "Concept and design",
+   "origin": "Claude Code Game Studios",
+   "description": "Guides the user through finding and choosing a game concept. Use when the user wants game ideas, a new concept, a game jam idea, or to explore other directions, including dropping the current idea and starting over."
+  },
+  {
+   "name": "bug-report",
+   "layer": "studio",
+   "group": "QA and testing",
+   "origin": "Claude Code Game Studios",
+   "description": "Structured bug report from a description, or analyze code for potential bugs. Reproduction steps, severity."
+  },
+  {
+   "name": "bug-triage",
+   "layer": "studio",
+   "group": "QA and testing",
+   "origin": "Claude Code Game Studios",
+   "description": "Re-evaluate open bugs — priority vs severity, assign to sprints, surface systemic trends. Run when the count grows."
+  },
+  {
+   "name": "camera-systems",
+   "layer": "craft",
+   "group": "Disciplines",
+   "origin": "awesome-gamedev-agent-skills",
+   "description": "Build game cameras that feel good — 2D follow with a deadzone, look-ahead, smoothing, and level-bounds clamping; 3D third-person orbit with collision and first-person look; plus multi-target framing and a shake hook. Engine-neutral techniques that pair with the engine's camera node and rigs like Unity Cinemachine or Godot Camera2D/PhantomCamera. Use when the user mentions camera follow, follow camera, deadzone, look-ahead, camera smoothing, camera bounds/ limits, third-person camera, orbit camera, first-person look, Cinemachine, or camera jitter."
+  },
+  {
+   "name": "card-game",
+   "layer": "craft",
+   "group": "Genres",
+   "origin": "awesome-gamedev-agent-skills",
+   "description": "Build a card game: card data, deck/hand/discard zones, draw/shuffle/reshuffle, a turn structure, costs, and effect resolution. Use for a deckbuilder, TCG/CCG, or roguelike deckbuilder."
+  },
+  {
+   "name": "changelog",
+   "layer": "studio",
+   "group": "Release and live ops",
+   "origin": "Claude Code Game Studios",
+   "description": "Auto-generate a changelog from git commits and sprint data. Internal and player-facing versions."
+  },
+  {
+   "name": "code-review",
+   "layer": "studio",
+   "group": "Building stories",
+   "origin": "Claude Code Game Studios",
+   "description": "Architectural code review — coding standards, SOLID, testability, performance concerns."
+  },
+  {
+   "name": "consistency-check",
+   "layer": "studio",
+   "group": "Concept and design",
+   "origin": "Claude Code Game Studios",
+   "description": "Scan GDDs against the entity registry for cross-document conflicts. Grep-first approach targets conflicting sections, different stats."
+  },
+  {
+   "name": "content-audit",
+   "layer": "studio",
+   "group": "Building stories",
+   "origin": "Claude Code Game Studios",
+   "description": "Audit GDD content counts against what's implemented — planned vs built."
+  },
+  {
+   "name": "create-architecture",
+   "layer": "studio",
+   "group": "Architecture and planning",
+   "origin": "Claude Code Game Studios",
+   "description": "Author the architecture blueprint before code is written. Validates decisions against the pinned engine, flags knowledge gaps."
+  },
+  {
+   "name": "create-control-manifest",
+   "layer": "studio",
+   "group": "Architecture and planning",
+   "origin": "Claude Code Game Studios",
+   "description": "Builds a short list of must-do and never-do coding rules per system from accepted ADRs. Use when the user wants programmer rules or a cheat sheet from the ADRs, or needs it regenerated after ADR changes."
+  },
+  {
+   "name": "create-epics",
+   "layer": "studio",
+   "group": "Architecture and planning",
+   "origin": "Claude Code Game Studios",
+   "description": "Turns the GDDs and architecture into epics, one per architectural module. Use when the user wants to break the game into epics or plan the work before writing stories. Not for splitting one epic into stories."
+  },
+  {
+   "name": "create-game-assets",
+   "layer": "craft",
+   "group": "Disciplines",
+   "origin": "awesome-gamedev-agent-skills",
+   "description": "Plan, generate, source, normalize, and validate cohesive visual game assets. Use for art direction, style bibles, sprites, tilesets, backgrounds, UI art, icons, textures, concept art, or 3D asset briefs."
+  },
+  {
+   "name": "create-stories",
+   "layer": "studio",
+   "group": "Architecture and planning",
+   "origin": "Claude Code Game Studios",
+   "description": "Breaks one epic into implementable stories with acceptance criteria. Use when the user wants stories for an epic or the next batch of work to build. Not for turning the whole design into epics."
+  },
+  {
+   "name": "day-one-patch",
+   "layer": "studio",
+   "group": "Release and live ops",
+   "origin": "Claude Code Game Studios",
+   "description": "Day-one launch patch — focused fix for known issues found after gold master. Mini-sprint with QA gate and rollback."
+  },
+  {
+   "name": "defold-core",
+   "layer": "craft",
+   "group": "Other engines",
+   "origin": "awesome-gamedev-agent-skills",
+   "description": "Build and debug the core of a Defold game in Lua: game.project settings, collections, game objects and components, script lifecycle and self state, go.property, input focus and bindings, URLs and message passing, factories, collection factories and collection proxies, plus building and smoke-running with Bob. Use when a project has game.project or .collection, .go, .script, .gui_script or .input_binding files, or the request mentions Defold, msg.post, on_message, on_input, acquire_input_focus, factory.create, collection proxy, bob.jar, or a Defold build error."
+  },
+  {
+   "name": "design-review",
+   "layer": "studio",
+   "group": "Concept and design",
+   "origin": "Claude Code Game Studios",
+   "description": "Reviews one design document for completeness, internal consistency, implementability, and design standards. Before handing to programmers."
+  },
+  {
+   "name": "design-system",
+   "layer": "studio",
+   "group": "Concept and design",
+   "origin": "Claude Code Game Studios",
+   "description": "Section-by-section GDD authoring for one system — walks through each required section, cross-references dependencies."
+  },
+  {
+   "name": "dev-story",
+   "layer": "studio",
+   "group": "Building stories",
+   "origin": "Claude Code Game Studios",
+   "description": "Implements one story in code with tests, following its ADRs. Use when the user says to build, implement or start working on a story. Not for checking readiness beforehand or closing the story after."
+  },
+  {
+   "name": "dialogue-systems",
+   "layer": "craft",
+   "group": "Disciplines",
+   "origin": "awesome-gamedev-agent-skills",
+   "description": "Build branching dialogue and narrative — a node/choice graph with conditions, variables, and localization hooks — and choose between authoring tools Ink and Yarn Spinner or a custom data-driven runner. Engine-neutral. Use when the user mentions dialogue system, branching dialogue, conversation tree, choices, Ink (.ink), Yarn Spinner (.yarn), or NPC dialogue."
+  },
+  {
+   "name": "ebitengine-game",
+   "layer": "craft",
+   "group": "Other engines",
+   "origin": "awesome-gamedev-agent-skills",
+   "description": "Create, improve, debug and package playable 2D games in Go with Ebitengine (github.com/hajimehoshi/ebiten/v2). Use for Ebitengine game requests: game design translated into a complete loop, input, rendering, text, audio, scenes, gameplay tests and desktop, browser or mobile builds. Also use when fixing these systems in an existing Ebitengine game. Do not apply to unrelated Go software or engine-internal patches merely because they depend on Ebitengine."
+  },
+  {
+   "name": "estimate",
+   "layer": "studio",
+   "group": "Architecture and planning",
+   "origin": "Claude Code Game Studios",
+   "description": "Estimate task effort from complexity, dependencies, velocity, risk. Structured estimate with confidence levels."
+  },
+  {
+   "name": "fps-shooter",
+   "layer": "craft",
+   "group": "Genres",
+   "origin": "awesome-gamedev-agent-skills",
+   "description": "Build a first-person shooter: move+mouse-look controller, hitscan or projectile shooting, weapons, health, and enemy AI. Use for an FPS, or tuning aim feel, time-to-kill, recoil, or spread."
+  },
+  {
+   "name": "game-accessibility",
+   "layer": "craft",
+   "group": "Disciplines",
+   "origin": "new, built from studio agent accessibility-specialist",
+   "description": "Make games accessible: visual (text size, contrast, colorblind support), audio (subtitles, visual cues), motor (full remapping, hold-to-toggle, timing options), cognitive (clear objectives, difficulty options) and input support, plus an accessibility audit checklist and findings format. Use when designing or auditing options menus, subtitles, remapping, colorblind modes or difficulty settings, or preparing for platform accessibility requirements."
+  },
+  {
+   "name": "game-ai",
+   "layer": "craft",
+   "group": "Disciplines",
+   "origin": "awesome-gamedev-agent-skills",
+   "description": "Design NPC and enemy decision-making with finite state machines, behavior trees, steering behaviors, and A* pathfinding — engine-neutral algorithms that pair with the detected engine's navigation API. Use when building enemy AI, an FSM or behavior tree, steering/flocking, or pathfinding, or when the user mentions state machine, behavior tree, blackboard, A*, navmesh, seek, or patrol/chase."
+  },
+  {
+   "name": "game-feel",
+   "layer": "craft",
+   "group": "Disciplines",
+   "origin": "awesome-gamedev-agent-skills",
+   "description": "Add \"juice\" and game feel that makes actions satisfying — screen shake, hit-stop/freeze frames, tweened/eased motion, squash & stretch, knockback, and layered audio-visual feedback — as engine-neutral techniques that pair with the detected engine's tween, particle, and camera APIs. Use when the user mentions game feel, juice, \"make it feel good/punchy\", screen shake, hit stop, screen freeze, easing, squash and stretch, impact frames, or feedback/polish on hits, jumps, pickups, and deaths."
+  },
+  {
+   "name": "game-jam",
+   "layer": "craft",
+   "group": "Shipping",
+   "origin": "awesome-gamedev-agent-skills",
+   "description": "Plan and ship a game under a jam deadline: lock scope to the clock, schedule the hours, cut features, and submit on time. Use for a game jam (Ludum Dare, GMTK Jam, Global Game Jam), a 48-hour or weekend build, or scoping and submitting a jam entry."
+  },
+  {
+   "name": "game-ui-ux",
+   "layer": "craft",
+   "group": "Disciplines",
+   "origin": "awesome-gamedev-agent-skills",
+   "description": "Design and build game UI/UX — HUDs, menus, and overlays — that survive every screen: anchor- based responsive layout, resolution/aspect scaling and safe areas, keyboard/gamepad focus navigation, a screen/menu state stack, and event-driven (not polled) HUD updates. Engine- neutral patterns that pair with the detected engine's UI skill. Use when the user mentions HUD, health bar, main menu, pause menu, settings screen, UI layout, anchors, UI scaling, aspect ratio, safe area, controller/keyboard menu navigation, or wiring UI to game state."
+  },
+  {
+   "name": "gamedev-router",
+   "layer": "craft",
+   "group": "Router",
+   "origin": "awesome-gamedev-agent-skills (router, renamed)",
+   "description": "Routes any game-development request to the right skill(s) in this merged pack. It detects the engine (Godot, Unity, Unreal, Ebitengine, Bevy, Phaser, PixiJS, three.js, Defold, LÖVE, pygame, Roblox) and the task, then reads the chosen craft skill before acting: players, levels, enemies, shaders, art, UI/UX, cameras, game feel, physics, input, audio, saving, multiplayer and netcode, accessibility, AI, dialogue, procedural generation, performance, genres and shipping. It also sends studio-process asks (what to do next, design docs, sprints, stories, QA, release) to the studio skills. Start here when unsure which gamedev skill to use."
+  },
+  {
+   "name": "gate-check",
+   "layer": "studio",
+   "group": "Architecture and planning",
+   "origin": "Claude Code Game Studios",
+   "description": "Ready to advance between development phases? PASS/CONCERNS/NOT ASSESSED/FAIL with blockers and required artifacts. 'Can we move to production?'"
+  },
+  {
+   "name": "godot-2d-movement",
+   "layer": "craft",
+   "group": "Godot",
+   "origin": "awesome-gamedev-agent-skills",
+   "description": "Implement 2D kinematic character movement in Godot 4.7 with CharacterBody2D and move_and_slide(): platformer run/jump with gravity, top-down 8-direction motion, slope handling, and reading collisions. Use when coding a 2D player or enemy controller, a platformer or top-down character, or fixing move_and_slide()/ is_on_floor() behavior in a .tscn with a CharacterBody2D."
+  },
+  {
+   "name": "godot-3d-essentials",
+   "layer": "craft",
+   "group": "Godot",
+   "origin": "awesome-gamedev-agent-skills",
+   "description": "Set up a Godot 4.7 3D scene: Node3D transforms, Camera3D, lighting (DirectionalLight3D/OmniLight3D), WorldEnvironment for sky/ambient/tonemap/post, MeshInstance3D materials, and GridMap for tile-based 3D levels. Use when building a 3D scene in a Godot project, placing cameras/lights, configuring environment and post-processing, or working with Node3D/.tscn 3D content and GridMap."
+  },
+  {
+   "name": "godot-animation",
+   "layer": "craft",
+   "group": "Godot",
+   "origin": "awesome-gamedev-agent-skills",
+   "description": "Animate in Godot 4.7 three ways: AnimationPlayer for keyframed clips (incl. Call Method tracks), AnimationTree with state machines and blend spaces for character animation, and Tween for short procedural/UI tweens via create_tween(). Use when working with AnimationPlayer/AnimationTree nodes in a .tscn, blending character states, sprite-sheet animation, or code-driven Tweens."
+  },
+  {
+   "name": "godot-audio",
+   "layer": "craft",
+   "group": "Godot",
+   "origin": "awesome-gamedev-agent-skills",
+   "description": "Play and mix audio in Godot 4.7: AudioStreamPlayer (2D/3D variants), audio buses with volume/mute and effects, music vs SFX routing, db/linear volume, and precise sync-to-beat playback timing. Use when playing sounds or music in a Godot project, routing AudioStreamPlayer nodes to buses, adjusting bus volume via AudioServer, or syncing gameplay to the beat."
+  },
+  {
+   "name": "godot-csharp",
+   "layer": "craft",
+   "group": "Godot",
+   "origin": "awesome-gamedev-agent-skills",
+   "description": "Use C#/.NET in Godot 4.7: partial classes extending nodes, the PascalCase lifecycle (_Ready/_Process/_PhysicsProcess), [Export] fields, [Signal] delegates as C# events, type-safe node lookup, and calling between C# and GDScript. Use when writing Godot game code in C# (.cs files, .csproj), needing the Godot .NET build, converting GDScript patterns to C#, or wiring Godot signals as C# events."
+  },
+  {
+   "name": "godot-export",
+   "layer": "craft",
+   "group": "Godot",
+   "origin": "awesome-gamedev-agent-skills",
+   "description": "Export and build a Godot 4.7 project for distribution: install export templates, define export presets (Windows/macOS/Linux/Web/Android), run headless command-line exports for CI, and handle web (HTML5) COOP/COEP and dedicated-server/headless builds. Use when exporting a Godot game, configuring export_presets.cfg, building for web/desktop/mobile, or automating builds from the command line."
+  },
+  {
+   "name": "godot-gdextension",
+   "layer": "craft",
+   "group": "Godot",
+   "origin": "new, built from studio agent godot-gdextension-specialist",
+   "description": "Extend Godot 4.7 with native code through GDExtension using godot-cpp (C++) or godot-rust: when native code is worth it, the boundary pattern, project setup, class registration, signals and properties, exposing to the editor, build system and ABI compatibility. Use when the project has a .gdextension file, SConstruct, godot-cpp or gdext, or a GDScript hot path is too slow."
+  },
+  {
+   "name": "godot-gdscript",
+   "layer": "craft",
+   "group": "Godot",
+   "origin": "awesome-gamedev-agent-skills",
+   "description": "Write idiomatic GDScript for Godot 4.7: static typing, the node lifecycle (_ready/_process/_physics_process), @export/@onready/@tool annotations, signals, and await for asynchronous flow. Use when editing .gd scripts in a Godot project (project.godot), writing or debugging GDScript, or porting 3.x GDScript to 4.x (function signatures, yield to await, export to @export)."
+  },
+  {
+   "name": "godot-gdscript-headless-testing",
+   "layer": "craft",
+   "group": "Godot",
+   "origin": "awesome-gamedev-agent-skills",
+   "description": "Run GDScript test suites from the command line with `godot --headless`, using a SceneTree/MainLoop runner script that exits non-zero on failure so CI can gate merges. Use when a Godot project needs unit tests without opening the editor, when wiring a CI job (GitHub Actions or similar) that must fail the build on a failing `.gd` test, or when a `godot --headless` invocation hangs, opens a window, or exits 0 despite failed assertions."
+  },
+  {
+   "name": "godot-multiplayer",
+   "layer": "craft",
+   "group": "Godot",
+   "origin": "awesome-gamedev-agent-skills",
+   "description": "Build networked games with Godot 4.7 high-level multiplayer: set up an ENetMultiplayerPeer server/client, define RPCs with the @rpc annotation (call via rpc()/rpc_id()), set per-node multiplayer authority, and replicate state with MultiplayerSpawner and MultiplayerSynchronizer. Use when adding multiplayer/networking to a Godot project, writing @rpc functions, or syncing player/world state across peers."
+  },
+  {
+   "name": "godot-nodes-scenes",
+   "layer": "craft",
+   "group": "Godot",
+   "origin": "awesome-gamedev-agent-skills",
+   "description": "Structure a Godot 4.7 project with the scene tree and node composition: build reusable scenes, instance PackedScenes at runtime, navigate the tree safely, and register autoload singletons. Use when designing .tscn scenes, deciding how to split nodes, spawning instances with instantiate(), wiring autoloads, or fixing \"node not found\"/freed-node errors in a Godot project."
+  },
+  {
+   "name": "godot-physics",
+   "layer": "craft",
+   "group": "Godot",
+   "origin": "awesome-gamedev-agent-skills",
+   "description": "Use Godot 4.7 physics bodies and detection in 2D and 3D: RigidBody, StaticBody, Area, and CharacterBody; collision layers vs masks; contact/overlap signals; and raycasts (RayCast nodes and direct space-state queries). Use when configuring collision layers/masks, detecting overlaps with Area2D/Area3D, applying forces to a RigidBody, or casting rays in a Godot project (.tscn with physics bodies), including 3D projects running Jolt Physics, the default 3D engine for projects created in 4.6+."
+  },
+  {
+   "name": "godot-resources",
+   "layer": "craft",
+   "group": "Godot",
+   "origin": "awesome-gamedev-agent-skills",
+   "description": "Design data-driven Godot 4.7 games with custom Resource classes: define typed data with class_name + @export, save/load .tres/.res files, instance and duplicate resources, and load on demand with ResourceLoader (incl. threaded loading). Use when modeling items/stats/configs as data in a Godot project, creating .tres resources, or working with custom Resource subclasses and ResourceLoader/ResourceSaver."
+  },
+  {
+   "name": "godot-shaders",
+   "layer": "craft",
+   "group": "Godot",
+   "origin": "awesome-gamedev-agent-skills",
+   "description": "Write Godot 4.7 shaders in the Godot Shading Language: canvas_item shaders for 2D and spatial shaders for 3D, with vertex/fragment functions, uniforms (source_color, hint_range), TIME/UV animation, and screen-reading via hint_screen_texture. Use when authoring .gdshader files, writing fragment/vertex code, making 2D/3D visual effects, or porting 3.x shaders (SCREEN_TEXTURE, hint_color) to 4.x."
+  },
+  {
+   "name": "godot-signals-groups",
+   "layer": "craft",
+   "group": "Godot",
+   "origin": "awesome-gamedev-agent-skills",
+   "description": "Build event-driven, decoupled Godot 4.7 gameplay with signals and node groups: declare and emit custom signals, connect with Callables (incl. bind/one-shot), and broadcast to many nodes via groups and call_group. Use when wiring node communication in a Godot project, replacing tight references with signals, emitting/connecting events, or porting 3.x connect(\"sig\", self, \"method\") code."
+  },
+  {
+   "name": "godot-tilemap",
+   "layer": "craft",
+   "group": "Godot",
+   "origin": "awesome-gamedev-agent-skills",
+   "description": "Build and edit tile-based 2D levels in Godot 4.7 with TileMapLayer and TileSet: paint layers, set up collision/navigation/custom-data on tiles, autotile with terrain sets, and read/write cells from code (set_cell, get_cell_tile_data, local_to_map). Use when working with TileMapLayer nodes, .tres TileSets, autotiling, or migrating a deprecated TileMap node to TileMapLayer."
+  },
+  {
+   "name": "godot-ui-control",
+   "layer": "craft",
+   "group": "Godot",
+   "origin": "awesome-gamedev-agent-skills",
+   "description": "Build Godot 4.7 user interfaces with Control nodes: anchors and offsets for responsive layout, Container nodes (VBox/HBox/Grid/Margin) for automatic arrangement, Theme resources for consistent styling, and keyboard/gamepad focus navigation. Use when laying out a HUD, menu, or UI in a Godot project, working with Control/Container nodes, anchors, themes, or focus in a .tscn."
+  },
+  {
+   "name": "help",
+   "layer": "studio",
+   "group": "Getting started and navigation",
+   "origin": "Claude Code Game Studios",
+   "description": "What should I do next? Use when stuck or you don't know what to do."
+  },
+  {
+   "name": "hotfix",
+   "layer": "studio",
+   "group": "Release and live ops",
+   "origin": "Claude Code Game Studios",
+   "description": "Emergency fix bypassing normal sprint process — hotfix branch, approvals tracked, backport verified, full audit trail."
+  },
+  {
+   "name": "input-systems",
+   "layer": "craft",
+   "group": "Disciplines",
+   "origin": "awesome-gamedev-agent-skills",
+   "description": "Architect game input — action mapping (abstracting keys into named actions), rebinding with conflict detection and persistence, multi-device support (keyboard, gamepad, touch), analog deadzones, and feel features like input buffering and coyote time, plus accessibility. Engine-neutral. Use when the user mentions input mapping, rebind controls, gamepad support, deadzone, input buffering, coyote time, or accessible controls."
+  },
+  {
+   "name": "itch-publish",
+   "layer": "craft",
+   "group": "Shipping",
+   "origin": "awesome-gamedev-agent-skills",
+   "description": "Publish and update a game on itch.io: create the project page and upload builds with the butler CLI (butler push) to named channels. Use for itch.io publishing, butler push, channel naming for Windows/macOS/Linux/HTML5, versioning uploads, or shipping a jam or release build to itch.io."
+  },
+  {
+   "name": "launch-checklist",
+   "layer": "studio",
+   "group": "Release and live ops",
+   "origin": "Claude Code Game Studios",
+   "description": "Launch readiness across every department: code, content, store, marketing, community, infrastructure, legal, go/no-go sign-offs."
+  },
+  {
+   "name": "level-design",
+   "layer": "craft",
+   "group": "Disciplines",
+   "origin": "awesome-gamedev-agent-skills",
+   "description": "Design and build playable levels — the blockout/whitebox-to-playable workflow, player metrics and grid layout, pacing and flow (tension/rest curve), gating and the critical path, and encounter design. Engine-neutral practice. Use when the user mentions level design, blockout/whitebox/greybox, level layout, level pacing, encounter design, or the critical path through a level."
+  },
+  {
+   "name": "localize",
+   "layer": "studio",
+   "group": "Building stories",
+   "origin": "Claude Code Game Studios",
+   "description": "Localization pipeline — find hardcoded strings, extract string tables, cultural review, VO, RTL, enforce string freeze."
+  },
+  {
+   "name": "love2d-core",
+   "layer": "craft",
+   "group": "Other engines",
+   "origin": "awesome-gamedev-agent-skills",
+   "description": "Structure and debug a LÖVE (Love2D) game in Lua: the love.load/update/draw loop, delta-time movement, input, and screen states. Use when building a LÖVE 11.x game (main.lua, conf.lua, .love)."
+  },
+  {
+   "name": "map-systems",
+   "layer": "studio",
+   "group": "Concept and design",
+   "origin": "Claude Code Game Studios",
+   "description": "Decompose a concept into individual systems, map dependencies, prioritize design order, create the systems index."
+  },
+  {
+   "name": "milestone-review",
+   "layer": "studio",
+   "group": "Architecture and planning",
+   "origin": "Claude Code Game Studios",
+   "description": "Milestone progress review — completeness, quality metrics, risk, go/no-go recommendation. At checkpoints or before a deadline."
+  },
+  {
+   "name": "netcode-fundamentals",
+   "layer": "craft",
+   "group": "Disciplines",
+   "origin": "new, built from studio agent network-programmer",
+   "description": "Design engine-neutral multiplayer netcode: client-server versus peer-to-peer, server authority, state replication strategy per data type, client prediction with reconciliation, entity interpolation, lag compensation, bandwidth budgets, versioned messages, reconnection and matchmaking boundaries. Use when planning or debugging any online multiplayer game before choosing engine APIs, or when the user mentions netcode, lag, rollback, tick rate, prediction or desync."
+  },
+  {
+   "name": "onboard",
+   "layer": "studio",
+   "group": "Getting started and navigation",
+   "origin": "Claude Code Game Studios",
+   "description": "Onboarding doc for a new contributor or agent — project state, conventions, priorities relevant to the specified role."
+  },
+  {
+   "name": "patch-notes",
+   "layer": "studio",
+   "group": "Release and live ops",
+   "origin": "Claude Code Game Studios",
+   "description": "Player-facing patch notes from git history and changelogs. Translates developer language into player communication."
+  },
+  {
+   "name": "perf-profile",
+   "layer": "studio",
+   "group": "Building stories",
+   "origin": "merged (both repos)",
+   "description": "Find and fix game performance problems: measure against frame, memory, draw call and load budgets, locate the CPU or GPU bottleneck with the engine profiler, rank hotspots, and apply fixes such as pooling, batching and removing per-frame allocations. Use for low or dropping FPS, stutter, hitches, GC spikes, too many draw calls, memory growth, slow loads, or 'optimize my game'. Writes a comparable report in a studio project."
+  },
+  {
+   "name": "phaser-arcade-physics",
+   "layer": "craft",
+   "group": "Browser and web",
+   "origin": "awesome-gamedev-agent-skills",
+   "description": "Use Phaser 4 Arcade Physics: enable the world, give sprites bodies, set velocity/acceleration/gravity, and resolve collisions with colliders, overlaps, groups, and world bounds. Use when a Phaser game needs movement or collisions — when the user mentions Arcade Physics, this.physics, setVelocity, collider, overlap, gravity, onFloor, or a platformer/top-down controller. For game config, scenes, and the loader use phaser-core."
+  },
+  {
+   "name": "phaser-core",
+   "layer": "craft",
+   "group": "Browser and web",
+   "origin": "awesome-gamedev-agent-skills",
+   "description": "Set up and debug a Phaser 4 game: the Game config, the Scene lifecycle (init/preload/create/update), the asset loader, cameras, and cross-scene communication. Use when building or debugging a Phaser game — when the user mentions Phaser, Phaser.Game, Phaser.Scene, preload/create/update, this.load, this.add, or scene transitions. For Arcade Physics movement/collisions use phaser-arcade-physics."
+  },
+  {
+   "name": "physics-tuning",
+   "layer": "craft",
+   "group": "Disciplines",
+   "origin": "awesome-gamedev-agent-skills",
+   "description": "Tune game physics for stable, good-feeling motion — fixed vs variable timestep, render interpolation, mass/gravity/drag, continuous collision detection (CCD) to stop tunneling, fixing jitter, and collision layers/masks. Engine-neutral. Use when the user mentions physics feel, jitter, tunneling, fixed timestep, FixedUpdate, CCD, bouncing/unstable physics, or collision layers."
+  },
+  {
+   "name": "pixijs-rendering",
+   "layer": "craft",
+   "group": "Browser and web",
+   "origin": "awesome-gamedev-agent-skills",
+   "description": "Build a PixiJS v8 render layer: create the async Application, load textures with Assets, compose the scene graph with Container and Sprite, drive the ticker loop, wire pointer events, and group draws with render groups. Use when building or debugging PixiJS v8 — when the user mentions PixiJS, Pixi, Application, app.stage, Container, Sprite, Assets.load, app.ticker, or eventMode. Pins the v8 async init() API (examples checked against 8.22)."
+  },
+  {
+   "name": "platformer",
+   "layer": "craft",
+   "group": "Genres",
+   "origin": "awesome-gamedev-agent-skills",
+   "description": "Build a 2D platformer: run/jump control with coyote time, jump buffering, and variable jump height, wall slide and wall jump, plus tiled levels and hazards. Use for a platformer or Mario/Celeste-like, or tuning jump feel."
+  },
+  {
+   "name": "playtest-report",
+   "layer": "studio",
+   "group": "QA and testing",
+   "origin": "Claude Code Game Studios",
+   "description": "Structured playtest report template, or turn existing playtest notes into structured feedback."
+  },
+  {
+   "name": "procedural-gen",
+   "layer": "craft",
+   "group": "Disciplines",
+   "origin": "awesome-gamedev-agent-skills",
+   "description": "Generate game content procedurally — seeded deterministic RNG, value/Perlin/ Simplex noise for terrain and heightmaps, grid dungeon generation (rooms + corridors, BSP, random walk, wave function collapse), and weighted loot/drop tables. Engine-neutral algorithms. Use when the user mentions procedural generation, perlin/simplex noise, random seed, dungeon generator, WFC, heightmap/terrain, or loot tables."
+  },
+  {
+   "name": "project-stage-detect",
+   "layer": "studio",
+   "group": "Getting started and navigation",
+   "origin": "Claude Code Game Studios",
+   "description": "Analyze project state, detect stage, identify gaps, recommend next steps. 'Where are we in development?'"
+  },
+  {
+   "name": "propagate-design-change",
+   "layer": "studio",
+   "group": "Concept and design",
+   "origin": "Claude Code Game Studios",
+   "description": "Finds architecture decisions (ADRs) made stale by a changed GDD and walks through resolving each. Use when the user changed a number or rule in a GDD and asks which ADRs or architecture decisions are now out of date."
+  },
+  {
+   "name": "prototype",
+   "layer": "studio",
+   "group": "Concept and design",
+   "origin": "merged (both repos)",
+   "description": "Throwaway prototype that answers one question: is this mechanic fun? Concept prototype before GDDs (HTML, Engine or Paper build, PROCEED/PIVOT/KILL/NOT ASSESSED), a mid-production --spike, or a one-hour quick mode with greybox art and written keep/kill criteria. Use when the user says prototype, greybox, spike, is this fun, just get something playable, or rough it in. After /brainstorm and /setup-engine in a studio project."
+  },
+  {
+   "name": "puzzle",
+   "layer": "craft",
+   "group": "Genres",
+   "origin": "awesome-gamedev-agent-skills",
+   "description": "Build a puzzle game: grid/board state, move input, rule-based resolution (match-3 cascades, sokoban pushes, tile logic), scoring, and undo. Use for a match-3, sokoban, or grid-logic puzzle."
+  },
+  {
+   "name": "pygame-core",
+   "layer": "craft",
+   "group": "Other engines",
+   "origin": "awesome-gamedev-agent-skills",
+   "description": "Structure a pygame (pygame-ce) game in Python: the init/event/update/draw loop, delta-time movement, Surface/Rect blitting, keyboard/mouse input, and Sprite/Group management with collision. Use when building or debugging a pygame game — when the user mentions pygame, pygame-ce, the game loop, blit, Surface, Rect, sprite groups, or clock.tick. Targets pygame-ce."
+  },
+  {
+   "name": "qa-plan",
+   "layer": "studio",
+   "group": "QA and testing",
+   "origin": "Claude Code Game Studios",
+   "description": "QA test plan for a sprint — classifies stories by Logic/Integration/Visual/UI, covers automated tests, manual cases, smoke scope."
+  },
+  {
+   "name": "quick-design",
+   "layer": "studio",
+   "group": "Concept and design",
+   "origin": "Claude Code Game Studios",
+   "description": "Lightweight spec for small changes — tuning adjustments, minor mechanics. Embeds directly into stories; skips full GDD."
+  },
+  {
+   "name": "regression-suite",
+   "layer": "studio",
+   "group": "QA and testing",
+   "origin": "Claude Code Game Studios",
+   "description": "Map test coverage to GDD critical paths, find fixed bugs lacking regression tests, flag drift from new features."
+  },
+  {
+   "name": "release-checklist",
+   "layer": "studio",
+   "group": "Release and live ops",
+   "origin": "Claude Code Game Studios",
+   "description": "Pre-release checklist — build verification, certification requirements, store metadata, launch readiness."
+  },
+  {
+   "name": "retrospective",
+   "layer": "studio",
+   "group": "Architecture and planning",
+   "origin": "Claude Code Game Studios",
+   "description": "Sprint or milestone retrospective from completed work, velocity, blockers. Actionable insights for the next iteration."
+  },
+  {
+   "name": "reverse-document",
+   "layer": "studio",
+   "group": "Concept and design",
+   "origin": "Claude Code Game Studios",
+   "description": "Generate missing design or architecture docs from existing implementation — works backwards from code and prototypes."
+  },
+  {
+   "name": "review-all-gdds",
+   "layer": "studio",
+   "group": "Concept and design",
+   "origin": "Claude Code Game Studios",
+   "description": "Holistic cross-GDD review — contradictions between systems, dominant strategies, economic imbalance, cognitive overload, pillar drift."
+  },
+  {
+   "name": "roblox-characters",
+   "layer": "craft",
+   "group": "Other engines",
+   "origin": "awesome-gamedev-agent-skills",
+   "description": "Build respawn-safe Roblox character systems around Players, CharacterAdded/CharacterRemoving, Humanoid, HumanoidRootPart, Animator, R6/R15 rigs, movement, animations and markers, death, tools, accessories, ownership, and custom characters. Use when character scripts break after respawn, cache stale Humanoids, control movement or velocity, load AnimationTracks, handle death, equip Tools, modify avatars, or support custom player rigs."
+  },
+  {
+   "name": "roblox-datastores",
+   "layer": "craft",
+   "group": "Other engines",
+   "origin": "awesome-gamedev-agent-skills",
+   "description": "Persist player data in Roblox with DataStoreService: GetDataStore, GetAsync/ SetAsync/UpdateAsync/IncrementAsync wrapped in pcall, load-on-join and save-on-leave plus BindToClose, retries, and OrderedDataStore leaderboards. Use when saving or loading persistent data in a Roblox experience — when the user mentions DataStore, DataStoreService, GetAsync, SetAsync, UpdateAsync, save player data, or leaderboards. For general Luau scripting use roblox-luau."
+  },
+  {
+   "name": "roblox-luau",
+   "layer": "craft",
+   "group": "Other engines",
+   "origin": "awesome-gamedev-agent-skills",
+   "description": "Script a Roblox experience in Luau: get services, create and parent Instances, connect events, run server Scripts vs client LocalScripts, and communicate across the client/server boundary with RemoteEvents/RemoteFunctions (server-authoritative). Use when building or debugging Roblox Studio scripts — when the user mentions Roblox, Luau, services, RemoteEvent, Instance.new, PlayerAdded, or client vs server. For saving player data use roblox-datastores."
+  },
+  {
+   "name": "roblox-networking",
+   "layer": "craft",
+   "group": "Other engines",
+   "origin": "awesome-gamedev-agent-skills",
+   "description": "Design and harden Roblox client/server networking with RemoteEvent, RemoteFunction, and UnreliableRemoteEvent; server authority, argument and Instance validation, rate limits, proximity/ownership checks, targeted replication, streaming, lifecycle, prediction, and reconciliation. Use for Roblox remotes, exploits, request spam, multiplayer replication, network ownership, high-frequency cosmetic updates, or server/client desynchronization."
+  },
+  {
+   "name": "roblox-physics",
+   "layer": "craft",
+   "group": "Other engines",
+   "origin": "awesome-gamedev-agent-skills",
+   "description": "Implement Roblox physical simulation and queries with assemblies, anchoring, constraints, collision groups, CanCollide/CanTouch/CanQuery, raycasts and overlap queries, mass, impulses, forces, velocity, moving assemblies, cleanup, and network ownership. Use for Roblox collisions, hit detection, RaycastParams, PhysicsService, projectiles, vehicles, knockback, constraints, deprecated BodyMovers, unstable motion, or client-owned physics exploits."
+  },
+  {
+   "name": "roblox-simulator-economy",
+   "layer": "craft",
+   "group": "Other engines",
+   "origin": "awesome-gamedev-agent-skills",
+   "description": "Design, balance, and implement the economy of a Roblox simulator, tycoon, clicker, or idle game in Luau: upgrade cost curves, buy max, income per second, rebirth/prestige requirements and multipliers, offline earnings, big-number display (1.5K, 3.4M, 2.0Qa), server-authoritative purchases, repairing tampered or old save data, and odds disclosure for paid random items such as eggs, crates, and spins. Includes a Lune pacing calculator. Use when choosing or checking baseCost/costGrowth/rebirth numbers, writing upgrade/currency/rebirth/offline code, or when progress stalls, a rebirth takes far longer than the last, numbers display as 1000K, offline earnings pay too much, or players gain currency they did not earn."
+  },
+  {
+   "name": "roblox-studio-workflow",
+   "layer": "craft",
+   "group": "Other engines",
+   "origin": "awesome-gamedev-agent-skills",
+   "description": "Modify living Roblox Studio projects safely: inspect Explorer and execution locations, preserve existing structure, reuse modules/remotes, create meaningful Instances, apply Attributes and CollectionService tags, test server/client and multiple devices, inspect Output, and remove experiments/debug objects. Use when an agent edits a place or rbxl/rbxlx/Rojo project, operates in Studio, adds Scripts/LocalScripts/ModuleScripts, or must verify a Roblox change in context."
+  },
+  {
+   "name": "roblox-ui",
+   "layer": "craft",
+   "group": "Other engines",
+   "origin": "awesome-gamedev-agent-skills",
+   "description": "Build production Roblox interfaces with ScreenGui/PlayerGui lifecycle, responsive UDim2 layouts, safe insets, reusable editable Instances, cross-device input and selection, restrained motion, cleanup, and multi-viewport verification. Use for Roblox HUDs, inventories, shops, settings, ability bars, ScrollingFrames, AutomaticSize, GuiService, gamepad focus, touch UI, or UI that clips, resets on respawn, looks generic, or was generated as one giant LocalScript."
+  },
+  {
+   "name": "roguelike",
+   "layer": "craft",
+   "group": "Genres",
+   "origin": "awesome-gamedev-agent-skills",
+   "description": "Build a roguelike: turn-based grid movement, procedural dungeons, permadeath, field-of-view, and loot tables. Use for a roguelike/roguelite or turn-based grid dungeon crawler with procedural levels."
+  },
+  {
+   "name": "rpg",
+   "layer": "craft",
+   "group": "Genres",
+   "origin": "awesome-gamedev-agent-skills",
+   "description": "Build an RPG: stats and leveling, inventory and equipment, quests, branching dialogue, save/load, and combat. Use for an RPG/JRPG, or designing stat, inventory, quest, or combat systems."
+  },
+  {
+   "name": "save-systems",
+   "layer": "craft",
+   "group": "Disciplines",
+   "origin": "awesome-gamedev-agent-skills",
+   "description": "Design save/load for game state — choosing what to serialize, file formats, save slots, atomic crash-safe writes, schema versioning and migration, and autosave. Engine-neutral. Use when the user mentions save system, save/load, game state persistence, save slots, autosave, save file corruption, or migrating old saves to a new version."
+  },
+  {
+   "name": "scope-check",
+   "layer": "studio",
+   "group": "Architecture and planning",
+   "origin": "Claude Code Game Studios",
+   "description": "Scope creep check — current scope versus the original plan. Flags additions, quantifies bloat, recommends cuts. 'Any scope creep?'"
+  },
+  {
+   "name": "security-audit",
+   "layer": "studio",
+   "group": "Building stories",
+   "origin": "Claude Code Game Studios",
+   "description": "Security audit — save tampering, cheat vectors, network exploits, data exposure, input validation. Before public or multiplayer release."
+  },
+  {
+   "name": "settings",
+   "layer": "studio",
+   "group": "Getting started and navigation",
+   "origin": "Claude Code Game Studios",
+   "description": "View or change project config — effective merged values, or set locally in project.local.yaml."
+  },
+  {
+   "name": "setup-engine",
+   "layer": "studio",
+   "group": "Getting started and navigation",
+   "origin": "Claude Code Game Studios",
+   "description": "Configure engine and version. Pins it in CLAUDE.md; WebSearch fills reference docs when the version is beyond LLM training data."
+  },
+  {
+   "name": "shader-programming",
+   "layer": "craft",
+   "group": "Disciplines",
+   "origin": "awesome-gamedev-agent-skills",
+   "description": "Write game shaders from cross-engine fundamentals — the vertex→fragment pipeline, coordinate spaces, UV math, and common 2D/3D effects (tint, UV scroll, dissolve, outline, fresnel rim, vignette) in GLSL with HLSL equivalents. Use when the user mentions shaders, fragment/pixel shader, vertex shader, UV, GLSL, HLSL, or effects like dissolve, outline, or rim light."
+  },
+  {
+   "name": "skill-improve",
+   "layer": "studio",
+   "group": "Framework upkeep",
+   "origin": "Claude Code Game Studios",
+   "description": "Improve a skill via a test-fix-retest loop — static checks, targeted fixes, keep or revert on score change."
+  },
+  {
+   "name": "skill-test",
+   "layer": "studio",
+   "group": "Framework upkeep",
+   "origin": "Claude Code Game Studios",
+   "description": "Validate skill files for structural compliance and behavioral correctness. Four modes: static linter, spec, category rubric, audit."
+  },
+  {
+   "name": "smoke-check",
+   "layer": "studio",
+   "group": "QA and testing",
+   "origin": "Claude Code Game Studios",
+   "description": "Critical-path smoke gate before QA hand-off — runs the automated suite. A failed check means the build is not QA-ready."
+  },
+  {
+   "name": "soak-test",
+   "layer": "studio",
+   "group": "QA and testing",
+   "origin": "Claude Code Game Studios",
+   "description": "Soak test protocol for extended play — what to observe and log for slow leaks, fatigue, late-appearing edge cases."
+  },
+  {
+   "name": "sprint-plan",
+   "layer": "studio",
+   "group": "Architecture and planning",
+   "origin": "Claude Code Game Studios",
+   "description": "New or updated sprint plan from the current milestone, completed work, and available capacity."
+  },
+  {
+   "name": "sprint-status",
+   "layer": "studio",
+   "group": "Architecture and planning",
+   "origin": "Claude Code Game Studios",
+   "description": "Fast, concise sprint snapshot — burndown and emerging risks for situational awareness. 'How is the sprint going?'"
+  },
+  {
+   "name": "start",
+   "layer": "studio",
+   "group": "Getting started and navigation",
+   "origin": "Claude Code Game Studios",
+   "description": "Guides a first-time user through onboarding and picks the right workflow. Use when the user is new, just cloned or installed the studio, has no idea or engine yet, asks where to begin, or wants to bring in an existing game."
+  },
+  {
+   "name": "steam-publish",
+   "layer": "craft",
+   "group": "Shipping",
+   "origin": "awesome-gamedev-agent-skills",
+   "description": "Publish or update a game on Steam with Steamworks and SteamPipe: configure depots and packages, upload builds with steamcmd, set a build live on a branch, and run the release checklists. Use for Steam publishing, app_build.vdf/steamcmd uploads, depots, beta branches, or a store page release."
+  },
+  {
+   "name": "story-done",
+   "layer": "studio",
+   "group": "Building stories",
+   "origin": "Claude Code Game Studios",
+   "description": "Closes a finished story: verifies each acceptance criterion, checks for design or ADR deviations and updates its status. Use when the user says a story is done, finished or ready to close."
+  },
+  {
+   "name": "story-readiness",
+   "layer": "studio",
+   "group": "Building stories",
+   "origin": "Claude Code Game Studios",
+   "description": "Checks whether a story is ready to implement: clear acceptance criteria, no open questions, valid ADR and dependencies. Use when the user asks if a story, or the sprint's stories, are ready to start or build."
+  },
+  {
+   "name": "survival-crafting",
+   "layer": "craft",
+   "group": "Genres",
+   "origin": "awesome-gamedev-agent-skills",
+   "description": "Build a survival-crafting game: resource gathering, inventory, crafting and a tech tree, needs (hunger/thirst/temperature), and base building. Use for a survival or crafting/base-building game."
+  },
+  {
+   "name": "team-audio",
+   "layer": "studio",
+   "group": "Team orchestration",
+   "origin": "Claude Code Game Studios",
+   "description": "Orchestrate the audio team — audio-director, sound-designer, technical-artist, gameplay-programmer — direction through implementation."
+  },
+  {
+   "name": "team-combat",
+   "layer": "studio",
+   "group": "Team orchestration",
+   "origin": "Claude Code Game Studios",
+   "description": "Orchestrate the combat team — game-designer, gameplay-programmer, ai-programmer, technical-artist, sound-designer, qa-tester — design through implement and validate."
+  },
+  {
+   "name": "team-level",
+   "layer": "studio",
+   "group": "Team orchestration",
+   "origin": "Claude Code Game Studios",
+   "description": "Orchestrate the level team — level-designer, narrative-director, world-builder, art-director, systems-designer, qa-tester — for complete area creation."
+  },
+  {
+   "name": "team-live-ops",
+   "layer": "studio",
+   "group": "Team orchestration",
+   "origin": "Claude Code Game Studios",
+   "description": "Orchestrate the live-ops team — live-ops-designer, economy-designer, analytics-engineer, community-manager, writer — for a season or live event."
+  },
+  {
+   "name": "team-narrative",
+   "layer": "studio",
+   "group": "Team orchestration",
+   "origin": "Claude Code Game Studios",
+   "description": "Orchestrate the narrative team — narrative-director, writer, world-builder, level-designer — for story, world lore, narrative-driven levels."
+  },
+  {
+   "name": "team-polish",
+   "layer": "studio",
+   "group": "Team orchestration",
+   "origin": "Claude Code Game Studios",
+   "description": "Orchestrate the polish team — performance-analyst, technical-artist, sound-designer, qa-tester — to optimize and harden a feature or area."
+  },
+  {
+   "name": "team-qa",
+   "layer": "studio",
+   "group": "Team orchestration",
+   "origin": "Claude Code Game Studios",
+   "description": "Orchestrate the QA team through a full testing cycle — qa-lead strategy and test plan, qa-tester case writing, execution, sign-off."
+  },
+  {
+   "name": "team-release",
+   "layer": "studio",
+   "group": "Team orchestration",
+   "origin": "Claude Code Game Studios",
+   "description": "Orchestrate the release team — release-manager, qa-lead, devops-engineer, producer — to execute a release from candidate to deployment."
+  },
+  {
+   "name": "team-ui",
+   "layer": "studio",
+   "group": "Team orchestration",
+   "origin": "Claude Code Game Studios",
+   "description": "Orchestrate the UI team through the UX pipeline — authoring, visual design, implementation, review, polish. Uses /ux-design, /ux-review, studio templates."
+  },
+  {
+   "name": "tech-debt",
+   "layer": "studio",
+   "group": "Architecture and planning",
+   "origin": "Claude Code Game Studios",
+   "description": "Track, categorize and prioritize technical debt across the codebase — scans for debt indicators, maintains a register."
+  },
+  {
+   "name": "test-evidence-review",
+   "layer": "studio",
+   "group": "QA and testing",
+   "origin": "Claude Code Game Studios",
+   "description": "Quality review of test files and evidence — goes beyond existence, evaluates assertion coverage. ADEQUATE/INCOMPLETE/MISSING/NOT ASSESSED per story."
+  },
+  {
+   "name": "test-flakiness",
+   "layer": "studio",
+   "group": "QA and testing",
+   "origin": "Claude Code Game Studios",
+   "description": "Find flaky tests from CI logs — aggregates pass rates, spots intermittent failures, recommends quarantine. After multiple runs."
+  },
+  {
+   "name": "test-helpers",
+   "layer": "studio",
+   "group": "QA and testing",
+   "origin": "Claude Code Game Studios",
+   "description": "Generate engine-specific test helper libraries — assertion utilities, factory functions, mocks in the engine's test folder. Reduces boilerplate."
+  },
+  {
+   "name": "test-setup",
+   "layer": "studio",
+   "group": "QA and testing",
+   "origin": "Claude Code Game Studios",
+   "description": "Scaffold the test framework and CI — tests/ directory, engine test runner, GitHub Actions workflow. Once, before the first sprint."
+  },
+  {
+   "name": "threejs-gltf-loading",
+   "layer": "craft",
+   "group": "Browser and web",
+   "origin": "awesome-gamedev-agent-skills",
+   "description": "Load glTF/GLB models in three.js with GLTFLoader and play their skinned animations with AnimationMixer, including DRACO/Meshopt-compressed meshes and KTX2 textures. Use when importing 3D models into three.js — when the user mentions glTF, GLB, GLTFLoader, AnimationMixer, animation clips, DRACOLoader, or \"load a 3D model\". For scene/camera/renderer setup use threejs-scene-setup; for materials and lights use threejs-materials-lighting."
+  },
+  {
+   "name": "threejs-materials-lighting",
+   "layer": "craft",
+   "group": "Browser and web",
+   "origin": "awesome-gamedev-agent-skills",
+   "description": "Light and shade a three.js scene: choose materials (MeshStandardMaterial PBR vs unlit MeshBasicMaterial), add ambient/hemisphere/directional/point/spot lights, turn on shadow maps, and use an environment map (IBL) for realistic reflections. Use when a three.js model looks black, flat, or wrong — when the user mentions three.js materials, MeshStandardMaterial, lights, shadows, envMap, or PBR. For renderer/loop setup use threejs-scene-setup; for loading models use threejs-gltf-loading."
+  },
+  {
+   "name": "threejs-scene-setup",
+   "layer": "craft",
+   "group": "Browser and web",
+   "origin": "awesome-gamedev-agent-skills",
+   "description": "Stand up a three.js scene: import maps and the three/addons path, the Scene/PerspectiveCamera/WebGLRenderer trio, the setAnimationLoop render loop, responsive resize, OrbitControls, and opting into WebGPURenderer. Use when starting or debugging a three.js app — when the user mentions three.js, THREE.Scene, WebGLRenderer, WebGPURenderer, PerspectiveCamera, the render loop, resizing, or OrbitControls. For models use threejs-gltf-loading; for materials/lights use threejs-materials-lighting."
+  },
+  {
+   "name": "tower-defense",
+   "layer": "craft",
+   "group": "Genres",
+   "origin": "awesome-gamedev-agent-skills",
+   "description": "Build a tower defense: enemies pathing along lanes, wave spawning, towers that auto-target and fire, an economy, and lives. Use for a tower-defense/wave-defense game, or balancing waves and economy."
+  },
+  {
+   "name": "unity-addressables",
+   "layer": "craft",
+   "group": "Unity",
+   "origin": "new, built from studio agent unity-addressables-specialist",
+   "description": "Manage Unity 6 assets with the Addressables package: group organization, labels, async loading and release, memory ownership, bundle layout, content catalogs, remote content and content updates. Use when a Unity project uses com.unity.addressables, AssetReference, Addressables.LoadAssetAsync, or has slow loads, memory leaks from unreleased handles, or needs downloadable content."
+  },
+  {
+   "name": "unity-animation",
+   "layer": "craft",
+   "group": "Unity",
+   "origin": "awesome-gamedev-agent-skills",
+   "description": "Drive Unity 6.3 LTS character animation with Animator Controllers: states, transitions, parameters, blend trees, animation layers, and humanoid Avatar IK. Use when wiring an Animator, setting parameters from script (SetFloat/SetBool/SetTrigger), building blend trees, or when the user mentions Animator, Mecanim, state machine, blend tree, or .controller."
+  },
+  {
+   "name": "unity-build-pipeline",
+   "layer": "craft",
+   "group": "Unity",
+   "origin": "awesome-gamedev-agent-skills",
+   "description": "Build and ship Unity 6.3 LTS players: build settings and scenes, player/quality settings, the IL2CPP vs Mono scripting backend, managed code stripping, scripted BuildPipeline.BuildPlayer, and CI/headless builds. Use when configuring or automating a build, choosing a scripting backend, shrinking build size, or when the user mentions Unity build, player settings, IL2CPP, code stripping, or Addressables."
+  },
+  {
+   "name": "unity-csharp-scripting",
+   "layer": "craft",
+   "group": "Unity",
+   "origin": "awesome-gamedev-agent-skills",
+   "description": "Write Unity 6.3 LTS C# gameplay scripts: the MonoBehaviour lifecycle (Awake/OnEnable/Start/Update/FixedUpdate/LateUpdate), GameObject and component access, coroutines, and Inspector serialization. Use when creating or editing .cs scripts in a Unity project, or when the user mentions MonoBehaviour, Start/Update, GetComponent, SerializeField, coroutines, or \"Unity script\"."
+  },
+  {
+   "name": "unity-dots-ecs",
+   "layer": "craft",
+   "group": "Unity",
+   "origin": "new, built from studio agent unity-dots-specialist",
+   "description": "Write Unity DOTS code: Entities components and systems, queries, the Jobs system, Burst-compiled code, memory layout and Entities Graphics, while avoiding common ECS anti-patterns. Use when a Unity project uses com.unity.entities, ISystem, SystemAPI, IJobEntity, Burst or NativeArray, or needs thousands of simulated objects."
+  },
+  {
+   "name": "unity-input-system",
+   "layer": "craft",
+   "group": "Unity",
+   "origin": "awesome-gamedev-agent-skills",
+   "description": "Wire player input in Unity 6.3 LTS with the Input System package: Input Actions, action maps, the PlayerInput component, and reading values via callbacks or polling. Use when the project has a .inputactions asset or com.unity.inputsystem, or when the user mentions the Unity Input System, InputAction, action maps, PlayerInput, control schemes, or rebinding."
+  },
+  {
+   "name": "unity-navmesh",
+   "layer": "craft",
+   "group": "Unity",
+   "origin": "awesome-gamedev-agent-skills",
+   "description": "Add AI navigation in Unity 6.3 LTS: bake a NavMesh with the AI Navigation package (NavMeshSurface), move agents with NavMeshAgent.SetDestination, and handle dynamic obstacles. Use when setting up pathfinding, making an enemy chase the player, baking navigation, or when the user mentions NavMesh, NavMeshAgent, NavMeshSurface, NavMeshObstacle, or Unity pathfinding."
+  },
+  {
+   "name": "unity-physics",
+   "layer": "craft",
+   "group": "Unity",
+   "origin": "awesome-gamedev-agent-skills",
+   "description": "Set up 3D physics in Unity 6.3 LTS: Rigidbody movement and forces, colliders, triggers vs collisions, layer-based collision, raycasts, and joints. Use when adding a Rigidbody, handling OnCollisionEnter/OnTriggerEnter, tuning collision layers, casting rays, or when the user mentions Unity physics, AddForce, isKinematic, or linearVelocity."
+  },
+  {
+   "name": "unity-scriptableobjects",
+   "layer": "craft",
+   "group": "Unity",
+   "origin": "awesome-gamedev-agent-skills",
+   "description": "Architect Unity 6.3 LTS data and decoupling with ScriptableObjects: config/data assets, shared runtime variables, event channels, and runtime sets/registries. Use when designing data-driven systems, replacing singletons/managers, creating .asset data with CreateAssetMenu, or when the user mentions ScriptableObject, SO architecture, or data assets."
+  },
+  {
+   "name": "unity-shaders-vfx",
+   "layer": "craft",
+   "group": "Unity",
+   "origin": "new, built from studio agent unity-shader-specialist",
+   "description": "Write Unity 6 rendering code for URP or HDRP: Shader Graph, custom HLSL, shader variants, VFX Graph, post-processing, draw call and GPU profiling, LOD and quality tiers. Use when the project has .shadergraph, .shader, .hlsl or .vfx files, or when the user mentions URP, HDRP, Shader Graph, VFX Graph, shader variants or GPU cost in Unity."
+  },
+  {
+   "name": "unity-tilemap-2d",
+   "layer": "craft",
+   "group": "Unity",
+   "origin": "awesome-gamedev-agent-skills",
+   "description": "Build and script 2D tilemaps in Unity 6.3 LTS: the Grid + Tilemap components, the Tile Palette, tilemap colliders, rule tiles, and runtime SetTile/GetTile painting. Use when painting tile levels, adding a TilemapCollider2D, using rule or animated tiles, generating tilemaps from code, or when the user mentions Unity tilemap, tile palette, rule tile, or Grid."
+  },
+  {
+   "name": "unity-ui",
+   "layer": "craft",
+   "group": "Unity",
+   "origin": "new, built from studio agent unity-ui-specialist",
+   "description": "Build Unity 6 user interfaces with UI Toolkit (UXML, USS, data binding) or UGUI Canvas: choosing between them, screen management, event handling, canvas optimization, cross-platform input and accessibility. Use when working with .uxml or .uss files, UIDocument, VisualElement, Canvas, or slow or unresponsive Unity UI."
+  },
+  {
+   "name": "unreal-behavior-trees",
+   "layer": "craft",
+   "group": "Unreal",
+   "origin": "awesome-gamedev-agent-skills",
+   "description": "Build NPC AI in Unreal Engine 5 with Behavior Trees and Blackboards: composites (Selector/Sequence), tasks, decorators, services, and running the tree from an AIController. Use when creating enemy/NPC AI, BT_/BB_ assets, custom BTTask or BTService nodes, or when the user mentions Behavior Tree, Blackboard, AIController, BTTask, decorator, or service."
+  },
+  {
+   "name": "unreal-blueprints",
+   "layer": "craft",
+   "group": "Unreal",
+   "origin": "awesome-gamedev-agent-skills",
+   "description": "Build Unreal Engine 5 gameplay with Blueprint visual scripting: Blueprint Classes, the Event Graph and Construction Script, variables/functions/macros, and Blueprint communication (Cast, Interfaces, Event Dispatchers). Use when working in Blueprints, wiring an event graph, deciding how Blueprints talk to each other, or when the user mentions Blueprint, BP, event graph, construction script, or a Blueprint .uasset."
+  },
+  {
+   "name": "unreal-cpp-gameplay",
+   "layer": "craft",
+   "group": "Unreal",
+   "origin": "awesome-gamedev-agent-skills",
+   "description": "Write Unreal Engine 5 C++ gameplay code: the UCLASS/UPROPERTY/UFUNCTION reflection macros, the Gameplay Framework (GameMode, Pawn, Character, PlayerController, Actor components), and the module Build.cs. Use when writing or debugging UE C++, deriving from AActor/ACharacter/ AGameModeBase, exposing properties to the editor or Blueprints, or when the user mentions Unreal C++, UCLASS, GENERATED_BODY, GameMode, ACharacter, or .Build.cs."
+  },
+  {
+   "name": "unreal-enhanced-input",
+   "layer": "craft",
+   "group": "Unreal",
+   "origin": "awesome-gamedev-agent-skills",
+   "description": "Set up player input in Unreal Engine 5 with Enhanced Input: Input Actions, Input Mapping Contexts, modifiers and triggers, adding the mapping context, and binding actions by ETriggerEvent. Use when wiring movement/look/jump input, creating IA_/IMC_ assets, binding in C++ or Blueprints, or when the user mentions Enhanced Input, Input Mapping Context, Input Action, IA_/IMC_, or ETriggerEvent."
+  },
+  {
+   "name": "unreal-gas",
+   "layer": "craft",
+   "group": "Unreal",
+   "origin": "new, built from studio agent ue-gas-specialist",
+   "description": "Build abilities with Unreal's Gameplay Ability System (GAS): Gameplay Abilities, Gameplay Effects, Attribute Sets, Gameplay Tags, Ability Tasks and prediction keys, and avoid common GAS anti-patterns. Use when the project uses AbilitySystemComponent, GameplayAbility, GameplayEffect, AttributeSet or gameplay tags, or when designing attacks, blocks, stamina, cooldowns, buffs or damage in Unreal."
+  },
+  {
+   "name": "unreal-niagara",
+   "layer": "craft",
+   "group": "Unreal",
+   "origin": "awesome-gamedev-agent-skills",
+   "description": "Create and control VFX in Unreal Engine 5 with Niagara: systems and emitters, modules and the spawn/update stages, exposed User parameters, and spawning or driving effects from Blueprints or C++. Use when building particle effects, NS_/NE_ assets, spawning a Niagara system at runtime, setting User parameters, or when the user mentions Niagara, VFX, or a particle system in Unreal."
+  },
+  {
+   "name": "unreal-packaging",
+   "layer": "craft",
+   "group": "Unreal",
+   "origin": "awesome-gamedev-agent-skills",
+   "description": "Package and ship an Unreal Engine 5 project: the Platforms menu Package Project flow, build configurations (Development vs Shipping), cooking content, packaging settings and the Game Default Map, and command-line builds with RunUAT BuildCookRun. Use when packaging a build, making a shipping build, cooking content, configuring packaging settings, or when the user mentions package Unreal, cook content, shipping build, or BuildCookRun."
+  },
+  {
+   "name": "unreal-replication",
+   "layer": "craft",
+   "group": "Unreal",
+   "origin": "new, built from studio agent ue-replication-specialist",
+   "description": "Build server-authoritative multiplayer in Unreal Engine 5: property replication with DOREPLIFETIME and replication conditions, RepNotify, Server/Client/NetMulticast RPCs with server validation, client prediction, net relevancy, dormancy, priority and bandwidth budgets. Use when adding or debugging Unreal multiplayer, replicated properties, RPCs, OnRep functions, lag, desync, rubber-banding, or cheating through RPCs."
+  },
+  {
+   "name": "unreal-umg",
+   "layer": "craft",
+   "group": "Unreal",
+   "origin": "new, built from studio agent ue-umg-specialist",
+   "description": "Build Unreal Engine 5 UI with UMG and CommonUI: widget hierarchy, data binding without per-frame polling, CommonUI input routing for gamepad and keyboard, widget pooling, styling, UI performance and accessibility. Use when creating or debugging UMG widgets, HUDs, menus, WBP_ assets, CommonUI activatable widgets, or slow or unresponsive Unreal UI."
+  },
+  {
+   "name": "ux-design",
+   "layer": "studio",
+   "group": "Concept and design",
+   "origin": "Claude Code Game Studios",
+   "description": "Section-by-section UX spec authoring for a screen, flow or HUD. Reads the player journey to provide context; also project-wide accessibility."
+  },
+  {
+   "name": "ux-review",
+   "layer": "studio",
+   "group": "Concept and design",
+   "origin": "Claude Code Game Studios",
+   "description": "Validate a UX spec, HUD design or pattern library — accessibility, GDD alignment, readiness. APPROVED / NOT ASSESSED / NEEDS REVISION / MAJOR REVISION NEEDED."
+  },
+  {
+   "name": "vertical-slice",
+   "layer": "studio",
+   "group": "Architecture and planning",
+   "origin": "Claude Code Game Studios",
+   "description": "Pre-production validation — end-to-end build to confirm the full loop is achievable before committing to Production. After GDDs, architecture, UX specs."
+  },
+  {
+   "name": "visual-novel",
+   "layer": "craft",
+   "group": "Genres",
+   "origin": "awesome-gamedev-agent-skills",
+   "description": "Build a visual novel: a branching script, character and background display, a text box with choices, save/load, backlog, and skip/auto. Use for a VN, dating sim, or branching story game."
+  }
+ ]
+}

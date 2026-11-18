@@ -1,0 +1,5 @@
+interface:
+  display_name: "Game Development Router"
+  short_description: "Route game work to focused expert skills"
+  default_prompt: "Use $gamedev-router to choose the smallest useful skill set for this game-development task."
+# Modified for the merged game dev skill pack (router renamed to gamedev-router). Original: awesome-gamedev-agent-skills, Apache-2.0.

@@ -1,0 +1,24 @@
+This pack combines work under two licenses. Each file keeps the license of the
+work it came from.
+
+1. Content from awesome-gamedev-agent-skills
+   Copyright 2026 Abhishek Barali and the awesome-gamedev-agent-skills contributors
+   Licensed under the Apache License, Version 2.0.
+   Full text: LICENSES/Apache-2.0-awesome-gamedev-agent-skills.txt
+   Required notices: NOTICE (keep it with any copy of this pack).
+   Files changed in this pack carry a "Modified in the merged pack" note, and
+   ATTRIBUTION.md lists them.
+
+2. Content from Claude Code Game Studios
+   Copyright (c) 2026 Donchitos
+   Licensed under the MIT License.
+   Full text: LICENSES/MIT-claude-code-game-studios.txt
+   This covers the studio skills, agents, hooks, rules, docs and templates, and
+   the ten new skills that were built from the studio's specialist agents.
+
+3. Additions made for the merged pack (router changes, merged skill sections,
+   catalog, plugin marketplace, this file and ATTRIBUTION.md)
+   Released under the MIT License, on the same terms as LICENSES/MIT-claude-code-game-studios.txt.
+   Where an addition sits inside an Apache-2.0 file, that file stays Apache-2.0.
+
+Which license applies to each skill is listed in ATTRIBUTION.md and CATALOG.md.
