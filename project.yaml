@@ -75,6 +75,6 @@ platform:
   gamepad_support: Full
   multiplayer: true
   online: true
-  primary_input: Keyboard/Mouse
+  primary_input: Gamepad
   touch_support: None
   cert_tier: steam

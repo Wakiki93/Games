@@ -23,11 +23,11 @@
 <!-- to scope interaction specs, test helpers, and implementation to the correct input methods. -->
 
 - **Target Platforms**: PC (Windows), distributed on Steam
-- **Input Methods**: Keyboard/Mouse, Gamepad
-- **Primary Input**: Keyboard/Mouse
-- **Gamepad Support**: Full (user decision 2026-11-19: playtests use an Xbox Elite Series 2 controller, so every build must be fully playable with a gamepad alone)
+- **Input Methods**: Gamepad (Xbox-layout controller). Keyboard/Mouse is a developer fallback only, never a supported way to play
+- **Primary Input**: Gamepad
+- **Gamepad Support**: Full (user decisions 2026-11-19: the game is controller-only for players and is playtested on an Xbox Elite Series 2; every build must be fully playable with a gamepad alone)
 - **Touch Support**: None
-- **Platform Notes**: First-person shooter aiming is mouse-driven; every menu and HUD flow must work with keyboard/mouse alone and with a gamepad alone, and no gameplay information may be hover-only. Gamepad aiming needs stick deadzones, a response curve and adjustable sensitivity. 4-player online co-op (dedicated or listen server). Steam is the storefront — Steam integration is added to Allowed Libraries when that work begins, not at engine setup.
+- **Platform Notes**: Controller-only game: aiming is stick-driven, so aim assist (slowdown and limited rotation), stick deadzones, a response curve and adjustable sensitivity are core systems, and recoil, ballistics, enemy speeds and parry windows are tuned for sticks. Every menu and HUD flow must work with a gamepad alone (focus navigation, no cursor, no hover-only information), and prompts use Xbox-layout button labels. Keyboard/mouse may exist for development and debugging but is not tuned, advertised or tested as a way to play. 4-player online co-op (dedicated or listen server). Steam is the storefront — Steam integration is added to Allowed Libraries when that work begins, not at engine setup.
 
 ## Naming Conventions
 
