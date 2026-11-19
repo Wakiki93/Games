@@ -1,8 +1,8 @@
 # Game Concept: Holdout
 
 *Created: 2026-11-19*
-*Revised: 2026-11-19 (revision 2: new user direction, logged as U1–U9. Revision 2.1: round 1 of the director gates applied, plus U10. Revision 2.2: round 2 of AD-CONCEPT-VISUAL and PR-SCOPE applied. Revision 2.3: the first `/design-review` and PR-SCOPE round 3 applied)*
-*Status: Draft (Under Review). The first `/design-review` (2026-11-19) returned NEEDS REVISION with 5 blocking items; revision 2.3 applies all five in the text. PR-SCOPE round 3 (on revision 2.2) had 3 blocking items: revision 2.3 answers the two the text can fix (A47, A48) and defines the small-team re-cut the third points to (A49), but the third itself, Q2 (team size, budget, runway), needs the user. No gate has re-run on revision 2.3, and CD-PILLARS and TD-FEASIBILITY have reviewed only revision 2. The user still has to answer Q2 and Q20 and confirm the facilitator assumptions in the Assumptions and Decisions Log (especially A44 via Q18)*
+*Revised: 2026-11-19 (revision 2: new user direction, logged as U1–U9. Revision 2.1: round 1 of the director gates applied, plus U10. Revision 2.2: round 2 of AD-CONCEPT-VISUAL and PR-SCOPE applied. Revision 2.3: the first `/design-review` and PR-SCOPE round 3 applied. Revision 2.4: an adversarial check against the user's directions and the art bible applied, plus U11. Revision 2.5: a second adversarial check against the user's directions, privacy, IP and internal consistency applied)*
+*Status: Draft (Under Review). The first `/design-review` (2026-11-19) returned NEEDS REVISION with 5 blocking items; revision 2.3 applies all five in the text. PR-SCOPE round 3 (on revision 2.2) had 3 blocking items: revision 2.3 answers the two the text can fix (A47, A48) and defines the small-team re-cut the third points to (A49), but the third itself, Q2 (team size, budget, runway), needs the user. **No gate and no review has run on revisions 2.3, 2.4 or 2.5**, and CD-PILLARS and TD-FEASIBILITY have reviewed only revision 2; the `/design-review` verdict on file was recorded against an earlier content hash, so it does not cover this text. No creative-director concept approval exists yet. The user still has to answer Q2 and Q20 and confirm the facilitator assumptions in the Assumptions and Decisions Log (especially A44 via Q18, A54 via Q17, A55 via Q21, U11 via Q22 and A29 via Q23)*
 
 > **Creative Director Review (CD-PILLARS)**: CONCERNS (round 1 on revision 2, `creative-director` agent, 2026-11-19). No blocking items. Its only run so far; the facilitator has addressed its concerns in revisions 2.1–2.3, which the gate has not confirmed. See Director Gate Reviews
 > **Art Director Review (AD-CONCEPT-VISUAL)**: STRONG (round 2 on revision 2.1, `art-director` agent, 2026-11-19). No blocking items; its art-bible notes are applied in revision 2.2 (A45)
@@ -21,8 +21,8 @@
 > are authoritative. Calls the facilitator had to make to fit them together are logged as A22–A37 and can be overruled.
 >
 > **Revision 2.1** applies round 1 of the real director gates (agent-run, 2026-11-19; see Director Gate Reviews) and
-> U10 (the map is not named, labelled or centred after any "Lancaster" subdivision). The facilitator calls made to
-> apply them are logged as A38–A43 and can be overruled.
+> U10 (the map is not named or labelled after any "Lancaster" subdivision). The facilitator calls made to apply them
+> are logged as A38–A43 and can be overruled.
 >
 > **Revision 2.2** applies round 2 of AD-CONCEPT-VISUAL and PR-SCOPE (agent-run, 2026-11-19); CD-PILLARS and
 > TD-FEASIBILITY had no blocking items and did not re-run. The box and the map name were verified locally against the
@@ -31,6 +31,23 @@
 > **Revision 2.3** applies the first `/design-review` (2026-11-19: NEEDS REVISION, 5 blocking items; log in
 > `design/gdd/reviews/game-concept-review-log.md`) and the text-fixable blocking items of PR-SCOPE round 3. The
 > facilitator calls made to apply them are logged as A47–A51 and can be overruled.
+>
+> **Revision 2.4** applies an adversarial check of this document against the user's directions (U1–U10) and against
+> the art bible (`design/art/art-bible.md`, written on revision 2.2), and carries in U11 (controller-only input, recorded
+> as the user's decision in the project configuration). It adds movement and locomotion (system 11), makes the
+> squad-gap kit work with duplicate roles, decides the open ballistics softeners, proposes block and intersection
+> sectors and an MVP counter-push, logs the park-label and sensitive-site exceptions, renames the second gadgets, and
+> re-syncs with the art bible. The facilitator calls are logged as A52–A60 and can be overruled.
+>
+> **Revision 2.5** applies a second adversarial check against the user's directions as restated for it (feel, roles
+> and gadgets, squad play, ballistics, four-player co-op, waves plus sectors, grounded realism, the first map, and
+> everything from the original concept), plus privacy, IP and consistency findings. It adds a health, damage and
+> recovery model and gives the Corpsman's revive kit its heal (the user's "med/revive kit"), adds squad orders and a
+> per-round pressure sector, completes the MVP attachment list (a non-magnified reflex sight among nine) with a fixed
+> zero and a test that aim assist keeps the weight, records the late-autumn season, discloses where OSM's subdivision
+> polygons fall, tightens the repository-hygiene and prototype rules, and fixes stale counts. The user's U10 is
+> reworded to what the user decided (names and labels). The facilitator calls are logged as A61–A67 and can be
+> overruled; Q22 and Q23 are new.
 
 ---
 
@@ -51,9 +68,9 @@ a real town, where you choose which walls come down."*
 | Aspect | Detail |
 | ---- | ---- |
 | **Genre** | First-person squad shooter / co-op horde survival: round-based waves plus capture-and-hold sectors. Sub-genres: role-based squad play, first-person melee action, tactical destruction |
-| **Platform** | PC (Windows) on Steam. Mouse and keyboard first. Controller support after the MVP |
+| **Platform** | PC (Windows) on Steam. **Controller-only for players** (U11): an Xbox-layout gamepad, playtested on an Xbox Elite Series 2; keyboard and mouse is a developer fallback, never tuned, advertised or tested as a way to play. Aim assist, stick deadzones, a response curve and stick-tuned recoil, ballistics and parry windows are core systems from the MVP (system 11) |
 | **Target Audience** | Mid-core to hardcore co-op FPS players aged 18–35 who play with a regular group of 2–4 friends and like grounded, team-dependent gunplay (see Target Player Profile) |
-| **Player Count** | 1–4 online co-op. Designed for 4; 2–3 players are supported by the squad-gap kit (A24); solo is a scaled mode from the Vertical Slice. No PvP. Deliberately **not** a large-headcount game (U5) |
+| **Player Count** | 1–4 online co-op. Designed for 4; 2–3 players are supported by the squad-gap kit, which works with duplicate roles (A24, A53); solo is a scaled mode from the Vertical Slice. No PvP. Deliberately **not** a large-headcount game (U5) |
 | **Session Length** | A match runs 30–90 min. The first evac window is at round 10 (about 25–35 min: the Core Loop round table's ~25 min of waves plus round 0, intermissions and Push captures; A51). Typical match: 45–75 min |
 | **Monetization** | Premium (assumed USD 19.99–24.99). Possible cosmetic-only DLC after launch; never paid power (A10) |
 | **Estimated Scope** | Large (about 52–56 months to 1.0, team of 5 plus outsourcing, with the First Map Complete fallback at about month 35–36; an assumption, **provisional until Q2** is answered; see A14, A46–A49 and Scope Tiers) |
@@ -79,8 +96,8 @@ Why choose this over other horde shooters? Four things:
    and captured sector is a decision they made, and they live with it.
 3. **Weight in both hands.** Gunplay is grounded (projectile bullets, heavy recoil, attachments with real
    trade-offs) and melee is deep. A perfect parry is as satisfying as a 300 m hit with the right hold-over.
-4. **A squad that needs each other.** Revives, ammo, repairs and early warning live in different players' kits. The
-   squad survives by handing things to each other.
+4. **A squad that needs each other.** Revives and heals, ammo, repairs and early warning live in different players'
+   kits. The squad survives by handing things to each other.
 
 ---
 
@@ -134,8 +151,10 @@ Two things are **not** the hook, because other games already do them well: skill
   rounds later the squad regrets the new horde route.
 - **Range decides the tool.** Rifles and hold-over on the long axes (167th Street, the fields); melee at the doorway,
   in the hallway and in the woods to save ammo and earn more salvage; melee again when a Grabber pins a teammate.
-- **The frontline breathes.** Sectors are taken, lost and retaken, so the shape of the map the squad holds changes
-  across a match.
+- **The frontline breathes.** Sectors are taken, lost and retaken, and on counter-push rounds the horde picks a held
+  sector and comes for it, so the shape of the map the squad holds changes across a match.
+- **Yards are routes.** Squads learn which fences they can vault and which they must mantle, slide into cover behind
+  a wreck, and drop prone on the fields for a long shot; a Runner vaulting the same fence is the reason to watch it.
 - **Players go looking for "their" kind of place.** They share screenshots of a real town they recognise, which
   doubles as a marketing loop.
 - **The arena degrades.** Late rounds are fought in a ruin the squad made, so no two matches end on the same map.
@@ -144,10 +163,11 @@ Two things are **not** the hook, because other games already do them well: skill
 
 1. **Rounds plus sectors:** a round-based escalating horde (active cap plus spawn queue, spawning from map edges and
    horde-held sectors) pushing against a frontline of capture-and-hold sectors at real landmarks.
-2. **Roles, gadgets and squad play:** four roles with signature gadgets; revive, squad spawn, ping and spot, and
-   resupply.
+2. **Roles, gadgets and squad play:** four roles with signature gadgets; revive and heal, squad spawn, ping and spot,
+   squad orders, and resupply, on a health model that recovers only partly without a hand-off.
 3. **Grounded first-person combat:** projectile ballistics with drop and travel time, weighty recoil and attachment
-   trade-offs, plus directional melee with block, parry, shove and stamina.
+   trade-offs, plus directional melee with block, parry, shove and stamina, and committed movement through a suburb
+   of fences, hedges, windows and rubble (sprint, crouch, prone, vault, mantle, slide; system 11), all on a gamepad.
 4. **The salvage economy:** earned by fighting, squad actions and holding sectors; spent on firepower, fortification,
    demolition and gear.
 5. **Panelized, server-authoritative destruction and fortification:** synced to every client and usable by players
@@ -187,8 +207,8 @@ players who want a persistent open-world survival sim.
 
 - **Onboarding curve:**
   - Round 0 happens in the home sector. Its supply point teaches resupply, a damaged window teaches fortifying (the
-    Sapper does it faster), a scripted telegraphed lunge teaches parry, a downed training dummy teaches revive, and a
-    prompt teaches the ping.
+    Sapper does it faster), a scripted telegraphed lunge teaches parry, a downed training dummy teaches revive, a yard
+    fence teaches vault and mantle, and a prompt teaches the ping.
   - Rounds 1–3 use only Shamblers.
   - The first 10 minutes introduce, in order: shoot and melee → parry → resupply → fortify → revive → ping → buy a
     gun. The first **Push** (capture an adjacent sector) is offered around round 3–4; the Sapper's breach charge comes
@@ -213,6 +233,8 @@ players who want a persistent open-world survival sim.
   - The post-match summary shows the round reached against your best, the frontline over time, and how salvage split
     between firepower, fortification and demolition.
 - **Recovery from failure:**
+  - A wounded player recovers to half health on their own after a few seconds out of damage; the Corpsman, the light
+    revive kit or a held sector's supply point restores the rest (system 3).
   - A downed player can be revived by anyone (slowly) or by the Corpsman (fast).
   - A dead player redeploys on a squadmate or a held sector after a short timer.
   - A full wipe returns the squad to the lobby in under 30 seconds with a one-click restart on the same map.
@@ -231,14 +253,16 @@ players who want a persistent open-world survival sim.
 ### Moment-to-Moment (30 seconds)
 
 Aim, lead and fire, holding over for drop on the long axes and fighting the recoil; or swing, parry and shove at the
-doorway. Reload and switch between gun and melee. Throw down an ammo crate, revive a teammate, reinforce a cracking
-wall, ping a Runner. Shift between cover and the door you hold. The loop is satisfying on its own for four reasons:
+doorway. Reload and switch between gun and melee. Throw down a resupply crate, revive or patch up a teammate,
+reinforce a cracking wall, ping a Runner. Vault the fence, slide behind the wreck, shift between cover and the door you hold. The loop is
+satisfying on its own for four reasons:
 
 - **Weighty feedback:** recoil with mass, crack-and-thump audio, a hit marker that lands when the bullet does,
   hit-stop, dismemberment, a parry stagger.
 - **Two scarce resources pulling against each other:** ammo and stamina. Melee costs stamina but saves ammo and pays
   more salvage; ammo comes from the Quartermaster's crate or a held sector's supply point (both with limited stock),
-  never from dead zombies.
+  never from dead zombies. Health is the third: it recovers on its own only to half, so the rest comes from the
+  Corpsman or a supply point (system 3).
 - **Hand-offs:** at any moment someone needs something another role carries.
 - **The world reacts:** the wall you defend visibly breaks down, which keeps urgency up without a timer.
 
@@ -321,21 +345,23 @@ here are **starting tuning values** that the GDDs own and will change.
 | Phase | What happens |
 | ---- | ---- |
 | **Intermission** | 20 s base (45 s before evac rounds; +15 s on Dig In). Players spend salvage, fortify or breach, resupply and reposition, and vote Push or Dig In. A ready-up vote skips it |
-| **Wave** | The round's total zombie count grows with the round number and party size. The **active cap** is 24 at MVP (target 48); a cheap **far-zombie tier** (system 9) puts long-range targets on the open axes at a fraction of the cap's cost. The rest wait in a spawn queue. Zombies enter from the map edges and from horde-held sectors next to the frontline, at real ingress points (street ends, yards, the creek, the trail, building openings, breaches) and at **spawn closets** the gameplay-layer generator defines per sector (map edges, breached sealed-house pockets, woods, creek banks). A spawn is never **within a player's line of sight inside 80 m** (starting value; magnified optics and the Spotter's sensor do not extend it). The spawn director favours the frontline sector with the weakest defence and, on a Push round, the sector being attacked |
+| **Wave** | The round's total zombie count grows with the round number and party size. The **active cap** is 24 at MVP (target 48); a cheap **far-zombie tier** (system 9) puts long-range targets on the open axes at a fraction of the cap's cost. The rest wait in a spawn queue. Zombies enter from the map edges and from horde-held sectors next to the frontline, at real ingress points (street ends, yards, the creek, the trail, building openings, breaches) and at **spawn closets** the gameplay-layer generator defines per sector (map edges, breached sealed-house pockets, woods, creek banks). A spawn is never **within a player's line of sight inside 80 m** (starting value; magnified optics and the Spotter's sensor do not extend it). **Pressure sector (every round that is not a counter-push round, from the MVP; A62):** at the round start the director picks the weakest-defended held frontline sector (fewest squad members within 30 m of its capture zone, then fewest reinforced or boarded panels facing it; never the home sector while another sector is held) and sends at least a third of the round's spawns through ingress next to it. It is not announced; pings and the Spotter's sensor reveal it. On a Push round, a further third enters next to the sector being attacked. So the horde presses the line every round, not only on counter-push rounds |
 | **Round end** | Ends when the last zombie of the wave dies. Bonus salvage if nobody went down (doubled on Dig In); income for every held sector |
-| **Counter-push rounds (5/15/25, Vertical Slice)** | The horde announces one held sector as its target and hits it with extra pressure and a Breacher pack |
+| **Counter-push rounds (5/15/25)** | The horde pushes the frontline back. **From the MVP** (A54): at the round start the spawn director names one held frontline sector as its target (never the home sector while another sector is held) and the HUD announces it; at least half of the round's spawns enter through ingress next to that sector, and all of the round's Breachers go there. If the squad loses it, the line moves back. **Vertical Slice B** adds the extra Breacher pack, warning audio and presentation |
 | **Evac rounds (10/20/30)** | The squad votes to call evac. Then it defends a landing zone in a held open-space sector for about 2 min. Success counts as a victory |
 
 **Sectors (U6).** A map is divided into **sectors at real landmarks** (parks, school grounds, intersections, a trail
 head, and residential blocks that have a defensible anchor house) joined by the other residential blocks between them.
-Each sector has a **capture zone** about 20–30 m across. How many blocks become sectors on the first map is Q17.
+Each sector has a **capture zone** about 20–30 m across. The first map proposes **two intersection sectors and two
+block sectors** next to its park, field, school and cemetery sectors, one block sector inside the MVP slice (system
+6.1, A54); Q17 lets the user change the number of block sectors.
 
 | Sector state | Rule (starting values) |
 | ---- | ---- |
 | **Horde-held** | Spawns zombies when it borders the frontline. All sectors except the home sector start horde-held |
 | **Capturing** | Squad members inside, no zombies inside. Capture time `t = T_base / (1 + 0.5 × (n − 1))`, with `T_base` = 30 s and `n` = squad members in the zone: 30 s alone, 20 s for two, 15 s for three, 12 s for four |
 | **Contested** | Squad members and zombies both inside: progress pauses |
-| **Held** | Gives a **redeploy point**, a **supply point** (ammo refill from a limited stock that restocks each round; starting value: one full refill per squad member per round), a sector **armory and workbench**, salvage income each round (starting value 100), and a landing zone if the sector has open ground |
+| **Held** | Gives a **redeploy point**, a **supply point** (an ammo and health refill from a limited stock that restocks each round; starting value: one full refill per squad member per round, ammo and health together), a sector **armory and workbench**, salvage income each round (starting value 100), and a landing zone if the sector has open ground |
 | **Held, infiltrated** | 1–2 zombies inside and no squad member inside (below the Overrun threshold). The sector stays Held, keeps every function and does not drain; the HUD flags it, and a redeploy there is placed like a squad spawn on a pressed squadmate (A39). A single straggler never costs a sector; the round GDD tunes the threshold (A51) |
 | **Overrun** | Zombies inside (3 or more) with no squad member inside for 10 s: progress drains over 20 s. At zero the sector is lost; its redeploy point, supply point and income go dark and it becomes horde ingress |
 
@@ -347,7 +373,7 @@ last held sector is overrun**.
 
 | Situation | Rule |
 | ---- | ---- |
-| **Downed** | The player can crawl and use a sidearm. 30 s bleed-out. See Squad play for revives |
+| **Downed** | At 0 health (system 3). The player can crawl and use a sidearm. 30 s bleed-out; each zombie hit on a downed player removes 5 s of it. After 5 s downed, the player may give up (hold a button) to start the redeploy timer. See Squad play for revives |
 | **Dead** | The player redeploys on a squadmate or a held sector after a timer (see Squad play). They keep their weapons and attachments, lose 10% of their salvage, and their gadget charges reset to base (A25) |
 | **Solo (Vertical Slice)** | A death is a wipe unless the player holds a self-revive charge from the solo kit (A24) |
 
@@ -371,38 +397,61 @@ role names are its own (A22); the archetypes behind them are generic military ro
 
 | Role | Archetype | Signature gadgets (**MVP** in bold) | Passive (Vertical Slice) | What the squad lacks without it |
 | ---- | ---- | ---- | ---- | ---- |
-| **Corpsman** | Medic | **Revive kit:** revives a downed squadmate in about 1.5 s to full health. *Med pouch* (VS): a thrown heal with a few charges | Can drag a downed squadmate to cover | Revives take 4 s and return the player at half health |
-| **Quartermaster** | Resupply | **Ammo crate:** a deployable that refills magazines and gadget charges for squadmates nearby; limited stock that restocks between rounds. *Ammo pouch* (VS): thrown, refills one player | Carries more reserve ammo | Ammo only at held-sector supply points |
+| **Corpsman** | Medic | **Revive kit** (the user's "med/revive kit"; A61): revives a downed squadmate in about 1.5 s to full health, and **heals** a standing squadmate to full in about 1 s from a heal pool of 300 health a round (refilled at the round start and by the resupply crate). It never heals the Corpsman: that takes another Corpsman, a light revive kit or a supply point. *Dressing pack* (VS): a thrown heal of 50 health, 3 charges | Can drag a downed squadmate to cover | Revives take 4 s and return the player at half health; wounds above half health heal only at a held sector's supply point |
+| **Quartermaster** | Resupply | **Resupply crate:** a deployable that refills magazines and gadget charges for squadmates nearby; limited stock that restocks between rounds. *Bandolier* (VS): thrown, refills one player | Carries more reserve ammo | Ammo only at held-sector supply points |
 | **Sapper** | Engineer / demolition | **Reinforce tool:** repairs and reinforces panels at double speed and half salvage cost. **Breach charge:** a placed explosive that breaches a panel or door and damages the panels around it, the squad's own reinforcements included (2 charges; refilled by the crate; extra charges cost salvage). *Collapse charge* (Alpha) | Heavy melee does more structural damage | Slow, full-price fortifying; breaching only with heavy melee |
-| **Spotter** | Recon | **Sensor:** a deployable that auto-spots zombies within about 30 m for the squad and flags special types; lasts one round. *Spotting scope* (VS): a long-range ping that marks a target and shows which ingress the next spawns will use | Less sway with magnified optics; hold breath | No early warning; specials arrive unspotted |
+| **Spotter** | Recon | **Sensor:** a deployable that auto-spots zombies within about 30 m for the squad and flags special types; lasts one round. *Survey glass* (VS): a long-range ping that marks a target and shows which ingress the next spawns will use | Less sway with magnified optics; hold breath | No early warning; specials arrive unspotted |
 
 The Sapper carries both edges of Pillar 1: the tool that makes a wall stronger and the charge that removes it.
 
 **The Spotter at MVP.** The MVP Spotter has only the ~30 m sensor, so the MVP tests its close-range early warning
 (specials flagged before they reach the door), **not** the fantasy of seeing the horde coming from far off. That
-fantasy rests on the passive (Vertical Slice A) and the spotting scope (Vertical Slice B), and is first tested there
+fantasy rests on the passive (Vertical Slice A) and the survey glass (Vertical Slice B), and is first tested there
 (A51).
+
+**Gadget names are Holdout's own** (A58). The MVP gadgets carry the user's own generic words (revive kit, resupply
+crate, reinforce tool, breach charge, sensor); the second gadgets (dressing pack, bandolier, survey glass) and the
+collapse charge are named for Holdout and checked on R12's IP checklist with the role and zombie names.
 
 **Squad composition.** Duplicates are allowed at MVP (A35); the gadgets, not a lock, push squads toward a spread of
 roles. A player can change role when they redeploy or at a held sector's supply point during an intermission.
 
-**Fewer than four players (U2, A24).** Two rules keep a small squad whole:
-1. **Universal fallbacks.** Anyone can revive (slowly), anyone can board and repair (full price, normal speed), held
-   sectors refill ammo from their limited stock, and everyone can ping. No role is ever strictly required, and every
+**Fewer than four players (U2, A24, A53).** Two rules keep a small squad whole:
+1. **Universal fallbacks.** Anyone can revive (slowly), everyone recovers to half health on their own, held sectors'
+   supply points refill ammo and health from their limited stock, anyone can board and repair (full price, normal
+   speed), and everyone can ping. No role is ever strictly required, and every
    fallback stays meaningfully worse than the role's hand-off (Pillar 4's test).
-2. **The squad-gap kit.** Signature gadgets of roles nobody picked are shared out as a second gadget slot, in a light
-   version (fewer charges, slower):
+2. **The squad-gap kit compensates for missing people, not for role choices.** A squad of *n* players receives
+   **4 − *n* gap gadgets**. Each is the light version of an **unpicked** role's first MVP gadget (a role is unpicked
+   when no squad member has chosen it), carried in a second gadget slot. A player carries at most one. This rule holds
+   whether or not roles are duplicated (A35):
 
-| Squad size | Rule |
-| ---- | ---- |
-| 4 | One role each; no gap kit |
-| 3 | One player also carries the missing role's MVP gadget (light), chosen in the lobby |
-| 2 | Each player carries one missing role's MVP gadget (light) |
-| 1 (solo, Vertical Slice) | The solo kit: one role, plus a self-revive charge (one per 5 rounds), an ammo pouch and a light reinforce tool |
+| Squad size | Gap gadgets | Rule |
+| ---- | ---- | ---- |
+| 4 | 0 | No gap kit, whatever the roles. A squad of four that doubles up a role leaves the unpicked roles to the universal fallbacks: that is its choice and its cost (A35, Pillar 4) |
+| 3 | 1 | With one role unpicked, one player carries its light gadget. With two unpicked (one role doubled), the squad picks one of them in the lobby; the other is left to the fallbacks |
+| 2 | 2 | Each player carries one light gadget. With three roles unpicked (both players chose the same role), the squad picks two of them in the lobby |
+| 1 (solo, Vertical Slice) | — | The solo kit: one role, plus a self-revive charge (one per 5 rounds), a bandolier and a light reinforce tool |
 
-**Which gadget a gap carries.** A missing role's light gadget is its first MVP gadget: the revive kit, the ammo crate,
-the **reinforce tool** or the sensor. The Sapper's breach charge is never part of the squad-gap kit or the solo kit;
-heavy melee stays everyone's way to breach (A51).
+*Who carries, and defaults.* The squad chooses in the lobby. If it does not, the default picks unpicked roles in the
+order revive kit, resupply crate, reinforce tool, sensor (the order in which the universal fallback is weakest), and
+gives the first gap gadget to a player whose role is doubled, then to the lowest squad slot. A role change at a
+redeploy or a supply point recomputes the gap kit at the next intermission.
+
+*Light values (starting; each sits between the universal fallback and the role's full gadget, which is Pillar 4's
+test):*
+
+| Hand-off | Universal fallback | Light gadget (gap kit) | Full gadget (the role) |
+| ---- | ---- | ---- | ---- |
+| Revive | Hold 4 s; back at 50% health | Light revive kit: 2.5 s; back at 75% health; 3 charges a round | Revive kit: about 1.5 s; full health |
+| Heal (A61) | Recovery to 50 health only; full health at a held sector's supply point, which spends that player's one refill for the round | Light revive kit: heals a standing squadmate (or its carrier) to 75 health in 1.5 s, from the same 3 charges a round | Revive kit: heals a standing squadmate to full in about 1 s, from a 300-health pool a round |
+| Resupply | Held-sector supply points only | Light resupply crate: half the stock; refills magazines only, not gadget charges | Resupply crate: full stock; magazines and gadget charges |
+| Repair and reinforce | Full price, normal speed | Light reinforce tool: 1.5× speed, 75% of the price | Reinforce tool: 2× speed, half price |
+| Early warning | Ping only | Light sensor: about 20 m radius, half a round | Sensor: about 30 m radius, one round |
+
+**Which gadget a gap carries.** A missing role's light gadget is its first MVP gadget: the revive kit, the resupply
+crate, the **reinforce tool** or the sensor. The Sapper's breach charge is never part of the squad-gap kit or the
+solo kit; heavy melee stays everyone's way to breach (A51).
 
 Alternatives considered:
 - *AI squadmates to fill empty slots:* rejected. AI teammates cost more than the horde AI, and they turn Pillar 4's
@@ -413,19 +462,34 @@ Alternatives considered:
 - *Role-locked weapon families:* rejected (A23). It would split the weapon content four ways and make melee and gun
   builds depend on role.
 
-### 3. Squad play: revive, squad spawn, ping and spot, resupply
+### 3. Squad play: health, revive and heal, squad spawn, ping and spot, orders, resupply
+
+**Health, damage and recovery (from the MVP; A61).** Starting values; the squad-play GDD owns them.
+
+| Rule | Starting value | Why |
+| ---- | ---- | ---- |
+| **Health** | 100 for every role. No armour layer at MVP (armour is gear, from First Map Complete) | One number every role shares keeps the hand-offs readable |
+| **Damage taken** | Shambler hit 20; Runner hit 12; Breacher hit 40; a fall over 3 m costs 15 per metre beyond 3 m, and one over 6 m downs the player (system 11). A blocked hit costs stamina, not health; a parried attack costs nothing (system 8). Later types are set in the horde GDD (Grabber pin about 8 a second; Detonator blast up to 60). Difficulty scales damage taken; party size scales zombie count and health, not damage | Five Shambler hits down a player: a doorway fight is survivable but never free, and the parry is worth learning |
+| **Recovery** | After 6 s without taking damage, health regenerates at 5 a second, but only up to the **recovery ceiling of 50**. A player above 50 does not regenerate | Grounded and forgiving at once: nobody bleeds out of a match from chip damage, but the top half of the health bar is a hand-off (Pillar 4) |
+| **Heal** | Above the ceiling, health comes only from the Corpsman's revive kit (to full in about 1 s, 300-health pool a round), a light revive kit (to 75 in 1.5 s, from its 3 charges) or a held sector's **supply point** (to full; it spends that player's one refill of the round, ammo and health together) | The med half of the user's "med/revive kit" (U2); the supply point is the slow, costly fallback |
+| **Downed** | At 0 health (system 1's fail-state table): crawl, sidearm, 30 s bleed-out shortened 5 s per zombie hit; give-up after 5 s | Revives stay urgent, and zombies punish a squad that ignores a downed player |
+
+The **HUD** shows the recovery ceiling as a notch on the player's own health bar, and a squadmate below 50 health
+gets the low-health flag (art bible 7.2), so "needs a heal" is a callout like "needs ammo".
 
 | Action | Rule (starting values) | Who does it best |
 | ---- | ---- | ---- |
 | **Revive** | Anyone: hold interact 4 s, returns the player at 50% health. Corpsman with the revive kit: about 1.5 s, full health. Interrupted if the reviver is hit or grabbed | Corpsman |
+| **Heal** | Corpsman: hold interact on a standing squadmate, about 1 s to full, from the revive kit's pool. Gap carrier: the light revive kit, 1.5 s to 75 health. Anyone: recovery to 50 health, or a supply point's refill. Interrupted like a revive | Corpsman |
 | **Squad spawn** | A dead player redeploys on any living, not-downed squadmate after 10 s. If that squadmate is **pressed** (a zombie within about 8 m, or damage taken in the last 3 s), the server places the player at the nearest safe, navigable point up to about 25 m behind them, waiting up to 5 s more for one; if none appears, the player redeploys at the nearest held sector instead. Arriving near the fight is the spawn's risk; pressure delays and offsets the spawn but never blocks it (A39) | Any living squadmate |
 | **Sector spawn** | Redeploy at a held sector's rally point after 15 s + 1 s per round (capped at 30 s) | Held sectors |
-| **Ping** | One contextual key: on a zombie it marks it for the squad (5 s; specials 8 s); on the ground it marks a position; on a cache, crate, supply point or workbench it marks the item; on a sector it suggests a Push. A ping wheel with callouts ("need ammo", "need revive", "reinforcing here", "breaching here") arrives at the Vertical Slice | Everyone |
-| **Spot** | The Spotter's sensor auto-spots in its radius; the spotting scope (VS) marks at long range | Spotter |
-| **Resupply** | The Quartermaster's crate refills magazines and gadget charges; held-sector supply points refill ammo only, from their per-round stock. Zombies never drop ammo | Quartermaster |
+| **Ping** | One contextual button (a gamepad button; U11): on a zombie it marks it for the squad (5 s; specials 8 s); on the ground it marks a position; on a cache, crate, supply point or workbench it marks the item; on a sector it proposes an order (below). It works at any range in line of sight up to 400 m, so a ping through the magnified optic is the MVP's long-range spot. A ping wheel with callouts ("need ammo", "need a heal", "need revive", "reinforcing here", "breaching here") arrives at the Vertical Slice | Everyone |
+| **Spot** | The Spotter's sensor auto-spots in its radius; the survey glass (VS) marks at long range. Kills of spotted or pinged zombies pay the spotter an assist | Spotter |
+| **Squad orders** (MVP; A63) | There is no squad-leader rank: in a squad of friends anyone can give an order. The intermission vote sets the round's **order**: Push (the target sector) or Dig In (the held sector the squad names; by default the sector the vote was cast from). In a round, a player proposes a new order by holding the ping on a sector, and it takes effect when a second living squad member confirms it (at once in a squad of two, or solo). The order shows on the compass and the sector board. Kills and squad actions inside the ordered sector (its capture zone plus about 30 m) pay **25% more salvage**, and capturing an ordered Push sector pays 50% more | Everyone |
+| **Resupply** | The Quartermaster's crate refills magazines and gadget charges (the Corpsman's heal pool included); held-sector supply points refill ammo and health (one refill per squad member per round, from their stock). Zombies never drop ammo | Quartermaster |
 
-**Squad actions pay.** Revives, resupplies, repairs and reinforcements, and assists on spotted targets all earn
-salvage, capped per round to stop farming. Support play is rewarded as much as kills.
+**Squad actions pay.** Revives, heals, resupplies, repairs and reinforcements, and assists on spotted targets all
+earn salvage, capped per round to stop farming. Support play is rewarded as much as kills.
 
 Alternatives considered:
 - *Respawn only at the next round start (revision 1, A21):* superseded by A25. With sectors and a frontline, a player
@@ -436,6 +500,11 @@ Alternatives considered:
 - *Ammo drops from zombies:* rejected. It would make the Quartermaster and melee's ammo-free role irrelevant.
 - *Spotting by looking at a zombie and pressing a key, with no gadget:* kept as the universal ping; the sensor adds the
   automatic, area version that makes the Spotter a role.
+- *Full regeneration with no heal (A61):* rejected. It would leave the Corpsman with nothing to hand off between
+  downs. *No regeneration at all:* rejected. Chip damage would grind squads down without a Corpsman, against the
+  squad-gap promise to 2–3 player squads. The ceiling at half splits the difference.
+- *A squad-leader rank with exclusive orders (A63):* rejected. In a four-friend co-op squad a fixed leader adds
+  hierarchy without adding a hand-off; anyone can propose an order and a second player confirms it.
 
 ### 4. Salvage economy (between-round and in-round)
 
@@ -471,7 +540,9 @@ Alternatives considered:
 ### 5. Two-edged destruction (synced)
 
 **Model.** Every building is assembled from **panels**: wall, door, window, garage-door and floor segments roughly
-2–3 m wide and one storey tall. The first map is suburban single-family **wood-frame** houses with garages, so the
+2–3 m wide and one storey tall. **Two exceptions** (sensitive sites; art bible AB-14; Pillar 1's logged exception,
+A57): places of worship are sealed, indestructible shells that take cosmetic chips only, and cemetery headstones are
+indestructible. The first map is suburban single-family **wood-frame** houses with garages, so the
 default kit is siding over studs and drywall; brick veneer and masonry appear where the building type calls for them.
 Each panel has a small set of authored states:
 
@@ -526,8 +597,12 @@ Alternatives considered:
 - *Replicating full Chaos physics:* rejected. Too costly in bandwidth and server CPU, not deterministic across
   clients, and unreadable in a fight.
 - *Voxel destruction:* rejected. It conflicts with the real-architecture look and multiplies scope.
-- *Doors, windows and barricades only (the genre's classic boards):* kept as the **fallback** if the destruction spike
-  fails its budget (see Scope Tiers).
+- *Panelized destruction on fewer buildings:* the **fallback** if the destruction spike fails its budget (A57; Scope
+  Tiers). Synced, panelized walls stay on the buildings that carry the fight (enterable buildings, sector anchors and
+  every building that faces a capture zone: roughly a quarter of the panels), and every other sealed house keeps
+  breachable doors, windows and garage doors. U9's synced building destruction survives.
+- *Doors, windows and barricades only (the genre's classic boards):* the floor below that fallback, used only if the
+  user authorises it (Q20), because it would drop U9's building destruction.
 
 ### 6. Real-world maps (OpenStreetMap)
 
@@ -550,13 +625,13 @@ Alternatives considered:
 | OSM data | Used for | Fallback when missing or poor |
 | ---- | ---- | ---- |
 | Building footprints | Building shells (panelized) | Required. Footprints that are broken or overlapping are repaired or dropped |
-| `height`, `building:levels` | Storey count and height | levels × 3.2 m, then type plus footprint area (house 1–2 storeys, apartments 3–4, garage 1); a designer may override storey count on sector buildings (footprints never move) |
+| `height`, `building:levels` | Storey count (storey **height** always comes from the kit: 2.75 m floor to floor plus a 0.3–0.6 m foundation reveal; art bible 6.3, AB-13, A59) | `building:levels` when present; else `height` ÷ 2.75 m, rounded; else type plus footprint area (house 1–2 storeys, apartments 3–4, garage 1); a designer may override storey count on sector buildings (footprints never move). *The prototype pipeline still uses 3.2 m per level and must switch to the kit height before its output feeds kit fitting* |
 | `building` type | Style kit, interior templates | Untyped (`building=yes`) buildings take a type from footprint size |
 | `roof:shape` | Roof form | Gabled or flat by type and footprint shape; hip and compound roofs are a pipeline to-do |
 | Roads and footways (`highway`, width, lanes) | Street layout, pavements, wreck placement, sector capture zones at major intersections | Default widths for each road class |
 | Land use / leisure (park, pitch, wood, grass, cemetery) and waterways | Open spaces, sectors, evac landing-zone candidates, close-quarters woods | Generator flags maps with no landing zone |
 | `shop` / `amenity` **type** (never brand names) | Where each kind of cache goes; sensitive-site detection | Sector armories plus garage caches (A37) |
-| Barriers, walls, fences, trees | Cover lines | Generated by rule (they are not footprints or streets, so Pillar 2 allows it) |
+| Barriers, walls, fences, trees | Cover lines and traversal: every generated fence or hedge falls in a vault or mantle class (system 11), with nav links for the horde | Generated by rule (they are not footprints or streets, so Pillar 2 allows it) |
 | Elevation (not from OSM) | MVP is flat. Later: open elevation data, licence checked | Flat |
 
 **Map scale and building classes (U8, A30).** The whole ~1.2 km × 1.2 km extract is the map. Fights concentrate at
@@ -565,7 +640,7 @@ interiors affordable:
 
 | Class | Where | What it is |
 | ---- | ---- | ---- |
-| Enterable | Sector anchors and selected houses (target **20–30 per map**; MVP 6–8, hand-fitted). Only near-rectangular footprints qualify, by rule, until the interior generator is proven on the second city (A43) | Panelized; ground floor plus selected upper floors, basements excluded at MVP, with interiors built from suburban room templates |
+| Enterable | Sector anchors and selected houses on the push lanes between sectors (target **20–30 per map**; MVP 6–8, hand-fitted, all of them anchors of the slice's four capture zones, about two per sector). Only near-rectangular footprints qualify, by rule, until the interior generator is proven on the second city (A43) | Panelized; ground floor plus selected upper floors, basements excluded at MVP, with interiors built from suburban room templates |
 | Sealed | Every other building in the extract | Not enterable. Exterior panels can still be breached into a shallow interior pocket; **once breached, the pocket becomes a horde spawn closet and ingress** (Pillar 1). Garages open into a garage-only interior |
 | Backdrop | Outside the extract | Not interactive; low detail, to the horizon |
 
@@ -581,18 +656,36 @@ landmarks, and by tuning the gameplay layer. We never move real footprints or st
 
 **The first test map is a ~1.2 km × 1.2 km area of suburban Tinley Park, Illinois (USA)** (U8). 167th Street, a
 secondary road, crosses it east–west about two-thirds of the way north. OpenStreetMap divides the area into named
-subdivisions (Kimberly Heights north of 167th Street; south of it, several whose names begin with "Lancaster") and
-names the wooded park in the south after one of them. These are OSM's labels, not the map's identity: **no map name,
-sector label, slice name or player-facing text uses any subdivision's name or the word "Lancaster"** (U8, U10). The
-map is "Tinley Park, IL (60477)" everywhere, and its spine is the 167th Street corridor.
+subdivisions (named `landuse=residential` areas): north of 167th Street, Kimberly Heights (most of the north) and
+Tinley Terrace (north-west); south of it, Lancaster Highlands and Lancaster Estates (the middle and south), Parkside
+(west), Edgewater Walk (east) and, at the south edge, Oak Ridge. OSM also names the wooded park in the south,
+**Lancaster Woods Park**, after one of them. These are OSM's labels, not the
+map's identity: **no map name, sector label, slice name or player-facing text uses any subdivision's name or the word
+"Lancaster"** (U8, U10). The map is "Tinley Park, IL (60477)" everywhere, and its spine is the 167th Street corridor.
+The wooded park is therefore labelled **"Creek Woods"**, after Tinley Creek. This is the **one logged exception** to
+Pillar 2's real park names (A55): a park whose OSM name repeats a subdivision's name takes a creek or woods label;
+every other public park keeps its real name (Lewis Park). Q21 asks the user whether to keep the exception.
 It is a hard test for the pipeline: no height tags, no shop types for caches, no fences or trees, and a flat ground
 plane.
+
+**Where OSM's subdivision areas fall (disclosed for Q18 and Q21; A64).** U10 governs names and labels; it does not
+move geometry, and the "Lancaster" areas are large. Measured in the extract on a 10 m grid: the two "Lancaster" areas
+cover about a quarter of the map box (about 22% Lancaster Highlands, 5% Lancaster Estates), Kimberly Heights about a
+fifth, Parkside, Tinley Terrace and Edgewater Walk most of the rest, and about a third lies in no named subdivision.
+Inside the MVP slice (below), about two-thirds of the ground **south** of 167th Street lies inside the "Lancaster"
+areas (the Andres Avenue block in Lancaster Estates; Creek Woods is Lancaster Woods Park), about 45% of the slice
+overall, while north of 167th Street the slice is almost all Kimberly Heights. Q18 asks the user whether that is
+acceptable or whether the slice should lean north.
 
 **Location check.** The box and the map name were verified locally against the extract (A50). Two landmarks cross
 the box edge: **Lewis Park** (W), about half outside, and the **Tinley Creek Green trail** (E), mostly outside.
 *Action before the level GDD locks the full map:* re-extract with the box widened west (and east if Creek Trail stays
 a sector), with its edges set from landmarks and a coarse grid only, then re-measure the table below. The MVP slice
-(below) depends on neither edge landmark.
+(below) depends on neither edge landmark. **Origin rule (A65):** the pipeline's local origin (0, 0), which the
+scripts, the level files and the prototypes all use, moves to the **home sector's capture zone** (a public road
+junction on 167th Street, named below), not the centre of the box; the box edges stay grid- and landmark-set. The
+current prototypes still use an ungridded box centre as their origin; replacing it is part of the hygiene action
+below and is done before any further push.
 
 Measured from the extract (`prototypes/real-street-holdout-concept/pipeline/data/tinley-park-60477.osm`) and the
 prototype pipeline's report (`.../data/metrics.json`), 2026-11-19:
@@ -614,23 +707,33 @@ prototype pipeline's report (`.../data/metrics.json`), 2026-11-19:
 
 | Sector (in-game label) | OSM source | Character | Role in the match |
 | ---- | ---- | ---- | ---- |
-| **167th Street** | The secondary road crossing the map east–west | A long straight axis, verges, intersections, corner houses, wrecks | Default **home sector** (A38, A44): capture zone and enterable anchor houses where **Anne Marie Avenue (from the south) and Patricia Avenue (from the north) meet 167th Street**, a staggered crossing on the spine. The frontline spine: long sightlines from round 1 and doorway fights in the corner houses |
-| **Creek Woods** | The wooded park along Tinley Creek (S) | Woods, creek banks, short sightlines | Close quarters where melee earns its place; creek crossings are chokepoints. Labelled after the creek; the park's OSM name is not used (U10) |
-| **School Grounds** | Kimberley Heights School grounds (N) | An anchor building plus fields | Defensible anchor and landing zone; open ground for ballistics; rendered as a generic school under a generic label (A29) |
+| **167th Street** *(intersection)* | The secondary road crossing the map east–west | A long straight axis, verges, intersections, corner houses, wrecks | Default **home sector** (A38, A44): capture zone and enterable anchor houses where **Anne Marie Avenue (from the south) and Patricia Avenue (from the north) meet 167th Street**, a staggered crossing on the spine. The frontline spine: long sightlines from round 1 and doorway fights in the corner houses |
+| **Ridgeland Crossing** *(intersection; full map)* | Where Ridgeland Avenue crosses 167th Street (W) | A four-way crossing on the spine with corner houses | The second intersection sector (A54): it holds the west end of the 167th Street axis between home and Lewis Park Fields; A38's first choice for home, now a push sector |
+| **Andres Avenue** *(block; MVP)* | The residential block bounded by Anne Marie Avenue, Brittney Lane, Helen Sandidge Court and Andres Avenue, south of 167th Street | Houses with attached garages, back-yard fences, a defensible anchor house chosen by the level GDD | The MVP's block sector (A54): a stepping stone about 200–250 m south of home on the push toward Creek Woods, fought through yards, fences and garages; labelled by a bounding street (Q17) |
+| **Patricia Avenue** *(block; full map)* | The residential block bounded by Patricia Avenue, 166th Street, Fulton Terrace and Kimberly Drive, north of 167th Street | Houses, yards and a defensible anchor house | The second block sector (A54), east of the School Grounds; the named north push sector if the school stops being a sector (Q16) |
+| **Creek Woods** *(park)* | Lancaster Woods Park (its OSM name) along Tinley Creek (S) | Woods, creek banks, short sightlines | Close quarters where melee earns its place; creek crossings are chokepoints. Labelled after the creek, the one exception to real park names (U10, A55, Q21) |
+| **School Grounds** | Kimberley Heights School grounds (N–NE, north of 167th Street) | An anchor building plus fields | Defensible anchor and landing zone; open ground for ballistics; rendered as a generic school under a generic label (A29) |
 | **Lewis Park Fields** | Lewis Park and its sports fields (W) | Open fields (the park is about 200 m across), street-band sightlines, little cover | Landing zone; open ground for the Spotter and for ballistics (the long band itself runs along 167th Street). About half the park is outside the current box, so it waits for the re-extraction |
 | **Cemetery** | Zion Lutheran Cemetery (E, just south of 167th Street, next to the MVP slice's east edge) | Open ground and low cover | An exposed crossing; never a landing zone; sensitivity rules apply |
 | **Creek Trail** | The Tinley Creek Green paved trail (E edge, along 167th Street) | A paved trail corridor, mostly outside the current box | A horde flank lane into the east of the map; stays a sector only if the box is widened east |
-| *Residential blocks* | The residential streets north and south of 167th Street | Houses with garages, yards, driveways | Mostly connective: the ground between sectors where the horde pushes and the squad fortifies. **Block sectors are allowed** (U6): the level GDD may promote a block with a defensible anchor house to a sector, labelled by its bounding streets (Q17) |
+| *Other residential blocks* | The residential streets north and south of 167th Street | Houses with garages, yards, driveways | Connective: the ground between sectors where the horde pushes and the squad fortifies. Beyond the two proposed block sectors, the level GDD may promote another block with a defensible anchor house, labelled by a bounding street (Q17) |
+
+*Sector count.* These are nine candidates (two intersections, two blocks, a park, fields, the school grounds, the
+cemetery and the trail). The level GDD keeps six to eight on the full map (the netcode table budgets for eight) once
+the re-extraction settles Lewis Park Fields and the Creek Trail.
 
 The MVP builds only the **middle slice** of this map (A38, revised by A44; see MVP Definition): about 600 m wide,
 from the wooded park's west edge to the cemetery's west edge, and about 1 km long, from just south of Creek Woods
 across 167th Street to just north of the School Grounds. *Measured in the extract (distance from the box's west
-edge):* the woods span about 335–675 m, the school grounds about 625–720 m and the home crossing about 755–795 m, so
-all three fit inside 600 m. The Ridgeland Avenue crossing (about 225 m), A38's first choice, does not fit a 600 m
-slice that also holds both other sectors (PR-SCOPE round 2). The home sector's placement is a design choice (A44): it
+edge):* the woods span about 335–675 m, the school grounds about 625–720 m, the Andres Avenue block about 770–925 m
+and the home crossing about 755–795 m, so all four fit inside 600 m. The Ridgeland Avenue crossing (about 225 m),
+A38's first choice for home, does not fit a 600 m slice that also holds the other sectors (PR-SCOPE round 2); it
+becomes the full map's second intersection sector instead (A54). The home sector's placement is a design choice (A44): it
 sits on the 167th Street spine, it fits the ~600 m slice with Creek Woods and the School Grounds, and from home the
 School Grounds are a short push north (about 150 m) over open ground and the woods a longer push south (about
-400 m) into close quarters, so ballistics and melee are both tested from round 1.
+400 m) into close quarters, so ballistics and melee are both tested from round 1. The Andres Avenue block splits the
+south push into two steps of about 200–250 m each and puts a yard-and-garage fight between them, so the MVP has an
+intersection, a block, a park and open grounds: every kind of sector U6 names.
 
 **"Play your own street" (A6).**
 - *At launch:* curated maps from several real cities.
@@ -640,34 +743,52 @@ School Grounds are a short push north (about 150 m) over open ground and the woo
 
 **Real-place safeguards (A29, revising A8).**
 - **Shown:** the map's town name ("Tinley Park, IL (60477)"), OSM street names (on street signs and the tactical map),
-  and the names of public parks, the creek and the trail as sector labels. This is what makes Pillar 2 pay off.
+  and the names of public parks, the creek and the trail as sector labels. This is what makes Pillar 2 pay off. One
+  logged exception: a park whose OSM name repeats a subdivision's name takes a creek or woods label (U10, A55).
+  Text on the tactical map is limited to street names and sector labels: OSM place, subdivision (named
+  `landuse=residential`) and institution names are never drawn.
 - **Never shown:** house numbers, addresses, anything about residents, brand names, or municipal insignia. No real
-  people are depicted.
+  people are depicted, and the horde is anonymous: no zombie is presented as a resident of the real town (art bible
+  5.4). **No UI text names an individual building**, not even by its street ("house on ..."): prompts, pings and
+  callouts name the object's kind (house, garage, door, window), and the compass strip gives the street of the
+  player's own position.
 - **Repository hygiene (the repository is public):** the repository keeps only each map's grid-snapped boundary box
-  and its centre (the pipeline's origin) and the scripts that fetch and process it; raw extracts and generated level
-  geometry are fetched or regenerated locally from that box. Nothing narrower (no point of interest, no house-level
-  reference, no address or house number, no coordinates of any building) is ever committed. When a map is
-  re-extracted, the box edges are set from landmarks and a coarse grid only. *Known gap (AD-CONCEPT-VISUAL round 2,
-  PR-SCOPE rounds 2–3, `/design-review`):* these tracked files carry the first map's box or its footprints today, so
-  the rule is not yet true:
+  and its origin (the home sector's capture zone, A65) and the scripts that fetch and process it; raw extracts and
+  generated level geometry are fetched or regenerated locally from that box. Nothing narrower (no point of interest,
+  no house-level reference, no address or house number, no coordinates of any building) is ever committed.
+  **Prototypes follow the same rules** (A65): a prototype spawns the squad at the home sector, labels sectors as this
+  section does (real park names, generic sensitive-site labels, the logged creek-label exception), names no individual
+  building in its UI, and follows the IP rules (R12). When a map is re-extracted, the box edges are set from landmarks
+  and a coarse grid only. *Known gap (AD-CONCEPT-VISUAL round 2, PR-SCOPE rounds 2–3, `/design-review`, revision
+  2.5's check):* these tracked files carry the first map's box, its origin or its footprints today, or break the
+  prototype rules, so the rule is not yet true:
   - under `prototypes/real-street-holdout-concept/pipeline/data/`: the raw extract `tinley-park-60477.osm`,
     `level.json`, `level.obj`, `preview.png` and `metrics.json`;
   - under `prototypes/real-street-holdout-concept/pipeline/`: `README.md`, `osm_to_level.py` and
-    `test_osm_to_level.py`, which hard-code the current, ungridded box centre;
-  - `prototypes/real-street-holdout-concept/greybox/index.html`, which embeds the level data.
+    `test_osm_to_level.py`, which hard-code the current, ungridded box centre as the origin;
+  - `prototypes/real-street-holdout-concept/greybox/index.html`, which embeds the level data, and the greybox sources,
+    which spawn the player at the origin rather than the home sector, name buildings by street in prompts and pings,
+    label two parks after nearby streets instead of their OSM names, place the home sector at the Ridgeland Avenue
+    crossing (A38, superseded by A44) and Creek Woods outside Lancaster Woods Park, and draw a spotted zombie as a
+    diamond (A45, R12).
 
   They are public OSM data (no house-number tags; the only address tags are two `addr:state` tags), but they carry
-  every building's footprint. *Action (A50).* Owner: the producer (until Q2 staffs the team, the repository owner),
-  with the technical director's sign-off. Due **before the next push to the public remote, and no later than
-  2026-11-26**: untrack the data files; replace the hard-coded centre in the scripts, test and README with a
-  grid-snapped value; build the greybox page locally instead of committing it with embedded level data; and record
-  the decision on purging history (R5). The purge decision also covers earlier revisions of this document, whose
-  location wording (replaced in revision 2.3) is in commit history.
+  every building's footprint, and **they are already on the public remote**, so the earlier "before the next push"
+  deadline has passed. *Action (A50, re-dated by A60).* Owner: the producer (until Q2 staffs the team, the repository
+  owner), with the technical director's sign-off. **No further push to the public remote until** the data files are
+  untracked; the hard-coded centre in the scripts, test and README is replaced by the A65 origin (the home sector's
+  capture zone) and the outputs are regenerated locally; the greybox spawns at the home sector and follows the
+  prototype rules above; and the greybox page is built locally instead of being committed with embedded level data.
+  Until then, work is committed locally only. Removing what is already published needs a history rewrite and a
+  force-push, which only the repository owner can decide (R5); record that decision by 2026-11-26. The purge decision
+  covers every earlier revision of this document, the art bible and the prototype files, **on every branch of the
+  public remote**, not only the default branch.
 - **Houses are realistic but generic.** Facades come from modular kits chosen by building type and footprint. No
   photogrammetry or street-level imagery of real homes is used; no house is a replica of a real house.
 - **Sensitive sites** (schools, cemeteries, places of worship, hospitals, memorials, government buildings) are rendered
-  as generic structures under generic labels ("School Grounds", "Cemetery"). Places of worship are sealed and are
-  never sectors. No zombie ever emerges from a grave; headstones are generic and nameless. There are no child zombies.
+  as generic structures under generic labels ("School Grounds", "Cemetery"). Places of worship are sealed, never
+  sectors, and indestructible beyond cosmetic chips. No zombie ever emerges from a grave; headstones are generic,
+  nameless and indestructible (art bible 6.7, AB-14; Pillar 1's logged exception, A57). There are no child zombies.
 
 **Licensing.**
 - OSM data is © OpenStreetMap contributors under the ODbL. Attribution plus a licence link appear on map select, on
@@ -682,46 +803,80 @@ School Grounds are a short push north (about 150 m) over open ground and the woo
 
 - **Weapon classes:** pistol, SMG, shotgun, assault rifle, DMR, LMG, plus launchers in the full tier. Open to every
   role (A23).
-- **Projectile ballistics (U4, A27).** Every bullet is a simulated projectile with a muzzle velocity, gravity drop and
-  travel time. No drag or wind at MVP; drag may be added by the gunplay GDD, wind never (anti-pillar: not a mil-sim).
-  Muzzle velocities may be scaled below real-world values so drop is readable inside about 400 m; the feel prototype
-  decides (Q13).
+- **Projectile ballistics (U4, A27, A56).** Every bullet is a simulated projectile with a muzzle velocity, gravity
+  drop, **drag** and travel time, at every range and in every fallback (Pillar 3). Wind and spin drift never
+  (anti-pillar: not a mil-sim).
+  - **Velocities are real-world by default:** about 360 m/s for pistols, 400 m/s for SMGs, 880–920 m/s for assault
+    rifles and LMGs, 850 m/s for DMRs, and about 400 m/s for buckshot. If the feel prototype finds drop unreadable
+    inside about 400 m, **one global factor between 0.6 and 1.0** scales every class (Q13). Scaling only ever makes
+    drop and travel time larger, and the classes keep their order (pistols slowest, rifles fastest).
+  - **Drag from the MVP:** quadratic drag with one coefficient `k` per round class, `dv/dt = −k·|v|·v`, so speed falls
+    with distance as `v(x) = v₀·e^(−k·x)`. Starting value for rifle rounds: `k` = 0.0004 per metre, which costs
+    about 11% of the speed by 300 m. Client and server step it at the same fixed rate, so the server's re-simulation
+    of a hit claim (netcode table) stays exact.
 
-  Time of flight `t = d / v₀`; drop `h = ½ g t²` (g = 9.81 m/s², no drag):
+  Without drag, time of flight is `t = d / v₀` and drop is `h = ½ g t²` (g = 9.81 m/s²). With drag (`k` = 0.0004),
+  by numerical integration at a 0.1 ms step:
 
-  | Muzzle velocity `v₀` | At 100 m | At 300 m |
+  | Muzzle velocity `v₀` | At 100 m (no drag → with drag) | At 300 m (no drag → with drag) |
   | ---- | ---- | ---- |
-  | 600 m/s (scaled) | t = 0.17 s, drop 0.14 m | t = 0.50 s, drop 1.23 m |
-  | 880 m/s (rifle, close to real) | t = 0.11 s, drop 0.06 m | t = 0.34 s, drop 0.57 m |
+  | 600 m/s (scaled by 0.68) | t 0.17 → 0.17 s; drop 0.14 → 0.14 m | t 0.50 → 0.53 s; drop 1.23 → 1.33 m |
+  | 880 m/s (rifle, real-world) | t 0.11 → 0.12 s; drop 0.06 → 0.07 m | t 0.34 → 0.36 s; drop 0.57 → 0.62 m |
 
   A Runner moving at about 6 m/s at 300 m moves about 2–3 m during the bullet's flight, so leading is a real skill.
 
   **Range bands on the first map:** yards, hallways and the woods at 2–30 m (drop is irrelevant and melee competes);
   residential streets at 30–150 m; 167th Street, the fields and the cemetery at 150–400 m (drop and lead
-  matter, and the Spotter's DMR earns its place). Detonators and Howlers are the targets that most reward killing at
-  range. Long-band targets come from the far-zombie tier (system 9), so they do not eat the active cap. These three
+  matter, and the DMR earns its place: any role can carry it (A23), and the Spotter's passive steadies it).
+  Detonators and Howlers are the targets that most reward killing at range. Long-band targets come from the far-zombie tier (system 9), so they do not eat the active cap. These three
   bands are also what "combat range" means everywhere else in this document (Visual Identity Anchor, Pillar 3).
 - **Weighty recoil.** Each shot kicks the weapon (a learnable vertical pattern plus a bounded random horizontal
   component), then the weapon recovers. First-shot and sustained recoil differ; visible weapon motion sells mass, but
-  the control law stays learnable. Aiming down sights adds sway; crouching steadies it. Prone and mounting a weapon on
-  a windowsill or fence arrive at the Vertical Slice.
-- **Attachments are trade-offs** along five axes: **handling** (aim-down-sights time, swap and sprint-to-fire speed),
-  **stability** (recoil, sway), **velocity** (muzzle velocity, therefore drop and travel time), **capacity**, and
-  **signature** (muzzle flash and, in the full tier, **noise draw**: gunfire pulls queued zombies toward the shooter's
-  side). Every attachment moves at least two axes in opposite directions:
+  the control law stays learnable. Aiming down sights adds sway; crouching steadies it, and prone steadies it most
+  (system 11). Mounting a weapon on a windowsill or fence arrives at the Vertical Slice. **Recoil is tuned for a
+  gamepad (U11):** at the default response curve, a player can hold a sustained vertical pattern with the right stick
+  alone. Aim assist never removes recoil (system 11). Starting values, which the gunplay GDD owns and the feel
+  prototype tunes:
 
-  | Attachment | Gains | Costs |
-  | ---- | ---- | ---- |
-  | Long / heavy barrel | Velocity, stability | Handling |
-  | Short barrel | Handling | Velocity, stability |
-  | Suppressor | Signature (flash; noise in the full tier) | Velocity, handling |
-  | Muzzle brake / compensator | Vertical stability | Signature (more flash and noise) |
-  | Magnified optic | Precision at range | Handling, field of view |
-  | Extended magazine (VS) | Capacity | Handling (reload, ADS) |
-  | Grip (VS) | Stability on one axis | Handling |
-  | Stock (VS) | Stability (sway) | Handling (ADS) |
+  | Class (MVP) | First shot (vertical) | Sustained (vertical, per shot) | Horizontal (bounded random) | Recovery |
+  | ---- | ---- | ---- | ---- | ---- |
+  | Pistol (semi-auto) | 1.2° | 1.0° | ±0.3° | Full within 0.25 s |
+  | Shotgun (pump) | 3.0° | — | ±0.5° | Full within 0.5 s |
+  | Assault rifle (full auto, about 700 rounds a minute) | 0.6° | 0.35° rising to 0.45° over the first 6 shots, then steady | ±0.15° | 6° per second, starting 0.1 s after the last shot |
+  | DMR (semi-auto) | 1.5° | 1.5° | ±0.25° | Full within 0.35 s |
+
+  Multipliers: aiming down sights ×0.7, crouched ×0.85, prone ×0.7 (they stack). Attachments move these along the
+  stability axis.
+- **Attachments are trade-offs** along six axes: **handling** (aim-down-sights time, swap and sprint-to-fire speed),
+  **stability** (recoil, sway), **velocity** (muzzle velocity, therefore drop and travel time), **sighting**
+  (magnification and reticle, traded against field of view), **capacity**, and **signature** (muzzle flash and, in
+  the full tier, **noise draw**: gunfire pulls queued zombies toward the shooter's side). Every attachment moves at
+  least two axes in opposite directions. **The MVP's nine** (A66) are the three optics, three muzzles and three
+  barrels in bold; starting values are multipliers on the weapon's base, which the gunplay GDD owns:
+
+  | Attachment (slot) | Gains | Costs | Starting values |
+  | ---- | ---- | ---- | ---- |
+  | Iron sights (optic slot empty) | — | — | The baseline: fastest aim-down-sights, most of the view blocked by the sight |
+  | **Reflex sight** (optic; 1×, non-magnified) | Sighting: a projected dot with a clear view around it; the full field of view kept | Handling | ADS time +5% against iron sights |
+  | **Prism sight** (optic; 2×) | Sighting: 2× with an etched reticle | Handling, sway; a narrower field of view | ADS time +12%; sway +10% |
+  | **Magnified optic** (optic; 4×) | Sighting: 4× | Handling (slower aim-down-sights, more sway at the same stability); a narrow field of view | ADS time +25%; sway +25%. Not on the pistol or shotgun |
+  | **Long barrel** (barrel) | Velocity | Handling | Muzzle velocity +6%; ADS time +8%; sprint-to-fire +10% |
+  | **Heavy barrel** (barrel) | Stability | Handling | Sustained vertical recoil ×0.9; ADS time +10%; swap time +10% |
+  | **Short barrel** (barrel) | Handling | Velocity, stability | ADS time −10%; sprint-to-fire −10%; muzzle velocity −8%; sustained recoil ×1.1 |
+  | **Suppressor** (muzzle) | Signature (no flash; noise in the full tier) | Velocity, handling | Muzzle velocity −3%; ADS time +5% |
+  | **Compensator** (muzzle) | Vertical stability | Signature; horizontal stability | Vertical recoil ×0.85; horizontal ×1.1; flash larger |
+  | **Muzzle brake** (muzzle) | Horizontal stability and first shot | Signature (the largest flash and blast) | Horizontal recoil ×0.8; first shot ×0.9 |
+  | Extended magazine (VS) | Capacity | Handling (reload, ADS) | — |
+  | Grip (VS) | Stability on one axis | Handling | — |
+  | Stock (VS) | Stability (sway) | Handling (ADS) | — |
 - **Attachment slots:** optic, muzzle, barrel, magazine, underbarrel/grip, stock: six at full vision. The MVP has
-  three (**optic, muzzle, barrel**), chosen because together they cover handling, stability and velocity.
+  three (**optic, muzzle, barrel**), chosen because together they cover handling, stability, velocity and sighting.
+- **Fixed zero at MVP (A66).** Every sight is zeroed at a fixed distance: **100 m** for the assault rifle and DMR
+  (every optic) and **25 m** for the pistol and shotgun. With the 100 m zero and drag, an 880 m/s rifle round lands
+  about 0.07 m low at 200 m, 0.28 m low at 300 m and 0.66 m low at 400 m (sight height 7 cm), so the hold-over at 300 m
+  is about a head's height and at 400 m about a torso. The firing range's 100, 200 and 300 m targets teach it.
+  Adjustable zeroing (100 / 200 / 300 m) arrives at 1.0. If Q13 scales velocities down, the hold-overs grow and the
+  feel prototype re-measures them.
 - **Penetration (Vertical Slice).** Bullets meet panels by material class: *soft* (drywall, wood siding, interior
   doors, fences) lets rifle rounds through at reduced damage; *medium* (brick veneer, vehicles) stops pistol and SMG
   rounds and slows rifle rounds; *hard* (reinforced panels, masonry, concrete) stops everything. In a wood-frame suburb
@@ -732,21 +887,28 @@ School Grounds are a short push north (about 150 m) over open ground and the woo
 
 Alternatives considered:
 - *Hitscan with damage falloff (the genre default):* rejected. It fails U4.
-- *Full external ballistics (drag, wind, spin drift):* rejected. Grounded, not mil-sim (anti-pillar); drag stays a
-  possible GDD tuning tool.
+- *Hitscan inside about 50 m as the month-3 fallback (revisions 2.2–2.3):* replaced by A56. It would have cut the
+  projectile feel exactly where most fights happen. The fallback now relaxes the server's check on close-range hit
+  claims instead, and projectiles stay everywhere (Scope Tiers).
+- *No drag at MVP (revisions 2–2.3):* replaced by A56. Drag costs nothing at a fixed step and makes long shots
+  behave as players expect.
+- *Full external ballistics (wind, spin drift, per-cartridge drag tables):* rejected. Grounded, not mil-sim
+  (anti-pillar); drag stays a single coefficient per round class.
 - *Random loot rarity tiers for weapons and attachments:* rejected because players could not plan around it.
   Randomness lives only in supply drops.
 
 ### 8. Melee
 
 - **Moves:**
-  - Directional light and heavy swings (horizontal left/right, overhead) and a thrust. Direction comes from mouse
-    motion or a modifier; the GDD decides which (Q10).
+  - Directional light and heavy swings (horizontal left/right, overhead) and a thrust. On the gamepad (U11),
+    direction comes from the right stick's motion at the moment of the swing or from a held modifier; the feel
+    prototype decides which (Q10).
   - **Block** drains stamina on each hit.
   - **Parry** is a timed block against telegraphed attacks. It staggers the zombie, opens a crit or execution
     window, and refunds stamina.
   - **Shove** gives crowd control and breaks grabs.
-  - Stamina is shared with sprint.
+  - Stamina is shared with sprint and slide (system 11).
+  - Parry windows are tuned for a gamepad (U11).
 - **Weapon families:**
 
   | Family | Role |
@@ -821,6 +983,54 @@ No zombie is a child, and none emerges from a grave (A29).
   client at each intermission, and the squad can **resume from the last intermission** with a new host. Full host
   migration stays out of scope (A42).
 
+### 11. Movement, locomotion and controller input
+
+Movement is half of the squad-shooter feel the user asked for (U1): committed, heavy and readable, and built for a
+suburb whose yards are cut up by rule-generated fences and hedges, whose windows get breached, and whose streets fill
+with rubble and wrecks (A52). Every move below is in the **MVP** unless marked. Starting values; the movement GDD owns
+them and the feel prototype tunes them.
+
+| Move | Rule (starting values) | Why |
+| ---- | ---- | ---- |
+| **Walk** | About 4.5 m/s; about 2.5 m/s while aiming down sights | The baseline pace through a 600 m slice |
+| **Sprint** | About 6.5 m/s; drains the stamina melee uses (system 8); sprint-to-fire time is a handling stat (system 7) | Sprinting into a doorway fight spends the stamina the parry needs |
+| **Crouch** | About 2.5 m/s; recoil ×0.85; drops the profile below fences and windowsills | Cover in yards and at windows |
+| **Prone and crawl** | About 1 m/s; recoil ×0.7 and the least sway. Going prone takes about 0.6 s and getting up about 0.8 s. The crawl uses the same locomotion set as the downed state (system 1), which is why prone is in the MVP | The long band: 167th Street, the fields, the cemetery. Slow to leave, so it is a commitment against a horde |
+| **Vault** | Contextual, on the jump button at speed, over an obstacle 0.5–1.1 m tall and under about 0.6 m deep: hedges, low fences, the sill of a breached window, low rubble, a car's hood. About 0.5 s, weapon lowered, momentum kept | The suburb's fences and hedges are everywhere (system 6), so without vaulting a yard is a maze |
+| **Mantle** | Over or onto an obstacle 1.1–2.0 m tall: privacy fences, walls, rubble ledges. About 1.0–1.2 s, weapon holstered. No roofs: house roofs are not playable space at MVP | Committing to a mantle under pressure is a risk the player chooses |
+| **Slide** | From a sprint, on the crouch button: about 0.6 s and 3–4 m, ending crouched; costs stamina; cannot fire for the first 0.3 s | A fast drop into cover behind a wreck or a low wall |
+| **Jump** | Low (about 0.45 m of clearance); firing in the air is inaccurate | Grounded, not acrobatic |
+| **Falls** | A fall over 3 m costs health; one over 6 m downs the player | Rubble ramps and upper floors have a cost |
+| **Contextual peek** (Vertical Slice) | Aiming down sights at a cover edge (a wall corner, a door frame) shifts the view and weapon out by about 0.3 m. There is no lean button: a gamepad has no spare input for one | Corner fights in hallways and garages |
+
+**The horde crosses the same terrain.** Fences and hedges carry nav links for zombies. Every type climbs over with one
+shared climb clip per skeleton at MVP (Runners vault faster), and the Crawler squeezes under. From the Vertical Slice,
+Breachers knock fence sections flat, a one-way state on the destruction channel. A fence therefore slows the horde
+but never shelters the squad for good (Pillar 1).
+
+**Controller input (U11).** Players use a gamepad only. The input layer is a core system from the MVP, built in the
+production gunplay block:
+- **Aim assist** is slowdown near a target plus limited rotation that follows the target's *current* position. It
+  never leads a target and never compensates for drop, so leading and holding over remain the player's skill (U4,
+  Pillar 3). It is slowdown only beyond 150 m (the long band), and it never steers melee direction or parry timing.
+  Its strength is a player option.
+  **Weight test (an MVP criterion; A66):** at the default strength, (a) a 10-round assault-rifle burst fired at a
+  target 30 m away with no stick input climbs the same with assist on and off (vertical pattern within 10%), because
+  assist never counters recoil; (b) at 300 m a tester who holds the reticle on a moving Runner's centre, without lead
+  or hold-over, misses at least 9 shots in 10; (c) beyond 150 m the view never rotates on its own. If any part fails,
+  assist is weakened, never the recoil or the ballistics.
+- **Stick deadzones, a response curve and sensitivity** (look, aiming down sights and each optic magnification) are
+  options from the MVP, with Xbox-layout button prompts.
+- **Recoil, bullet velocities, zombie speeds and parry windows are tuned for sticks** (systems 7, 8 and 9).
+- The ping is one button. The ping wheel (Vertical Slice) opens when it is held.
+
+Alternatives considered:
+- *No vault or mantle, with the horde and the squad routed around fences:* rejected. Rule-generated fences would turn
+  every yard into a maze, and committed traversal is part of the reference feel (U1).
+- *A lean button:* rejected for a controller-only game. The contextual peek gives the corner fight without one.
+- *Prone deferred to the Vertical Slice (revisions 2–2.3):* replaced by A52. Prone is the long band's steadiest
+  position, and its crawl already exists for the downed state.
+
 ---
 
 ## Game Pillars
@@ -841,6 +1051,9 @@ defending), we add the counter-edge or we cut it.
 becomes a horde spawn closet and ingress (system 6). The Sapper's charges damage the panels around them, the squad's
 own reinforcements included. **Accepted exception:** friendly fire stays off for player health (A20, accessibility),
 so a charge's counter-edge is structural (the route it opens and the fortifications it damages), never squad damage.
+**Accepted exception (A57):** places of worship and cemetery headstones cannot be destroyed (sensitivity, R5, A29,
+art bible AB-14). They help neither side alone: they block the squad's routes and sightlines as much as the horde's,
+places of worship are never sectors, and the cemetery is never a landing zone.
 
 ### Pillar 2: You Know This Place
 Maps are real places whose street grid, building footprints and public landmarks stay true and keep their real
@@ -848,6 +1061,8 @@ street and park names, so players recognise real geography and plan around it. R
 grid, the street names and the parks, plus the regional style of the houses; individual buildings are generic and
 never replicas of real ones, and sensitive sites carry generic labels (A29). We curate by choosing the site and
 boundary, placing sectors at real landmarks, and adding the gameplay layer, never by moving buildings or streets.
+*One logged label exception (A55):* a park whose OSM name repeats a subdivision's name takes a creek or woods label
+(U10); on the first map that is Creek Woods. The user can lift it (Q21).
 
 *Design test*: When a map plays badly, we change the playable boundary, the sector placement, the ingress points and
 the caches, or we pick a different site, before we ever move a real footprint or street.
@@ -865,19 +1080,22 @@ ship.
 *When the two halves conflict, ballistic weight wins* (A40). The user's direction is gun-first (U1, U4). Melee parity
 is pursued through situations (doorways, Grabbers, Plated, heavy-melee breaching) and the economy (no ammo drops,
 limited crate and supply-point stock, the melee salvage bonus), never by making guns less grounded. If melee misses
-its MVP signal even after that tuning, this pillar's melee claim narrows to "melee owns the doorway".
-**Pre-authorised exception** (by the facilitator; the user is asked to confirm it in Q20): if the month-3 spike
-fails, the ballistics fallback (hitscan inside about 50 m; Scope Tiers) breaks this pillar's test at close range. Drop and travel time survive beyond it, where they matter.
+its MVP signal even after that tuning, this pillar's melee claim narrows to "melee owns the doorway". The melee
+mechanics themselves (swing, block, parry, shove and stamina; U9) are never cut by this clause.
+**No exception for the ballistics fallback** (A56, replacing revision 2.2's hitscan exception): if the month-3 spike
+fails, the fallback relaxes the server's check on close-range hit claims and keeps projectiles, drop and travel time
+at every range (Scope Tiers), so this pillar's test holds. Q20 still asks the user to authorise it.
 
 ### Pillar 4: Four Roles, One Line
-The squad is four roles holding one frontline, and each role carries what the others need: revives, ammo, repairs
-and early warning. Survival runs through hand-offs. Smaller squads share the missing kit; solo is supported as a
+The squad is four roles holding one frontline, and each role carries what the others need: revives and heals, ammo,
+repairs and early warning. Survival runs through hand-offs. Smaller squads share the missing kit; solo is supported as a
 scaled mode but never drives the design.
 
 *Design test*: When debating a feature that makes one player self-sufficient against one that creates a callout or a
 hand-off, we pick the hand-off. **Every fallback stays meaningfully worse than the hand-off it replaces** (slower,
-costlier or riskier by a margin a playtester notices): the universal slow actions, the squad-gap kit's light gadgets,
-and a squad of duplicates that leaves a role empty (A35) all obey this.
+costlier or riskier by a margin a playtester notices): the universal slow actions, the squad-gap kit's light gadgets
+(system 2's light values), and a squad of duplicates that leaves a role empty (A35; a full squad of four gets no gap
+kit, A53) all obey this.
 
 ### How the pillars pull against each other
 
@@ -889,7 +1107,7 @@ and a squad of duplicates that leaves a role empty (A35) all obey this.
 | P3 (melee parity) vs the gun and attachment power fantasy | Every attachment is a trade-off along handling, stability and velocity; guns cost ammo, and in the full tier they make noise |
 | **P4 (role interdependence) vs squad-shooter class play with fewer than four players** | Roles make things fast, cheap, mobile or remote; they never make them possible, and every fallback stays meaningfully worse than the hand-off (Pillar 4's test). Universal fallbacks plus the squad-gap kit keep 2–3 player squads whole, and solo has its own kit and tuning, never the reference case |
 | P2 (a real ~1.2 km map) vs P4 (only four people) | Sectors concentrate the fight at the frontline; squad spawn and sector spawn cut travel; most houses are sealed |
-| Grounded realism (Visual Identity Anchor) vs readability | Readability wins in the close and street bands (2–150 m, system 7): shape language, silhouettes and rim light beat atmosphere. At night the long band is deliberately harder and is carried by motivated light, flares and the Spotter's marks |
+| Grounded realism (Visual Identity Anchor) vs readability | Readability wins in the close and street bands (2–150 m, system 7): shape language, silhouettes and rim light beat atmosphere, reached by grounded means first. The one non-physical aid is the art bible's bounded **horde readability light** (art bible 2.5, AB-07; A59): horde characters only, off before round 10, faded out by 150 m, never the brightest thing in view. At night the long band is deliberately harder and is carried by motivated light, flares and the Spotter's marks |
 
 ### Anti-Pillars (What This Game Is NOT)
 
@@ -925,6 +1143,16 @@ record the fixes from AD-CONCEPT-VISUAL rounds 1 and 2)
 (physically based materials, Lumen global illumination, Nanite geometry, realistic light, dust, smoke and heavy weapon
 audio), then the horde and the squad's own war slowly take it apart.
 
+**Season: late autumn** (art bible 2.1, AB-05; recorded here by A67): dry, after leaf fall and before the first
+snow, with low November light, bare parkway trees, evergreen foundation shrubs and dormant olive-and-tan lawns. It is
+the most ordinary-looking version of the real place, it gives an early, fast dusk for the failing light, and bare
+canopies open the long sightlines. It is a facilitator call the user can overrule; weather stays out of scope.
+
+**What "the real suburb looking real" means here (U7 against A29; Q23).** The street grid, the footprints, the street
+and park names and the regional style of the houses are real; each house is a realistic kit house, never a replica of
+the real one at that spot. The facilitator chose this for privacy and legal reasons (A29); the user has not been
+asked, so Q23 asks.
+
 **"Combat range" means System 7's three bands:** close (2–30 m: yards, hallways, the woods), street (30–150 m:
 residential streets) and long (150–400 m: 167th Street, the fields, the cemetery). Every readability test below is
 run per band.
@@ -932,7 +1160,7 @@ run per band.
 **Supporting principles:**
 
 1. **Honest materials, honest damage.** Every surface is a real suburban material: vinyl or wood siding, asphalt
-   shingles, brick veneer, drywall, concrete driveways, lawn. Damage exposes what is really inside (studs,
+   shingles, brick veneer, drywall, concrete driveways, dormant lawn. Damage exposes what is really inside (studs,
    insulation, drywall dust, splintered sheathing), never a generic crumble.
    *Design test:* if a damage state shows something the real wall could not contain, rebuild the damage state.
 2. **A real kind of house, never a real house.** Recognition (Pillar 2) comes from the street grid, the names and the
@@ -963,15 +1191,18 @@ run per band.
    *Design test:* if a lighting choice makes zombies unreadable in the close or street band, readability (rim
    light, silhouette) wins over mood.
    *Feasibility:* many motivated, shadow-casting lights is a MegaLights case on a listen-server host that also
-   simulates. The art bible defines a non-ray-traced lighting path, caps shadow-casting lights per sector, and sets the
-   minimum GPU before the realism art pass (R10).
+   simulates. The art bible (`design/art/art-bible.md`, 8.8) defines the non-ray-traced Medium tier as the baseline
+   every scene must pass and caps shadow-casting lights per sector view (6 at Medium, 3 at Low); the minimum GPU is due
+   by Vertical Slice A at the latest (R10).
+   *Readability aid:* where grounded fixes cannot meet the night minimums, the art bible allows one bounded,
+   non-physical aid, the horde readability light (art bible 2.5; tension table above).
 
 **Shape language.** It governs what the game adds to the real suburb; the real suburb keeps its own shapes.
 
 | Rule | What it means | Test |
 | ---- | ---- | ---- |
-| **The horde reads by silhouette and gait in its band** | Every type is hunched, off-balance or broken in line, never upright like the squad. Long band: the Detonator's swollen, front-heavy torso and slow rocking gait; the Howler's tall, arms-raised, head-back posture and the way it stops to call. Street band: the Runner's low forward lean; the Breacher's oversized shoulders and plodding gait. Close band: the Grabber's long reaching arms; the Plated's flat, slab-like improvised front. The Shambler is the baseline lurch the others are read against | Each type is named from its silhouette (and, in the long band, its gait) alone at the far edge of its band, **under the lighting of the round it first appears in**, against principle 4's night minimums for that band. Shambler, Runner and Breacher are tested in daylight to dusk; the Detonator, Grabber, Plated and Crawler between dusk and night; the Howler at night, lit only by a motivated source or a Spotter mark |
-| **Roles read by kit, at 30–80 m** | Squadmates are upright and carry their role on back and hips: Corpsman, a bulky medical pack and leg pouches; Quartermaster, a crate frame with ammo cans; Sapper, a long-handled tool and a charge bag; Spotter, a sensor mast and a scope case. The HUD uses Holdout's own role icons, never the reference series' class icons (U1) | A playtester names each squadmate's role from silhouette at 80 m with the HUD off |
+| **The horde reads by silhouette and gait in its band** | Every type is hunched, off-balance or broken in line, never upright like the squad. Long band: the Detonator's swollen, front-heavy torso and slow rocking gait; the Howler's tall, arms-raised, head-back posture and the way it stops to call. Street band: the Runner's low forward lean; the Breacher's oversized shoulders and plodding gait. Close band: the Grabber's long reaching arms; the Plated's flat, slab-like improvised front. The Shambler is the baseline lurch the others are read against | Each type is named from its silhouette (and, in the long band, its gait) alone at the far edge of its band, **under the lighting of the round it first appears in**, against principle 4's night minimums for that band. **Viewing conditions (art bible AB-08, A59):** close band unaided; street band unaided and through a 1–2× optic; long band through the MVP's magnified optic, because an unaided figure at 300–400 m is only about 4–6 px tall at 1080p. Shambler, Runner and Breacher are tested in daylight to dusk; the Detonator, Grabber, Plated and Crawler between dusk and night; the Howler at night, lit only by a motivated source or a Spotter mark |
+| **Roles read by kit, at 30–80 m** | Squadmates are upright and carry their role on back and hips: Corpsman, a bulky medical pack and leg pouches; Quartermaster, a crate frame with ammo cans; Sapper, a long-handled tool and a charge bag; Spotter, a sensor mast and a scope case. The art bible (3.3) sizes each primitive to survive about 22 px at 80 m and keeps it through prone, slide, vault and mantle. The HUD uses Holdout's own role icons, never the reference series' class icons (U1) | A playtester names each squadmate's role from silhouette at 80 m, unaided, with the HUD off |
 | **Plumb is real; askew is ours** | Real construction is plumb and level. Everything the fight adds or breaks (boards, Sapper bracing, breaches, rubble, deployables) is off-axis, angled and improvised. Who owns a structure is not shown by its angle: the meaning layer's yellow infrastructure marker shows what the squad owns | A player can tell what the fight has touched (by either side) from the untouched real house in a still frame |
 | **Every panel state changes the outline** | Intact: a clean, continuous edge. Damaged: a bowed or cracked edge with trim missing. Breached: a jagged hole with light through it. Destroyed: gone, with stud stumps. Reinforced (flag): diagonal bracing and plates that cross the panel's outline | "Which wall is weakest" reads on vinyl siding at 30 m at dusk without relying on surface texture |
 
@@ -982,9 +1213,9 @@ is Holdout's own UI identity; no UI look is borrowed from any reference game. Th
 **Color philosophy.** There are two layers, and the meaning colours apply to only one of them.
 
 - **The world layer** is the real suburb: natural, physically based materials under real light, with no stylised
-  global grade. Mood comes from time of day, smoke and dust. Green lawns and street-name signs, yellow centre lines
-  and school-zone signs, red brick and stop signs all keep their real colours: **meaning colours are never enforced
-  on world surfaces.**
+  global grade. Mood comes from time of day, smoke and dust. Dormant olive-and-tan lawns, green street-name signs,
+  yellow centre lines and school-zone signs, red brick and stop signs all keep their real colours: **meaning colours
+  are never enforced on world surfaces.**
 - **The meaning layer** is what the game adds: UI, markers and pings, and the lights, emissives and VFX the game
   places. The meaning colours are reserved here only:
 
@@ -1034,7 +1265,7 @@ vending machines, a mystery box, and so on).*
 
 | Reference | What We Take From It | What We Do Differently | Why It Matters |
 | ---- | ---- | ---- | ---- |
-| ***Battlefield*** **series** (mechanics and feel reference only, U1) | The feel of its squad play: four role archetypes with signature gadgets (revive, resupply, repair, demolition, spotting); squad revive, spawning on squadmates, spotting and resupply; projectile ballistics with drop and travel time; heavy recoil; attachments with trade-offs; capture-and-hold sectors with a moving frontline; heavy weapon audio, dust, smoke and destruction | Four-player co-op PvE against a horde instead of large-scale PvP; our own role names (Corpsman, Quartermaster, Sapper, Spotter); no vehicles at 1.0; real OSM suburbs; deep melee; rounds and evac. No names, characters, art, maps, branding, class names, mode names or UI look are taken | Validates the squad / role / ballistics loop as a long-lived, much-loved feel |
+| ***Battlefield*** **series** (mechanics and feel reference only, U1) | The feel of its squad play: four role archetypes with signature gadgets (revive and heal, resupply, repair, demolition, spotting); squad revive, spawning on squadmates, spotting, squad orders and resupply; projectile ballistics with drop and travel time; heavy recoil; attachments with trade-offs; committed movement (sprint, crouch, prone, vault, mantle, slide); capture-and-hold sectors with a moving frontline; heavy weapon audio, dust, smoke and destruction | Four-player co-op PvE against a horde instead of large-scale PvP; our own role names (Corpsman, Quartermaster, Sapper, Spotter), gadget names (A58) and role icons (art bible 7.4); orders without a squad-leader rank (A63); controller-only (U11); no vehicles at 1.0; real OSM suburbs; deep melee; rounds and evac. No names, characters, art, maps, branding, class names, mode names or UI look are taken | Validates the squad / role / ballistics loop as a long-lived, much-loved feel |
 | *Call of Duty* Zombies mode | Round-based escalation; points for hits and kills; buying weapons in the world | Real maps, capture-and-hold sectors, two-edged destruction, deep melee, roles, evac windows | Proves round-based co-op survival sustains long sessions and a devoted audience |
 | *Killing Floor 2* | Wave co-op with a spending intermission; perk-based roles; gory feedback | Armories at held sectors instead of a trader; fortification and demolition sinks; gadgets instead of stat perks | Validates a between-wave economy as the strategic layer |
 | *Warhammer: Vermintide 2* | First-person melee and guns against hordes in four-player co-op; push and stamina; crowd feel | Parry-centric directional melee; grounded ballistics; a frontline on one map rather than mission traversal | Proves first-person melee against hordes is satisfying and sells |
@@ -1063,7 +1294,7 @@ vending machines, a mystery box, and so on).*
 | **Age range** | 18–35 (core). An M / PEGI 18 rating is assumed for gore (Q6) |
 | **Gaming experience** | Mid-core to hardcore; comfortable with FPS controls and with team roles |
 | **Time availability** | 1–2 hour evening sessions with a friend group on weeknights; longer high-round attempts on weekends |
-| **Platform preference** | PC on Steam, mouse and keyboard; voice chat on Discord |
+| **Platform preference** | PC on Steam, played with a gamepad (U11); voice chat on Discord |
 | **Current games they play** | Large-scale squad shooters (the series named in Inspiration and References), *Call of Duty* Zombies, *Killing Floor 2/3*, *Vermintide 2* / *Darktide*, *Deep Rock Galactic*, *Back 4 Blood*, *The Finals* |
 | **What they're looking for** | Squad-shooter feel (roles, gadgets, weighty guns) in a co-op horde game, with depth in both guns and melee, an arena that changes because of what the squad did, and a real place to hold. Plus the novelty of "that's a real town" |
 | **What would turn them away** | Floaty or hitscan-feeling guns; shallow melee; roles that make a group of friends feel forced into a composition; empty oversized maps; bad netcode (rubber-banding, missed parries, rejected hits); grind for power or pay-to-win; repetitive procedural-looking houses; too little content for the price; dead lobbies for players without a full group |
@@ -1075,7 +1306,7 @@ vending machines, a mystery box, and so on).*
 | Consideration | Assessment |
 | ---- | ---- |
 | **Recommended Engine** | **Unreal Engine 5.8, C++ and Blueprint.** This is the user's choice (U9) and is recorded as given. `/setup-engine` configures it against the pinned reference in `docs/engine-reference/unreal/`. Systems in scope: GAS, replication (Iris is production-ready in 5.8 per the release notes; the plugin still carries a Beta flag; Network Prediction gained optional Iris support), Chaos Destruction (Geometry Collection plugin is **Beta** in 5.8), Enhanced Input, World Partition, PCG (production-ready since 5.7), Geometry Scripting. Rendering: Lumen (default global illumination), Nanite (virtualized geometry), MegaLights (production-ready in 5.8; needs hardware or software ray tracing support), Lumen Lite (Beta; a medium-quality GI setting), Substrate materials (on by default since 5.7). Mass and StateTree are candidates for the horde (MassGameplay and MassCrowd are **Experimental** in 5.8). Sources: `docs/engine-reference/unreal/modules/rendering.md` and `modules/networking.md` |
-| **Key Technical Challenges** | 1) Synced, persistent destruction plus navigation updates on a listen-server host, now across a ~1.2 km map. 2) Horde count against replication and server CPU. 3) **Projectile ballistics**: hit validation with travel time on a listen server, and the feel of drop and recoil. 4) Feel and netcode of first-person melee and parry. 5) **Squad systems**: revive, squad spawn safety, gadget replication, sector objective state, late join. 6) Quality of the OSM-to-level pipeline, including interiors OSM does not describe, inferred heights and rule-based cover. 7) **Grounded-realism rendering** (Lumen, Nanite, MegaLights, dust and smoke) on a host that also simulates AI, destruction and projectiles. 8) World Partition streaming and navmesh over 1.44 km², where the listen-server host must keep collision, navmesh and panel state loaded for the union of all four players' locations and every active zombie while it also renders |
+| **Key Technical Challenges** | 1) Synced, persistent destruction plus navigation updates on a listen-server host, now across a ~1.2 km map. 2) Horde count against replication and server CPU. 3) **Projectile ballistics**: hit validation with travel time on a listen server, and the feel of drop and recoil. 4) Feel and netcode of first-person melee and parry. 5) **Squad systems**: revive, squad spawn safety, gadget replication, sector objective state, late join. 6) Quality of the OSM-to-level pipeline, including interiors OSM does not describe, inferred heights and rule-based cover. 7) **Grounded-realism rendering** (Lumen, Nanite, MegaLights, dust and smoke) on a host that also simulates AI, destruction and projectiles. 8) World Partition streaming and navmesh over 1.44 km², where the listen-server host must keep collision, navmesh and panel state loaded for the union of all four players' locations and every active zombie while it also renders. 9) **Controller aim with projectiles** (U11): aim assist that helps a stick track a target without leading it or compensating for drop. 10) **Predicted traversal** (vault, mantle, slide, prone) in networked character movement, with horde nav links over generated fences |
 | **Art Style** | 3D grounded realism ("Ground Truth") |
 | **Art Pipeline Complexity** | **High** (custom 3D, raised by U7): realistic modular suburban house kits (siding, shingles, brick veneer, garage doors, porches) with variation, interior room templates, damage states for each panel and material showing real construction, woods, lawns, hedges and yard trees, ~10 zombie types, weapons, attachments, melee weapons, gadgets, first-person arm animation sets for weapons, melee and gadgets, zombie reaction animations. Outsourcing is assumed for character art, animation, audio and part of the environment kit art (A14, A43) |
 | **Audio Needs** | **Adaptive and heavy.** Music that tracks round intensity. Positional horde audio is critical to gameplay (where they come from). Heavy weapon audio: distance-dependent report and tail, slap-back off house fronts, the crack of rounds passing close. Layered destruction audio |
@@ -1087,8 +1318,8 @@ vending machines, a mystery box, and so on).*
 
 | System | Authority | What replicates | Budget (estimate, to be confirmed by spikes) |
 | ---- | ---- | ---- | ---- |
-| **Projectile ballistics** | The shooter's client simulates its own projectiles (fixed-step, gravity) for instant tracers and impacts, and sends a **fire event** at trigger time and a **hit claim** on impact. The server re-simulates the claimed trajectory, checks the target against a history of zombie positions whose **rewind window is sized per client** from measured ping plus interpolation delay (capped at about 400–500 ms), checks rate of fire and ammo, then applies damage. Panel hits become panel-state deltas on the destruction channel. **Stale panel state:** if a panel was breached or reinforced while the bullet was in flight, the server judges the claim against its own panel state at the impact time, and the client receives a correction (the impact moves) | Fire events (weapon, time, origin, direction, seed) to relevant clients, unreliable; other clients draw cosmetic projectiles and never decide hits. Hit claims to the server, reliable | About 20 bytes per fire event; under 2 KB/s per client with four players on full auto |
-| **Downed and revive** | Server | Downed state, bleed-out timer, revive progress (the bar is predicted on the reviver's client) | Negligible |
+| **Projectile ballistics** | The shooter's client simulates its own projectiles (fixed-step, gravity and drag) for instant tracers and impacts, and sends a **fire event** at trigger time and a **hit claim** on impact. The server re-simulates the claimed trajectory, checks the target against a history of zombie positions whose **rewind window is sized per client** from measured ping plus interpolation delay (capped at about 400–500 ms), checks rate of fire and ammo, then applies damage. Panel hits become panel-state deltas on the destruction channel. **Stale panel state:** if a panel was breached or reinforced while the bullet was in flight, the server judges the claim against its own panel state at the impact time, and the client receives a correction (the impact moves) | Fire events (weapon, time, origin, direction, seed) to relevant clients, unreliable; other clients draw cosmetic projectiles and never decide hits. Hit claims to the server, reliable | About 20 bytes per fire event; under 2 KB/s per client with four players on full auto |
+| **Health, downed, revive and heal** | Server (damage, recovery, heal pools) | Health, downed state, bleed-out timer, revive and heal progress (the bars are predicted on the reviver's client), the Corpsman's heal pool, the squad order | Negligible |
 | **Squad spawn and sector spawn** | Server checks eligibility (alive, not downed) at request time; if the squadmate is pressed it searches for a navigable safe point up to about 25 m behind them for up to 5 s, then falls back to a held sector (A39) | Spawn request and result; redeploy timers | Negligible |
 | **Gadgets** | Server spawns deployables; the thrower's client predicts the throw arc | Deployable actors (owner, charges, health); charge counters on players | Small: at most about 8 deployables per squad |
 | **Ping and spot** | Server validates line of sight cheaply and owns marker lifetimes; the sensor's spotted set is computed on the server at about 4 Hz | Marker list to the squad, bounded (at most 16 spotted zombies) | Tiny |
@@ -1097,9 +1328,11 @@ vending machines, a mystery box, and so on).*
 | **Total, all channels** | — | Movement, zombies (full and far tier), fire events, destruction deltas, sectors, markers | Starting budgets for the spike to confirm or revise: **under 48 KB/s down per client**, and **host upstream under 150 KB/s** (about 1.2 Mbit/s) for three remote clients |
 
 **Not sourceable yet.** How Nanite handles animated foliage (wind) in 5.8 is NOT SOURCEABLE: the "Nanite Limitations"
-in `docs/engine-reference/unreal/modules/rendering.md` (no world position offset) were written against 5.7. Verify
-before the art bible commits Creek Woods (an MVP push sector) to Nanite foliage. No engine-level lag compensation for projectiles is
-documented in `docs/engine-reference/unreal/`; the validation scheme above is our own and needs an ADR.
+in `docs/engine-reference/unreal/modules/rendering.md` (no world position offset) were written against 5.7. The art
+bible does not depend on it: its baseline for Creek Woods (an MVP push sector) is non-Nanite instanced foliage with
+wind, and moves to Nanite only if the 5.8 spike verifies wind (art bible 8.7, T3). No engine-level lag compensation
+for projectiles is documented in `docs/engine-reference/unreal/`; the validation scheme above is our own and needs an
+ADR.
 
 ---
 
@@ -1113,14 +1346,14 @@ documented in `docs/engine-reference/unreal/`; the validation scheme above is ou
 | R2 | **Horde count vs replication and server CPU, on a listen-server host that also renders and streams** | High / High | Active cap (24 MVP, 48 target) plus a queue; full zombies only near the frontline plus the far-zombie tier (system 9); lightweight movement; Iris prioritisation and relevancy; animation budgeting; headless-capable server code; Mass evaluated only after the MVP | Same spike: 24 active zombies plus 4 players at 60 fps on a mid-range host, with **48 as a stretch case**; a **300 m engagement test** against far-tier zombies; **four players in four different sectors** (World Partition streaming on the host); a representative **Lumen/Nanite stress scene** (one art-dense block at night with smoke) on the host; total bandwidth within the netcode table's budgets |
 | R3 | **OSM data quality and licensing** | High / Medium | First map measured: 0% height tags, no fences or trees, no shop types, flat. Fallbacks: height by type and area, rule-based cover, sector armories, polygon repair, a completeness score for each site; ODbL attribution; legal review of whether we ship a Derivative Database. The pipeline result (about 1.6 s of stage time; system 6.1) is a standalone prototype writing a blockout mesh, not a UE 5.8 bake | The first map's geometry converts with zero hand edits in about 1.6 s (committed `metrics.json`, re-measured 2026-11-19); **the first UE 5.8 bake of the MVP slice** (World Partition, navmesh, HLOD) is an MVP block due by month 3; legal opinion **before the Vertical Slice** |
 | R4 | **First-person melee feel** (parry over latency, readable telegraphs, animation volume) | Medium / High | PvE simplification; parry judged client-side within a server tolerance; telegraph-first zombie animation; early feel prototype with a **small contracted animation test set** (one gun, one melee weapon, two zombie attack telegraphs) so the month-2 verdict is not taken on placeholder animation alone (A46), extended by the contracted MVP placeholder audio and animation block that the MVP's feel criteria are measured on (A47) | Feel prototype in MVP months 1–2: playtesters rate melee as viable as guns (see MVP success criteria) |
-| R5 | **Real-place sensitivity.** Violence and destruction in a recognisable real town, now shown by name, with a school and a cemetery as sectors. There is precedent: a 2006 console shooter drew a formal complaint from a cathedral it depicted | Medium / Medium | The A29 safeguards: generic houses, no addresses or house numbers, generic labels and rendering for sensitive sites, no zombies from graves, no child zombies, no municipal insignia; repository hygiene (grid-snapped boundary and centre only; system 6.1); a stricter policy before any "Your Street" release. The School Grounds sector (OSM tags the school as a kindergarten) is the most sensitive element of a US-set shooter: it never appears in marketing, and the policy decides whether it stays a sector at all (Q16). **Open gap:** the public repository tracks the first map's raw extract, generated level files, scripts that hard-code the box centre and the greybox page's embedded level data today (system 6.1 lists them), and earlier revisions of this document carry location wording in commit history (A50) | Before the next push, and no later than 2026-11-26 (owner: the producer): those files are untracked or rewritten, a decision on purging history (covering the data files and this document's earlier revisions) is recorded, and the new box is set from landmarks and a coarse grid. Policy written before the Vertical Slice; reviewed against the first map's sectors |
+| R5 | **Real-place sensitivity.** Violence and destruction in a recognisable real town, now shown by name, with a school and a cemetery as sectors. There is precedent: a 2006 console shooter drew a formal complaint from a cathedral it depicted | Medium / Medium | The A29 safeguards: generic houses, no addresses or house numbers, generic labels and rendering for sensitive sites, no zombies from graves, no child zombies, no municipal insignia; repository hygiene (grid-snapped boundary and centre only; system 6.1); a stricter policy before any "Your Street" release. The School Grounds sector (OSM tags the school as a kindergarten) is the most sensitive element of a US-set shooter: it never appears in marketing, and the policy decides whether it stays a sector at all (Q16). **Open gap:** the public repository tracks the first map's raw extract, generated level files, scripts that hard-code the box centre and the greybox page's embedded level data (system 6.1 lists them), and they are already on the public remote (A50, A60) | Owner: the producer. **No further push** until those files are untracked or rewritten; a decision on purging history (a history rewrite and force-push, the repository owner's call, covering the data files and this document's earlier revisions) recorded by 2026-11-26; the new box set from landmarks and a coarse grid. Policy written before the Vertical Slice; reviewed against the first map's sectors |
 | R6 | **Market saturation of zombie co-op** | High / Medium | Show the hook in 10 seconds of trailer: a real town's street sign, a squad taking a park, a house front coming down. Local-press angle; public matchmaking and solo for players without a group | Wishlist and playtest-signup tests on the Vertical Slice trailer |
 | R7 | **Scope: five hard systems for a small team; every timeline rests on an unconfirmed team of 5 (Q2)** | High / High | Front-load the risky systems; fallbacks defined; the MVP plan schedules every required item in named blocks with one owner each, staged verdicts, a playtest-and-fix block, a 20% buffer and a cut list with its real saving (A43, A46), plus contracted placeholder audio and animation for everything the MVP measures (A47); every tier after the MVP carries a 15–20% buffer, and First Map Complete a release-hardening block (A48). If the team is one or two people: TD-FEASIBILITY becomes HIGH RISK and PR-SCOPE UNREALISTIC, and the plan re-cuts to the **Slice Early Access** tier (Scope Tiers, A49: about 36–43 months for two people; not a realistic plan solo) | Q2 answered before the prototypes start; MVP lands in about 15–16 months |
-| R8 | **Projectile ballistics over the network.** Rejected hits feel like lag; validating travel-time shots against moving zombies on a listen server costs CPU | Medium / High | Client-simulated projectiles with server validation against a per-client rewind window (ping plus interpolation delay, capped at about 400–500 ms; A28); a stale-panel rule (netcode table); PvE tolerance; hybrid fallback (hitscan inside about 50 m) | Netcode spike: 95% or more of client hit claims accepted at 100 ms simulated latency and 90% or more at 200 ms; fire-event traffic under 2 KB/s per client |
+| R8 | **Projectile ballistics over the network.** Rejected hits feel like lag; validating travel-time shots against moving zombies on a listen server costs CPU | Medium / High | Client-simulated projectiles with server validation against a per-client rewind window (ping plus interpolation delay, capped at about 400–500 ms; A28); a stale-panel rule (netcode table); PvE tolerance; fallback: relaxed validation of close-range claims, with projectiles kept everywhere (A56) | Netcode spike: 95% or more of client hit claims accepted at 100 ms simulated latency and 90% or more at 200 ms; fire-event traffic under 2 KB/s per client |
 | R9 | **Scope added by revision 2**: four roles, gadgets, squad spawn, ping, resupply, ballistics, sectors, realism | High / High | Minimal gadget versions at MVP; sectors reuse the spawn director; passives, second gadgets, penetration and throwables move to the Vertical Slice; the timeline grows honestly (A43, A46, A47) | MVP in about 15–16 months with all four roles playable |
 | R10 | **Grounded-realism cost and performance.** Realistic houses repeat across 745 buildings and can look uncanny; Lumen, Nanite and many motivated night lights (MegaLights needs ray-tracing support) run on a host that also simulates | High / Medium | Modular kits with regional-style variation and the neighbour variation rule (Visual Identity Anchor, principle 2); hip and compound roofs before the art pass; scalability tiers including Lumen Lite (Beta); a non-ray-traced lighting path, a cap on shadow-casting lights per sector, and a minimum GPU set before the realism art pass; host budgets set in the spike. The realism pass starts where the risk is: **one residential block and the 167th Street corridor, at dusk**; the whole first map follows in the First Map Complete tier (A46) | Vertical Slice A: that block and the 167th Street corridor art-passed, at dusk, at 60 fps on the target mid-range host (GPU target set by `/setup-engine`). First Map Complete: the whole first map at the same bar across the full night curve |
 | R11 | **Map scale vs four players.** A 1.2 km map can feel empty, with dead time spent travelling | Medium / Medium | The frontline concentrates the fight; squad spawn and sector spawn; sectors 150–400 m apart; the linear sector-chain fallback | MVP telemetry: under 15% of match time spent travelling out of combat |
-| R12 | **Proximity to the squad-shooter reference.** "Feels like X" must never become "copies X" | Low / High | Own role names, no mode names, no UI look, no branding; reference named only in Inspiration and References; an IP checklist before any public material that **includes HUD iconography** (role icons, ping and spot markers: Holdout's survey tick replaces a diamond over spotted enemies, A45) | IP checklist passed before the first trailer |
+| R12 | **Proximity to the squad-shooter reference.** "Feels like X" must never become "copies X" | Low / High | Own role and gadget names, no mode names, no UI look, no branding; reference named only in Inspiration and References; an IP checklist before any public material that covers **names** (roles, gadgets, zombie types, sectors and modes; the second gadgets were renamed for this, A58) and **HUD iconography** (role icons, ping and spot markers: Holdout's survey tick replaces a diamond over spotted enemies, A45) | IP checklist passed before the first trailer |
 
 ### Design Risks
 - Fortification could become a dominant "turtle" strategy that breaks Pillar 1. Mitigation: Breachers, Detonators and
@@ -1144,8 +1377,18 @@ documented in `docs/engine-reference/unreal/`; the validation scheme above is ou
 - Squads may still park one player out of the fight as a safe spawn point, which pulls against Pillar 4's hand-offs.
   Mitigation: A39 (pressure delays and offsets the spawn, never blocks it); the MVP playtest watches for it.
 - Sectors narrowed from the user's wording (CD-PILLARS round 1): U6 says sectors are real intersections, blocks and
-  parks, but revision 2 made all blocks connective. Mitigation: block sectors are now allowed (system 1, 6.1); how
-  many the first map gets is Q17 for the user.
+  parks, but revision 2 made all blocks connective. Mitigation: the first map now proposes two intersection and two
+  block sectors, and the MVP slice holds an intersection, a block, a park and open grounds (6.1, A54); Q17 lets the
+  user change the block count.
+- The horde might only ever push the line through Overrun, which would make the frontline the squad's alone
+  (U6 asks for a frontline the horde pushes against). Mitigation: counter-push target selection is in the MVP (system
+  1, A54); the MVP criterion that half of sessions lose a sector measures it.
+- Vault, mantle and slide could let the squad outrun or out-climb the horde and trivialise yards. Mitigation: the
+  horde crosses the same fences through nav links (system 11); mantles are slow and holster the weapon; slides cost
+  stamina that melee needs.
+- Controller-only aim (U11) could make 300 m projectile shots feel unfair on a stick. Mitigation: aim assist that
+  slows and follows but never leads or compensates for drop; recoil and velocities tuned for sticks; the MVP measures
+  gun feel and drop compensation on a gamepad.
 - The night curve could still hide too much at long range (AD-CONCEPT-VISUAL round 1). Mitigation: the curve is
   stretched (night arrives around rounds 15–20) with motivated light sources and per-band readability minimums
   (Visual Identity Anchor, principle 4). The MVP adds a greybox time-of-day curve, blockout role-kit packs and
@@ -1155,8 +1398,9 @@ documented in `docs/engine-reference/unreal/`; the validation scheme above is ou
   of light at held sectors in a cool, failing suburb). Mitigation: squad light is steady, mounted and coned; fire
   flickers, runs red-orange and comes with smoke; houses are dark (A45). The art bible verifies it at night.
 - A subdivision name could reach player-facing text through OSM labels (U10). Mitigation: no map name, sector label
-  or slice name uses a subdivision's name; the wooded park is labelled "Creek Woods"; the pipeline's label filters
-  (A29) never promote a subdivision name to a label.
+  or slice name uses a subdivision's name; the wooded park is labelled "Creek Woods" (the one logged exception to real
+  park names, A55, Q21); the tactical map draws only street names and sector labels, and the pipeline's label filters
+  (A29) never promote a subdivision, place or institution name to a label.
 
 ### Technical Risks
 - R1, R2 and R8 above. All are budget problems on a **listen-server host**, which must also render (R10) and keep
@@ -1221,9 +1465,17 @@ documented in `docs/engine-reference/unreal/`; the validation scheme above is ou
   the outsourcing placeholder is raised to USD 0.6–1.0 million (Scope Tiers); an automated soak-test harness is an MVP
   block (tools/tech engineer, month 9) and grows at Vertical Slice A; QA for release hardening is outsourced (A48);
   the designer-producer owns audio, animation and UI outsourcing. Revisit when Q2 is answered.
-- **The month-3 fallbacks touch user directions.** The destruction fallback weakens U9 (synced building destruction)
-  and the ballistics fallback weakens U4. They are pre-authorised only by the facilitator, so Q20 asks the user to
-  authorise both before month 3, so the decision is not made under pressure.
+- **The month-3 fallbacks were redesigned to keep the user's directions** (A56, A57). The ballistics fallback now
+  relaxes close-range hit validation and keeps projectiles everywhere (U4 holds). The destruction fallback keeps
+  synced, panelized destruction on the buildings that carry the fight (U9 holds, on fewer walls). Only the floor below
+  it (doors, windows and barricades) would drop part of U9, and it applies only if the user authorises it. Q20 asks the
+  user about all three before month 3, so the decision is not made under pressure.
+- **Movement and controller input add work** (A52, U11): predicted vault, mantle, slide and prone, the aim-assist
+  layer, horde climb links, and third-person player locomotion in the placeholder animation block. They are folded
+  into production gunplay's spike-independent month and the A47 block; PR-SCOPE must re-check whether that costs about
+  a month of buffer.
+- **Controller-only on PC** (U11) narrows the PC shooter audience that expects mouse aim. The store page says so
+  plainly; the MVP's gun-feel criteria are measured on a gamepad.
 - Each ~1.2 km map needs interiors for its enterable buildings, a gameplay-layer polish pass, a realism art pass, and
   QA across combinations of destruction and sector states.
 - QA of networked destruction and sectors: the state space is combinatorial, so automated soak tests are needed.
@@ -1248,17 +1500,18 @@ documented in `docs/engine-reference/unreal/`; the validation scheme above is ou
 | Q7 | Is the hook really novel? (No web research was possible in revision 1.) | Competitive research (`/competitive-brief` or manual) before marketing copy |
 | Q8 | "Your Street": post-1.0 feature, or never? Is runtime generation (shipping the pipeline in the game) worth the cost? | Decide at Alpha, using the pipeline-genericity KPI and the sensitive-site policy |
 | Q9 | Early Access or a straight 1.0 launch? | Producer decision at the Vertical Slice, using wishlist data |
-| Q10 | How is melee direction chosen: mouse-motion direction or a modifier key? | Feel prototype A/B test |
+| Q10 | How is melee direction chosen on the gamepad (U11): the right stick's motion at the moment of the swing, or a held modifier? | Feel prototype A/B test |
 | Q11 | Vehicles: the squad-shooter reference has them, the user's direction did not mention them, and A33 excludes them at 1.0. Does the user want any? | User decision; if yes, re-run PR-SCOPE (large scope) |
 | Q12 | Is a ~1.2 km map right for four players, or should the playable area shrink? | MVP telemetry on travel time (R11) |
-| Q13 | Real-world muzzle velocities, or scaled so drop reads inside about 400 m? | Feel prototype A/B test |
-| Q14 | Role limits: are duplicates fine (A35), or should a squad be capped at two of a role? | MVP playtests |
+| Q13 | Real-world muzzle velocities are the default (A56). Does drop read inside about 400 m at real velocities, or does the global scale factor (0.6–1.0, which only ever adds drop and travel time) apply, and at what value? | Feel prototype A/B test on a gamepad |
+| Q14 | Role limits: are duplicates fine (A35), or should a squad be capped at two of a role? (The squad-gap kit no longer depends on the answer, A53.) | MVP playtests |
 | Q15 | Penetration through wood-frame walls: does "cover from sight but not from fire" read clearly against a horde? | Vertical Slice spike |
-| Q16 | In-game labels for the school and the cemetery: generic (A29) or their real names? Should the school stay a sector at all (R5)? | User confirms or overrules A29 **before the month 1–3 engine bake starts**, because the School Grounds is one of the MVP slice's three sectors. If the school does not stay a sector, it is sealed and generic, and the slice's north push sector becomes a residential-block sector north of 167th Street (Q17) (A51) |
-| Q17 | U6 names intersections, blocks and parks as sectors. Revision 2.1 allows block sectors but proposes none yet. How many residential-block sectors should the first map have (none, one on each side of 167th Street, or more)? | User decision, then the level GDD places them |
-| Q18 | Is A44's placement right: home sector on the 167th Street spine, capture zone at the Anne Marie Avenue / Patricia Avenue junctions; the wooded park labelled "Creek Woods" and kept as the MVP's south push sector; the MVP built on the ~600 m middle slice? Alternatives: home at the Ridgeland Avenue crossing with a ~700 m slice (more bake and nav work); or an MVP without the woods (home, School Grounds and the Cemetery or a block sector, Q17), which tests melee only in houses and yards | User confirms or overrules A44 **before the month 1–3 engine bake starts** |
+| Q16 | In-game labels for the school and the cemetery: generic (A29) or their real names? Should the school stay a sector at all (R5)? | User confirms or overrules A29 **before the month 1–3 engine bake starts**, because the School Grounds is one of the MVP slice's three sectors. If the school does not stay a sector, it is sealed and generic, and the slice's north push sector becomes the Patricia Avenue block sector north of 167th Street (A51, A54) |
+| Q17 | U6 names intersections, blocks and parks as sectors. Revision 2.4 proposes two block sectors (A54): Andres Avenue south of 167th Street, in the MVP slice, and Patricia Avenue to the north on the full map. Keep two, use none, or add more? | User decision **before the month 1–3 engine bake** (the Andres Avenue block is in the slice); then the level GDD places them |
+| Q18 | Is A44's placement right: home sector on the 167th Street spine, capture zone at the Anne Marie Avenue / Patricia Avenue junctions; the wooded park kept as the MVP's south push sector, with the Andres Avenue block between them (A54); the MVP built on the ~600 m middle slice? (The park's label is Q21.) Alternatives: home at the Ridgeland Avenue crossing with a ~700 m slice (more bake and nav work); or an MVP without the woods (home, School Grounds and the Cemetery or a block sector, Q17), which tests melee only in houses and yards | User confirms or overrules A44 **before the month 1–3 engine bake starts** |
 | Q19 | The night curve was carried over by the facilitator (A15, A34) and stretched in A41 (dusk at round 10, night around rounds 15–20). Keep it, stretch it further, or make it a cycle with dawn toward each evac window? | User decision; the art bible then sets the light plan |
-| Q20 | Do you authorise the two month-3 fallbacks in advance? **Destruction:** doors, windows, barricades and scripted set-piece collapses instead of panelized walls (weakens U9's synced building destruction). **Ballistics:** hitscan inside about 50 m, projectiles beyond (weakens U4). Today only the facilitator has pre-authorised them (PR-SCOPE round 2) | User decision **before month 3**, so the call is not made under pressure; if refused, the spike's failure means more time, not a fallback |
+| Q20 | Do you authorise the month-3 fallbacks in advance (A56, A57)? **Ballistics:** inside about 50 m the server accepts hit claims after a plausibility check instead of re-simulating them; projectiles, drop and travel time stay everywhere (U4 holds; only anti-cheat is looser, in co-op PvE). **Destruction:** synced, panelized walls only on the buildings that carry the fight, the other sealed houses keeping breachable doors, windows and garage doors (U9 holds on fewer walls). **Destruction floor:** doors, windows, barricades and scripted set-piece collapses, used only if the first destruction fallback also fails (weakens U9). Today only the facilitator has pre-authorised the first two | User decision **before month 3**, so the call is not made under pressure; if refused, the spike's failure means more time, not a fallback |
+| Q21 | The wooded park's OSM name contains "Lancaster". Should its sector label be its real name (Pillar 2, A29) or "Creek Woods" (A55, the safest reading of U10)? | User decision **before the month 1–3 engine bake**, since Creek Woods is an MVP sector. Until then it is "Creek Woods" |
 
 ### Assumptions and Decisions Log
 
@@ -1269,15 +1522,16 @@ documented in `docs/engine-reference/unreal/`; the validation scheme above is ou
 | ID | Decision (user's direction) | What it changed in this document |
 | ---- | ---- | ---- |
 | U1 | **Feel like Battlefield in its mechanics** (the user's words). Mechanics and feel only: no names, characters, art, maps, branding, class names or UI look copied. Player-facing text never names the reference; this document names it only in Inspiration and References and in this decision record | Pitch, fantasy, MDA, loops, Pillars 3 and 4, Inspiration and References, risk R12 |
-| U2 | **Role-based soldiers, about four roles, each with signature gadgets** (revive kit, resupply crate, repair/reinforce tool, breach charge, sensor). Must work for 4-player co-op and for fewer players | System 2 (roles and gadgets, squad-gap kit), A22–A24, A35 |
+| U2 | **Role-based soldiers, about four roles, each with signature gadgets** (revive kit, resupply crate, repair/reinforce tool, breach charge, sensor). Must work for 4-player co-op and for fewer players | System 2 (roles and gadgets, squad-gap kit), A22–A24, A35, A53, A58 |
 | U3 | **Squad play:** revive downed teammates, spawn on squadmates, ping and spot enemies and points of interest, resupply ammo | System 3, A25 |
-| U4 | **Realistic ballistics:** projectile bullets with drop and travel time, weighty recoil, attachments with real trade-offs (handling, stability, velocity) | System 7, Pillar 3, A27, A28, R8 |
+| U4 | **Realistic ballistics:** projectile bullets with drop and travel time, weighty recoil, attachments with real trade-offs (handling, stability, velocity) | System 7, Pillar 3, A27, A28, A56, R8 |
 | U5 | **Player count: 4-player online co-op** (kept; not a large-scale headcount) | Core Identity, anti-pillars, system 10 |
-| U6 | **Match structure: round-based waves plus objectives:** capture-and-hold sectors of the real neighborhood, a frontline the horde pushes against; sectors are real intersections, blocks and parks | System 1, Core Loop, A26 |
+| U6 | **Match structure: round-based waves plus objectives:** capture-and-hold sectors of the real neighborhood, a frontline the horde pushes against; sectors are real intersections, blocks and parks | System 1, Core Loop, A26, A54 |
 | U7 | **Visual tone: grounded realism** (realistic lighting, dust, smoke, heavy weapon audio; the real suburb looking real; UE 5.8 Lumen and Nanite). Reconcile with the existing anchor | Visual Identity Anchor ("Ground Truth"), A34, R10 |
 | U8 | **First map: "Tinley Park, IL (60477)"**, a ~1.2 km × 1.2 km area of suburban Tinley Park, Illinois, spanning both sides of 167th Street. The map is named after neither OSM subdivision (the user corrected an earlier draft that used a subdivision name). Data from the OpenStreetMap main API; ODbL attribution required | System 6.1, Q1 resolved, A30 |
-| U9 | **Everything from the original concept stays:** guns with attachments; melee with swing, block, parry and stamina; building destruction synced online; zombie hordes in escalating rounds; maps from real-world OSM data; UE 5.8; PC on Steam | Systems 5, 7, 8, 9; Technical Considerations |
-| U10 | **The map is not named, labelled or centred after any "Lancaster" subdivision** (the user's correction, 2026-11-19) | System 6.1 (no map name, sector label or slice name uses "Lancaster"; the wooded park labelled "Creek Woods"; the box and the map name verified locally against the extract), A38, A44, Q18 |
+| U9 | **Everything from the original concept stays:** guns with attachments; melee with swing, block, parry and stamina; building destruction synced online; zombie hordes in escalating rounds; maps from real-world OSM data; UE 5.8; PC on Steam | Systems 5, 7, 8, 9; Technical Considerations; the month-3 fallbacks (A56, A57) |
+| U10 | **The map is not named, labelled or centred after any "Lancaster" subdivision** (the user's correction, 2026-11-19) | System 6.1 (no map name, sector label or slice name uses "Lancaster"; the wooded park labelled "Creek Woods" as a logged exception to real park names; the box and the map name verified locally against the extract), A38, A44, A55, Q18, Q21 |
+| U11 | **Controller-only input** (recorded as the user's decision on 2026-11-19 in `.claude/docs/technical-preferences.md` and `project.yaml`; carried into this document in revision 2.4): players use an Xbox-layout gamepad, playtested on an Xbox Elite Series 2; keyboard and mouse is a developer fallback, never a supported way to play; aim assist, stick deadzones, a response curve, and recoil, ballistics, zombie speeds and parry windows tuned for sticks are core systems | Core Identity, Target Player Profile, systems 3, 7, 8 and 11, Q10, Q13, MVP item 12, the NOT-in-MVP list, Full Vision |
 
 #### Facilitator assumptions
 
@@ -1308,20 +1562,20 @@ force).*
 | A19 | Weapons are sold at caches placed by real shop **types**; the only randomness is supply drops | Random loot rarity | Map knowledge matters (Pillar 2) | Weapon-acquisition GDD | **Revised** by A37 |
 | A20 | Friendly fire off by default | On | Co-op accessibility; fewer grief vectors | A hardcore option later | Active; covers bullets and the Sapper's charges |
 | A21 | Dead players return next round with a sidearm and keep their salvage | Permadeath for the match | Keeps friends in the session (Pillar 4) | Fail-state tuning | **Superseded** by A25 |
-| A22 | (2026-11-19) Four roles with Holdout's own names: **Corpsman** (revive kit, med pouch), **Quartermaster** (ammo crate, ammo pouch), **Sapper** (reinforce tool, breach charge, collapse charge), **Spotter** (sensor, spotting scope) | Five roles with a separate assault role; the reference's class names; classless gadget picks | Four roles for four players; every U2 gadget has a home; the Sapper embodies Pillar 1 | Role GDD, gadget content, animation list | Active |
+| A22 | (2026-11-19) Four roles with Holdout's own names: **Corpsman** (revive kit, dressing pack), **Quartermaster** (resupply crate, bandolier), **Sapper** (reinforce tool, breach charge, collapse charge), **Spotter** (sensor, survey glass) | Five roles with a separate assault role; the reference's class names; classless gadget picks | Four roles for four players; every U2 gadget has a home; the Sapper embodies Pillar 1 | Role GDD, gadget content, animation list | Active; gadget names revised by A58 (were ammo crate, med pouch, ammo pouch, spotting scope) |
 | A23 | (2026-11-19) Weapons are open to every role; roles are defined by gadgets and (from the Vertical Slice) one passive | Role-locked weapon families | Keeps weapon content unsplit and melee independent of role | Weapon and role GDDs | Active |
 | A24 | (2026-11-19) Fewer than four players: universal slow fallbacks plus the **squad-gap kit** (unfilled roles' gadgets in light versions); solo kit at the Vertical Slice; **no AI squadmates** | AI bots; free role switching at any time | Satisfies U2's "fewer players" without AI-teammate scope; keeps hand-offs human | Party-size scaling, AI scope | Active |
 | A25 | (2026-11-19) Death → redeploy on a squadmate (10 s) or a held sector (15–30 s); keep weapons and attachments; lose 10% of salvage; wipe = everyone downed or dead at once | Return at next round start (A21); permadeath | U3 asks for squad spawn; avoids dead time in long rounds | Fail-state and round GDDs | Active; the squad-spawn eligibility rule is revised by A39 |
-| A26 | (2026-11-19) Sector model: 6 sectors on the first map at real landmarks plus connective blocks; the squad starts holding one home sector, the rest start horde-held; each intermission chooses Push or Dig In; evac needs a held landing-zone sector; losing the last sector ends the match | Zones bought with salvage; a fixed attack-defend sequence; all sectors neutral at the start | Turns U6 into a loop with choices and a moving frontline | Round, objective and level GDDs | Active; home sector set by A38; block sectors now allowed (Q17) |
-| A27 | (2026-11-19) Ballistics: projectiles with gravity drop and travel time; no drag or wind at MVP; velocities may be scaled (Q13); penetration by material class, prone and mounting at the Vertical Slice | Hitscan with falloff; full external ballistics | Meets U4 while staying grounded rather than mil-sim | Gunplay GDD, netcode ADR | Active |
-| A28 | (2026-11-19) Projectile netcode: shooter-client simulation, server-validated hit claims against a zombie position history, cosmetic fire events for other clients; hybrid hitscan inside ~50 m as the fallback | Server-simulated replicated projectile actors; full client trust | Responsive in co-op PvE at a bandwidth an indie can afford | ADR; R8 | **Revised** (TD-FEASIBILITY round 1): the fixed ~250 ms window becomes a per-client window (ping plus interpolation delay, capped at about 400–500 ms), tested at 150–200 ms; stale-panel rule added (A42) |
-| A29 | (2026-11-19) Real names: show the town name, OSM street names and public park, creek and trail names; never house numbers, addresses, residents, brands or municipal insignia; houses realistic but generic; sensitive sites generic with generic labels; no zombies from graves; no child zombies | Strip all names (A8); show every name including institutions | Resolves "You Know This Place" against "names stripped": recognition comes from streets and parks, never from homes or institutions | Pipeline label filters, art direction, R5, Q16 | Active |
+| A26 | (2026-11-19) Sector model: 6 sectors on the first map at real landmarks plus connective blocks; the squad starts holding one home sector, the rest start horde-held; each intermission chooses Push or Dig In; evac needs a held landing-zone sector; losing the last sector ends the match | Zones bought with salvage; a fixed attack-defend sequence; all sectors neutral at the start | Turns U6 into a loop with choices and a moving frontline | Round, objective and level GDDs | Active; home sector set by A38; sector proposal (two intersection and two block sectors, one block in the MVP) and MVP counter-push targeting by A54 (Q17) |
+| A27 | (2026-11-19) Ballistics: projectiles with gravity drop and travel time; no drag or wind at MVP; velocities may be scaled (Q13); penetration by material class, prone and mounting at the Vertical Slice | Hitscan with falloff; full external ballistics | Meets U4 while staying grounded rather than mil-sim | Gunplay GDD, netcode ADR | Active; **revised** by A56 (drag from the MVP; real-world velocities by default with bounded scaling; prone moved to the MVP by A52) |
+| A28 | (2026-11-19) Projectile netcode: shooter-client simulation, server-validated hit claims against a zombie position history, cosmetic fire events for other clients; hybrid hitscan inside ~50 m as the fallback | Server-simulated replicated projectile actors; full client trust | Responsive in co-op PvE at a bandwidth an indie can afford | ADR; R8 | **Revised** (TD-FEASIBILITY round 1): the fixed ~250 ms window becomes a per-client window (ping plus interpolation delay, capped at about 400–500 ms), tested at 150–200 ms; stale-panel rule added (A42). **Revised** by A56: the hitscan fallback is replaced by relaxed close-range validation with projectiles kept everywhere |
+| A29 | (2026-11-19) Real names: show the town name, OSM street names and public park, creek and trail names; never house numbers, addresses, residents, brands or municipal insignia; houses realistic but generic; sensitive sites generic with generic labels; no zombies from graves; no child zombies | Strip all names (A8); show every name including institutions | Resolves "You Know This Place" against "names stripped": recognition comes from streets and parks, never from homes or institutions | Pipeline label filters, art direction, R5, Q16 | Active; one label exception logged by A55 (a park named after a subdivision takes a creek or woods label; Q21); tactical-map text limited to street names and sector labels |
 | A30 | (2026-11-19) The whole ~1.2 km extract is the map; the fight concentrates at the frontline; 40–60 enterable buildings per map (MVP 6–8), the rest sealed with breachable shells; fences, hedges and yard trees set-dressed by rule | Cut a 300–500 m holdout zone (A7); make every house enterable | Honours U8's area at an affordable interior cost | Level GDD, art volume, R11 | **Revised** by A43: **20–30** enterable buildings per map, near-rectangular footprints only, until the interior generator is proven on the second city |
 | A31 | (2026-11-19) MVP re-scoped to ~6 months: keeps four roles with five gadgets, squad play, projectile ballistics and sectors on a three-sector slice; moves passives, second gadgets, throwables, penetration, the other three attachment slots (magazine, underbarrel/grip, stock), solo, evac and the full map to later tiers | Keep the 4-month MVP and defer roles or ballistics | Roles, squad play and ballistics are the new hypothesis, so they cannot be deferred; honest timeline instead | MVP contents, R7, R9 | **Superseded** in part: the deferrals still hold; the ~6-month length is replaced by A43, A46 and A47 (now about 15–16 months) and the slice by A38 and A44 |
 | A32 | (2026-11-19) Full Vision 36–42 months with a team of 5; **4 launch maps** (was 5–6) at ~1.2 km² each | Keep 5–6 maps and accept 45+ months | Each map is about four to ten times the previous playable area and art-passed for realism | Content volume; re-run PR-SCOPE | **Revised** by A43: **3 launch maps** plus a fourth after launch; timeline now about 52–56 months (A46, A48) |
 | A33 | (2026-11-19) No vehicles at 1.0 | Vehicles as part of the squad-shooter feel | Not in the user's direction; very large scope | If wanted: large scope, re-run PR-SCOPE (Q11) | Active |
 | A34 | (2026-11-19) Visual Identity Anchor **"Ground Truth"** (from U7): keeps Survey Grade's cartographic map and HUD and the failing-light rule; drops the simplified massing look and the "grid, broken" and "organic means enemy" principles | Keep Survey Grade with realistic lighting only | Those principles fight realism; the kept parts support it | The `/art-bible` starting point | Active; extended by A41 (shape language, colour layers) |
-| A35 | (2026-11-19) Duplicate roles allowed at MVP | A cap of two per role; one of each role | Friends should not be locked out of a role; playtests decide | Role GDD (Q14) | Active |
+| A35 | (2026-11-19) Duplicate roles allowed at MVP | A cap of two per role; one of each role | Friends should not be locked out of a role; playtests decide | Role GDD (Q14) | Active; the squad-gap kit now counts missing people, not unpicked roles, so duplicates are well defined (A53) |
 | A36 | (2026-11-19) Pillars revised for revision 2: P1 extended to territory; P3 becomes **Weight at Every Range** (ballistics and melee); P4 becomes **Four Roles, One Line** | Keep "Steel Answers What Lead Can't" and "Four Hands on the Door" | The old P3 and P4 did not cover ballistics or roles | Pillar wording; CD-PILLARS re-run | Active |
 | A37 | (2026-11-19) Caches: sector armories and workbenches at held sectors, garage caches across the map; real shop-type caches remain the rule on maps that have shops | Generic caches placed anywhere by rule | The first extract has no shop tags; armories make territory matter | Economy and level GDDs | Active |
 | A38 | (2026-11-19, from U10) **Home sector: 167th Street**, capture zone and enterable anchor houses at the Ridgeland Avenue crossing. The wooded park's sector is labelled **"Creek Woods"** (after Tinley Creek). The **MVP slice is the middle slice**, about 600 m wide, from Creek Woods north across 167th Street to the School Grounds. Lewis Park Fields is the first add-back after the re-extraction | Keep the woods as home under a new label; make the School Grounds home (rejected: the most sensitive site, R5); keep the south-west slice | U10: neither a label nor the first playable is named or centred after the park that carries a "Lancaster" name, so the woods are relabelled and are not home; a home on the 167th Street spine tests ballistics and melee from round 1; the slice no longer depends on Lewis Park, half of which is outside the box | Level GDD, onboarding (round 0 at a crossing, not in the woods), MVP item 9 (Q18) | **Revised** by A44: the home crossing moves from Ridgeland Avenue to the Anne Marie Avenue / Patricia Avenue junctions so the 600 m slice holds all three sectors |
@@ -1333,11 +1587,20 @@ force).*
 | A44 | (2026-11-19, PR-SCOPE round 2) **Home sector on the 167th Street spine**, capture zone and enterable anchor houses at the **Anne Marie Avenue / Patricia Avenue junctions** (a staggered crossing). The **MVP slice** stays about 600 m wide (wooded park's west edge to the cemetery's west edge) and about 1 km long, with Creek Woods (S) and School Grounds (N) as push sectors. The Cemetery becomes the slice's natural first add-back on the east; Lewis Park Fields waits for the re-extraction | Keep Ridgeland Avenue and widen the slice to ~700 m; Beverly Avenue; drop the woods from the MVP | Design terms only: 167th Street is the frontline spine; this crossing fits the ~600 m slice with Creek Woods and the School Grounds with no extra bake, nav or interior work, which Ridgeland (about 225 m from the west edge) cannot; a home on the spine tests ballistics and melee from round 1; the woods stay because they are U8's close-quarters landmark and keep melee tested | Level GDD, MVP item 9, onboarding, the engine bake block (Q18) | Active |
 | A45 | (2026-11-19, AD-CONCEPT-VISUAL round 2) **Visual anchor refinements:** squad light carries a non-hue cue (steady, mounted, coned; optionally low-pressure-sodium monochrome); fire flickers red-orange with smoke; houses are dark; the 4,000 K streetlights are a rendering rule; the spotted-zombie marker is a cartographic **survey tick**, never a diamond, and HUD iconography joins R12's IP checklist; far-tier zombies play one looping signature gait per type locally; each type's silhouette test runs under the light of the round it first appears in; the "plumb vs askew" test separates touched from untouched, with ownership shown by the infrastructure marker; yellow and amber separated by value; the "Sodium Hour" cross-reference fixed (principle 4); emergency broadcasts kept as audio and pacing only; a greybox time-of-day curve, blockout role kits and blockout zombie proportions added to the MVP | Leave these to the art bible | Each is cheap now and protects the anchor's signature image or keeps clear of the reference's best-known HUD cue | The `/art-bible` starting point, horde GDD, HUD spec, MVP items 2, 8, 9 | Active |
 | A46 | (2026-11-19, PR-SCOPE round 2) **Scope re-cut 2:** the MVP build plan adds named, owned blocks for production gunplay, production destruction, the round system and spawn director, horde AI with the far tier, networked melee and parry, pre-production documents, the greybox visual base and a soak-test harness, with lanes de-conflicted per person: about **14–15 months** (12 scheduled plus a 20% buffer; 15–16 after A47); the cut list states its real saving (about 4–6 weeks). A new **First Map Complete** tier (about month 29–30; moved to about month 35–36 by A48) is the shippable fallback and Early Access candidate: the whole first map at the realism bar, the heavy weapon audio pass, final animation for the shipped content, solo kit and public matchmaking, and a minimum content floor. Vertical Slice A is lightened (penetration and counter-push rounds move to B). 1.0 about **44–48 months** (52–56 after A48); outsourcing placeholder raised to USD 0.6–1.0 million (0.7–1.2 after A47 and A48); the funding horizon is tied to First Map Complete; a small animation test set for the feel prototype | Keep 10–11 months and cut content; make Vertical Slice A the fallback as defined | The round-2 producer showed the old plan left four required items unscheduled and named a fallback that could not ship; every user direction survives | Scope Tiers, MVP, Core Identity, R4, R7, R9, R10, Scope Risks | **Revised** after PR-SCOPE round 3 by A47 (MVP placeholder audio and animation) and A48 (post-MVP buffer and release hardening); provisional until Q2 |
-| A47 | (2026-11-19, PR-SCOPE round 3 blocking 2; `/design-review`) **MVP placeholder audio and animation:** a contracted, owned and budgeted block (about USD 50–100k from the outsourcing line) extending the month-1 test set: weapon, melee, gadget, revive and positional horde audio, plus first-person animation for 4 guns, 2 melee weapons, 5 gadgets and revive, and locomotion, telegraphs and hit reactions for 3 zombie types. Integrating it adds a month: the MVP is about **15–16 months** (13 scheduled plus a 20% buffer); the cut-list floor is about 14–15 months | Reword the success criteria to exclude feel; accept greybox animation for the playtest | The success criteria measure gun feel, melee viability and silhouette and gait reads, which greybox cannot carry, and the team has no animator or audio designer (A14); keeps U4 and U9 testable | MVP build plan, R4, R7, R9, Scope Risks, funding placeholder | Active; provisional until Q2 |
+| A47 | (2026-11-19, PR-SCOPE round 3 blocking 2; `/design-review`) **MVP placeholder audio and animation:** a contracted, owned and budgeted block (about USD 50–100k from the outsourcing line) extending the month-1 test set: weapon, melee, gadget, revive and positional horde audio, plus first-person animation for 4 guns, 2 melee weapons, 5 gadgets and revive, and locomotion, telegraphs and hit reactions for 3 zombie types. Integrating it adds a month: the MVP is about **15–16 months** (13 scheduled plus a 20% buffer); the cut-list floor is about 14–15 months | Reword the success criteria to exclude feel; accept greybox animation for the playtest | The success criteria measure gun feel, melee viability and silhouette and gait reads, which greybox cannot carry, and the team has no animator or audio designer (A14); keeps U4 and U9 testable | MVP build plan, R4, R7, R9, Scope Risks, funding placeholder | Active; provisional until Q2; extended by A52 (third-person player locomotion, traversal and the zombies' shared fence climb) |
 | A48 | (2026-11-19, PR-SCOPE round 3 blocking 3; `/design-review`) **Post-MVP buffer and release hardening:** every tier after the MVP carries its own buffer (16–19% overall, not pre-allocated), and First Map Complete gains a 2-month release-hardening block (outsourced QA, performance and minimum spec on a listen-server host, onboarding, options and settings, crash reporting, store and Early Access preparation, age rating per Q6). Vertical Slice A about month 22–23, Vertical Slice B about 28–29, **First Map Complete about 35–36**, Alpha about 42–43, **1.0 about 52–56**. Outsourcing placeholder USD 0.7–1.2 million; funding to First Map Complete roughly USD 1.8–2.6 million | Restate First Map Complete at about 33–34 with a thinner buffer; drop content from First Map Complete instead | The producer showed the tiers after the MVP had no buffer and no release work while the funding horizon was pinned to them; every user direction survives | Scope Tiers, Core Identity, funding placeholder, R7, A14, A32 | Active; provisional until Q2 |
 | A49 | (2026-11-19, PR-SCOPE round 3 blocking 1 and concern 7; `/design-review`) **Slice Early Access re-cut:** the MVP's middle slice at the grounded-realism bar, with every user direction kept, defined in Scope Tiers as the plan for a team of one or two (about 36–43 months for two people; not realistic solo) and as the earliest shippable fallback for the team of 5 (about month 24–26) | Leave the re-cut undefined until Q2; make the MVP itself the Early Access product (rejected: a greybox suburb fails U7) | R7 and A14 pointed to a re-cut that did not exist, so an answer to Q2 had no plan to land on, and nothing could ship before First Map Complete | Scope Tiers, R7, A14, Q2 | Active; Q2 decides whether it is the plan or the fallback |
-| A50 | (2026-11-19, `/design-review`; PR-SCOPE round 3 concerns 2–3) **Location wording and repository hygiene:** this document records only that the box and the map name were verified locally against the extract, and states the home sector's placement in design terms only (A44). The repository-hygiene action names every tracked file that carries the box or footprints, has an owner (the producer) and is due before the next push, no later than 2026-11-26; the R5 purge decision covers the data files and this document's earlier revisions | Keep the earlier, fuller location notes | The repository is public; nothing narrower than the map's box belongs in it | System 6.1, R5, Q1, U10, Director Gate Reviews | Active; the action itself is not done yet |
+| A50 | (2026-11-19, `/design-review`; PR-SCOPE round 3 concerns 2–3) **Location wording and repository hygiene:** this document records only that the box and the map name were verified locally against the extract, and states the home sector's placement in design terms only (A44). The repository-hygiene action names every tracked file that carries the box or footprints, has an owner (the producer) and is due before the next push, no later than 2026-11-26; the R5 purge decision covers the data files and this document's earlier revisions | Keep the earlier, fuller location notes | The repository is public; nothing narrower than the map's box belongs in it | System 6.1, R5, Q1, U10, Director Gate Reviews | Active; re-dated by A60 (the data is already on the public remote); the action itself is not done yet |
 | A51 | (2026-11-19, `/design-review` recommendations; PR-SCOPE round 3 concerns 4–5) **Clarifications:** a held sector with 1–2 zombies and no squad member stays Held ("infiltrated"); the squad-gap and solo kits carry the Sapper's reinforce tool, never the breach charge; the MVP tests the Spotter's close-range early warning, not its long-range fantasy; Q16 is due before the engine bake, with a block sector as the north replacement; the first evac window is about 25–35 min; 9 gadgets at 1.0; the long band is 150–400 m everywhere; the MVP slice's gameplay layer is hand-placed and the generator is a Vertical Slice A block; the tools/tech engineer's chain is the marked critical path; production gunplay's month 3 builds only what both spike outcomes need, and a PIVOT draws on the buffer first | Leave each to its system GDD | Each closes an ambiguity the review found, at no scope cost | Systems 1, 2, 6, 7; Core Identity; Content Volume; MVP build plan; Q16 | Active |
+| A52 | (2026-11-19, revision 2.4; adversarial check of U1) **Movement and locomotion at MVP** (system 11): walk, sprint, crouch, prone and crawl (sharing the downed state's crawl), jump, vault (0.5–1.1 m), mantle (1.1–2.0 m) and slide, with predicted network movement; falls cost health; contextual peek (no lean button) and weapon mounting at the Vertical Slice. The horde crosses fences through nav links with one shared climb clip per skeleton; Breachers flatten fences from the Vertical Slice. Built in production gunplay's spike-independent month; the A47 block adds third-person player locomotion and the climb clip | Prone, vault and mantle at the Vertical Slice; no traversal at all; a lean button | Movement is half of the reference feel the user asked for (U1), the rule-generated fences and hedges make yards a maze without vaulting, and the 80 m role test already needs moving squadmates | Movement GDD, the feel prototype, production gunplay, A47's block, horde nav links, the art bible's role-primitive rules | Active; PR-SCOPE re-checks the schedule cost |
+| A53 | (2026-11-19, revision 2.4) **The squad-gap kit counts missing people, not unpicked roles:** 4 − *n* light gadgets for a squad of *n*, each from an unpicked role; a full squad of four with duplicates gets none; lobby choice with a stated default order and carrier; light values set between the universal fallback and the full gadget | One gap gadget per unpicked role (a doubled-up squad of four would gain kit by doubling up); a role cap | The old table assumed one role per player and was undefined with duplicates (A35); counting people keeps the hand-off incentive (Pillar 4) | Role GDD, squad-play GDD, balance | Active |
+| A54 | (2026-11-19, revision 2.4; adversarial check of U6) **Sector proposal and MVP counter-push:** two intersection sectors (167th Street at Anne Marie / Patricia Avenue as home; Ridgeland Crossing on the full map) and two block sectors (Andres Avenue south of 167th Street, in the MVP slice; Patricia Avenue north of it, on the full map, which is also Q16's named replacement for the school), so the MVP holds an intersection, a block, a park and open grounds. Counter-push target selection and wave routing from the MVP; the Breacher pack and presentation stay in Vertical Slice B | Leave block sectors to Q17 with none proposed; keep counter-push wholly in Vertical Slice B | U6 names intersections, blocks and parks, and asks for a frontline the horde pushes against; the block splits the 400 m south push into two steps; counter-push targeting is spawn-director logic with no new content | Level GDD, round GDD, MVP items 1 and 9, Q16, Q17, Q18 | Active (Q17) |
+| A55 | (2026-11-19, revision 2.4) **Park-label exception:** a park whose OSM name repeats a subdivision's name takes a creek or woods label; on the first map, Lancaster Woods Park is "Creek Woods". Logged as the one exception to Pillar 2's and A29's real park names; Lewis Park keeps its name; the tactical map draws only street names and sector labels | Show the park's real name; strip every park name | The user rejected "Lancaster" as the map's identity (U8, U10), and a sector label on the MVP's south push sector would bring it back; the rule keeps every other park name real | System 6.1, Pillar 2, A29, the art bible's tactical map (7.8) | Active until the user answers Q21 |
+| A56 | (2026-11-19, revision 2.4; adversarial check of U4) **Ballistics decisions:** real-world muzzle velocities by default, with one bounded global factor (0.6–1.0) only if the feel prototype needs more drop (Q13); quadratic drag from the MVP (one coefficient per round class); starting recoil values per class, tuned for sticks; a sixth attachment axis, **sighting**; the month-3 ballistics fallback becomes relaxed validation of hit claims inside about 50 m, with projectiles kept everywhere, so Pillar 3 has no ballistics exception | Leave velocities, drag and the fallback open; keep hitscan inside 50 m | Each open item softened "realistic" (U4); the hitscan fallback would have removed the projectile feel where most fights happen, while the real risk is the server's validation cost | System 7, Pillar 3, R8, Q13, Q20, the netcode ADR | Active; Q20 asks the user to authorise the fallback |
+| A57 | (2026-11-19, revision 2.4; adversarial check of U9 and the art bible) **Destruction fallback and sensitive-site exception:** the month-3 destruction fallback keeps synced, panelized walls on the buildings that carry the fight (enterable buildings, sector anchors, buildings facing a capture zone; roughly a quarter of the panels), with breachable doors, windows and garage doors elsewhere; the doors-and-windows floor needs the user's authorisation (Q20). Places of worship (cosmetic chips only) and headstones are indestructible, as the art bible's AB-14 requires, logged as Pillar 1's accepted exception | Keep doors and windows only as the first fallback; panelize sensitive sites like any building | The old fallback dropped U9's building destruction outright; the art bible's sensitive-site rule contradicted system 5 with no logged exception | System 5, Pillar 1, Scope Tiers, Q20, the destruction ADR | Active |
+| A58 | (2026-11-19, revision 2.4; IP check) **Gadget names:** the second gadgets become the **dressing pack** (Corpsman), the **bandolier** (Quartermaster) and the **survey glass** (Spotter); the MVP crate takes the user's own wording, **resupply crate**; R12's IP checklist covers role, gadget, zombie, sector and mode names as well as HUD iconography | Keep the old names (generic nouns) | The old second-gadget names mirrored loadout item names in the reference series, which U1 rules out | System 2, R12, the art bible (3.5, 5.2), the asset list | Active |
+| A59 | (2026-11-19, revision 2.4) **Art-bible re-sync:** the kit's 2.75 m storey height replaces 3.2 m per level in system 6 (AB-13); the silhouette tests' viewing conditions follow AB-08 (long band through the magnified optic); the bounded horde readability light (AB-07) is acknowledged as the one non-physical readability aid; the art bible's Nanite-independent foliage baseline and lighting tiers are cited; Next Steps records the art bible as drafted | Leave the concept on revision 2.2's wording | The art bible was written on revision 2.2 and recorded these as open items for the concept owner | System 6, the Visual Identity Anchor, MVP criteria, Next Steps | Active |
+| A60 | (2026-11-19, revision 2.4) **Repository hygiene re-dated:** the tracked map data is already on the public remote, so the deadline "before the next push" has passed; no further push until the files are untracked and the scripts' centre is grid-snapped; purging history (a rewrite plus force-push) is the repository owner's decision, recorded by 2026-11-26; neutral wording only | Keep the stale deadline | The deadline no longer protected anything once the data was pushed | System 6.1, R5, Next Steps | Active; not done yet |
 
 ---
 
@@ -1348,19 +1611,20 @@ fight → resupply and revive → spend → fortify-or-breach → push-or-dig-in
 grounded gun feel and the melee both earn their place; and destruction and sector decisions matter: squads change
 their plan because of what they broke or took."*
 
-**Required for MVP** (re-scoped for revision 2, A31; scheduled in revisions 2.1 and 2.2, A43, A46):
+**Required for MVP** (re-scoped for revision 2, A31; scheduled in revisions 2.1 and 2.2, A43, A46; extended in
+revision 2.4 by A52–A54 and U11):
 1. **A round system with sectors:** escalating waves, an active cap of 24 plus a queue, intermissions with Push or Dig
-   In, three sectors with capture, contest, hold and overrun, sector spawn and supply points, and both fail states
-   (wipe, last sector lost).
-2. **Four roles and five gadgets:** Corpsman (revive kit), Quartermaster (ammo crate), Sapper (reinforce tool, breach
-   charge), Spotter (sensor), plus the squad-gap kit for 2–3 player squads. Each role wears a **blockout kit pack**
-   (Shape language) so roles can be read by silhouette.
+   In, four sectors with capture, contest, hold and overrun, sector spawn and supply points, counter-push target
+   selection and routing (system 1, A54), and both fail states (wipe, last sector lost).
+2. **Four roles and five gadgets:** Corpsman (revive kit), Quartermaster (resupply crate), Sapper (reinforce tool,
+   breach charge), Spotter (sensor), plus the squad-gap kit for 2–3 player squads, duplicates included (A53). Each
+   role wears a **blockout kit pack** (Shape language) so roles can be read by silhouette.
 3. **Squad play:** downed and bleed-out; universal slow revive and the Corpsman's fast revive; squad spawn and sector
    spawn with redeploy timers; a basic contextual ping; resupply from the crate and from held sectors.
 4. **The Salvage economy:** a sector armory (weapons and ammo), a workbench (attachments), fortify and repair, breach
    charge refills, garage caches, squad-action and sector income.
 5. **Gunplay with ballistics:** 4 guns (pistol, shotgun, assault rifle, DMR) with projectile drop, travel time and
-   weighty recoil; **3 attachment slots** (optic, muzzle, barrel) and about 9 attachments.
+   weighty recoil and drag (A56); **3 attachment slots** (optic, muzzle, barrel) and about 9 attachments.
 6. **Melee:** 2 weapons (one blunt, one heavy that can breach), directional light and heavy swings, block, parry,
    shove, shared stamina.
 7. **Panelized destruction and fortification**: server-authoritative and synced to 4 clients, with navigation
@@ -1369,14 +1633,18 @@ their plan because of what they broke or took."*
    far-zombie tier (system 9).
 9. **The middle slice of Tinley Park, IL (60477)** (A38, A44), about 600 m × 1 km, running north–south from Creek
    Woods across 167th Street to the School Grounds, baked into a UE 5.8 World
-   Partition level from the first-pass OSM pipeline: three sectors (**167th Street as home**, capture zone at the Anne
-   Marie Avenue / Patricia Avenue junctions; **Creek Woods**; **School Grounds**), 6–8 hand-fitted enterable houses,
-   the rest sealed with breachable shells, per-panel nav links, rule-generated fences and hedges. Greybox art with a
+   Partition level from the first-pass OSM pipeline: four sectors (**167th Street as home**, capture zone at the Anne
+   Marie Avenue / Patricia Avenue junctions; the **Andres Avenue** block; **Creek Woods**; **School Grounds**), 6–8
+   hand-fitted enterable houses (the capture zones' anchors), the rest sealed with breachable shells, per-panel nav
+   links, rule-generated fences and hedges in vault and mantle heights with horde climb links. Greybox art with a
    **greybox time-of-day curve** (late afternoon at round 1 to dusk at round 10); ODbL attribution in the game. The
-   level GDD may adjust the slice (Q18).
+   level GDD may adjust the slice (Q17, Q18).
 10. **4-player online co-op** over a Steam listen server, with a lobby and invites.
 11. **A minimal HUD and feedback layer**: round counter, salvage, sector status and capture progress, squad markers
-    and pings, panel damage states, parry and hit feedback.
+    and pings, panel damage states, parry and hit feedback, with Xbox-layout button prompts.
+12. **Movement and controller input** (system 11; A52, U11): walk, sprint, crouch, prone and crawl, jump, vault,
+    mantle and slide with predicted network movement; the gamepad layer (aim assist that never leads or compensates
+    for drop, stick deadzones, a response curve and sensitivity options).
 
 **MVP success criteria (playtest):**
 - Median session reaches round 10 or later.
@@ -1389,15 +1657,18 @@ their plan because of what they broke or took."*
 - *Signal, not a gate:* melee kills are 25% or more of kills in rounds 1–10. A miss triggers melee tuning (Pillar 3
   says which half yields); it does not fail the MVP.
 - At least 70% of testers rate gun feel 4 or more out of 5 for "weighty and grounded", and at least half describe
-  compensating for drop or travel time without being told.
+  compensating for drop or travel time without being told, all on a gamepad (U11).
+- At least 70% of testers rate movement 4 or more out of 5 for "weighty and committed", and no tester reports being
+  stopped by a fence, hedge or windowsill they expected to cross (system 11).
 - Two- and three-player squads with the squad-gap kit reach a median of round 8.
 - No destruction or sector-state desync across 10 four-player sessions; 95% or more of client hit claims accepted at
   100 ms latency and 90% or more at 200 ms.
 - Under 15% of match time is spent travelling out of combat (R11), and no squad parks a player out of the fight as a
   spawn point in more than a quarter of sessions (A39).
-- With the HUD off, playtesters name each squadmate's role from silhouette at 80 m, and each MVP zombie type from
-  silhouette at the far edge of its band under the light of the round it first appears in, in at least 80% of trials
-  (Visual Identity Anchor, shape language; A45).
+- With the HUD off, playtesters name each squadmate's role from silhouette at 80 m (unaided), and each MVP zombie
+  type from silhouette at the far edge of its band under the light of the round it first appears in, in at least 80%
+  of trials. Viewing conditions follow the art bible (AB-08, A59): close band unaided, street band unaided and through
+  a 1–2× optic, long band through the magnified optic (Visual Identity Anchor, shape language; A45).
 
 *Gun feel, melee viability and the silhouette and gait tests are measured on the contracted placeholder audio and
 animation (A47), never on greybox.*
@@ -1412,13 +1683,13 @@ stage ends in its own verdict. The designer-producer spends about a third of the
 | Block | Months | Owner (support) | Verdict and pass criteria |
 | ---- | ---- | ---- | ---- |
 | Pre-production documents: systems index, GDDs for the MVP systems, the level GDD for the slice, architecture and the first ADRs (destruction state, projectile validation, spawn and sector state) | 1–3 | Designer-producer (each engineer writes the ADR for their own spike) | End of month 3: MVP GDDs and ADRs reviewed (`/design-review`, `/architecture-review`) |
-| Feel prototype: ballistics, recoil and melee against zombies, plus two roles' gadgets (local), using a small **contracted animation test set** (one gun, one melee weapon, two zombie attack telegraphs) | 1–2 | Gameplay engineer 1 (designer-producer runs the feel playtests) | End of month 2: PROCEED / PIVOT / KILL on feel (R4) |
+| Feel prototype: ballistics, recoil and melee against zombies, plus two roles' gadgets and the core moves (sprint, vault and mantle over a fence line, prone, slide) on a gamepad (local), using a small **contracted animation test set** (one gun, one melee weapon, two zombie attack telegraphs) | 1–2 | Gameplay engineer 1 (designer-producer runs the feel playtests) | End of month 2: PROCEED / PIVOT / KILL on feel (R4) |
 | Netcode spike: destruction, projectile fire events and hit claims, 24 zombies (48 stretch), far tier at 300 m, four players in four sectors, 200 ms latency | 1–3 | Gameplay engineer 2, network | End of month 3: destruction and ballistics fallback decisions (R1, R2, R8) |
 | Engine map bake: the MVP slice in UE 5.8 (World Partition, navmesh, HLOD, rule-based fences and hedges) and the per-panel nav-link generator | 1–3 | Tools/tech engineer | End of month 3: the slice loads, streams and navigates in engine; nav links generated (R3) |
 | Greybox visual base: greybox house kit; the spike's Lumen/Nanite stress scene (month 2); greybox time-of-day curve; blockout role-kit packs; blockout proportions and gaits for Shambler, Runner and Breacher; then the art bible draft | 1–4 | Environment/tech artist (designer-producer co-writes the art bible) | End of month 4: art bible drafted; the 80 m role test and per-band silhouette test runnable in greybox |
-| **MVP placeholder audio and animation** (contracted, extending the month-1 test set; about USD 50–100k from the outsourcing line; A47): weapon audio for 4 guns (report, distance tail, the crack of passing rounds, handling and reloads); melee impact, block and parry audio; positional horde audio for 3 zombie types (vocal and footstep sets, ingress cues); gadget, revive and sector-capture audio; first-person animation for 4 guns, 2 melee weapons (swings, block, parry, shove), 5 gadgets and revive; locomotion, telegraphed attacks and hit reactions for Shambler, Runner and Breacher, plus the far tier's gait cycles | 2–10 (briefed in month 2; guns and melee delivered by month 5, zombies by month 6, gadgets and revive by month 8; mix and fixes in month 10) | Designer-producer briefs and accepts (contracted animator and audio designer); gameplay engineer 1 integrates guns, melee and gadgets, the tools/tech engineer the zombie sets | Before playtest and fix: everything the MVP success criteria measure (gun feel, melee viability, the 80 m role test, the per-band silhouette and gait tests) runs on contracted placeholder audio and animation |
+| **MVP placeholder audio and animation** (contracted, extending the month-1 test set; about USD 50–100k from the outsourcing line; A47): weapon audio for 4 guns (report, distance tail, the crack of passing rounds, handling and reloads); melee impact, block and parry audio; positional horde audio for 3 zombie types (vocal and footstep sets, ingress cues); gadget, revive and sector-capture audio; first-person animation for 4 guns, 2 melee weapons (swings, block, parry, shove), 5 gadgets and revive; **third-person player locomotion** (walk, sprint, crouch, prone and crawl, vault, mantle, slide), which the 80 m role test watches, and first-person traversal camera motion (A52); locomotion, telegraphed attacks and hit reactions for Shambler, Runner and Breacher, plus the far tier's gait cycles and one shared fence-climb clip per skeleton | 2–10 (briefed in month 2; guns and melee delivered by month 5, zombies by month 6, gadgets and revive by month 8; mix and fixes in month 10) | Designer-producer briefs and accepts (contracted animator and audio designer); gameplay engineer 1 integrates guns, melee and gadgets, the tools/tech engineer the zombie sets | Before playtest and fix: everything the MVP success criteria measure (gun feel, melee viability, the 80 m role test, the per-band silhouette and gait tests) runs on contracted placeholder audio and animation |
 | Gameplay layer of the slice, **hand-placed** (no generator at MVP; A51): sectors, ingress, spawn closets, caches | 4–5 | Designer-producer | Gameplay layer ready for the round system |
-| **Production gunplay**: projectiles, recoil, 4 guns, 3 slots and about 9 attachments, fire events and server-validated hit claims (per-client rewind, stale-panel rule). Month 3 builds only what both spike outcomes need (recoil, handling, attachment data, the guns' local feel); fire events and hit claims start in month 4, after the spike's verdict (A51) | 3–5 | Gameplay engineer 1 | In engine: 95% of hit claims accepted at 100 ms and 90% at 200 ms |
+| **Production gunplay, movement and controller input**: projectiles with drag, recoil, 4 guns, 3 slots and about 9 attachments, fire events and server-validated hit claims (per-client rewind, stale-panel rule). Month 3 builds only what both spike outcomes need (recoil, handling, attachment data, the guns' local feel, **the system 11 moves with network prediction, and the gamepad aim layer**, A52, U11); fire events and hit claims start in month 4, after the spike's verdict (A51). *The added movement and input work makes month 3 dense; PR-SCOPE re-checks whether it needs about a month of the buffer* | 3–5 | Gameplay engineer 1 | In engine: 95% of hit claims accepted at 100 ms and 90% at 200 ms; vault, mantle, slide and prone hold at 200 ms without visible correction |
 | **Production destruction**: instanced panels with one state owner per building, damage states, reinforce, boards, rubble states, nav-link switching, late-join snapshot | 4–7 | Gameplay engineer 2 | 100+ panel changes a round under 10 KB/s per client; path update under 200 ms; no desync after a reconnect |
 | **Round system and spawn director**: waves, queue, active cap, party scaling, intermissions with Push or Dig In, both fail states, spawn closets and the 80 m sight rule | 4–5 | Tools/tech engineer (it consumes the pipeline's gameplay-layer data) | A full round loop runs on the slice with the spike's placeholder horde |
 | **Horde AI**: Shambler, Runner and Breacher on StateTree with lightweight movement, fortification tearing and wall attacks, and the far-zombie tier with local signature gaits | 6–8 | Tools/tech engineer (gameplay engineer 2 reviews replication) | 24 full zombies plus the far tier within the spike's budgets; a 300 m engagement works |
@@ -1429,7 +1700,7 @@ stage ends in its own verdict. The designer-producer spends about a third of the
 | Sector layer: sector states, squad and sector spawn, supply points | 8–9 | Gameplay engineer 2 | End of month 9: sector-loop playtest; linear-chain fallback decision |
 | Automated soak-test harness (bot sessions that check for desync) | 9 | Tools/tech engineer | Runs overnight against the integrated build |
 | Steam lobby, invites and reconnect | 10 | Gameplay engineer 2 | Four players join, leave and rejoin a match |
-| Integration of all 11 items, with the placeholder audio and animation (one month longer than before A47) | 10–12 | All (gameplay engineer 2 joins after the lobby block) | Complete four-player sessions with all 11 items on placeholder audio and animation |
+| Integration of all 12 items, with the placeholder audio and animation (one month longer than before A47) | 10–12 | All (gameplay engineer 2 joins after the lobby block) | Complete four-player sessions with all 12 items on placeholder audio and animation |
 | Playtest and fix (at least 6 weeks) | 12–13 | All | The MVP success criteria above are measured |
 | Buffer (20%) | ~2.6 | — | Absorbs slips; not pre-allocated. It covers the critical path first, then any PIVOT at month 2 or 3 |
 | **Total** | **~15–16** (13 scheduled plus the buffer) | | |
@@ -1445,23 +1716,26 @@ everything the MVP success criteria measure; greybox animation is acceptable onl
 Vertical Slice's final animation sets starts in month 3.
 
 **If the date must come in, cut in this order** (every user direction survives): (1) the late-join snapshot moves to
-Vertical Slice A (reconnect only); (2) the home sector plus one sector (Creek Woods) instead of two, with the School
-Grounds as the first add-back; (3) 2–3 enterable houses instead of 6–8; (4) the squad-gap kit only for the 2-player
-case; (5) Breacher as the only zombie type beyond the Shambler until integration is stable. **Together these save
-about 4–6 weeks** (PR-SCOPE round 2's estimate), so the floor is about 14–15 months. The placeholder audio and
+Vertical Slice A (reconnect only); (2) fewer sectors: first drop the Andres Avenue block, then the School Grounds
+(home plus Creek Woods), with both as the first add-backs; (3) 2–3 enterable houses instead of 6–8; (4) the
+squad-gap kit only for the 2-player case; (5) Breacher as the only zombie type beyond the Shambler until integration
+is stable. **Together these save about 4–6 weeks** (PR-SCOPE round 2's estimate), so the floor is about 14–15 months. The placeholder audio and
 animation block is not on the cut list, because the success criteria depend on it. No cut list reaches 10–11 months
 without dropping a user direction (U1–U9): an earlier date needs more people (Q2), not more cuts. All four roles, all
 five gadgets, projectile ballistics, melee, synced destruction and sectors stay.
 
 **Explicitly NOT in MVP** (deferred):
 - Meta progression and unlocks
-- Evac rounds (the MVP ends on a wipe or the loss of the last sector); counter-push rounds
-- The full six-sector map, including Lewis Park Fields, the Cemetery and the Creek Trail (Vertical Slice A, after the
-  re-extraction); a second neighborhood and the pipeline-genericity proof (Vertical Slice B)
+- Evac rounds (the MVP ends on a wipe or the loss of the last sector); the counter-push round's Breacher pack, warning
+  audio and presentation (target selection and routing are in, A54)
+- The full map (six to eight of system 6.1's nine candidate sectors), including Lewis Park Fields, the Cemetery,
+  Ridgeland Crossing, the Patricia Avenue block and the Creek Trail (Vertical Slice A, after the re-extraction); a
+  second neighborhood and the pipeline-genericity proof (Vertical Slice B)
 - The intermission checkpoint and resume with a new host (Vertical Slice A)
-- Role passives; second gadgets (med pouch, ammo pouch, spotting scope); collapse charges
+- Role passives; second gadgets (dressing pack, bandolier, survey glass); collapse charges
 - Throwables (frag, smoke); the ping wheel
-- Penetration by material class; magazine, underbarrel and stock slots; prone and weapon mounting; optic zeroing
+- Penetration by material class; magazine, underbarrel and stock slots; weapon mounting; the contextual peek; optic
+  zeroing (prone is in the MVP, A52)
 - Solo mode and the solo kit
 - Gear, upgrade tiers, supply drops
 - Zombie types beyond 3; bosses
@@ -1471,7 +1745,7 @@ five gadgets, projectile ballistics, melee, synced destruction and sectors stay.
   animation, A47; the greybox time-of-day curve and the blockout role kits and zombie proportions are in)
 - The gameplay-layer generator (the MVP slice's gameplay layer is hand-placed; the generator is a Vertical Slice A
   block)
-- Controller support, localisation, accessibility options beyond the basics
+- Localisation; accessibility options beyond the basics (the gamepad is the only input from the MVP, U11)
 - Leaderboards, cosmetics, noise draw
 
 ### Scope Tiers (if budget/time shrinks)
@@ -1497,13 +1771,13 @@ point is Slice Early Access (about month 24–26 for the team of 5): roughly USD
 
 | Tier | Content | Features | Timeline |
 | ---- | ---- | ---- | ---- |
-| **MVP** (internal) | The middle slice of Tinley Park, IL (60477): 3 sectors (167th Street home, Creek Woods, School Grounds), 6–8 enterable houses, greybox with a greybox time-of-day curve, hand-placed gameplay layer | The 11 items above, built to the build plan above (staged verdicts at months 2, 3 and 9; contracted placeholder audio and animation; integration; playtest and fix; 20% buffer) | ~15–16 months |
-| **Slice Early Access** *(small-team re-cut and earliest fallback; Early Access candidate, Q9; A49)* | The MVP's middle slice of Tinley Park, IL (60477) **at the grounded-realism bar** (U7) across the full night curve: the MVP's three sectors plus one add-back (the Cemetery or a block sector, Q17), 6–8 enterable houses, hip and compound roofs, foliage for Creek Woods | Everything in the MVP (all four roles, squad play, projectile ballistics with 3 slots, melee, synced panelized destruction, sectors, 4-player listen server), plus the second gadgets (med pouch, ammo pouch, spotting scope), evac at round 10, a fourth zombie type (Detonator), 6 guns, 3 melee weapons, the solo kit, public matchmaking, the heavy weapon audio pass and final animation for everything that ships, and release hardening (as in First Map Complete). Left for Early Access updates: the full map, role passives, collapse charges, more zombie types and the second city. Every user direction (U1–U9) holds; the month-3 fallbacks apply only if Q20 authorises them | **Team of 5:** ~month 24–26, taken after the MVP **instead of** Vertical Slice A if money or people run short. **Team of two:** about 60–70 in-house person-months plus a 20% buffer (about 72–85), so about **36–43 months**, with the environment kit, all animation, audio and QA outsourced (about USD 0.4–0.7 million). **Solo:** about 6–7 years of in-house work; not a realistic plan (Q2) |
-| **Vertical Slice A** (internal) | The full Tinley Park map after the re-extraction (all sectors), **10–12 enterable buildings** (the MVP's 6–8 plus the new sectors' anchors), greybox except the realism art pass on **one residential block and the 167th Street corridor, at dusk** | Evac at round 10; role passives; the gameplay-layer generator (pipeline step 4; A51); the intermission checkpoint and resume with a new host; the late-join snapshot if the MVP cut it; the soak-test harness extended to the full map. *Lightened after PR-SCOPE round 2:* penetration and counter-push rounds move to B | ~month 22–23 (6 months plus 1 of buffer) |
-| **Vertical Slice B** (internal) | A **second map from a different city**, auto-generated, greybox (the pipeline-genericity proof) | 5 zombie types; second gadgets; throwables; ping wheel; the other 3 attachment slots; prone and mounting; penetration; counter-push rounds; full HUD; the solo kit | ~month 28–29 (5 months plus 1 of buffer) |
+| **MVP** (internal) | The middle slice of Tinley Park, IL (60477): 4 sectors (167th Street home, the Andres Avenue block, Creek Woods, School Grounds), 6–8 enterable houses, greybox with a greybox time-of-day curve, hand-placed gameplay layer | The 12 items above, built to the build plan above (staged verdicts at months 2, 3 and 9; contracted placeholder audio and animation; integration; playtest and fix; 20% buffer) | ~15–16 months |
+| **Slice Early Access** *(small-team re-cut and earliest fallback; Early Access candidate, Q9; A49)* | The MVP's middle slice of Tinley Park, IL (60477) **at the grounded-realism bar** (U7) across the full night curve: the MVP's four sectors plus one add-back (the Cemetery or the Patricia Avenue block, Q17), 6–8 enterable houses, hip and compound roofs, foliage for Creek Woods | Everything in the MVP (all four roles, squad play, projectile ballistics with 3 slots, melee, synced panelized destruction, sectors, 4-player listen server), plus the second gadgets (dressing pack, bandolier, survey glass), evac at round 10, a fourth zombie type (Detonator), 6 guns, 3 melee weapons, the solo kit, public matchmaking, the heavy weapon audio pass and final animation for everything that ships, and release hardening (as in First Map Complete). Left for Early Access updates: the full map, role passives, collapse charges, more zombie types and the second city. Every user direction (U1–U9) holds; the month-3 fallbacks apply only if Q20 authorises them | **Team of 5:** ~month 24–26, taken after the MVP **instead of** Vertical Slice A if money or people run short. **Team of two:** about 60–70 in-house person-months plus a 20% buffer (about 72–85), so about **36–43 months**, with the environment kit, all animation, audio and QA outsourced (about USD 0.4–0.7 million). **Solo:** about 6–7 years of in-house work; not a realistic plan (Q2) |
+| **Vertical Slice A** (internal) | The full Tinley Park map after the re-extraction (all sectors), **10–12 enterable buildings** (the MVP's 6–8 plus the new sectors' anchors), greybox except the realism art pass on **one residential block and the 167th Street corridor, at dusk** | Evac at round 10; role passives; the gameplay-layer generator (pipeline step 4; A51); the intermission checkpoint and resume with a new host; the late-join snapshot if the MVP cut it; the soak-test harness extended to the full map. *Lightened after PR-SCOPE round 2:* penetration and the full counter-push round move to B | ~month 22–23 (6 months plus 1 of buffer) |
+| **Vertical Slice B** (internal) | A **second map from a different city**, auto-generated, greybox (the pipeline-genericity proof) | 5 zombie types; second gadgets; throwables; ping wheel; the other 3 attachment slots; weapon mounting and the contextual peek; Breachers flattening fences; penetration; the full counter-push round (Breacher pack, warning audio, presentation); full HUD; the solo kit | ~month 28–29 (5 months plus 1 of buffer) |
 | **First Map Complete** *(the full shippable fallback; Early Access candidate, Q9)* | **The whole first map at the grounded-realism bar** (U7): every sector, the full night curve, at least 15 enterable buildings, hip and compound roofs, foliage for Creek Woods. Owner: the environment/tech artist, with outsourced kit art | **Heavy weapon audio pass and adaptive music** (outsourced; owner: the designer-producer); final first-person and zombie animation for everything that ships; **solo mode (the Vertical Slice B solo kit, tuned for release) and public matchmaking**; Steam leaderboards; gear and supply drops; a stub of horizontal meta. **Release hardening** (2 months, A48): QA with outsourced testers, performance and minimum spec on a listen-server host, onboarding, options and settings, crash reporting, store page and Early Access preparation, age rating per Q6. *Minimum content floor:* 4 roles with their MVP and second gadgets and passives, 5 zombie types, 6 guns, 3 melee weapons, about 15 attachments across six slots, evac at rounds 10 and 20 | ~month 35–36 (4 months of content and features, 2 of release hardening, 1 of buffer; the art pass runs from about month 23, alongside Vertical Slice B, and locks before release hardening) |
 | **Alpha** | 3 maps (placeholder art on the second and third) | Everything in rough form: 8 zombie types plus boss, about 10 guns, 6 melee weapons, 25–30 attachments, upgrade tiers, collapse charges, horizontal meta with role mastery | ~month 42–43 (6 months plus 1 of buffer) |
-| **Full Vision (1.0)** | **3 launch maps** from different cities, 20–30 enterable buildings each (A43) | Full roster (~10 types, 2 bosses), ~14 guns, ~40 attachments, ~8 melee weapons, 9 gadgets, noise draw, optic zeroing, accessibility, localisation, controller support; a shorter release-hardening pass, since First Map Complete built the tooling | ~month 52–56 (8–11 months plus 1.5–2 of buffer) |
+| **Full Vision (1.0)** | **3 launch maps** from different cities, 20–30 enterable buildings each (A43) | Full roster (~10 types, 2 bosses), ~14 guns, ~40 attachments, ~8 melee weapons, 9 gadgets, noise draw, optic zeroing, accessibility, localisation (the gamepad has been the only input since the MVP, U11); a shorter release-hardening pass, since First Map Complete built the tooling | ~month 52–56 (8–11 months plus 1.5–2 of buffer) |
 | **After 1.0** | A fourth city first, then more | "Your Street" player map generator (Q8); dedicated servers if needed; vehicles only if Q11 says yes | — |
 
 **The real fallbacks if money or people run short:** the earliest is **Slice Early Access** (about month 24–26 for
@@ -1519,14 +1793,21 @@ the hypothesis.
 **Minimum realism bar that is never cut:** one fully art-passed map at the grounded-realism bar (U7), delivered in
 First Map Complete; a greybox suburb never ships.
 
-**Defined fallbacks for the riskiest systems** (decide by the dates given, not later). The first two weaken user
-directions (U9, U4), so the user is asked to authorise them in advance (Q20); until then they are pre-authorised
-only by the facilitator:
-- **Destruction (month 3):** if the netcode/destruction spike misses its budget, the game drops to **doors, windows
-  and barricades, plus scripted set-piece collapses**. Pillar 1 is weakened but survives, and the game still ships.
-- **Ballistics (month 3):** if projectile hit validation misses its budget, use **hitscan inside about 50 m and
-  projectiles beyond it**. Drop and travel time survive where they matter. This is a pre-authorised exception to
-  Pillar 3's design test.
+**Defined fallbacks for the riskiest systems** (decide by the dates given, not later). Revision 2.4 redesigned the
+first two so that they keep the user's directions (A56, A57); the user is still asked to authorise them in advance
+(Q20), and until then they are pre-authorised only by the facilitator:
+- **Destruction (month 3):** if the netcode/destruction spike misses its budget, synced, panelized destruction stays
+  on the buildings that carry the fight (enterable buildings, sector anchors and every building facing a capture
+  zone, roughly a quarter of the panels), and every other sealed house keeps breachable doors, windows and garage
+  doors. Collapses stay rule-based on the destructible set. U9 and Pillar 1 hold on fewer walls. **Floor:** if even
+  that misses the budget, doors, windows and barricades plus scripted set-piece collapses, and only with the user's
+  authorisation (Q20), because it drops U9's building destruction.
+- **Ballistics (month 3):** if the server's re-simulation of hit claims misses its CPU or latency budget, the server
+  stops re-simulating claims inside about 50 m and accepts them after a plausibility check instead (a fire event on
+  record, rate of fire and ammo, the target within a tolerance of its rewound position, and line of sight). Beyond
+  50 m, full validation stays. **Projectiles, drag, drop and travel time are unchanged at every range**, so U4 and
+  Pillar 3's design test hold; only the anti-cheat check is looser at close range, which co-op PvE accepts (anti-pillar:
+  not a PvP shooter).
 - **Sectors (month 9 playtests):** if free sector choice spreads four players too thin, sectors become a **linear
   chain** (take them in a fixed order, hold the last two). The frontline survives.
 
@@ -1539,7 +1820,7 @@ only by the facilitator:
 were given on different revisions: CD-PILLARS and TD-FEASIBILITY ran once (round 1, on revision 2), AD-CONCEPT-VISUAL
 twice (final in round 2, on revision 2.1) and PR-SCOPE three times (final in round 3, on revision 2.2). The verdicts,
 blocking items and concerns below are the reviewers'. The *Status* notes are the facilitator's check of each concern
-against the current text (revision 2.3). They are not a reviewer's verdict, and a gate that has not re-run has not
+against the current text (revision 2.4). They are not a reviewer's verdict, and a gate that has not re-run has not
 confirmed them. Items that need the user are in Open Questions; items not fixed in the text are in the risk register.
 *Correction:* an earlier version of this section listed round-2 runs of CD-PILLARS and TD-FEASIBILITY on revision 2.1.
 The workflow's run history has no such runs; those entries restated the round-1 output.
@@ -1556,10 +1837,17 @@ gate-status consistency, and PR-SCOPE round 3's three blocking items), all appli
 recommendations applied as A51. It was logged as an effectively lean review, because no specialist agents could be
 spawned, so a full re-run is still due. Log: `design/gdd/reviews/game-concept-review-log.md`.
 
-**Next gate step:** PR-SCOPE should re-check revision 2.3: two of its three blocking items are answered in the text
-(A47, A48), and A49 defines the small-team plan the third pointed to, but Q2 itself needs the user, so PR-SCOPE cannot
-return REALISTIC yet. CD-PILLARS and TD-FEASIBILITY should re-run on the current text to confirm the fixes made since
-revision 2. Then `/design-review` re-runs at full with specialist agents.
+**Revision 2.4** (an adversarial check against U1–U10 and the art bible, plus U11; A52–A60) has not been reviewed by
+any gate. It touches every gate's remit: CD-PILLARS (Pillar 1's sensitive-site exception, Pillar 2's label exception,
+Pillar 3 without a ballistics exception), TD-FEASIBILITY (drag in the hit-claim re-simulation, predicted traversal,
+the relaxed-validation and reduced-destruction fallbacks), AD-CONCEPT-VISUAL (the art-bible re-sync) and PR-SCOPE
+(a fourth MVP sector, MVP counter-push targeting, movement and controller input in production gunplay's month 3, and
+third-person locomotion in the A47 block).
+
+**Next gate step:** PR-SCOPE should re-check revision 2.4: two of its three round-3 blocking items are answered in the
+text (A47, A48), and A49 defines the small-team plan the third pointed to, but Q2 itself needs the user, so PR-SCOPE
+cannot return REALISTIC yet. CD-PILLARS and TD-FEASIBILITY should re-run on the current text to confirm the fixes made
+since revision 2. Then `/design-review` re-runs at full with specialist agents.
 
 ### CD-PILLARS (`creative-director`, round 1 on revision 2, 2026-11-19): CONCERNS
 *Verdict:* no blocking items. The four pillars are falsifiable, each has a usable design test, and the tension table is
@@ -1573,8 +1861,9 @@ did not verify the extract's geolocation.
    "Lancaster Woods" and the MVP as a south-west slice built around it, against U10. The park name is real OSM data,
    so this is not a violation, but the user should decide: keep the label, relabel it (for example after the creek),
    or move the home sector and the MVP slice.
-   *Status:* no label uses "Lancaster"; the woods are "Creek Woods"; home is on the 167th Street spine for design
-   reasons (A38, A44). The user confirms via Q18.
+   *Status:* no label uses "Lancaster"; the woods are "Creek Woods", logged as the one exception to real park names
+   (A55); home is on the 167th Street spine for design reasons (A38, A44). The user confirms placement via Q18 and the
+   label via Q21.
 2. **Geolocation not verified in this gate.** The reviewer confirmed only that the extract exists with a bounds
    element. *Status:* the box and the map name were verified locally against the extract (by TD-FEASIBILITY and
    PR-SCOPE); no outside lookup was made.
@@ -1586,16 +1875,19 @@ did not verify the extract's geolocation.
    the squad-gap kit. Add: fallbacks must always be meaningfully worse than the hand-off. *Status:* addressed (A40).
 5. **Pillar 3 "Weight at Every Range" is two pillars in one.** Melee parity rests on ammo scarcity, which free refills
    and the Quartermaster crate undercut; state which half yields, and log the "hitscan inside about 50 m" fallback as an
-   exception. *Status:* addressed (A40: ballistic weight wins; per-round supply stock; the fallback is logged; the
-   melee share is a signal). Authorising the fallback is Q20.
+   exception. *Status:* addressed (A40: ballistic weight wins; per-round supply stock; the melee share is a signal).
+   Revision 2.4 replaced the hitscan fallback with relaxed close-range validation that keeps projectiles (A56), so
+   Pillar 3 carries no ballistics exception. Authorising the fallback is Q20.
 6. **Pillar 1 "Every Wall Cuts Both Ways" has two unlogged exceptions:** sealed-building pockets breached with no
    horde route, and friendly fire off for the Sapper's charges. *Status:* addressed (A40: breached pockets become spawn
-   closets; charges damage the squad's own fortifications; friendly fire off is an accepted exception).
+   closets; charges damage the squad's own fortifications; friendly fire off is an accepted exception). Revision 2.4
+   logs a third accepted exception: indestructible places of worship and headstones (A57).
 7. **Pillars 3 and 4 do not differentiate,** so differentiation rests on Pillars 1 and 2, and the hook's novelty is
    unverified (Q7). The hook sentence carried three "and also" clauses; the 10-second version should lead.
    *Status:* the 10-second version leads and the hook keeps two differentiators; Q7 is open.
 8. **U6 narrowed.** Residential blocks were connective only and the only intersection sector was 167th Street; surface
-   this for confirmation. *Status:* block sectors are allowed; Q17 asks the user how many.
+   this for confirmation. *Status:* revision 2.4 proposes two block sectors (one in the MVP) and a second intersection
+   sector, Ridgeland Crossing (A54); Q17 asks the user to confirm the block count.
 9. **Squad-spawn "anchor".** Requiring an unpressed squadmate rewards one player for staying out of the fight.
    *Status:* addressed (A39: pressure delays and offsets the spawn); a playtest watch item.
 10. **Pillar 2 vs the safeguards (A29).** Recognition rests on the street grid, street names and parks; the pillar
@@ -1678,8 +1970,8 @@ Park sits half outside the box. (The small-team re-cut is now defined as Slice E
     beyond the east edge; re-extract a widened box before the level GDD. *Status:* Lewis Park is out of the MVP slice;
     the re-extraction is planned, not done.
 13. **Labelling under U10 is a creative call:** ask the user whether the park's OSM name is acceptable as a label, or
-    whether the home sector should be relabelled or moved. *Status:* relabelled "Creek Woods"; home is on the 167th
-    Street spine (A38, A44); Q18 is open.
+    whether the home sector should be relabelled or moved. *Status:* relabelled "Creek Woods" as a logged exception
+    (A55); home is on the 167th Street spine (A38, A44); Q18 and Q21 are open.
 14. **Privacy check:** the concept text is clean; the map boundary box is acceptable, but nothing narrower should be
     committed. *Status:* the document follows the art director's stricter call: the action to untrack or rewrite
     every tracked file carrying the box or footprints now has an owner and a due date (system 6.1, R5, A50); open.
@@ -1734,8 +2026,9 @@ change.
 3. **The tracked raw extract and generated level files** are still public with every building footprint. The action
    has an owner but no date and no build-plan block; do it before the next push. Minor accuracy: the extract has no
    house-number tags but does have two `addr:state` tags. *Status:* the action now names every tracked file that
-   carries the box or footprints, has an owner (the producer) and is due before the next push, no later than
-   2026-11-26 (system 6.1, A50); the `addr:state` note is applied. Not done yet.
+   carries the box or footprints and has an owner (the producer); the `addr:state` note is applied. The files have
+   since reached the public remote, so the action now reads "no further push until they are untracked", with the
+   history-purge decision due by 2026-11-26 (system 6.1, A50, A60). Not done yet.
 4. **The tools/tech engineer is a single point of failure** on an unmarked critical path (engine bake and nav-link
    generator months 1–3, round system and spawn director 4–5, horde AI with the far tier 6–8, soak harness 9), with no
    slack and no time for pipeline maintenance while interiors land in months 5–8. The gameplay-layer generator
@@ -1754,7 +2047,8 @@ change.
    Slice Early Access tier (about month 24–26 for the team of 5; A49).
 8. **Open questions with large scope effects:** Q11 (vehicles), Q6 (gore and rating) and Q20 (authorising the month-3
    fallbacks that weaken U9 and U4). Weather is in no tier, although U7's dust and smoke are covered. *Status:* open
-   (user decisions).
+   (user decisions). Revision 2.4 redesigned both fallbacks to keep U4 and U9 (A56, A57); only the destruction floor
+   below them would still weaken U9.
 
 *History:* round 1 on revision 2: OPTIMISTIC (6 blocking, answered by A43); round 2 on revision 2.1: OPTIMISTIC
 (4 blocking; three answered by A46, Q2 carried over).
@@ -1773,17 +2067,19 @@ and first-person parry over the network, a four-role squad holding sectors) are 
    session.)*
 2. **Director gates.** All four gates ran round 1 on revision 2; AD-CONCEPT-VISUAL and PR-SCOPE ran round 2 on
    revision 2.1, and PR-SCOPE ran round 3 on revision 2.2 (2026-11-19). Revision 2.3 applies PR-SCOPE round 3 and the
-   first `/design-review` (Director Gate Reviews). Re-check **PR-SCOPE** (`producer`) on revision 2.3 (two of its
-   three blocking items are answered in the text; the third is Q2), and re-run **CD-PILLARS** and **TD-FEASIBILITY**
-   on the current text, because their only run reviewed revision 2. AD-CONCEPT-VISUAL is STRONG; its notes go to the
-   art bible.
+   first `/design-review` (Director Gate Reviews); revision 2.4 applies an adversarial check against the user's
+   directions and the art bible (A52–A60). Re-check **PR-SCOPE** (`producer`) on revision 2.4 (two of its three
+   blocking items are answered in the text; the third is Q2; revision 2.4 adds MVP scope), and re-run **CD-PILLARS**
+   and **TD-FEASIBILITY** on the current text, because their only run reviewed revision 2. AD-CONCEPT-VISUAL is
+   STRONG; its notes went to the art bible.
 3. **Before the prototypes start:** the user answers **Q2** (team, budget, runway; gating), confirms or overrules the
-   facilitator assumptions (A22–A51, especially A44's home-sector and slice placement via Q18 and the school's place
-   via Q16, both of which must be settled before the engine bake), and answers Q6 (rating), Q11 (vehicles), Q17
-   (block sectors), Q19 (night curve) and Q20 (the month-3 fallbacks). **Repository hygiene (before the next push, no
-   later than 2026-11-26; owner: the producer):** untrack or rewrite every tracked file that carries the first map's
-   box or footprints and decide whether to purge history, including this document's earlier revisions (system 6.1,
-   R5, A50).
+   facilitator assumptions (A22–A60, especially A44's home-sector and slice placement via Q18, the school's place via
+   Q16, the block sectors via Q17 and the park label via Q21, all of which must be settled before the engine bake),
+   and answers Q6 (rating), Q11 (vehicles), Q19 (night curve) and Q20 (the month-3 fallbacks). **Repository hygiene
+   (owner: the producer; A50, A60):** the tracked map data is already on the public remote, so **no further push**
+   until every tracked file that carries the first map's box or footprints is untracked or rewritten; the decision on
+   purging history (a rewrite and force-push, covering this document's earlier revisions) is the repository owner's,
+   recorded by 2026-11-26 (system 6.1, R5).
 4. `/prototype first-person ballistics, recoil and melee against a capped horde`: the local feel prototype, including
    two roles' gadgets (PROCEED / PIVOT / KILL).
 5. `/prototype --spike replicated panel destruction, projectile fire events and hit claims, and a 24-zombie horde on a
@@ -1792,12 +2088,23 @@ and first-person parry over the network, a four-role squad holding sectors) are 
    In parallel: the first UE 5.8 bake of the MVP slice (A44); before the level GDD, re-extract the first map with the
    box widened west and its edges set from landmarks and a coarse grid only, keep the result out of the repository,
    then re-measure the system 6.1 facts.
-6. If both PROCEED: `/art-bible`, seeded with the "Ground Truth" anchor. It is required before the Technical Setup
-   gate at `full`.
+6. `/art-bible`: **drafted ahead of the prototypes** (`design/art/art-bible.md`, 2026-11-19; AD-ART-BIBLE: CONCERNS,
+   agent-run, with two blocking fixes awaiting the art director's confirmation and nine open items in its Appendix B).
+   Revision 2.4 re-synced this document with it (A59). After the prototypes, the art bible takes their findings and
+   the gate is confirmed or re-run for APPROVE before asset production. It is required before the Technical Setup gate
+   at `full`.
+   *Prototype reports:* neither existing prototype (`prototypes/real-street-holdout-concept/`: the map pipeline and the
+   browser greybox) has a `REPORT.md` with a verdict yet, and the feel prototype and netcode spike have not run, so
+   `/gate-check` will find no PROCEED verdict until they do.
 7. `/design-review design/gdd/game-concept.md` at full, with specialist agents: the first run (2026-11-19, NEEDS
    REVISION, applied in revision 2.3) was effectively lean, so it does not cover a full review.
-8. `/map-systems`: systems index and dependencies. Expected systems: rounds and sectors, roles and gadgets, squad
-   play, economy, destruction, OSM pipeline, gunplay and ballistics, attachments, melee, horde AI, co-op/session, HUD.
+8. `/map-systems`: systems index and dependencies (the art bible also recommends this as the next step). Expected
+   systems: rounds and sectors (with counter-push), roles and gadgets (with the squad-gap kit), squad play, economy,
+   destruction, the OSM pipeline, the gameplay-layer generator (its own system, Vertical Slice A), gunplay and
+   ballistics, attachments, melee, **player movement and locomotion** (sprint, crouch, prone, vault, mantle, slide;
+   system 11), **controller input and aim assist** (U11), **first-person camera and animation**, horde AI (with fence
+   traversal), **audio** (positional horde audio, which is gameplay-critical, heavy weapon audio and adaptive music),
+   **onboarding** (round 0 and the firing range), co-op/session, and HUD.
 9. `/design-system` for each system from step 8, then `/create-architecture` → `/architecture-decision` (one ADR per
    decision: replication with Iris, destruction state model, projectile hit validation, squad spawn and sector state,
    horde representation, OSM pipeline) → `/architecture-review`.
@@ -1806,9 +2113,12 @@ and first-person parry over the network, a four-role squad holding sectors) are 
 - [x] Run the real director gates on revision 2 (round 1, 2026-11-19: CD CONCERNS, AD CONCERNS, TD CONCERNS, PR OPTIMISTIC) and apply them (revision 2.1)
 - [x] Run round 2 of AD-CONCEPT-VISUAL and PR-SCOPE on revision 2.1 (2026-11-19: AD STRONG, PR OPTIMISTIC; CD-PILLARS and TD-FEASIBILITY had no blocking items and did not re-run) and apply it (revision 2.2)
 - [x] Run PR-SCOPE round 3 on revision 2.2 (OPTIMISTIC, 3 blocking) and the first `/design-review` (NEEDS REVISION, 5 blocking); apply the text-fixable items (revision 2.3)
-- [ ] Re-check PR-SCOPE on revision 2.3; re-run CD-PILLARS and TD-FEASIBILITY on the current text; re-run `/design-review` at full; get concept approval from creative-director
+- [x] Apply the adversarial check against U1–U10 and the art bible, plus U11 (revision 2.4, A52–A60)
+- [ ] Re-check PR-SCOPE on revision 2.4; re-run CD-PILLARS and TD-FEASIBILITY on the current text; re-run `/design-review` at full; get concept approval from creative-director
 - [ ] User answers Q2 (gating) and Q20, and settles Q18 (A44) and Q16 before the engine bake
-- [ ] Before the next push (no later than 2026-11-26; owner: the producer): untrack or rewrite every tracked file carrying the first map's box or footprints; decide on purging history, including this document's earlier revisions (R5)
+- [ ] No further push until every tracked file carrying the first map's box or footprints is untracked or rewritten (the data is already on the public remote); the repository owner decides on purging history, including this document's earlier revisions, by 2026-11-26 (owner: the producer; R5, A60)
+- [ ] User answers Q17 (block sectors) and Q21 (the park label) before the engine bake
+- [ ] PR-SCOPE re-checks revision 2.4's added MVP scope (fourth sector, counter-push targeting, movement and controller input, third-person locomotion)
 - [x] Fill in the CLAUDE.md technology stack from the engine choice (`/setup-engine`; completed elsewhere)
 - [ ] Create the game pillars document (`/design-review` to validate)
 - [ ] **Prototype the core idea**: the feel prototype and the netcode spike (above)

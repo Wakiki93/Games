@@ -21,7 +21,9 @@ holding its placeholder is incomplete; a later run fills only those.
 > logged in **Appendix A** (AB-01 onward). Every row there can be overruled. The user's own directions are
 > authoritative and were not diluted; they were restated for this run as D1–D9 (D1 feel, D2 roles and gadgets, D3
 > squad play, D4 ballistics, D5 four-player co-op, D6 waves plus capture-and-hold sectors, D7 grounded realism, D8 the
-> first map, D9 everything from the original concept) and match U1–U10 in `design/gdd/game-concept.md`.
+> first map, D9 everything from the original concept) and match U1–U10 in `design/gdd/game-concept.md`. The concept
+> has since added U11 (controller-only input, recorded as the user's decision in the project configuration), which
+> this document follows from the re-sync below.
 >
 > **Deviation from the skill, stated plainly.** The skill requires every section to be drafted by a spawned specialist
 > (`art-director`; `ux-designer` for Section 7; `technical-artist` for Section 8). This run had no agent-spawning tool,
@@ -42,11 +44,24 @@ holding its placeholder is incomplete; a later run fills only those.
 > slips fixed:** the Plated carries its slab (5.4), and the evac landing zone is lit by overhead flares and ringed by
 > work lights (2.3). (5) The gate's other concerns are logged as open items in Appendix B.
 >
+> **Re-sync 2026-11-19 (concept revision 2.4).** This bible was written on concept revision 2.2. Revision 2.4
+> (concept A52–A60) took up this bible's open items for the concept owner and changed things this bible depends on;
+> they are carried in here (AB-27): the concept now uses the kit's 2.75 m storey (AB-13) and AB-08's viewing conditions
+> for the silhouette tests, and logs AB-14's indestructible sensitive sites as an exception to its Pillar 1; sector
+> labels are real names with generic labels only for sensitive sites, and the wooded park's creek label is a logged
+> exception (7.2, 7.8); the second gadgets are renamed the dressing pack, the bandolier and the survey glass, and the
+> MVP crate is the resupply crate (3.5, 5.2); the gap kit never carries the breach charge (5.2); movement (sprint,
+> crouch, prone, vault, mantle, slide) is in the MVP, and the role primitives must survive it (3.3, 5.3); generated
+> fences stay inside vault and mantle heights (6.6, 8.6); and the game is controller-only, so prompts use Xbox-layout
+> button glyphs (7.2, 8.1). Nothing in the visual direction changed. The AD-ART-BIBLE verdict below predates the
+> re-sync.
+>
 > **Sources.** The Visual Identity Anchor ("Ground Truth"), pillars, signature systems, risks and decisions in
-> `design/gdd/game-concept.md` (revision 2.2; read, not edited); the AD-CONCEPT-VISUAL round-2 notes addressed to this
-> document; `.claude/docs/technical-preferences.md` (performance budgets; `project.yaml` has no `performance` block);
-> the pinned engine reference in `docs/engine-reference/unreal/`; and aggregate building statistics from the first
-> map's local pipeline output (counts and size distributions only; nothing narrower).
+> `design/gdd/game-concept.md` (written on revision 2.2, read and not edited; re-synced to revision 2.4 above); the
+> AD-CONCEPT-VISUAL round-2 notes addressed to this document; `.claude/docs/technical-preferences.md` (performance
+> budgets; `project.yaml` has no `performance` block); the pinned engine reference in `docs/engine-reference/unreal/`;
+> and aggregate building statistics from the first map's local pipeline output (counts and size distributions only;
+> nothing narrower).
 >
 > **Privacy (the repository is public).** This document names the first test map, "Tinley Park, IL (60477)", and real
 > street and park names from OpenStreetMap, as the concept allows. It contains no address, house number or coordinate
@@ -254,7 +269,8 @@ curve calibrates them.
 ### 2.5 The horde readability light (a bounded cheat)
 
 When a grounded fix (moving a motivated light, adjusting the value of a zombie's wardrobe, the skyglow) cannot meet
-the night minimums, a non-physical aid is allowed, with all of these limits (AB-07):
+the night minimums, a non-physical aid is allowed, with all of these limits (AB-07; the concept records it as the one
+non-physical readability aid in its pillar tension table, A59):
 
 - It lights **horde characters only** (its own lighting channel), is shadowless, and is placed relative to the viewer
   so that it draws a thin rim on the side of the zombie away from the camera. It never lights the world, the squad or
@@ -324,7 +340,7 @@ Consequences for every silhouette rule below:
   in rhythm.
 - A **long-band** type at 300–400 m is about 3.5–6 px tall unaided; it reads by **gait and posture through an optic**.
   The silhouette tests therefore run in the long band through the MVP's magnified optic, and unaided in the close band
-  (AB-08 clarifies the concept's test this way).
+  (AB-08; the concept's shape-language test and MVP criterion adopted this wording in revision 2.4).
 
 ### 3.3 Character silhouettes
 
@@ -358,6 +374,10 @@ Rules that protect these primitives:
   above the shoulder line and never widens the lower outline, so the silhouette still names the role the player chose.
 - **The gadget in the hand repeats the primitive.** A role's own full gadget in the hand repeats that role's
   primitive (Section 3.5).
+- **Movement never hides the primitive** (concept system 11). Prone, crawl, slide, vault and mantle keep the back
+  primitive in place: prone from behind and from the side, the hump, block, diagonal and spike still break the
+  outline by at least 2 px at 80 m. Animation never tucks a primitive behind the body to clear an obstacle; the
+  obstacle classes (6.6) are sized so it never has to.
 
 **Each horde type owns a posture and a gait** (the concept's shape language, with the band and light each must be read
 in):
@@ -376,8 +396,9 @@ in):
 
 A type passes its test when playtesters name it from silhouette (and in the long band, gait) alone at the far edge of
 its band, under the light of the round it first appears in, with the HUD off, in at least 80% of trials (concept MVP
-criterion). Far-tier zombies (beyond about 150 m) keep one locally played looping gait cycle per type, so the gait
-reads survive the far tier (concept system 9).
+criterion), under AB-08's viewing conditions: close band unaided; street band unaided and through a 1–2× optic; long
+band through the magnified optic. Far-tier zombies (beyond about 150 m) keep one locally played looping gait cycle
+per type, so the gait reads survive the far tier (concept system 9).
 
 ### 3.4 Environment geometry
 
@@ -416,14 +437,14 @@ same kind of mess); the squad's infrastructure carries its yellow marker in the 
   carries (Pillar 3) should be visible before it is read: heavier-looking means slower handling.
 - **Melee weapons** read by head mass: blunt (a thick head on a short handle), heavy (a long handle and a large head,
   sledge or axe, the one that breaches), blade (a long thin edge). They are tools and implements a suburb would have.
-- **Gadgets repeat their role's primitive**: the Corpsman's revive kit is soft and rounded; the Quartermaster's ammo
-  crate is a squared box with handles; the Sapper's reinforce tool is a long handle (at least 1 m) with a head, and
-  the breach charge is a flat rectangular plate with a strap; the Spotter's sensor is a tripod with its own short mast
-  (a spike), a separate device from the mast on the Spotter's back. **Deploying or drawing a gadget leaves the back
-  primitive in place** (Section 3.3): the crate comes off the frame and the frame stays; the tripod is placed and the
+- **Gadgets repeat their role's primitive**: the Corpsman's revive kit is soft and rounded; the Quartermaster's
+  resupply crate is a squared box with handles; the Sapper's reinforce tool is a long handle (at least 1 m) with a
+  head, and the breach charge is a flat rectangular plate with a strap; the Spotter's sensor is a tripod with its own
+  short mast (a spike), a separate device from the mast on the Spotter's back. **Deploying or drawing a gadget leaves
+  the back primitive in place** (Section 3.3): the crate comes off the frame and the frame stays; the tripod is placed and the
   back mast stays; the tool is drawn and the scabbard keeps the diagonal.
 - **Light gadgets are compact and hip-carried.** The squad-gap kit's light gadgets and the solo kit's light items
-  (the light reinforce tool and the ammo pouch) never repeat another role's primitive. They fit the hip envelope in
+  (the light reinforce tool and the bandolier) never repeat another role's primitive. They fit the hip envelope in
   Section 5.2: nothing on the back, nothing above the shoulder line, nothing longer than 50 cm, and nothing standing
   more than 8 cm off the body, which is under 1 px at 80 m.
 
@@ -651,10 +672,10 @@ The squad's palette is muted and military, which separates it from the horde's c
 
 | Role | Primitive (Section 3.3) | Kit pieces on the body | Gadgets (MVP in bold) | First-person identity |
 | ---- | ---- | ---- | ---- | ---- |
-| **Corpsman** | Hump | Rounded medical pack low on the back with a rounded side bag on each hip (about 72 cm across in all, Section 3.3); drag strap across the shoulders; bulky thigh pouches; tourniquet on the sleeve | **Revive kit**; med pouch (VS) | Tourniquet and trauma-shears pocket on the sleeve; the revive kit's soft rounded pouch in the gadget hand |
-| **Quartermaster** | Block | Tall frame pack loaded with ammo cans, its rigid rails and top bar keeping the block when the crate is off; squared shoulder line; extra magazine pouches | **Ammo crate**; ammo pouch (VS) | Leather work gloves; a magazine-heavy chest rig seen when looking down; the crate's squared box carried two-handed |
+| **Corpsman** | Hump | Rounded medical pack low on the back with a rounded side bag on each hip (about 72 cm across in all, Section 3.3); drag strap across the shoulders; bulky thigh pouches; tourniquet on the sleeve | **Revive kit**; dressing pack (VS) | Tourniquet and trauma-shears pocket on the sleeve; the revive kit's soft rounded pouch in the gadget hand |
+| **Quartermaster** | Block | Tall frame pack loaded with ammo cans, its rigid rails and top bar keeping the block when the crate is off; squared shoulder line; extra magazine pouches | **Resupply crate**; bandolier (VS) | Leather work gloves; a magazine-heavy chest rig seen when looking down; the crate's squared box carried two-handed |
 | **Sapper** | Diagonal | Long-handled reinforce tool in a rigid, padded scabbard (at least 17 cm wide) slung across the back, which keeps the diagonal when the tool is drawn; heavy charge bag on one hip; knee pads | **Reinforce tool**, **breach charge**; collapse charge (Alpha) | Heavy work gloves with knuckle protection; the long tool's head in view when braced; the flat charge plate with its strap |
-| **Spotter** | Spike | Collapsible sensor mast rising from the back, topped by a sensor head at least 20 cm across; it stays on the back when the sensor tripod is placed; long scope case; light kit | **Sensor**; spotting scope (VS) | Thin shooting gloves; a wrist display that shows the sensor's status in squad cyan (a small emissive, Section 4.4) |
+| **Spotter** | Spike | Collapsible sensor mast rising from the back, topped by a sensor head at least 20 cm across; it stays on the back when the sensor tripod is placed; long scope case; light kit | **Sensor**; survey glass (VS) | Thin shooting gloves; a wrist display that shows the sensor's status in squad cyan (a small emissive, Section 4.4) |
 
 **Squad-gap kit (2–3 player squads) and solo kit (Vertical Slice).** A player carrying another role's light gadget
 (concept system 2), or the solo kit's extra items, does **not** gain that role's back primitive. Every light gadget
@@ -666,11 +687,12 @@ which role the player chose, and the role test stays honest. Starting forms:
 | Light item | Compact form | Never |
 | ---- | ---- | ---- |
 | Light revive kit | A flat pouch on the thigh | A back pack or side bags (the Corpsman's hump) |
-| Light ammo crate | A flat ammo box (no deeper than 8 cm) clipped to the thigh, set down to resupply | A frame or anything above the shoulders (the block) |
+| Light resupply crate | A flat ammo box (no deeper than 8 cm) clipped to the thigh, set down to resupply | A frame or anything above the shoulders (the block) |
 | Light reinforce tool (squad-gap kit and solo kit) | A short one-handed bar under 50 cm, carried vertically in a hip loop | Anything at least 1 m long, slung diagonally or on the back (reserved for the Sapper's full tool, Section 3.3) |
-| Light breach charge (if the gap kit carries one; concept review open) | A small plate in a flat thigh pouch | A charge bag on the hip (the Sapper's asymmetry) |
 | Light sensor | A palm-sized puck in a hip pouch, placed on the ground with no mast above 40 cm | Any mast on the back (the spike) |
-| Solo kit's ammo pouch and self-revive charge | Pouches on the belt | Anything outside the envelope |
+| Solo kit's bandolier and self-revive charge | Pouches on the belt | Anything outside the envelope |
+
+The gap and solo kits never carry the breach charge (concept A51), so no light form exists for it.
 
 ### 5.3 First-person: the most-seen character
 
@@ -682,6 +704,10 @@ the highest-detail characters in the game (Section 8.5):
   tripod).
 - **Role identity in first person** comes from the sleeve, the gloves and the gadget (table above), so a player who
   never looks at a mirror still feels which role they are.
+- **Movement has weight too** (concept system 11): a vault shows the free hand planting on the obstacle; a mantle
+  holsters the weapon and shows both hands; a slide drops the camera without rolling it; landing from a fall dips the
+  view. Camera motion obeys the camera-shake and head-bob options (7.6), and none of it rolls the horizon more than a
+  few degrees.
 - **Weapon realism, generic design** (Section 3.5): attachments are physically present and visibly change the weapon.
 
 ### 5.4 The horde
@@ -801,8 +827,9 @@ about 160 m² (10th to 90th percentile about 110–250 m²) and a median oriente
   panels); filler panels 0.6–1.8 m wide absorb each wall run's remainder at corners or between openings, never
   splitting a window or door.
 - **Heights.** 2.75 m floor to floor (8 ft ceilings plus the floor structure), a foundation reveal of 0.3–0.6 m, roof
-  pitches of 4:12 to 6:12, eaves 0.3–0.45 m. The pipeline's storey inference should use these kit heights rather than
-  the OSM convention of 3.2 m per level (a note for the pipeline, AB-13).
+  pitches of 4:12 to 6:12, eaves 0.3–0.45 m. The concept adopted these kit heights for storey inference in revision
+  2.4 (system 6, AB-13). The prototype pipeline still uses 3.2 m per level and must switch before its output feeds
+  kit fitting (Appendix B).
 - **Openings.** Entry doors 0.91 × 2.03 m; double-hung windows about 0.9 × 1.4 m with sills at 0.9 m; picture windows
   1.8–2.4 m wide; sliding patio doors 1.8 × 2.03 m at the back; garage doors 2.74 × 2.13 m (single) and 4.88 × 2.13 m
   (double). Gameplay metrics (breach passability, the player capsule) are owned by the level GDD; the kit respects
@@ -872,14 +899,14 @@ Substrate materials (on by default since 5.7). Why this, and not painted or styl
 | **167th Street corridor** | Sparse to medium | The long band needs open sightlines | Wrecks slewed across lanes, utility poles and overhead lines, streetlights, dark traffic signals, real street-name signs | Wrecks and pole bases are the main cover | Anything that closes the axis, except rubble and wrecks the gameplay layer places |
 | **Residential streets** | Medium | A cover chance every 30–50 m along horde lanes | Cars in driveways and at curbs (generic), trash and recycling carts (unbranded), paper leaf bags, mailboxes (no numbers), basketball hoops, hydrants, storm drains, parkway trees and stumps | Cars, carts and trees break lanes | Text, numbers, brands |
 | **Front yards** | Sparse | Real front yards are open | Foundation shrubs, one tree, a dark lamp post, leaf piles, a rake | Low | Fences in front yards (rare in the region) |
-| **Back yards** | Medium | Rule-generated fences make the yards a maze | Chain-link and wood privacy fences, decks and patios, grills, air-conditioning condensers, sheds | Fences for concealment; condensers and decks for low cover | Child-specific play equipment (AB-14) |
+| **Back yards** | Medium | Rule-generated fences cut up the yards; every fence is crossable | Chain-link fences (1.0–1.2 m) and wood privacy fences (1.8 m), hedges (0.6–1.5 m), decks and patios, grills, air-conditioning condensers, sheds. Heights stay inside the concept's traversal classes: vault 0.5–1.1 m, mantle 1.1–2.0 m (system 11) | Fences for concealment; condensers and decks for low cover | Child-specific play equipment (AB-14); any fence or wall over 2.0 m |
 | **Garages** (enterable) | Dense | Garage caches live here | Shelves, workbench, hand tools, bins, a lawnmower, sometimes a car | Close-quarters cover | Branded tools and products |
 | **Interiors** (enterable) | Medium-dense | Rooms as cover; doorways as melee ground | Generic furniture; picture frames with landscapes, never people | Furniture | Photographs of people, children's rooms, readable text (AB-14) |
 | **Creek Woods** | Dense, natural | Close quarters at every hour | Understory, deadfall logs, creek banks, the creek, footbridges where OSM has them | Logs, banks, trunks | Lights, campsites, props suggesting residents |
 | **Fields and parks** | Sparse | Landing zones and the long band | Backstops, benches, bleachers, bins, faded field markings | Little | Playground equipment (AB-14) |
 | **Cemetery** | Sparse, ordered | An exposed crossing | Rows of low generic headstones, mature trees, perimeter fence | Low headstones | Names, symbols, open graves (Section 6.7) |
 | **School Grounds** | Sparse | A generic institution | The generic building, a parking lot with a few cars, the field | The building and cars | Signage, names, mascots, buses, child-specific props (Section 6.7) |
-| **Held sectors** (added by the squad) | Medium | The squad's infrastructure | Work-light masts, the ammo crate, the sector armory (a stack of hard cases and a rack), the workbench (a sawhorse table with tools), boards and bracing | The squad's own fortifications | Anything clean and perfectly aligned: everything here is askew |
+| **Held sectors** (added by the squad) | Medium | The squad's infrastructure | Work-light masts, the resupply crate, the sector armory (a stack of hard cases and a rack), the workbench (a sawhorse table with tools), boards and bracing | The squad's own fortifications | Anything clean and perfectly aligned: everything here is askew |
 
 ### 6.7 Sensitive sites
 
@@ -888,8 +915,8 @@ The concept's safeguards (A29) as render rules:
 | Site | Rendering | Rules |
 | ---- | ---- | ---- |
 | **School Grounds** (labelled generically) | A generic single-storey institutional brick building, a field, a parking lot | No name, signage, mascot or school colours; no school buses; no child-specific props; gore decals suppressed; no set-piece fires; never shown in marketing (concept R5); whether it stays a sector is open (Q16) |
-| **Cemetery** (labelled generically) | Open lawn, rows of low grey headstones, mature trees, a perimeter fence | Headstones are **nameless, generic and indestructible**, and take no decals (no scorch, blood or bullet marks); no open graves; no zombie ever emerges from a grave; never a landing zone |
-| **Places of worship** (three; never sectors) | Generic sealed masses with pitched roofs | **No religious iconography**; sealed and **not destructible** beyond cosmetic chips (AB-14); no gore decals; no set-piece fires |
+| **Cemetery** (labelled generically) | Open lawn, rows of low grey headstones, mature trees, a perimeter fence | Headstones are **nameless, generic and indestructible** (logged in the concept as an accepted exception to Pillar 1, A57), and take no decals (no scorch, blood or bullet marks); no open graves; no zombie ever emerges from a grave; never a landing zone |
+| **Places of worship** (three; never sectors) | Generic sealed masses with pitched roofs | **No religious iconography**; sealed and **not destructible** beyond cosmetic chips (AB-14; the concept's system 5 and Pillar 1 log this exception, A57); no gore decals; no set-piece fires |
 | **Parks with playgrounds** | Open lawn and benches where OSM marks a playground | **Playground equipment omitted** (AB-14) |
 
 ### 6.8 Environmental storytelling
@@ -938,7 +965,7 @@ The visual language is set here; the layout and behaviour are specified in `desi
 | ---- | ---- | ---- | ---- |
 | Crosshair | Hip fire only; hidden when aiming (the optic's reticle is diegetic) | Centre | A small dot with spread ticks; can be hidden in options |
 | Stamina | Contextual: only below full or while blocking | Thin arc around the crosshair | Arc in HUD white; breath audio does the rest |
-| Ammo | Contextual: on reload, when low (25% or less), at a crate or supply point; fades after 3 s | Bottom right | Magazine and reserve numerals in tabular figures; a held reload key performs a diegetic magazine check |
+| Ammo | Contextual: on reload, when low (25% or less), at a crate or supply point; fades after 3 s | Bottom right | Magazine and reserve numerals in tabular figures; a held reload button performs a diegetic magazine check |
 | Gadget charges | Contextual: on change and while the gadget is equipped | Beside ammo | The gadget glyph with charge ticks |
 | Own health | Contextual: while below full | Bottom left | A thin bar, plus a damage edge vignette (capped opacity) and directional damage arcs toward the source |
 | Salvage | Contextual: on change, at an armory or workbench, and during intermissions | Above ammo | Numerals with the salvage glyph |
@@ -946,10 +973,10 @@ The visual language is set here; the layout and behaviour are specified in `desi
 | Squad markers | Persistent; fade with distance; outlined when occluded | Over each squadmate | Cyan chevron with role icon and name |
 | Pings and spotted zombies | For their lifetime (pings 5 s, specials 8 s) | In the world | Squad cyan chevron (position), survey tick (zombie: horde green-grey for every type, specials included, with an optional type glyph inside; danger red only for the types and moments listed in Section 4.3), square (items); hollow when occluded |
 | Compass strip | Persistent | Top centre | A cartographic bearing strip with markers, plus **the real name of the street the player is on** (Pillar 2 in one line of text) |
-| Sector board | Persistent | Under the compass | A chip per sector with its generic label: held (amber mast-and-cone glyph), horde-held (green-grey survey tick, hatched), capturing (progress ring), contested (both glyphs, ring paused), overrun (danger hazard stripe) |
+| Sector board | Persistent | Under the compass | A chip per sector with its sector label (concept 6.1: real street, park, creek and trail names, for example "167th Street" or "Lewis Park Fields"; generic labels only for sensitive sites; the wooded park's creek label is the logged exception): held (amber mast-and-cone glyph), horde-held (green-grey survey tick, hatched), capturing (progress ring), contested (both glyphs, ring paused), overrun (danger hazard stripe) |
 | Round and phase | Persistent, small; the intermission timer is large while it runs | Top right | Round number; intermission countdown; Push or Dig In vote state |
 | Squad events | Contextual, at most three lines, fading | Top right, under the round | Squad actions only ("revived", "resupplied", "reinforced"), which rewards Pillar 4. No kill feed |
-| Interaction prompts | Contextual | Below the crosshair | Key glyph, verb and cost ("Reinforce · 150"); revive and capture progress as a thin bar |
+| Interaction prompts | Contextual | Below the crosshair | Xbox-layout button glyph (the game is controller-only, concept U11), verb and cost ("Reinforce · 150"); revive and capture progress as a thin bar |
 | Hit confirmation | On **impact**, not on firing (projectiles take time to land) | Around the crosshair | Four short ticks; a kill adds a brief inward motion; a headshot is marked by sound. **No damage numbers** |
 | Parry feedback | On a parry | Diegetic first | Sparks, the zombie's large stagger and the sound; at most a 120 ms crosshair pulse |
 | Panel states | Diegetic (outlines, Section 3.4) | In the world | While a Sapper holds the reinforce tool, an overlay outlines nearby panels: squad-owned reinforced (yellow), about to fail (danger red) |
@@ -1035,15 +1062,18 @@ each is decided with both positions recorded (AB-15). Every decision can be over
 | 6 | Downed view | Heavy desaturation and blur | The downed player still crawls and shoots and must see threats | **40% desaturation at most; no blur in the central 60%** |
 | 7 | Night | Dark nights that make the light plan matter | Threats must stay visible | The concept's per-band minimums (Section 2.4), the bounded readability light (Section 2.5) and **Night visibility assist** as an option |
 | 8 | Spotted markers through walls | Markers only in line of sight | Spotting is a squad hand-off and must survive cover | **Visible through walls for their lifetime, drawn hollow when occluded** |
-| 9 | Crosshair | No hip-fire crosshair | New players and controller users need a reference | **Small dot with spread ticks**, hideable |
+| 9 | Crosshair | No hip-fire crosshair | New players need a reference, and every player aims with a stick (concept U11) | **Small dot with spread ticks**, hideable |
 
 ### 7.8 The tactical map, the front end and attribution
 
 - **Tactical map (the hero UI):** a dark chart of the real OSM data: building footprints, streets with their real
-  names in a hierarchy (167th Street widest), water, neutral grey land cover, the sectors with their generic labels,
+  names in a hierarchy (167th Street widest), water, neutral grey land cover, the sectors with their sector labels
+  (as on the sector board, 7.2),
   the frontline as a hatched band, squad chevrons, pings, infrastructure squares and spotted ticks. **It shows the
   squad's changes:** breached and destroyed walls appear as gaps and broken outlines in the footprints, so the map
-  becomes a record of the match.
+  becomes a record of the match. **Text rule:** the only words drawn on the chart are street names and sector labels.
+  OSM place, subdivision (named residential land use) and institution names are never drawn, so no subdivision name
+  reaches the screen through the map data (concept 6.1, U10).
 - **Front end:** the main menu sits over the live "street before" scene (Section 2.3); role select is the open garage
   under the squad's work light; the end-of-match summary is the map of what the squad held, broke and built.
 - **Map select and loading:** the map is named **"Tinley Park, IL (60477)"** (never after a subdivision); its
@@ -1059,7 +1089,7 @@ each is decided with both positions recorded (AB-15). Every decision can be over
 | ---- | ---- | ---- |
 | Engine | Unreal Engine 5.8 (pinned; latest hotfix 5.8.4), C++ and Blueprint | `project.yaml`, `technical-preferences.md` |
 | Rendering | Lumen and Nanite (deferred); Substrate materials (on by default since 5.7); MegaLights production-ready in 5.8 (needs hardware or software ray-tracing support); Lumen Lite is Beta | `docs/engine-reference/unreal/modules/rendering.md` |
-| Platform | PC (Windows) on Steam; mouse and keyboard first | Concept, `technical-preferences.md` |
+| Platform | PC (Windows) on Steam; **controller-only for players** (an Xbox-layout gamepad); keyboard and mouse is a developer fallback | Concept U11, `technical-preferences.md`, `project.yaml` |
 | Performance target | **60 fps at 1080p on a mid-range GPU (RTX 3060 class)**, 4 players; 16.6 ms frame budget | `technical-preferences.md` (`project.yaml` has no `performance` block) |
 | The hard case | A **listen-server host** renders while it also simulates the horde, destruction, projectiles and World Partition streaming for all four players | Concept (system 10, R2, R10) |
 | Not yet configured | Draw-call budget, memory ceiling, minimum GPU | `technical-preferences.md`; concept R10 |
@@ -1177,9 +1207,11 @@ kit and the rules; tools own the code.
 6. **Generate the roof** (hip, gable, compound). **Gate:** no single-family house with a flat roof.
 7. **Assign cladding and colour** by the variation rule, seeded by the OSM way ID.
 8. **Dress the yard by rule:** the driveway from the garage to the street, foundation shrubs, a parkway tree or
-   stump, fences between back yards, an air-conditioning condenser, leaf bags.
+   stump, fences between back yards (heights inside the vault and mantle classes, 6.6), an air-conditioning
+   condenser, leaf bags.
 9. **Write per-panel destruction data:** material class, load-bearing flag, nav-link sockets (enterable buildings
-   and the outer ring of sealed-house pockets only).
+   and the outer ring of sealed-house pockets only), plus a traversal link on every generated fence and hedge (vault
+   or mantle for players, climb for the horde; concept system 11).
 10. **Bake** into World Partition.
 
 **Kit authoring rules:** every module has all four states with matching edges so neighbours still join; corner,
@@ -1376,13 +1408,13 @@ Every question the skill would have put to the user, answered by the facilitator
 | AB-05 | Season and setting | Late autumn (dry, leaf-off); early autumn colour; summer; winter with snow | **Late autumn, dry, leaf-off, before snow** | Ordinary and real; early, fast dusk; open long sightlines; lower foliage risk; no weather system | Sections 2, 4.2, 6 and 8.7 change |
 | AB-06 | Night curve (concept Q19) | Keep A41; stretch further; a cycle with dawn | **Keep A41** (dusk at round 10, night around 15–20) | It is the concept's current text; Q19 is the user's | A dawn state is added to Section 2.2 |
 | AB-07 | Horde readability aid | None; bounded rim light; always-on rim | **Bounded rim light** (horde only, off before round 10, close and street bands only, capped) | Readability wins in those bands, but realism governs | Remove it, and rely on motivated light alone (tests harder to pass) |
-| AB-08 | How the silhouette tests are run | Unaided everywhere; through optics at range | **Close band unaided; street band unaided and with a 1–2× optic; long band through the MVP magnified optic** | On-screen sizes (Section 3.2) make unaided long-band tests impossible | The concept's MVP criterion wording would need the same clarification (the concept was not edited) |
+| AB-08 | How the silhouette tests are run | Unaided everywhere; through optics at range | **Close band unaided; street band unaided and with a 1–2× optic; long band through the MVP magnified optic** | On-screen sizes (Section 3.2) make unaided long-band tests impossible | The concept's shape-language test and MVP criterion adopted this wording in revision 2.4 (A59) |
 | AB-09 | Real-world IP on characters and weapons | Real-looking branded gear; generic | **Generic**: no real insignia, trademarked camouflage, brands or real gun models | Legal safety and the concept's "no brands" rule | Licensing work and legal review |
 | AB-10 | Spotted-zombie marker | Diamond; survey tick | **Survey tick** | Concept A45 and R12 | — |
 | AB-11 | Flares and supply-drop marker | Red hand flares; amber ground flares; amber overhead flares | **Steady amber flares overhead; yellow smoke marks a supply drop** | Red collides with danger; ground flares flicker like fire; overhead and steady keeps the non-hue cue | Section 4.4 re-cut |
 | AB-12 | Tactical map style | Light paper; dark chart | **Dark chart, with neutral grey land cover** | One meaning palette for HUD and map; suits night; no green to confuse with the horde | Section 4.6 palette re-cut |
-| AB-13 | Kit storey height | OSM convention 3.2 m; US framing 2.75 m | **2.75 m** | Real suburban houses; the kit must look right | Houses read too tall |
-| AB-14 | Sensitive-content curation | Render everything as real; curate | **Curate**: no playground equipment; places of worship sealed, not destructible, no iconography; no children's rooms, child-specific props or photographs of people; no civilian bodies; nameless, indestructible, decal-free headstones; no gore on sensitive sites | Concept R5 and A29; curation is set dressing, not moving footprints, so Pillar 2 allows it | Sections 6.6–6.7 relaxed; legal and PR review needed |
+| AB-13 | Kit storey height | OSM convention 3.2 m; US framing 2.75 m | **2.75 m** | Real suburban houses; the kit must look right | Houses read too tall. Adopted by the concept's system 6 in revision 2.4; the prototype pipeline still uses 3.2 m (Appendix B) |
+| AB-14 | Sensitive-content curation | Render everything as real; curate | **Curate**: no playground equipment; places of worship sealed, not destructible, no iconography; no children's rooms, child-specific props or photographs of people; no civilian bodies; nameless, indestructible, decal-free headstones; no gore on sensitive sites | Concept R5 and A29; curation is set dressing, not moving footprints, so Pillar 2 allows it. The concept logs the indestructible sites as Pillar 1's accepted exception (A57) | Sections 6.6–6.7 relaxed; legal and PR review needed |
 | AB-15 | HUD conflicts (Section 7.7) | Art position; UX position; hybrid | **The hybrids recorded in Section 7.7**; no minimap at MVP | Diegetic-leaning but fair for a finite-ammo, parry-based game | The HUD spec changes |
 | AB-16 | Typeface | Overpass; IBM Plex; a commercial face | **Overpass and Overpass Mono**, Plex as the fallback | Highway-sign heritage ties the HUD to the street signs; open licence | Section 7.3 |
 | AB-17 | Corpsman icon | A cross; a pulse trace; a stretcher | **Pulse trace** | Protected emblems must not be used | — |
@@ -1395,6 +1427,7 @@ Every question the skill would have put to the user, answered by the facilitator
 | AB-24 | Spotted specials' marker colour (gate blocking item 1) | Danger red for every special; green-grey for every special; green-grey with danger red only for explosive or structure-threatening types | **Green-grey survey tick for every type, with an optional type glyph inside. Danger red only for the Detonator, and for the Breacher or Wrecker while attacking a panel** (stated once in 4.3; 7.2 points to it) | Red on every special diluted the top-priority channel and, with danger's pulse and stripe, filled late-round HUDs with pulsing red that competed with downed squadmates and breach warnings | 4.3 and 7.2 change; the 4.7 checks are unaffected |
 | AB-25 | Role primitive sizes and gadget carry (gate blocking item 2) | Keep thin masts, handles and a shallow hump; set a minimum on-screen size and rebuild the primitives | **Minimum 2 px (17 cm) at 80 m, target 20 cm or more** (3.2). Corpsman pack widened sideways to about 72 cm. Sapper diagonal carried by a rigid scabbard at least 17 cm wide and the tool head. Spotter mast topped by a sensor head at least 20 cm across. **Deploying or drawing a gadget never removes the back primitive. Light gadgets are compact and hip-carried** (3.3, 3.5, 5.2) | At 12 px per metre at 80 m, a 3 cm part is about 0.4 px and vanishes under TSR, and a 7 cm hump is under 1 px from the front; the old primitives failed the bible's own size rule and the concept's MVP role test | Kit proportions in 3.3 and 5.2 change; the role test would need another distinguishing method |
 | AB-26 | On-screen size table (gate concern) | Keep the first table; correct it to the exact projection | **Corrected**: 960 ÷ d px per metre; a 1.8 m figure is about 58 / 22 / 11.5 / 5.8 / 4.3 px at 30 / 80 / 150 / 300 / 400 m (230 / 86 / 46 / 23 / 17 through a 4× optic); the role-test figure is about 22 px | The first table was about 10% too large, and the section calls itself "measured, not guessed" | — |
+| AB-27 | Re-sync with concept revision 2.4 (concept A52–A60, U11) | Leave the bible on revision 2.2; re-sync | **Re-sync** without changing the visual direction: real-name sector labels with generic labels only for sensitive sites and one creek-label exception (7.2, 7.8, plus a tactical-map text rule); gadget renames (3.5, 5.2); the light breach-charge form removed (5.2); movement keeps the role primitives (3.3, 5.3); fences inside vault and mantle heights (6.6, 8.6); Xbox-layout button glyphs and a controller-only platform row (7.2, 7.7, 8.1) | The concept changed things this bible depends on, and it took up the bible's open items for the concept owner (AB-08, AB-13, AB-14) | The listed sections revert to their revision 2.2 wording |
 
 ## Appendix B: Open items and hand-offs
 
@@ -1405,19 +1438,21 @@ Every question the skill would have put to the user, answered by the facilitator
 | Minimum GPU and the Low tier's caps (concept R10). The anchor assigns the minimum GPU to this bible before the realism pass (gate concern) | Technical director, with the art director | **Vertical Slice A at the latest** |
 | **Gate concern:** state the internal resolution (TSR screen percentage) for the Medium tier in 8.10; 4.0 ms of software Lumen on an RTX 3060-class card is plausible only when TSR upscales from below 1080p. The 3.2 primitive minimum's 20 cm target assumes it | Technical director, technical artist | End of the MVP spike |
 | **Gate concern:** CPU cost on the listen-server host is not budgeted in 8.10 (animation for 24–48 zombies, Niagara, decals). It is handed to the TD spike explicitly | Technical director (spike) | End of MVP month 3 |
-| **Gate concern:** first-person silhouette and form guidance for the rest of the shippable tier. That means SMG, LMG and launcher classes (3.5 covers only pistol, shotgun, assault rifle and DMR), the magazine, grip and stock attachments, and the second gadgets (med pouch, ammo pouch, spotting scope). First Map Complete needs 6 guns and about 15 attachments across six slots | Art director (next `/art-bible` revision) | `/asset-spec` briefs for weapons and gadgets |
+| **Gate concern:** first-person silhouette and form guidance for the rest of the shippable tier. That means SMG, LMG and launcher classes (3.5 covers only pistol, shotgun, assault rifle and DMR), the magazine, grip and stock attachments, and the second gadgets (dressing pack, bandolier, survey glass; renamed in concept A58). First Map Complete needs 6 guns and about 15 attachments across six slots | Art director (next `/art-bible` revision) | `/asset-spec` briefs for weapons and gadgets |
 | **Gate concern:** name the 5 zombie types that ship at First Map Complete (3.3, 5.4 and 8.5 specify all 9; 8.12 says 5). This scopes outsourcing and decides which night and long-band silhouette tests must pass at ship | Art director, with the horde GDD owner | Horde outsourcing beyond Vertical Slice A |
 | **Gate concern:** texel density for surfaces players fight against. 512 px per metre is about half of native for a wall 1 m from the camera (about 960 px per metre at 1080p and 90°). Use 1,024 px per metre, or require detail normals and detail tiling, on interior partitions, the shared wall-internals kit, breach edges, garage interiors, and boards and bracing (8.4) | Technical artist | Vertical Slice A kit work |
 | **Gate concern:** world-space marker contrast. 4.6's 4:1 guarantee holds only against the HUD plate and the dark chart. Markers drawn in the world can fall below 3:1 over white siding, concrete or the bright dusk sky (road-marking yellow and squad cyan). Make the dark keyline the default for world-space markers, and keep "thicken outlines" as the option (4.6, 4.7, 7.6) | `/ux-design` (HUD specification), with the art director | MVP HUD block |
 | **Gate concern:** kit-family tie-break in 6.2. Raised ranch and two-storey both match a near-square footprint of about 120 m². Specify the tie-break, for example a choice weighted by target mix ratios and seeded by the OSM way ID, so the regional mix is controlled and deterministic | Technical artist, with tools | Kit selection in the generator for Vertical Slice A |
 | **Gate concern:** naming rules still missing for outsourcers (8.3): how source and DCC files are named before import, and whether size tiers appear in names or only in texture groups | Technical artist | Outsourcing starts |
-| **Gate privacy note (outside this file):** reword the "Location check" paragraph in `design/gdd/game-concept.md` Section 6.1 as a neutral boundary note. The raw `.osm` extract with every building footprint is still tracked under `prototypes/real-street-holdout-concept/pipeline/data/` (a gap the concept already logs) | Concept owner; producer | The next public push |
+| **Gate privacy note (outside this file):** the concept's 6.1 "Location check" wording is now a neutral boundary note (concept A50). The raw `.osm` extract and the generated level files with every building footprint are still tracked under `prototypes/real-street-holdout-concept/pipeline/` and are already on the public remote; the concept's action is "no further push until they are untracked", with a history-purge decision by the repository owner (concept A60, R5) | Producer; repository owner | Before any further push; the purge decision by 2026-11-26 |
 | Nanite foliage with wind on 5.8; runtime virtual texturing on 5.8; Lumen Lite status | Technical artist, `unreal-specialist` | Creek Woods' art pass |
 | HLOD versus destruction method (AB-18) | Technical director (destruction ADR) | The first full-map bake |
 | Reconcile the horde count in `technical-preferences.md` with the concept (AB-19) | Technical director (`/settings`) | Any budget review |
 | Typeface licences and glyph coverage (AB-16) | Producer | Any public build |
 | Style research brief on the region's house typology, from generic public sources only (6.1). **Gate concern:** it does not exist yet, and the house kit, the largest outsourced environment item, cannot be fully briefed without it | Environment/tech artist | Vertical Slice A kit work |
-| Silhouette test wording in the concept's MVP criteria (AB-08) | Concept owner | MVP playtests |
+| ~~Silhouette test wording in the concept's MVP criteria (AB-08)~~ Done in concept revision 2.4 (A59) | Concept owner | — |
+| The prototype pipeline (`prototypes/real-street-holdout-concept/pipeline/osm_to_level.py`) still infers 3.2 m per level; switch it to the kit's 2.75 m storey plus foundation reveal (AB-13, concept system 6) | Tools/tech engineer | Before pipeline output feeds kit fitting (the MVP engine bake) |
+| Fence and hedge heights in the yard generator inside the vault and mantle classes, with a traversal link on each (6.6, 8.6; concept system 11) | Technical artist, with tools | The MVP engine bake |
 | HUD specification (`design/ux/hud.md`) and accessibility requirements | `/ux-design` | MVP HUD block |
 | Per-asset specifications and outsourcing briefs | `/asset-spec` | Outsourcing starts |
 | Licence ledger for sourced assets | Producer | The first sourced asset |
@@ -1451,7 +1486,7 @@ revision.
 | 8 | The regional style research brief does not exist yet | Open (Appendix B) |
 | 9 | Wording slips: the Plated "drags" its slab (5.4); the evac is "ringed by flares" (2.3); the "no contradictions" claim | **Fixed**: 5.4 and 2.3 are corrected; the C.2 row below is annotated; the header now carries the agent verdict |
 | 10 | Naming rules for source and DCC files and for size tiers (8.3) | Open (Appendix B) |
-| 11 | Privacy: this bible is clean (no address, house number, coordinates or subdivision name; the map is named only "Tinley Park, IL (60477)"). The concept's 6.1 "Location check" wording and the tracked raw extract are outside this file | Open, outside this file (Appendix B) |
+| 11 | Privacy: this bible is clean (no address, house number, coordinates or subdivision name; the map is named only "Tinley Park, IL (60477)"). The concept's 6.1 "Location check" wording and the tracked raw extract are outside this file | The concept's wording is fixed (concept A50). The tracked extract and level files remain on the public remote; open, outside this file (Appendix B) |
 
 **Next:** the art director confirms B1 and B2, or the gate is re-run, to reach APPROVE before asset production. The
 open concerns have owners and deadlines in Appendix B; the gate classed them as clarification work, not blockers to
