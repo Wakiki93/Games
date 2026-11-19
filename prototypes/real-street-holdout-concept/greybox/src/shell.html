@@ -69,7 +69,7 @@ html,body { margin:0; height:100%; overflow:hidden; background:#0b0f12; color:#d
 #attrib { position:fixed; left:50%; bottom:6px; transform:translateX(-50%); font-size:11px; color:#cfd8dc;
   background:rgba(0,0,0,0.45); padding:2px 8px; pointer-events:none; z-index:30; }
 #debug { position:fixed; left:16px; top:150px; margin:0; padding:8px 10px; background:rgba(0,0,0,0.78); color:#b9f6c9;
-  font-size:12px; line-height:1.4; border:1px solid #2b5; pointer-events:none; z-index:20; min-width:430px; }
+  font-size:12px; line-height:1.4; border:1px solid #2b5; pointer-events:none; z-index:5; min-width:430px; }
 .overlay { position:fixed; inset:0; display:flex; align-items:center; justify-content:center; z-index:10;
   background:rgba(4,8,10,0.72); }
 .card { background:var(--panel); border:1px solid var(--ui2); padding:22px 28px; max-width:880px; max-height:88vh; overflow:auto; }
@@ -94,6 +94,15 @@ html,body { margin:0; height:100%; overflow:hidden; background:#0b0f12; color:#d
 #buyTop .s { color:var(--own); }
 #sumStats td:first-child { color:#9ab; }
 #sumStats td:last-child { color:#fff; text-align:right; }
+#needKb { display:none; color:var(--amber); border:1px solid var(--amber); padding:6px 10px; }
+.card { max-width:min(880px, calc(100% - 32px)); box-sizing:border-box; }
+@media (pointer: coarse), (max-width: 820px) {
+  #needKb { display:block; }
+  .card { min-width:0 !important; padding:14px 16px; }
+  .card table, .card tr, .card td { display:block; }
+  #buyGrid { grid-template-columns:1fr; }
+  #obj, #debug { min-width:0; max-width:calc(100% - 32px); }
+}
 </style>
 </head>
 <body>
@@ -123,23 +132,25 @@ html,body { margin:0; height:100%; overflow:hidden; background:#0b0f12; color:#d
   <div class="card">
     <h1>HOLDOUT</h1>
     <p style="color:#9ab">Greybox concept prototype &middot; <span id="mapName"></span> &middot; single-player &middot; not a feel test</p>
+    <p id="needKb">This prototype needs a keyboard and mouse. Open it on a computer to play.</p>
     <p>Hold a real neighborhood against escalating rounds. Every building is cover &mdash; and the horde (Breachers) or your own breach charges can bring it down. Each round, capture and hold the objective sector for bonus Salvage.</p>
     <table>
       <tr><td class="k">WASD / Shift</td><td>move / sprint (stamina)</td><td class="k">Mouse / LMB / RMB</td><td>look / fire / aim (zoom with optics)</td></tr>
       <tr><td class="k">R</td><td>reload</td><td class="k">1 / 2 / wheel</td><td>rifle / bat</td></tr>
       <tr><td class="k">V</td><td>melee swing (stamina)</td><td class="k">C (hold)</td><td>block &middot; tap just before a hit lands = PARRY</td></tr>
-      <tr><td class="k">G</td><td>throw breach charge (sticks to walls)</td><td class="k">F (hold)</td><td>Engineer repair tool: reinforce the building you look at</td></tr>
+      <tr><td class="k">G</td><td>Sapper: throw breach charge (sticks to walls)</td><td class="k">F (hold)</td><td>Sapper: Reinforce tool on the building you look at</td></tr>
       <tr><td class="k">Q</td><td>ping / spot zombie or building</td><td class="k">B</td><td>buy screen (between rounds)</td></tr>
       <tr><td class="k">M</td><td>minimap on/off</td><td class="k">F3</td><td>debug / instrumentation panel</td></tr>
+      <tr><td class="k">L</td><td>free-look, if the mouse will not capture</td><td class="k">Arrow keys</td><td>turn / look up and down</td></tr>
     </table>
     <div class="go">CLICK TO START</div>
   </div>
 </div>
-<div id="pause" class="overlay hidden"><div class="card"><h2>PAUSED</h2><p>Click to resume.</p></div></div>
+<div id="pause" class="overlay hidden"><div class="card"><h2>PAUSED</h2><p>Click to resume. If the mouse will not capture, press L for free-look.</p></div></div>
 <div id="buy" class="overlay hidden">
   <div class="card" style="min-width:760px">
     <div id="buyTop"><span>INTERMISSION &mdash; <span id="buyTimer">20</span> s</span><span class="s" id="buySalvage"></span></div>
-    <p style="color:#9ab">Spend Salvage. Every attachment is a trade-off. Fortify with the Engineer repair tool (hold F on a building) &mdash; you can close this screen and walk around while the timer runs.</p>
+    <p style="color:#9ab">Spend Salvage. Every attachment is a trade-off. Fortify with the Sapper's Reinforce tool (hold F on a building) &mdash; you can close this screen and walk around while the timer runs.</p>
     <div id="buyGrid"></div>
     <button class="btn" id="buyClose">[B] Back to the street</button><button class="btn" id="buyReady">[Enter] Ready &mdash; start round</button>
   </div>

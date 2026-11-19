@@ -136,7 +136,9 @@ function distToBuilding(b, x, z) {
 }
 
 const _colNear = [];
-function collideCircle(p, r) {        // pushes p {x,z} out of standing (non-rubble) buildings
+const COLLIDE = { b: null, nx: 0, nz: 0 };
+function collideCircle(p, r) {        // pushes p {x,z} out of standing (non-rubble) buildings; COLLIDE.b = last pusher
+  COLLIDE.b = null;
   for (let it = 0; it < 3; it++) {
     let moved = false;
     for (const b of buildingsNear(p.x, p.z, r + 1, _colNear)) {
@@ -146,8 +148,10 @@ function collideCircle(p, r) {        // pushes p {x,z} out of standing (non-rub
       const d2 = closestOnPoly(b.pts, p.x, p.z, CP);
       if (inside) {
         p.x = CP.x + CP.nx * r * 1.01; p.z = CP.z + CP.nz * r * 1.01; moved = true;
+        COLLIDE.b = b; COLLIDE.nx = CP.nx; COLLIDE.nz = CP.nz;
       } else if (d2 < r * r) {
         const d = Math.sqrt(d2) || 1e-4;
+        COLLIDE.b = b; COLLIDE.nx = (p.x - CP.x) / d; COLLIDE.nz = (p.z - CP.z) / d;
         p.x = CP.x + ((p.x - CP.x) / d) * r; p.z = CP.z + ((p.z - CP.z) / d) * r; moved = true;
       }
     }
@@ -213,6 +217,8 @@ function losClear(ax, ay, az, bx, by, bz) {
 }
 
 // ---------------------------------------------------------------- merged building mesh
+const C_OWN = [0.95, 0.76, 0.19], C_DANGER = [0.85, 0.16, 0.12], C_RUB_W = [0.42, 0.38, 0.34], C_RUB_R = [0.47, 0.43, 0.38];
+let aimedBuilding = null;
 const bMat = new THREE.MeshLambertMaterial({ vertexColors: true });
 let bGeo, bMesh, bPosA, bColA, bBase, bFlag, bShade, bRoof, bJit;
 let eGeo, eLines, ePosA, eColA, eBase, eFlag, eJit;
@@ -294,8 +300,6 @@ function writeBuildingVerts(b, h, ox, oz, rubble) {
   ePosA.addUpdateRange(b.e0 * 3, b.en * 3); ePosA.needsUpdate = true;
 }
 
-const C_OWN = [0.95, 0.76, 0.19], C_DANGER = [0.85, 0.16, 0.12], C_RUB_W = [0.42, 0.38, 0.34], C_RUB_R = [0.47, 0.43, 0.38];
-let aimedBuilding = null;
 function paintBuilding(b) {
   let wall = b.wall.slice(), roof = b.roof.slice(), edge = [0.13, 0.14, 0.15];
   const mixc = (c, t, k) => { for (let i = 0; i < 3; i++) c[i] = lerp(c[i], t[i], k); };
@@ -378,7 +382,7 @@ function flatMesh(arr, color, layer) {
   const W = WB.maxX - WB.minX + 1200, D = WB.maxZ - WB.minZ + 1200;
   const g = new THREE.PlaneGeometry(W, D);
   g.rotateX(-Math.PI / 2);
-  const base = new THREE.Mesh(g, new THREE.MeshLambertMaterial({ color: srgb(0.42, 0.45, 0.37) }));
+  const base = new THREE.Mesh(g, new THREE.MeshLambertMaterial({ color: srgb(0.40, 0.48, 0.34) }));
   base.position.set((WB.minX + WB.maxX) / 2, 0, (WB.minZ + WB.maxZ) / 2);
   base.receiveShadow = SHADOWS;
   scene.add(base);
@@ -462,7 +466,8 @@ function buildingName(b) { return b.label + (b.street ? ' on ' + b.street : '');
     const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace; t.anisotropy = 4;
     return (texCache[name] = { t, aspect: w / 84 });
   };
-  const mats = {};
+  const groups = {};                                   // one merged mesh per street name
+  const _mm = new THREE.Matrix4(), _pp = new THREE.Vector3(), _qq = new THREE.Quaternion(), _ee = new THREE.Euler(), _one = new THREE.Vector3(1, 1, 1);
   for (const r of LEVEL.roads) {
     if (!r.name || r.kind === 'footway' || r.kind === 'cycleway') continue;
     const T = tex(r.name);
@@ -477,16 +482,23 @@ function buildingName(b) { return b.label + (b.street ? ' on ' + b.street : '');
           const t = acc / len, x = lerp(ax, bx, t), z = lerp(az, bz, t);
           let ang = Math.atan2(-(bz - az), bx - ax);
           if (ang > Math.PI / 2) ang -= Math.PI; if (ang < -Math.PI / 2) ang += Math.PI;
-          const m = mats[r.name] || (mats[r.name] = new THREE.MeshBasicMaterial({ map: T.t, transparent: true, depthWrite: false, polygonOffset: true, polygonOffsetFactor: -6, polygonOffsetUnits: -24 }));
-          const mesh = new THREE.Mesh(new THREE.PlaneGeometry(W, H), m);
-          mesh.rotation.set(-Math.PI / 2, 0, ang);       // lay flat, run along the road
-          mesh.position.set(x, 0.08, z);
-          scene.add(mesh);
+          const g = new THREE.PlaneGeometry(W, H).toNonIndexed();
+          _mm.compose(_pp.set(x, 0.08, z), _qq.setFromEuler(_ee.set(-Math.PI / 2, 0, ang)), _one);   // lay flat along the road
+          g.applyMatrix4(_mm);
+          (groups[r.name] || (groups[r.name] = [])).push(g);
         }
         acc += 110;
       }
       acc -= len;
     }
+  }
+  for (const name in groups) {
+    const pos = [], uv = [];
+    for (const g of groups[name]) { pos.push(...g.attributes.position.array); uv.push(...g.attributes.uv.array); g.dispose(); }
+    const geo = new THREE.BufferGeometry();
+    geo.setAttribute('position', new THREE.Float32BufferAttribute(pos, 3)); geo.setAttribute('uv', new THREE.Float32BufferAttribute(uv, 2));
+    const m = new THREE.MeshBasicMaterial({ map: tex(name).t, transparent: true, depthWrite: false, polygonOffset: true, polygonOffsetFactor: -6, polygonOffsetUnits: -24 });
+    scene.add(new THREE.Mesh(geo, m));
   }
 })();
 

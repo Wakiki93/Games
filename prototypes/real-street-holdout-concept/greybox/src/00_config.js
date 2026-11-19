@@ -17,8 +17,8 @@ const CFG = {
   player: { r: 0.4, eye: 1.65, walk: 4.6, sprint: 7.0, hp: 100, regenDelay: 4.5, regen: 7 },
   stamina: { max: 100, regen: 22, regenDelay: 0.9, sprintDrain: 16, swing: 18, blockHit: 22, blockHitBreacher: 50, parryRefund: 15 },
   rifle: {
-    damage: 34, headMult: 2.0, rpm: 560, mag: 30, extMag: 45, reload: 2.2, reserve: 210,
-    velocity: 700, suppVelocity: 540, gravity: 9.81, maxLife: 1.6,       // projectile ballistics
+    damage: 34, headMult: 2.0, rpm: 560, mag: 30, reload: 2.2, reserve: 210,
+    velocity: 700, gravity: 9.81, maxLife: 1.6,       // projectile ballistics (muzzle velocity scaled for readable drop)
     falloffStart: 40, falloffEnd: 120, minFalloff: 0.6,
     spreadBase: 0.35, spreadPerShot: 0.3, spreadMax: 3.6, spreadRecover: 7, moveSpread: 1.4,
     kick: 1.15, kickYaw: 0.42, recoilRecover: 5.5,                       // degrees; weightier than arcade
@@ -32,19 +32,22 @@ const CFG = {
   charge: { speed: 16, up: 3.5, fuse: 2.0, radius: 7.5, dmgZombie: 260, dmgBuilding: 320, max: 4 },
   building: { hpBase: 60, hpPerM2: 1.6, rubbleH: 0.9, collapseTime: 1.4, reinforceMult: 1.6, repairHold: 1.0, toolRange: 7 },
   econ: { start: 500, hit: 10, kill: 60, headKill: 100, meleeKill: 130, breacherKill: 300, roundBonus: 50 },
-  sector: { captureTime: 10, bankPerSec: 12, lossPenalty: 200, contestCount: 3, drainPerZombie: 0.04, objectiveShare: 0.5 },
+  // concept doc: capture T_base 30 s (compressed to 20 s here); overrun = 3+ zombies inside, nobody inside for 10 s, drains over 20 s
+  sector: { captureTime: 20, bankPerSec: 8, heldIncome: 100, lossPenalty: 200, overrunCount: 3, overrunDelay: 10, drainTime: 20, objectiveShare: 0.5 },
   round: { intermission: 20, firstDelay: 10, activeCapMax: 24 },
   reposition: { radius: 30, window: 20, distance: 25 },
 };
 
+// MVP attachment slots per the concept doc: optic, muzzle, barrel. Every attachment is a trade-off.
 const SHOP = [
   { id: 'reddot', slot: 'optic', name: 'Red-dot sight', cost: 350, desc: 'ADS zoom 1.45x, ADS spread -40%. Slightly slower to aim.' },
-  { id: 'scope', slot: 'optic', name: '3x scope', cost: 650, desc: 'ADS zoom 3x, tight ADS spread. Slow to aim, tunnel view, worse hip-fire.' },
+  { id: 'scope', slot: 'optic', name: '3x scope', cost: 650, desc: 'Precision at range: 3x zoom, tight ADS spread. Costs handling (slow ADS) and field of view; worse hip-fire.' },
   { id: 'comp', slot: 'muzzle', name: 'Compensator', cost: 450, desc: 'Vertical recoil -45%. More side-kick, bigger flash.' },
-  { id: 'supp', slot: 'muzzle', name: 'Suppressor', cost: 500, desc: 'Recoil -20%, no muzzle flash. Muzzle velocity 540 m/s: more drop, more lead.' },
-  { id: 'extmag', slot: 'mag', name: 'Extended magazine', cost: 400, desc: '45 rounds. Reload +35% slower, ADS +15% slower.' },
-  { id: 'charge', name: 'Breach charge', cost: 300, desc: 'G to throw; sticks to walls. Wrecks zombies AND buildings: opens sightlines, and horde routes. Max 4.' },
-  { id: 'ammo', name: 'Ammo refill', cost: 200, desc: 'Refill reserve ammo to 210.' },
+  { id: 'supp', slot: 'muzzle', name: 'Suppressor', cost: 500, desc: 'No muzzle flash, recoil -20%. Costs velocity (595 m/s: more drop and lead) and handling.' },
+  { id: 'longbarrel', slot: 'barrel', name: 'Long barrel', cost: 400, desc: 'Velocity 820 m/s (flatter, less lead), recoil -15%. Costs handling: slower ADS and reload.' },
+  { id: 'shortbarrel', slot: 'barrel', name: 'Short barrel', cost: 300, desc: 'Handling: ADS 30% faster, faster reload. Costs velocity (600 m/s) and stability (+20% recoil).' },
+  { id: 'charge', name: 'Breach charge', cost: 300, desc: 'Sapper gadget. G to throw; sticks to walls. Wrecks zombies AND buildings: opens sightlines, and horde routes. Max 4.' },
+  { id: 'ammo', name: 'Ammo refill', cost: 200, desc: 'Refill reserve ammo to 210. (Held sectors also refill once per round.)' },
   { id: 'patch', name: 'Patch nearby walls', cost: 0, desc: 'Repair every damaged (not destroyed) building within 30 m.' },
 ];
 

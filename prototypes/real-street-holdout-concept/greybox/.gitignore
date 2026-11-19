@@ -1,0 +1,5 @@
+# PROTOTYPE - NOT FOR PRODUCTION
+# Question: Real recognizable neighborhood + destructible cover -> protect/sacrifice choices?
+# Date: 2026-11-19
+.build/
+__pycache__/

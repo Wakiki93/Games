@@ -16,14 +16,23 @@ import re
 import sys
 
 HERE = pathlib.Path(__file__).resolve().parent
-LEVEL_PATH = pathlib.Path(sys.argv[1]) if len(sys.argv) > 1 else HERE.parent / 'pipeline' / 'data' / 'level.json'
+ARGS = sys.argv[1:]
+HOSTED_OUT = None            # --hosted OUT: also write a page-fragment variant for hosted viewers that wrap the page themselves
+if '--hosted' in ARGS:
+    i = ARGS.index('--hosted')
+    HOSTED_OUT = pathlib.Path(ARGS[i + 1])
+    del ARGS[i:i + 2]
+LEVEL_PATH = pathlib.Path(ARGS[0]) if ARGS else HERE.parent / 'pipeline' / 'data' / 'level.json'
 THREE_PATH = HERE / '.build' / 'node_modules' / 'three' / 'build' / 'three.module.min.js'
 SRC = HERE / 'src'
 OUT = HERE / 'index.html'
 
 CLIP = 600.0                 # never keep geometry beyond +-600 m of the map centre
 MAJOR = {'motorway', 'trunk', 'primary', 'secondary', 'tertiary'}
-LANDMARK_KINDS = {'park', 'wood', 'grass', 'school', 'cemetery', 'pitch', 'recreation_ground', 'playground'}
+LANDMARK_KINDS = {'park', 'wood', 'grass', 'school', 'schoolyard', 'cemetery', 'pitch', 'recreation_ground', 'playground'}
+SENSITIVE = {'school': 'School Grounds', 'schoolyard': 'School Grounds', 'cemetery': 'Cemetery'}   # generic labels only
+# per-map design hints from design/gdd/game-concept.md (6.1): the 167th Street home sector sits at the Ridgeland Avenue crossing
+MAP_HINTS = {'Tinley Park, IL (60477)': {'corridor_prefer': {'Ridgeland Avenue': '167th Street'}}}
 SECTOR_RADIUS = 25.0
 SECTOR_MIN_SPACING = 200.0
 CORRIDOR_MIN_FROM_SPAWN = 250.0   # corridor sectors stay well away from the spawn point
@@ -163,7 +172,7 @@ def nearest_street(x, y, roads):
     return bn
 
 
-def pick_sectors(buildings, roads, ground):
+def pick_sectors(buildings, roads, ground, hints):
     """Capture sectors at public places only: large park/wood/grass polygons and major-road corridor
     junctions. Centres are never taken from a building."""
     cands = []
@@ -197,10 +206,17 @@ def pick_sectors(buildings, roads, ground):
         if best is None:
             continue
         kind = g['kind']
-        label = {'park': 'Park', 'wood': 'Woods', 'grass': 'Green', 'school': 'School grounds',
-                 'cemetery': 'Cemetery', 'pitch': 'Sports field'}.get(kind, 'Open space')
         street = nearest_street(best[1], best[2], roads)
-        name = f'{label} off {street}' if street else label
+        near_creek = any(seg_dist(q[0], q[1], poly[i], poly[(i + 1) % len(poly)]) < 40 or pip(poly, q[0], q[1])
+                         for w in ground if w['kind'] in ('stream', 'river') and 'line' in w for q in w['line']
+                         for i in range(len(poly)))
+        if kind in SENSITIVE:
+            name = SENSITIVE[kind]
+        elif kind == 'wood' and near_creek:
+            name = 'Creek Woods'
+        else:
+            label = {'park': 'Park', 'wood': 'Woods', 'grass': 'Green', 'pitch': 'Sports Field'}.get(kind, 'Open Space')
+            name = f'{label} off {street}' if street else label
         cands.append({'name': name, 'kind': kind, 'x': r1(best[1]), 'y': r1(best[2]),
                       'score': -math.hypot(best[1], best[2])})   # nearer open spaces first
 
@@ -221,9 +237,11 @@ def pick_sectors(buildings, roads, ground):
                         break
                 if hit:
                     seen.add(key)
+                    prefer = hints.get('corridor_prefer', {})
                     if math.hypot(*hit) >= CORRIDOR_MIN_FROM_SPAWN and free_point(*hit):
-                        cands.append({'name': f"{m['name']} & {r['name']}", 'kind': 'corridor',
-                                      'x': r1(hit[0]), 'y': r1(hit[1]), 'score': -math.hypot(*hit)})
+                        cands.append({'name': prefer.get(r['name'], f"{m['name']} & {r['name']}"), 'kind': 'corridor',
+                                      'x': r1(hit[0]), 'y': r1(hit[1]),
+                                      'score': -math.hypot(*hit) + (10000 if r['name'] in prefer else 0)})
                     break
 
     cands.sort(key=lambda c: -c['score'])
@@ -238,6 +256,11 @@ def pick_sectors(buildings, roads, ground):
     for c in [c for c in cands if c['kind'] == 'corridor']:
         if len(chosen) < MAX_SECTORS and spaced(c):
             chosen.append(c)
+    seen_names = {}
+    for c in chosen:                       # keep labels unique
+        if c['name'] in seen_names:
+            c['name'] = f"{c['name']} ({nearest_street(c['x'], c['y'], roads)})"
+        seen_names[c['name']] = 1
     return [{'name': c['name'], 'kind': c['kind'], 'x': c['x'], 'y': c['y'], 'r': SECTOR_RADIUS} for c in chosen]
 
 
@@ -284,7 +307,7 @@ def process_level(level):
             for pl in clip_polyline(g['line'], box):
                 ground.append({'kind': g['kind'], 'line': pl, 'width_m': float(g.get('width_m') or 3)})
 
-    sectors = pick_sectors(buildings, roads, ground)
+    sectors = pick_sectors(buildings, roads, ground, MAP_HINTS.get(level.get('name'), {}))
     for b in buildings:
         del b['_c']
     return {
@@ -328,6 +351,16 @@ def main():
             sys.exit(f'{name} contains a closing script tag')
     html = shell.replace('/*@@THREE@@*/', bundle_three()).replace('/*@@LEVEL@@*/', level_js).replace('/*@@GAME@@*/', game)
     OUT.write_text(html, encoding='utf-8')
+    if HOSTED_OUT:
+        style = re.search(r'<style>(.*?)</style>', shell, re.S).group(1)
+        body = re.search(r'<body>(.*)</body>', shell, re.S).group(1)
+        style = style.replace(':root {', ':root { color-scheme: dark;', 1)
+        frag = ('<title>Holdout Greybox</title>\n<style>' + style + '</style>\n' + body)
+        frag = (frag.replace('/*@@THREE@@*/', bundle_three())
+                    .replace('/*@@LEVEL@@*/', 'var HOLDOUT_HOSTED=true;' + level_js)
+                    .replace('/*@@GAME@@*/', game))
+        HOSTED_OUT.write_text(frag, encoding='utf-8')
+        print(f'wrote hosted variant {HOSTED_OUT}: {HOSTED_OUT.stat().st_size / 1024:.0f} KB')
     print(f"map: {lv['name']}  buildings {len(lv['buildings'])}  roads {len(lv['roads'])}  ground {len(lv['ground'])}")
     print('sectors:', ', '.join(f"{s['name']} ({s['kind']})" for s in lv['sectors']))
     print(f'wrote {OUT.name}: {OUT.stat().st_size / 1024:.0f} KB')
