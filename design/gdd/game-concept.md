@@ -611,9 +611,14 @@ prototype pipeline's report (`.../data/metrics.json`), 2026-11-19:
 | **Creek Trail** | The Tinley Creek Green paved trail (E edge, along 167th Street) | A paved trail corridor, mostly outside the current box | A horde flank lane into the east of the map; stays a sector only if the box is widened east |
 | *Residential blocks* | The residential streets north and south of 167th Street | Houses with garages, yards, driveways | Mostly connective: the ground between sectors where the horde pushes and the squad fortifies. **Block sectors are allowed** (U6): the level GDD may promote a block with a defensible anchor house to a sector, labelled by its bounding streets (Q17) |
 
-The MVP builds only the **middle slice** of this map: about 600 m wide and 950 m long, running north–south from Creek
-Woods across 167th Street to the School Grounds, with the 167th Street home sector between them (A38; see MVP
-Definition). Pushing north tests open ground and ballistics; pushing south tests close quarters and melee.
+The MVP builds only the **middle slice** of this map (A38, revised by A44; see MVP Definition): about 600 m wide,
+from the wooded park's west edge to the cemetery's west edge, and about 1 km long, from just south of Creek Woods
+across 167th Street to just north of the School Grounds. Its centre is near the middle of the box. *Measured in the
+extract (distance from the box's west edge):* the woods span about 335–675 m, the school grounds about 625–720 m and
+the home crossing about 755–795 m, so all three fit inside 600 m. The Ridgeland Avenue crossing (about 225 m), A38's
+first choice, does not fit a 600 m slice that also holds both other sectors (PR-SCOPE round 2). From home, the School
+Grounds are a short push north (about 150 m) over open ground and the woods a longer push south (about 400 m) into
+close quarters, so the slice tests ballistics and melee.
 
 **"Play your own street" (A6).**
 - *At launch:* curated maps from several real cities.
@@ -626,8 +631,15 @@ Definition). Pushing north tests open ground and ballistics; pushing south tests
   and the names of public parks, the creek and the trail as sector labels. This is what makes Pillar 2 pay off.
 - **Never shown:** house numbers, addresses, anything about residents, brand names, or municipal insignia. No real
   people are depicted.
-- **Repository hygiene:** the repository keeps only each map's boundary box and its centre (the pipeline's origin);
-  nothing narrower (no point of interest, no house-level reference, no coordinates of any building) is ever committed.
+- **Repository hygiene (the repository is public):** the repository keeps only each map's grid-snapped boundary box
+  and its centre (the pipeline's origin) and the scripts that fetch and process it; raw extracts and generated level
+  geometry are fetched or regenerated locally from that box. Nothing narrower (no point of interest, no house-level
+  reference, no address or house number, no coordinates of any building) is ever committed. *Known gap (AD-CONCEPT-
+  VISUAL and PR-SCOPE round 2):* the first map's raw extract and generated level files (`.osm`, `level.json`,
+  `level.obj`, `preview.png` under `prototypes/real-street-holdout-concept/pipeline/data/`) are tracked today. They are
+  public OSM data with no house-number tags, but they carry every building's footprint, so the rule is not yet true.
+  *Action (producer and technical director, before the re-extraction):* stop tracking them, decide whether to purge
+  them from history, and re-extract on a grid-snapped box (R5).
 - **Houses are realistic but generic.** Facades come from modular kits chosen by building type and footprint. No
   photogrammetry or street-level imagery of real homes is used; no house is a replica of a real house.
 - **Sensitive sites** (schools, cemeteries, places of worship, hospitals, memorials, government buildings) are rendered
