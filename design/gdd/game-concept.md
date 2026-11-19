@@ -1,13 +1,13 @@
 # Game Concept: Holdout
 
 *Created: 2026-11-19*
-*Revised: 2026-11-19 (revision 2: new user direction, logged as U1–U9. Revision 2.1: director gates round 1 applied, plus the user's location correction U10)*
-*Status: Draft (Under Review). Round 1 of the real director gates ran on revision 2 and revision 2.1 applies it; AD-CONCEPT-VISUAL and PR-SCOPE need a re-check of their fixed blocking items. The user still has to confirm the facilitator assumptions in the Assumptions and Decisions Log and answer Q2 (team size)*
+*Revised: 2026-11-19 (revision 2: new user direction, logged as U1–U9. Revision 2.1: director gates round 1 applied, plus the user's location correction U10. Revision 2.2: director gates round 2 applied, plus the user's restated location correction)*
+*Status: Draft (Under Review). Round 2 of the real director gates ran on revision 2.1 and revision 2.2 applies it. No gate has a blocking item left that the text can fix: PR-SCOPE's last blocking item is Q2 (team size, budget, runway), which only the user can answer. The user still has to confirm the facilitator assumptions in the Assumptions and Decisions Log (especially A44 via Q18) and answer Q2 and Q20*
 
-> **Creative Director Review (CD-PILLARS)**: CONCERNS (round 1, `creative-director` agent, 2026-11-19). No blocking items; the concerns are addressed in revision 2.1 (see Director Gate Reviews)
-> **Art Director Review (AD-CONCEPT-VISUAL)**: CONCERNS (round 1, `art-director` agent, 2026-11-19). Both blocking items (shape language; colour layers) are fixed in revision 2.1; a re-check is pending
-> **Technical Director Review (TD-FEASIBILITY)**: CONCERNS (round 1, `technical-director` agent, 2026-11-19). Valid only for the assumed team of 5 (A14, Q2); HIGH RISK if the team is one or two people
-> **Producer Review (PR-SCOPE)**: OPTIMISTIC (round 1, `producer` agent, 2026-11-19). All six blocking items are addressed in revision 2.1 (re-sized MVP plan, cut list, split Vertical Slice, re-sized 1.0, Q2 made the gating question); a re-check is pending. UNREALISTIC if the developer is solo
+> **Creative Director Review (CD-PILLARS)**: CONCERNS (round 2, `creative-director` agent, 2026-11-19). No blocking items. Its round-2 concerns repeat round 1 and were already addressed in revision 2.1; the location and "Lancaster" items are answered in revision 2.2 (U10 restated, A44). See Director Gate Reviews
+> **Art Director Review (AD-CONCEPT-VISUAL)**: STRONG (round 2, `art-director` agent, 2026-11-19). No blocking items; its art-bible notes are applied in revision 2.2 (A45)
+> **Technical Director Review (TD-FEASIBILITY)**: CONCERNS (round 2, `technical-director` agent, 2026-11-19). No blocking items. Valid only for the assumed team of 5 (A14, Q2); HIGH RISK if the team is one or two people
+> **Producer Review (PR-SCOPE)**: OPTIMISTIC (round 2, `producer` agent, 2026-11-19). Three of its four blocking items are fixed in revision 2.2 (A46: a complete MVP build plan of about 14–15 months, a shippable fallback tier, the first map's full art and audio pass placed in a tier); the fourth is Q2. A re-check is pending. UNREALISTIC if the developer is solo
 >
 > **How this document was made.** Revision 1 came from `/brainstorm` run non-interactively (settings: `workflow: full`,
 > `review_mode: full`, `automation: guided`, `docs.density: thorough`). The user supplied the concept, so Phase 1
@@ -23,6 +23,11 @@
 > **Revision 2.1** applies round 1 of the real director gates (agent-run, 2026-11-19; see Director Gate Reviews) and the
 > user's location correction (U10: the area is not "Lancaster"; the extract was checked against it). The facilitator
 > calls made to apply them are logged as A38–A43 and can be overruled.
+>
+> **Revision 2.2** applies round 2 of the real director gates (agent-run, 2026-11-19) and the user's restated location
+> correction (U10: the intended area is at 167th Street in the middle of the map, not "Lancaster"; the location was
+> checked again, locally against the extract). The facilitator calls made to apply them are logged as A44–A46 and can
+> be overruled.
 
 ---
 
@@ -48,7 +53,7 @@ a real town, where you choose which walls come down."*
 | **Player Count** | 1–4 online co-op. Designed for 4; 2–3 players are supported by the squad-gap kit (A24); solo is a scaled mode from the Vertical Slice. No PvP. Deliberately **not** a large-headcount game (U5) |
 | **Session Length** | A match runs 30–90 min. The first evac window is at round 10 (about 35–45 min). Typical match: 45–75 min |
 | **Monetization** | Premium (assumed USD 19.99–24.99). Possible cosmetic-only DLC after launch; never paid power (A10) |
-| **Estimated Scope** | Large (about 40–44 months, team of 5 plus outsourcing; an assumption, **provisional until Q2** is answered; see A14, A43 and Scope Tiers) |
+| **Estimated Scope** | Large (about 44–48 months, team of 5 plus outsourcing; an assumption, **provisional until Q2** is answered; see A14, A46 and Scope Tiers) |
 | **Comparable Titles** | The large-scale squad shooter series named first in Inspiration and References (roles, gadgets, squad play, ballistics and sector feel); *Call of Duty* Zombies mode (round structure); *Killing Floor 2* (wave co-op with spending between waves); *Warhammer: Vermintide 2* (first-person melee and guns against hordes). Destruction references: *Rainbow Six Siege*, *The Finals* |
 
 ---
@@ -561,17 +566,22 @@ landmarks, and by tuning the gameplay layer. We never move real footprints or st
 
 **The first test map is a ~1.2 km × 1.2 km area of suburban Tinley Park, Illinois (USA)** (U8). 167th Street, a
 secondary road, crosses it east–west about two-thirds of the way north. OpenStreetMap divides the area into named
-subdivisions (Kimberly Heights north of 167th Street, Lancaster Highlands south of it) and names the wooded park in
-the south after the latter. **No map name, sector label or slice name uses either subdivision's name or the word
-"Lancaster"** (U8, U10): the map is "Tinley Park, IL (60477)" everywhere. It is a hard test for the pipeline: no
-height tags, no shop types for caches, no fences or trees, and a flat ground plane.
+subdivisions (Kimberly Heights north of 167th Street; south of it, several whose names begin with "Lancaster") and
+names the wooded park in the south after one of them. These are OSM's labels, not the map's identity: **no map name,
+sector label, slice name or player-facing text uses any subdivision's name or the word "Lancaster"** (U8, U10). The
+map is "Tinley Park, IL (60477)" everywhere, and its focus is the 167th Street corridor across the middle of the box.
+It is a hard test for the pipeline: no height tags, no shop types for caches, no fences or trees, and a flat ground
+plane.
 
-**Location check (2026-11-19, against the user's correction U10).** The extract was checked against the area the
-user specified: that area is inside the box with margin on every side, so the box is right and the name is right.
-Two landmarks cross the box edge: **Lewis Park** (W), about half outside, and the **Tinley Creek Green trail** (E),
-mostly outside. *Action before the level GDD locks the full map:* re-extract with the box widened west (and east if
-Creek Trail stays a sector), with its edges snapped to a coarse grid so the boundary follows landmarks and round
-numbers, then re-measure the table below. The MVP slice (below) does not depend on either edge landmark.
+**Location check (revised 2026-11-19, after the user restated U10).** The user asked again for the geolocation to be
+checked and repeated that the area is not "Lancaster". The check was done **locally against the committed extract**;
+no address or place was sent to any outside service. Result: the area the user named is inside the box, at 167th
+Street, with about 400 m or more of margin on every side. The box is right, the name is right, and the home sector
+and the MVP slice now sit on that middle stretch of 167th Street (A44). Two landmarks cross the box edge: **Lewis
+Park** (W), about half outside, and the **Tinley Creek Green trail** (E), mostly outside. *Action before the level
+GDD locks the full map:* re-extract with the box widened west (and east if Creek Trail stays a sector), with its
+edges snapped to a coarse grid so the boundary follows landmarks and round numbers, then re-measure the table below.
+The MVP slice (below) depends on neither edge landmark.
 
 Measured from the extract (`prototypes/real-street-holdout-concept/pipeline/data/tinley-park-60477.osm`) and the
 prototype pipeline's report (`.../data/metrics.json`), 2026-11-19:
@@ -593,11 +603,11 @@ prototype pipeline's report (`.../data/metrics.json`), 2026-11-19:
 
 | Sector (in-game label) | OSM source | Character | Role in the match |
 | ---- | ---- | ---- | ---- |
-| **167th Street** | The secondary road crossing the map east–west | A long straight axis, verges, intersections, corner houses, wrecks | Default **home sector** (A38): capture zone and enterable anchor houses at the **Ridgeland Avenue crossing**. The frontline spine: long sightlines from round 1 and doorway fights in the corner houses |
+| **167th Street** | The secondary road crossing the map east–west | A long straight axis, verges, intersections, corner houses, wrecks | Default **home sector** (A38, A44): capture zone and enterable anchor houses where **Anne Marie Avenue (from the south) and Patricia Avenue (from the north) meet 167th Street**, a staggered crossing in the middle of the map. The frontline spine: long sightlines from round 1 and doorway fights in the corner houses |
 | **Creek Woods** | The wooded park along Tinley Creek (S) | Woods, creek banks, short sightlines | Close quarters where melee earns its place; creek crossings are chokepoints. Labelled after the creek; the park's OSM name is not used (U10) |
 | **School Grounds** | Kimberley Heights School grounds (N) | An anchor building plus fields | Defensible anchor and landing zone; open ground for ballistics; rendered as a generic school under a generic label (A29) |
 | **Lewis Park Fields** | Lewis Park and its sports fields (W) | Open fields, long sightlines, little cover | Landing zone; a showcase for the Spotter and for ballistics. About half the park is outside the current box, so it waits for the re-extraction |
-| **Cemetery** | Zion Lutheran Cemetery (E, just south of 167th Street) | Open ground and low cover | An exposed crossing; never a landing zone; sensitivity rules apply |
+| **Cemetery** | Zion Lutheran Cemetery (E, just south of 167th Street, next to the MVP slice's east edge) | Open ground and low cover | An exposed crossing; never a landing zone; sensitivity rules apply |
 | **Creek Trail** | The Tinley Creek Green paved trail (E edge, along 167th Street) | A paved trail corridor, mostly outside the current box | A horde flank lane into the east of the map; stays a sector only if the box is widened east |
 | *Residential blocks* | The residential streets north and south of 167th Street | Houses with garages, yards, driveways | Mostly connective: the ground between sectors where the horde pushes and the squad fortifies. **Block sectors are allowed** (U6): the level GDD may promote a block with a defensible anchor house to a sector, labelled by its bounding streets (Q17) |
 
