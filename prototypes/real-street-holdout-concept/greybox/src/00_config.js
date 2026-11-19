@@ -46,7 +46,7 @@ const SHOP = [
   { id: 'supp', slot: 'muzzle', name: 'Suppressor', cost: 500, desc: 'No muzzle flash, recoil -20%. Costs velocity (595 m/s: more drop and lead) and handling.' },
   { id: 'longbarrel', slot: 'barrel', name: 'Long barrel', cost: 400, desc: 'Velocity 820 m/s (flatter, less lead), recoil -15%. Costs handling: slower ADS and reload.' },
   { id: 'shortbarrel', slot: 'barrel', name: 'Short barrel', cost: 300, desc: 'Handling: ADS 30% faster, faster reload. Costs velocity (600 m/s) and stability (+20% recoil).' },
-  { id: 'charge', name: 'Breach charge', cost: 300, desc: 'Sapper gadget. G to throw; sticks to walls. Wrecks zombies AND buildings: opens sightlines, and horde routes. Max 4.' },
+  { id: 'charge', name: 'Breach charge', cost: 300, desc: 'Sapper gadget. {throw} to throw; sticks to walls. Wrecks zombies AND buildings: opens sightlines, and horde routes. Max 4.' },
   { id: 'ammo', name: 'Ammo refill', cost: 200, desc: 'Refill reserve ammo to 210. (Held sectors also refill once per round.)' },
   { id: 'patch', name: 'Patch nearby walls', cost: 0, desc: 'Repair every damaged (not destroyed) building within 30 m.' },
 ];

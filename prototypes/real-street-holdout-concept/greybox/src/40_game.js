@@ -49,6 +49,7 @@ function destroyBuilding(b, by) {
   const d = distToBuilding(b, P.x, P.z);
   if (d <= CFG.reposition.radius && P.alive) REPO.pending.push({ t: GAME.time, x: P.x, z: P.z, name: buildingName(b), d });
   if (d <= CFG.reposition.radius) REPO.near++;
+  if (d <= PADCFG.collapseRange) padRumble(RUM_COLLAPSE, 1 - (0.6 * d) / PADCFG.collapseRange);
   toast(`${buildingName(b)} collapsed (${Math.round(d)} m)`, 'bad');
   const ds = GAME.sector ? Math.hypot(b.cx - GAME.sector.x, b.cz - GAME.sector.z) : null;
   logEvent('building_destroyed', { by, building: buildingName(b), distToPlayer: +d.toFixed(1), distToSector: ds == null ? null : +ds.toFixed(1), reinforced: b.reinforced });

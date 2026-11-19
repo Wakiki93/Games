@@ -85,6 +85,7 @@ function zombieStrike(z) {
       P.stamina = Math.min(CFG.stamina.max, P.stamina + CFG.stamina.parryRefund);
       GAME.parries++;
       hitStop(0.09); addTrauma(0.22);
+      padRumble(RUM_PARRY);
       centerMsg('PARRY', 'stagger: crit window', 0.6);
       for (let k = 0; k < 10; k++) emit(FX.glow, P.x + fx * 0.9, P.y - 0.3, P.z + fz * 0.9, rand(-2, 2), rand(0, 3), rand(-2, 2), 0.25, 0.6, 0.9, 1, 1, 6, 2);
       return;

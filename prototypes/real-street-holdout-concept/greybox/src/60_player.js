@@ -26,7 +26,7 @@ const P = {
 
 // ------------------------------------------------------------- input
 const KEYS = {};
-const INPUT = { fwd: 0, right: 0, sprint: false, fire: false, ads: false, block: false, repair: false, once: new Set() };
+const INPUT = { fwd: 0, right: 0, moveScale: 1, sprint: false, fire: false, ads: false, block: false, repair: false, once: new Set() };
 const MOUSE = { l: false, r: false };
 function lockedOrBot() { return AUTOTEST || UI.freeLook || document.pointerLockElement === canvas; }
 // free-look = fallback when the page cannot capture the mouse (some embedded viewers): look with plain mouse movement / arrow keys
@@ -63,11 +63,13 @@ addEventListener('mousemove', (e) => {
 function readHumanInput() {
   INPUT.fwd = (KEYS.KeyW ? 1 : 0) - (KEYS.KeyS ? 1 : 0);
   INPUT.right = (KEYS.KeyD ? 1 : 0) - (KEYS.KeyA ? 1 : 0);
+  INPUT.moveScale = 1;
   INPUT.sprint = !!(KEYS.ShiftLeft || KEYS.ShiftRight);
   INPUT.block = !!KEYS.KeyC || (P.weapon === 'bat' && MOUSE.r);
   INPUT.ads = P.weapon === 'rifle' && MOUSE.r;
   INPUT.fire = MOUSE.l;
   INPUT.repair = !!KEYS.KeyF;
+  padMergeInput();                     // controller: analog move, triggers, held buttons (65_gamepad.js)
 }
 
 // ------------------------------------------------------------- weapon stats from attachments
@@ -104,6 +106,7 @@ function fireRifle() {
   P.bloom = Math.min(R.spreadMax, P.bloom + R.spreadPerShot);
   P.kick = 1;
   addTrauma(0.035);
+  padRumble(RUM_FIRE);
   VM.flashT = W.flash ? 0.05 : 0; VM.flashScale = W.flash;
 }
 function updateBullets(dt) {
@@ -184,6 +187,7 @@ function damagePlayer(dmg, src) {
   addTrauma(0.25 + dmg / 120);
   UI.hurt(dmg);
   if (P.hp <= 0) { P.hp = 0; P.alive = false; playerDied(); }
+  else padRumble(RUM_HURT, dmg);
 }
 
 // ------------------------------------------------------------- breach charges
@@ -337,6 +341,7 @@ function updatePlayer(dt) {
   if (P.reloading) speed *= 0.85;
   const rub = onRubble(P.x, P.z);
   if (rub) speed *= 0.6;
+  speed *= INPUT.moveScale;            // analog stick: partial tilt walks slower (always 1 for keys and the bot)
   const k = Math.min(1, dt * 12);
   P.vx += (wx * speed - P.vx) * k; P.vz += (wz * speed - P.vz) * k;
   P.x += P.vx * dt; P.z += P.vz * dt;

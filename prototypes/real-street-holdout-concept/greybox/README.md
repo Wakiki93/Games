@@ -8,6 +8,9 @@
 This is a throwaway, single-player browser greybox. It tests the **concept**, not the feel. The final game is
 a 4-player online co-op shooter in Unreal Engine 5.8.
 
+**It is played with a game controller (Xbox layout) and nothing else.** Keyboard and mouse still work, but only as a
+developer fallback for the automated checks and for reviewers without a controller.
+
 ## Hypothesis
 
 > If players defend a real neighborhood they recognize, where every building is cover that can be destroyed
@@ -16,14 +19,91 @@ a 4-player online co-op shooter in Unreal Engine 5.8.
 > tactic at least twice because a building was destroyed, and recognizes real places unprompted.
 
 What to watch in a session:
-- The **REPOSITIONS AFTER DESTRUCTION** counter in the F3 panel. It must reach 2 or more in about 10 minutes.
+- The **REPOSITIONS AFTER DESTRUCTION** counter in the debug panel (D-pad down). It must reach 2 or more in about
+  10 minutes.
 - Whether the player names real places (streets, the creek woods, the cemetery, the school grounds, 167th Street)
   **without being asked**. The observer writes this down; the game does not measure it.
 
 ## How to play
 
-Double-click `index.html`. It is self-contained and works from `file://` with no network and no server. Click to
-start, which captures the mouse. Esc pauses.
+1. Open `index.html` **directly** in Chrome or Edge on the PC (double-click it). It is self-contained and works from
+   `file://` with no network and no server.
+2. Connect the controller (USB cable, wireless adapter or Bluetooth) and **press any button on it**. A browser hides a
+   controller from a page until a button is pressed. The start card then shows `Controller: <name> connected`.
+3. Press **A** to start. The controller needs no mouse capture, so you never have to click. **Menu** pauses and resumes.
+
+### Controller layout (Xbox button names)
+
+| Control | Action |
+| ---- | ---- |
+| Left stick | Move. It is analog: tilt less to walk slower. Diagonals are not faster |
+| Left stick click | Sprint on/off (uses stamina). It turns off when the stick returns to rest or moves backward, and when you aim or fire |
+| Right stick | Look |
+| Right stick click | Melee swing (costs stamina; arc hit with knockback) |
+| RT | Fire. With the bat: swing |
+| LT | Aim down sights with the rifle (optics zoom). With the bat: block |
+| LB (hold) | Block with any weapon. Each hit taken drains stamina. Pressing block **within 200 ms before a hit lands** is a **parry**: the zombie is staggered, the parry costs no stamina and refunds 15, and you get a crit window. LT with the bat follows the same rule |
+| RB | **Sapper breach charge**. You start with 2; extras cost 300. It sticks to walls, damages zombies **and buildings**, and leaves rubble that opens sightlines and horde routes |
+| B (hold 1 s) | **Sapper Reinforce tool** (the class gadget; the brief's "Engineer repair tool"). Reinforces the building you are looking at (+60% HP, shown in road-marking yellow), or repairs it if it is already reinforced. Costs Salvage. Works during rounds and intermissions |
+| A | Ping/spot the zombie or building under the crosshair (world marker) |
+| X | Reload |
+| Y | Swap rifle / bat |
+| D-pad up / down | Minimap on/off / debug and instrumentation panel |
+| D-pad left / right | Look sensitivity down / up (0.4x to 2.5x in steps of 0.1). A message shows the value, and the browser remembers it |
+| View | Buy screen (only between rounds) |
+| Menu | Pause / resume |
+
+Menus work with the controller alone:
+- **Start screen**: A (or Menu) starts.
+- **Buy screen**: the D-pad or the left stick moves a highlight between items (hold to repeat). A buys the highlighted
+  item, B or View closes the screen, and Y or Menu readies up.
+- **Pause**: Menu or A resumes.
+- **Summary** (after death): A restarts. Y downloads the session log.
+
+On-screen prompts are controller labels from the first frame. They switch to keyboard labels only after real keyboard
+or mouse input, and switch back on the next controller input.
+
+### Testing with a real controller
+
+Nothing in this section was tested on real hardware (see **What was verified**). Expect to tune the values.
+
+- **Check the start card first.** It must say `Controller: <name> connected`. Chrome names some controllers by their
+  driver, so an Xbox controller may show as "Xbox 360 Controller". If it says the layout is non-standard, buttons may
+  be in the wrong place; use Chrome or Edge.
+- **The debug panel (D-pad down) has a `controller` line.** It shows the stick values the game sees after the deadzone
+  and curve, the look sensitivity, the aim slowdown factor and the rumble type. Use it to check for stick drift.
+- **Xbox Elite Series 2 paddles.** A browser cannot see the four back paddles as separate buttons. Each paddle repeats
+  whichever button you assign to it in the Xbox Accessories app, so the game has no paddle setting. For example, you
+  can assign the stick clicks (sprint, melee), X (reload) and Y (swap) to the paddles so your thumbs stay on the
+  sticks. Stick curves and deadzones set in that app add to the game's own.
+- **Triggers are analog.** Fire and aim engage at 35% pull and release at 20%, so short trigger stops and partial
+  pulls should register. If a trigger-stop setting never reaches 35%, lower `triggerPress`.
+- **Rumble** plays on firing, taking damage, a parry and a building collapsing within about 30 m. It stops on pause,
+  death and disconnect. It needs a browser with controller vibration (Chrome and Edge have it); trigger rumble is used
+  for firing only where the browser lists it.
+- **If the controller disconnects** mid-game, the game pauses. Reconnect it, press a button, then press Menu.
+- **If the window loses focus** while you play on the controller, the game pauses, because a browser may stop sending
+  controller input to a window that is not in front.
+- **Tuning.** All starting values are named constants in `PADCFG` at the top of `src/65_gamepad.js`. Run
+  `python3 build.py` after a change.
+
+  | Constant | Default | Meaning |
+  | ---- | ---- | ---- |
+  | `lookYawDeg`, `lookPitchDeg` | 200, 130 | Turn rate in degrees per second at full tilt (sensitivity 1.0x) |
+  | `lookCurve` | 1.8 | Response curve exponent; higher gives finer aim near the centre |
+  | `deadInner`, `deadOuter` | 0.12, 0.95 | Radial deadzone, rescaled between the two |
+  | `aimSlowdown`, `slowFactor`, `slowRange` | true, 0.6, 60 | Look slows to 60% while the crosshair is over a visible zombie within 60 m. Set `aimSlowdown` to `false` to turn it off |
+  | `rampExtra` | 0.3 | Extra turn rate after holding full tilt for a moment (0 turns it off) |
+  | `triggerPress`, `triggerRelease` | 0.35, 0.20 | Trigger thresholds |
+  | `invertY` | false | Invert vertical look |
+  | `rumble` | true | Rumble on/off |
+
+  Look speed also drops in proportion to the zoom while you aim, and it uses real time, so hit-stop does not slow it.
+
+### Developer fallback: keyboard and mouse
+
+Not for players. Click the start card to start, which captures the mouse. Esc pauses. Press K on the start card to
+see this list in the game.
 
 | Key | Action |
 | ---- | ---- |
@@ -94,7 +174,7 @@ attachment slots match the concept doc (optic, muzzle, barrel), and every attach
 
 ## Instrumentation
 
-The F3 panel shows:
+The debug panel (D-pad down, or F3 on the developer keyboard) shows:
 - fps
 - round, phase and time in round
 - zombies alive and queued
@@ -108,6 +188,7 @@ The F3 panel shows:
 - **pings used**
 - flow-field rebuild timings
 - melee, block and parry counts
+- the controller the game sees, the active device, look sensitivity and stick values
 - draw calls
 
 **Repositions after destruction** counts these: a building within 30 m of the player is destroyed, and within 20 s
@@ -134,22 +215,64 @@ per step, fps, melee/parry counts, sector held time, pings used, repositions aft
 `node verify.js` runs it headless in Playwright. It answers the bot's screenshot handshake, saves `screens/*.png`,
 asserts there are no console errors, and saves a 1280×720 normal-mode start screen. **Headless fps uses software
 GL and is not a performance measurement.** For performance, read the `cpu` block, or open the page on real
-hardware and press F3.
+hardware and open the debug panel (D-pad down).
+
+**Controller check:** `node verify_gamepad.js` drives the normal game (not the bot) with a **mocked** standard
+controller in headless Chromium, because the build machine has no controller. It prints a JSON summary and exits 0
+only if every check passes. `--death` also lets the horde kill the player (about 2 minutes) to check the summary
+prompts, the rumble stop on death and the A-to-restart. The bot in `?autotest=1` never reads the controller.
+
+### What was verified
+
+Verified with the mocked controller only. **No real controller hardware was used**, so nothing here says how the
+game feels on an Xbox Elite Series 2.
+
+- Start card: controller layout and status line before any input; `Controller: <name> connected` after connecting;
+  a button already held when the controller appears does not count as a press; A starts with no mouse.
+- The game runs unpaused with no mouse capture. Prompts are controller labels before any keyboard input, switch to
+  keyboard labels after a key press, and switch back on the next controller input.
+- Left stick: moves; half tilt is slower than full tilt (2.1 against 4.6 m/s); diagonals are not faster; the sprint
+  toggle turns off when the stick returns to rest or moves backward, and when aiming.
+- Right stick: turns and looks up; no movement at all below the deadzone; half tilt turns at about a quarter of the
+  full rate (the response curve).
+- RT fires and ammo drops; trigger thresholds behave (30% does not fire, 25% keeps firing once pressed, 10%
+  releases); a rumble pulse is requested per shot.
+- X reloads. Y swaps weapon. LT changes the field of view with the rifle and blocks with the bat. LB blocks. RT and
+  the right stick click swing. RB throws a breach charge. A pings.
+- B: a short press does nothing; holding it for 1 s on a building reinforces it and spends Salvage. The prompt on the
+  building shows the controller label.
+- Buy screen: View opens and closes it before round 1; the D-pad and the left stick (with repeat) move the highlight;
+  A buys and Salvage drops; B closes; Y readies up. Closing it on the controller does not ask for mouse capture.
+- Menu pauses (sim time stops, rumble is stopped) and resumes; A also resumes. D-pad up toggles the minimap, D-pad
+  down the debug panel, D-pad right and left change look sensitivity.
+- Disconnecting mid-game pauses and clears held inputs; reconnecting and pressing Menu resumes.
+- A controller API that throws (at load or mid-game), is missing, or stays empty causes no errors, is not polled in
+  a loop, and leaves the keyboard and mouse fallback working. A non-standard controller still works and warns once.
+- The hosted variant shows the "controllers may be blocked in this viewer" line.
+- With `--death`: damage rumble, rumble stop on death, aim slowdown engaging over a zombie, summary prompts and
+  A-to-restart.
+
+Not covered by an automated check: parry timing on the controller, the parry and collapse rumbles, the focus-loss
+pause, and the Y log download on the summary.
 
 ## Rebuild / swap the map
 
-**Mouse capture fallback.** Some embedded viewers refuse or ignore mouse capture (pointer lock). If the first
+**Mouse capture fallback (developer keyboard and mouse only).** The controller needs no mouse capture. Some embedded
+viewers refuse or ignore mouse capture (pointer lock). If the first
 capture request fails, or two in a row fail later, the game switches to free-look by itself and says so on screen;
 `L` toggles it by hand. Checked headlessly with capture refused, silently ignored and allowed.
 
 **Hosted variant.** `python3 build.py --hosted OUT.html` also writes a page fragment (no doctype/html/head/body)
 for viewers that wrap the page themselves. It is the same game with the session-log download button hidden,
-because such viewers block page-started downloads. The fragment is a build output and is not committed.
+because such viewers block page-started downloads. Such viewers may also block controllers. The hosted start card
+says so and asks you to open the standalone `index.html` in Chrome or Edge. The fragment is a build output and is not
+committed.
 
 ```
 cd greybox/.build && npm install          # three@0.170.0 (pinned in .build/package.json; .build/ is git-ignored)
 cd .. && python3 build.py                 # or: python3 build.py path/to/other/level.json
-node verify.js                            # optional headless check
+node verify.js                            # optional headless check (scripted bot)
+node verify_gamepad.js                    # optional headless controller check (mocked controller)
 ```
 
 `build.py` does the following:
@@ -227,6 +350,15 @@ Avenue crossing. On the current data the build picks seven sectors:
 
 ## Known limits
 
+- **Controller support is untested on real hardware.** It was checked with a mocked controller only. The aim values
+  (200 and 130 degrees per second, curve 1.8, deadzone 0.12, aim slowdown to 60%) and the rumble strengths are
+  starting values to tune after the first real session.
+- **Controller options are thin.** There is no button remapping, no invert-Y setting in the game (it is a constant),
+  and one sensitivity multiplier for both axes. Sprint is a toggle; block and the Reinforce tool are holds.
+- **Aim slowdown is friction only.** The crosshair never moves by itself, and nothing tracks a moving zombie.
+- **A browser decides what the game can see.** The back paddles, the Xbox button and the Share button are not
+  readable. Rumble depends on the browser. A hosted viewer can block controllers completely.
+- Look speed is capped per frame at 100 ms of real time, so it slows down below 10 fps.
 - **Single-player, browser.** Input latency, hit registration and animation are placeholders, so **gun and melee
   FEEL is NOT being tested here**. That is the Unreal feel prototype's job.
 - Headless autotest fps (~10) comes from software GL. The merged building mesh is about 740 footprints, roughly
@@ -242,7 +374,9 @@ Avenue crossing. On the current data the build picks seven sectors:
 
 - `index.html`: the built, self-contained prototype (regenerated by `build.py`).
 - `build.py`: the build (level clipping, sector picking, inlining).
-- `verify.js`: the headless Playwright check.
+- `verify.js`: the headless Playwright check (scripted bot).
+- `verify_gamepad.js`: the headless controller check (mocked controller).
+- `verify_hosted.js`: the headless check of the hosted variant (keyboard and mouse fallback, phone layout).
 - `src/`: `shell.html` (UI and CSS) plus the JS modules:
 
   | Module | Contents |
@@ -254,6 +388,7 @@ Avenue crossing. On the current data the build picks seven sectors:
   | `40_game` | Salvage, destruction, reposition metric, sectors, rounds |
   | `50_zombies` | the horde |
   | `60_player` | player, ballistics, melee, gadgets, viewmodel |
+  | `65_gamepad` | controller input: tuning constants, polling, menus, active device, aim slowdown, rumble |
   | `70_ui` | HUD and screens |
   | `80_bot` | autotest bot |
   | `90_main` | main loop |

@@ -1,7 +1,8 @@
 // PROTOTYPE - NOT FOR PRODUCTION
 // Question: If players defend a real neighborhood they recognize, with destructible cover, do they make protect/sacrifice choices?
 // Date: 2026-11-19
-// HUD, objective widget, world markers, minimap, debug panel (F3), buy screen, summary, pointer-lock flow.
+// HUD, objective widget, world markers, minimap, debug panel (F3 / D-pad down), buy screen, summary, pointer-lock flow.
+// Labels follow the active device (DEVICE in 65_gamepad.js): controller by default, keyboard after real keyboard/mouse input.
 
 const $ = (id) => document.getElementById(id);
 const el = {
@@ -12,7 +13,7 @@ const el = {
   start: $('start'), pause: $('pause'), buy: $('buy'), buyGrid: $('buyGrid'), buyTimer: $('buyTimer'), buySalvage: $('buySalvage'), summary: $('summary'), sumStats: $('sumStats'),
 };
 const UI = {
-  debugOn: false, mapOn: true, buyOpen: false, freeLook: false, lockFails: 0, lockFailAt: 0, lockSeq: 0, grantedSeq: 0, everLocked: false, popT: 0, popSum: 0, hitT: 0, vig: 0, centerT: 0, stFlash: 0, fpsHist: [], dbgT: 0, mapT: 0,
+  debugOn: false, mapOn: true, buyOpen: false, buySel: 0, freeLook: false, lockFails: 0, lockFailAt: 0, lockSeq: 0, grantedSeq: 0, everLocked: false, popT: 0, popSum: 0, hitT: 0, vig: 0, centerT: 0, stFlash: 0, fpsHist: [], dbgT: 0, mapT: 0,
   toggleDebug() { this.debugOn = !this.debugOn; el.debug.classList.toggle('hidden', !this.debugOn); },
   toggleMap() { this.mapOn = !this.mapOn; el.map.classList.toggle('hidden', !this.mapOn); },
   salvagePop(n, why) { this.popSum += n; this.popT = 1.2; el.pop.textContent = `+${this.popSum}  ${why || ''}`; },
@@ -80,13 +81,14 @@ function ownedSlot(it) { return it.slot && P.att[it.slot] === it.id; }
 function itemCost(it) { return it.id === 'patch' ? patchNearbyCost(false).cost : it.cost; }
 function renderShop() {
   el.buyGrid.innerHTML = '';
+  const pad = DEVICE === 'pad';
   SHOP.forEach((it, i) => {
     const d = document.createElement('div');
     const cost = itemCost(it), owned = ownedSlot(it);
     const cant = owned || GAME.salvage < cost || (it.id === 'charge' && P.charges >= CFG.charge.max) || (it.id === 'patch' && cost === 0) || (it.id === 'ammo' && P.reserve >= CFG.rifle.reserve);
-    d.className = 'item' + (owned ? ' owned' : '') + (cant ? ' cant' : '');
+    d.className = 'item' + (owned ? ' owned' : '') + (cant ? ' cant' : '') + (i === UI.buySel ? ' sel' : '');     // .sel = controller highlight
     const extra = it.id === 'charge' ? ` (have ${P.charges})` : it.id === 'patch' ? (cost ? '' : ' (nothing damaged nearby)') : '';
-    d.innerHTML = `<span class="c">${owned ? 'EQUIPPED' : cost + ' S'}</span><div class="n">[${i + 1}] ${it.name}${extra}</div><div class="d">${it.desc}</div>`;
+    d.innerHTML = `<span class="c">${owned ? 'EQUIPPED' : cost + ' S'}</span><div class="n">${pad ? '' : `[${i + 1}] `}${it.name}${extra}</div><div class="d">${it.desc.replace('{throw}', pad ? 'RB' : 'G')}</div>`;
     d.onclick = () => buyItem(it);
     el.buyGrid.appendChild(d);
   });
@@ -132,7 +134,7 @@ function setFreeLook(on) {
   } else if (GAME.phase !== 'menu' && GAME.phase !== 'dead' && !UI.buyOpen) requestLock();
 }
 function lockFailed(err) {             // browser lock cooldown, no user gesture, or a viewer that never allows capture
-  if (AUTOTEST || UI.freeLook || GAME.phase === 'menu' || GAME.phase === 'dead' || UI.buyOpen || document.pointerLockElement) return;
+  if (AUTOTEST || UI.freeLook || padIsActive() || GAME.phase === 'menu' || GAME.phase === 'dead' || UI.buyOpen || document.pointerLockElement) return;
   const now = performance.now();
   if (now - UI.lockFailAt < 400) return;          // promise rejection + pointerlockerror for the same attempt count once
   UI.lockFailAt = now; UI.lockFails++;
@@ -143,6 +145,7 @@ function lockFailed(err) {             // browser lock cooldown, no user gesture
 }
 function requestLock() {
   if (AUTOTEST) return;
+  if (padIsActive()) return;           // controller is the active device: no mouse capture needed, Menu pauses and resumes
   if (UI.freeLook) { GAME.paused = false; el.pause.classList.add('hidden'); return; }
   if (!canvas.requestPointerLock) { setFreeLook(true); return; }
   const seq = ++UI.lockSeq;
@@ -241,10 +244,10 @@ function drawMinimap() {
 // ------------------------------------------------------------- per-frame HUD
 const FPS = { frames: 0, acc: 0, value: 0, min1s: 999, samples: [], minSample: Infinity };
 function updateHUD(dt, realDt) {
-  const W = wstats();
+  const W = wstats(), pad = DEVICE === 'pad';
   el.round.textContent = GAME.phase === 'pre' ? 'GET READY' : GAME.phase === 'intermission' ? `INTERMISSION ${Math.ceil(GAME.phaseT)}s` : `ROUND ${GAME.round}`;
   const left = GAME.phase === 'round' ? aliveCount() + (GAME.queue.length - GAME.queueIdx) : 0;
-  el.zLeft.textContent = GAME.phase === 'round' ? `Zombies left: ${left}` : GAME.phase === 'pre' ? `Round 1 in ${Math.ceil(GAME.phaseT)} s` : GAME.phase === 'intermission' ? '[B] buy  [Enter] ready' : '';
+  el.zLeft.textContent = GAME.phase === 'round' ? `Zombies left: ${left}` : GAME.phase === 'pre' ? `Round 1 in ${Math.ceil(GAME.phaseT)} s${pad ? '  |  View: buy screen' : ''}` : GAME.phase === 'intermission' ? (pad ? 'View: buy screen (ready up there)' : '[B] buy  [Enter] ready') : '';
   el.salvage.textContent = `SALVAGE ${GAME.salvage}`;
   UI.popT -= realDt; if (UI.popT <= 0) { UI.popSum = 0; el.pop.textContent = ''; }
   // objective
@@ -281,8 +284,9 @@ function updateHUD(dt, realDt) {
     const b = P.aimB, info = repairInfo(b);
     const hp = `${Math.max(0, Math.round(b.hp))}/${b.maxHp}`;
     let act = '';
-    if (info.action === 'reinforce') act = `<span class="k">[hold F]</span> Reinforce tool: reinforce (${info.cost} S)`;
-    else if (info.action === 'repair') act = `<span class="k">[hold F]</span> Reinforce tool: repair (${info.cost} S)`;
+    const hold = pad ? '(hold B)' : '[hold F]';
+    if (info.action === 'reinforce') act = `<span class="k">${hold}</span> Reinforce tool: reinforce (${info.cost} S)`;
+    else if (info.action === 'repair') act = `<span class="k">${hold}</span> Reinforce tool: repair (${info.cost} S)`;
     else if (info.action === 'full') act = 'reinforced';
     el.prompt.innerHTML = `${buildingName(b)} &middot; ${hp} ${b.reinforced ? '&middot; REINFORCED' : ''} &middot; ${act}`;
     el.prompt.classList.remove('hidden');
@@ -295,11 +299,12 @@ function updateHUD(dt, realDt) {
   el.st.firstChild.style.width = P.stamina + '%'; el.st.classList.toggle('out', P.exhausted);
   UI.stFlash -= realDt; el.st.style.outline = UI.stFlash > 0 ? '1px solid #ff4636' : '';
   el.status.textContent = P.blocking ? (GAME.time - P.blockPressT <= CFG.melee.parryWindow ? 'BLOCK (parry window)' : 'BLOCKING') : GAME.time < P.guardBrokenUntil ? 'GUARD BROKEN' : P.exhausted ? 'EXHAUSTED' : '';
-  el.weapon.textContent = P.weapon === 'rifle' ? 'RIFLE' + (P.reloading ? '  reloading...' : '') : 'BAT  [LMB swing, RMB block]';
+  el.weapon.textContent = P.weapon === 'rifle' ? 'RIFLE' + (P.reloading ? '  reloading...' : '') : pad ? 'BAT  [RT swing, LT / LB block]' : 'BAT  [LMB swing, RMB block]';
   el.ammo.innerHTML = P.weapon === 'rifle' ? `${P.ammo} <small>/ ${P.reserve}</small>` : '&mdash;';
   const at = [P.att.optic, P.att.muzzle, P.att.barrel].filter(Boolean).map((a) => SHOP.find((s2) => s2.id === a).name);
   el.attach.textContent = at.length ? at.join(' + ') : 'no attachments';
-  el.charges.textContent = `Sapper kit: [G] breach charges ${P.charges}  [F] reinforce tool   [Q] ping`;
+  el.charges.textContent = pad ? `Sapper kit: [RB] breach charges ${P.charges}  [hold B] reinforce tool   [A] ping`
+    : `Sapper kit: [G] breach charges ${P.charges}  [F] reinforce tool   [Q] ping`;
   UI.vig = Math.max(0, UI.vig - realDt * 0.8);
   el.vig.style.opacity = Math.max(UI.vig, P.hp < 35 ? 0.35 + 0.1 * Math.sin(GAME.time * 6) : 0);
   if (UI.buyOpen) { el.buyTimer.textContent = GAME.phase === 'intermission' ? Math.ceil(GAME.phaseT) : GAME.phase === 'pre' ? Math.ceil(GAME.phaseT) : '-'; el.buySalvage.textContent = `SALVAGE ${GAME.salvage}`; }
@@ -316,7 +321,7 @@ function debugText() {
   const info = renderer.info.render;
   const avgFF = NAVSTATS.jobs ? NAVSTATS.totalMs / NAVSTATS.jobs : 0;
   return [
-    `HOLDOUT greybox  instrumentation (F3)      ${LEVEL.name}`,
+    `HOLDOUT greybox  instrumentation (D-pad down / F3)      ${LEVEL.name}`,
     `fps                ${FPS.value.toFixed(1)}   (worst 1 s: ${FPS.min1s.toFixed(1)})`,
     `round (wave)       ${GAME.round}   phase ${GAME.phase}   time in round ${fmtTime(GAME.roundT)}`,
     `zombies            alive ${aliveCount()}   queued ${Math.max(0, GAME.queue.length - GAME.queueIdx)}   breachers ${GAME.breacherAlive}   kills ${GAME.kills}`,
@@ -331,6 +336,7 @@ function debugText() {
     `flow field         rebuilds ${NAVSTATS.rebuilds} (${NAVSTATS.jobs} jobs, sliced ${NAV_BUDGET_MS} ms/frame, worst frame ${NAVSTATS.maxFrameMs.toFixed(1)} ms)\n                   job last ${NAVSTATS.lastMs.toFixed(1)} ms  avg ${avgFF.toFixed(1)} ms  max ${NAVSTATS.maxMs.toFixed(1)} ms   after-destruction ${NAVSTATS.afterDestruction.length ? NAVSTATS.afterDestruction[NAVSTATS.afterDestruction.length - 1] + ' ms / ' + NAVSTATS.afterDestructionFrames[NAVSTATS.afterDestructionFrames.length - 1] + ' frames' : '-'}`,
     `salvage            ${GAME.salvage}   earned ${GAME.salvageEarned}   spent ${GAME.salvageSpent}`,
     `melee              hits ${GAME.meleeHits}  melee kills ${GAME.meleeKills}  parries ${GAME.parries}  blocks ${GAME.blocks}  guard breaks ${GAME.guardBreaks}`,
+    padDebugLine(),
     `render             draw calls ${info.calls}   tris ${info.triangles}   spawns hidden ${GAME.spawnsHidden}/${GAME.spawnsHidden + GAME.spawnsVisible}`,
   ].join('\n');
 }
