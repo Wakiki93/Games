@@ -3,10 +3,10 @@
 | Field | Value |
 |-------|-------|
 | **Engine Version** | Unreal Engine 5.8 |
-| **Installed at pin time** | NOT DETERMINED — `/setup-engine` §3 probes the installed editor and records the result here. |
-| **Release Date** | June 2026 (5.8.0); latest hotfix 5.8.3, September 2026 |
+| **Installed at pin time** | NOT DETERMINED — probed 2026-11-18 by `/setup-engine` §3, which ran in a Linux cloud container with no GPU and no Unreal editor (no `UE_*` launcher folder, no `UnrealEditor`/`UnrealEditor-Cmd` on PATH). The developer's own machine was not probed; the gap is unknown, not absent. |
+| **Release Date** | June 2026 (5.8.0); latest hotfix 5.8.4, October 2026 |
 | **Project Pinned** | 2026-10-17 |
-| **Last Docs Verified** | 2026-10-17 (release timeline, 5.8 release notes, and the 5.8 changes recorded in this directory); 2026-02-13 (rest of directory, written against 5.7) |
+| **Last Docs Verified** | 2026-11-18 (latest hotfix only: 5.8.4, by web search); 2026-10-17 (release timeline, 5.8 release notes, and the 5.8 changes recorded in this directory); 2026-02-13 (rest of directory, written against 5.7) |
 | **LLM Knowledge Cutoff** | May 2025 |
 
 ## Knowledge Gap Warning
@@ -51,7 +51,11 @@ Release dates verified 2026-10-17 against Epic's release announcement threads:
 5.7 (Nov 12, 2025) https://forums.unrealengine.com/t/unreal-engine-5-7-released/2673913,
 5.8 (Jun 17, 2026) https://forums.unrealengine.com/t/unreal-engine-5-8-released/2729274.
 Hotfixes 5.8.1 (Jul 28, 2026), 5.8.2 (Aug 25, 2026) and 5.8.3 (Sep 22, 2026):
-https://forums.unrealengine.com/t/5-8-3-hotfix-released/2833315. Key themes come
+https://forums.unrealengine.com/t/5-8-3-hotfix-released/2833315.
+Hotfix 5.8.4, verified 2026-11-18 by web search as the latest 5.8 hotfix:
+https://forums.unrealengine.com/t/5-8-4-hotfix-released/2842775. Its exact day
+(October 20, 2026) comes from secondary reports in those search results; Epic's
+thread could not be fetched from the verifying session. Key themes come
 from the same threads and from the 5.7 and 5.8 release notes (Verified Sources below).
 
 ## Major Changes from UE 5.3 to UE 5.8
@@ -88,6 +92,7 @@ from the same threads and from the 5.7 and 5.8 release notes (Verified Sources b
 - UE 5.8 release notes: https://dev.epicgames.com/documentation/en-us/unreal-engine/unreal-engine-5-8-release-notes?application_version=5.8
 - UE 5.8 release thread: https://forums.unrealengine.com/t/unreal-engine-5-8-released/2729274
 - UE 5.8.3 hotfix: https://forums.unrealengine.com/t/5-8-3-hotfix-released/2833315
+- UE 5.8.4 hotfix: https://forums.unrealengine.com/t/5-8-4-hotfix-released/2842775
 - UE 5.7 release notes: https://dev.epicgames.com/documentation/en-us/unreal-engine/unreal-engine-5-7-release-notes
 - What's new in 5.7: https://dev.epicgames.com/documentation/en-us/unreal-engine/whats-new
 - UE 5.7 announcement: https://www.unrealengine.com/en-US/news/unreal-engine-5-7-is-now-available

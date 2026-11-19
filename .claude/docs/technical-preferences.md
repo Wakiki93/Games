@@ -10,44 +10,51 @@
 
 ## Engine & Language
 
-- **Engine**: [TO BE CONFIGURED — run /setup-engine]
-- **Language**: [TO BE CONFIGURED]
-- **Rendering**: [TO BE CONFIGURED]
-- **Physics**: [TO BE CONFIGURED]
+- **Engine**: Unreal Engine 5.8 (latest hotfix 5.8.4)
+- **Language**: C++ (primary), Blueprint (gameplay prototyping, content and tuning)
+- **Rendering**: Lumen + Nanite (deferred)
+- **Physics**: Chaos
+- **Project / Module**: Holdout (working title) — C++ module `Holdout`; code root `Source/Holdout/`, tests `Source/Holdout/Private/Tests/`, content `Content/`
+- **Key Engine Subsystems (planned)**: Gameplay Ability System (abilities, stamina, damage); built-in replication with dedicated/listen server; Chaos Destruction (Geometry Collections) for buildings; Enhanced Input; UMG + CommonUI for HUD; Behavior Trees / StateTree for zombie AI, with Mass as a candidate for large hordes; World Partition for large OpenStreetMap-derived maps
 
 ## Input & Platform
 
 <!-- Written by /setup-engine. Read by /ux-design, /ux-review, /test-setup, /team-ui, and /dev-story -->
 <!-- to scope interaction specs, test helpers, and implementation to the correct input methods. -->
 
-- **Target Platforms**: [TO BE CONFIGURED — e.g., PC, Console, Mobile, Web]
-- **Input Methods**: [TO BE CONFIGURED — e.g., Keyboard/Mouse, Gamepad, Touch, Mixed]
-- **Primary Input**: [TO BE CONFIGURED — the dominant input for this game]
-- **Gamepad Support**: [TO BE CONFIGURED — Full / Partial / None]
-- **Touch Support**: [TO BE CONFIGURED — Full / Partial / None]
-- **Platform Notes**: [TO BE CONFIGURED — any platform-specific UX constraints]
+- **Target Platforms**: PC (Windows), distributed on Steam
+- **Input Methods**: Keyboard/Mouse, Gamepad (partial)
+- **Primary Input**: Keyboard/Mouse
+- **Gamepad Support**: Partial (recommended)
+- **Touch Support**: None
+- **Platform Notes**: First-person shooter aiming is mouse-driven; every menu and HUD flow must work with keyboard/mouse alone, and no gameplay information may be hover-only. 4-player online co-op (dedicated or listen server). Steam is the storefront — Steam integration is added to Allowed Libraries when that work begins, not at engine setup.
 
 ## Naming Conventions
 
-- **Classes**: [TO BE CONFIGURED]
-- **Variables**: [TO BE CONFIGURED]
-- **Signals/Events**: [TO BE CONFIGURED]
-- **Files**: [TO BE CONFIGURED]
-- **Scenes/Prefabs**: [TO BE CONFIGURED]
-- **Constants**: [TO BE CONFIGURED]
+<!-- Epic's Unreal C++ coding standard. project.yaml `naming:` holds the enum form. -->
+
+- **Classes**: Prefixed PascalCase — `A` Actor, `U` UObject, `F` struct, `E` enum, `I` interface, `T` template (e.g., `AHoldoutCharacter`, `UStaminaComponent`, `FWeaponStats`)
+- **Variables**: PascalCase (e.g., `MoveSpeed`); booleans take a `b` prefix (e.g., `bIsAlive`)
+- **Functions**: PascalCase (e.g., `TakeDamage()`)
+- **Signals/Events**: PascalCase `On<Event>` delegates and handlers (e.g., `OnHealthChanged`) — Unreal has delegates/events, not signals
+- **Files**: PascalCase, matching the class without its prefix (e.g., `HoldoutCharacter.h`)
+- **Scenes/Prefabs**: PascalCase — Unreal has Levels/Maps (World Partition), not scenes
+- **Asset Prefixes**: `BP_` Blueprint, `WBP_` Widget Blueprint, `GA_` Gameplay Ability, `GE_` Gameplay Effect, `BT_` Behavior Tree, `ABP_` Animation Blueprint, `GC_` Geometry Collection
+- **Constants**: SCREAMING_SNAKE — UNVERIFIED: not sourceable from `docs/engine-reference/unreal/`; confirm before relying on it
 
 ## Performance Budgets
 
-- **Target Framerate**: [TO BE CONFIGURED]
-- **Frame Budget**: [TO BE CONFIGURED]
-- **Draw Calls**: [TO BE CONFIGURED]
+- **Target Framerate**: 60 fps at 1080p on a mid-range PC GPU (RTX 3060-class), with 4 players and up to ~100 active zombies
+- **Frame Budget**: 16.6 ms
+- **Draw Calls**: [TO BE CONFIGURED — set after the first profiling pass]
 - **Memory Ceiling**: [TO BE CONFIGURED]
+- **Network**: 30 Hz server tick target, 4 players
 
 ## Testing
 
-- **Framework**: [TO BE CONFIGURED]
+- **Framework**: Unreal Automation (Automation Spec) — tests under `Source/Holdout/Private/Tests/`, named `Holdout.[System].[Scenario]`
 - **Minimum Coverage**: [TO BE CONFIGURED]
-- **Required Tests**: Balance formulas, gameplay systems, networking (if applicable)
+- **Required Tests**: Balance formulas, gameplay systems, networking (applies: 4-player online co-op)
 
 ## Forbidden Patterns
 
@@ -70,12 +77,12 @@
 <!-- Read by /code-review, /architecture-decision, /architecture-review, and team skills -->
 <!-- to know which specialist to spawn for engine-specific validation. -->
 
-- **Primary**: [TO BE CONFIGURED — run /setup-engine]
-- **Language/Code Specialist**: [TO BE CONFIGURED]
-- **Shader Specialist**: [TO BE CONFIGURED]
-- **UI Specialist**: [TO BE CONFIGURED]
-- **Additional Specialists**: [TO BE CONFIGURED]
-- **Routing Notes**: [TO BE CONFIGURED]
+- **Primary**: unreal-specialist
+- **Language/Code Specialist**: ue-blueprint-specialist (Blueprint graphs) or unreal-specialist (C++)
+- **Shader Specialist**: unreal-specialist (no dedicated shader specialist — primary covers materials)
+- **UI Specialist**: ue-umg-specialist (UMG widgets, CommonUI, input routing, widget styling)
+- **Additional Specialists**: ue-gas-specialist (Gameplay Ability System, attributes, gameplay effects), ue-replication-specialist (property replication, RPCs, client prediction, netcode)
+- **Routing Notes**: Invoke primary for C++ architecture and broad engine decisions. Invoke Blueprint specialist for Blueprint graph architecture and BP/C++ boundary design. Invoke GAS specialist for all ability and attribute code. Invoke replication specialist for any multiplayer or networked systems. Invoke UMG specialist for all UI implementation.
 
 ### File Extension Routing
 
@@ -84,9 +91,10 @@
 
 | File Extension / Type | Specialist to Spawn |
 |-----------------------|---------------------|
-| Game code (primary language) | [TO BE CONFIGURED] |
-| Shader / material files | [TO BE CONFIGURED] |
-| UI / screen files | [TO BE CONFIGURED] |
-| Scene / prefab / level files | [TO BE CONFIGURED] |
-| Native extension / plugin files | [TO BE CONFIGURED] |
-| General architecture review | Primary |
+| Game code (.cpp, .h files) | unreal-specialist |
+| Shader / material files (.usf, .ush, Material assets) | unreal-specialist |
+| UI / screen files (.umg, UMG Widget Blueprints) | ue-umg-specialist |
+| Scene / prefab / level files (.umap, .uasset) | unreal-specialist |
+| Native extension / plugin files (Plugin .uplugin, modules) | unreal-specialist |
+| Blueprint graphs (.uasset BP classes) | ue-blueprint-specialist |
+| General architecture review | unreal-specialist |
