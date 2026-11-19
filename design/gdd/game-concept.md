@@ -1677,26 +1677,31 @@ Park sits half outside the box. (The small-team re-cut is now defined as Slice E
 12. **Extract vs proposed sectors.** Lewis Park is half outside the west edge and the Tinley Creek Green trail mostly
     beyond the east edge; re-extract a widened box before the level GDD. *Status:* Lewis Park is out of the MVP slice;
     the re-extraction is planned, not done.
-13. **"Not Lancaster" is a creative call:** ask the user whether the park's real name is acceptable as a label, or
-    whether the home sector should be relabelled or moved. *Status:* relabelled and moved (A38, A44); Q18 is open.
+13. **Labelling under U10 is a creative call:** ask the user whether the park's OSM name is acceptable as a label, or
+    whether the home sector should be relabelled or moved. *Status:* relabelled "Creek Woods"; home is on the 167th
+    Street spine (A38, A44); Q18 is open.
 14. **Privacy check:** the concept text is clean; the map boundary box is acceptable, but nothing narrower should be
-    committed. *Status:* revision 2.2 follows the art director's stricter call and untracks the extract (R5); open.
+    committed. *Status:* the document follows the art director's stricter call: the action to untrack or rewrite
+    every tracked file carrying the box or footprints now has an owner and a due date (system 6.1, R5, A50); open.
 15. **The prototype pipeline is not the engine pipeline** (2.45 s standalone, not a UE 5.8 bake). *Status:* addressed
-    (R3; the first UE bake of the MVP slice is an MVP block).
+    (R3; the first UE bake of the MVP slice is an MVP block). The 2.45 s figure is superseded by the committed and
+    re-measured ~1.6 s (system 6.1).
 16. **A31's attachment-slot wording.** *Status:* fixed.
 
 *History:* round 1 on revision 2 is this gate's only run.
 
 ### PR-SCOPE (`producer`, round 3 on revision 2.2, 2026-11-19): OPTIMISTIC (3 blocking)
 *Verdict:* revision 2.2 carries U1–U9 into the MVP faithfully and fixes round 2's unscheduled blocks, but three items
-block REALISTIC. **UNREALISTIC if the developer is solo (Q2).** The reviewer checked the location locally against the
-extract, with no outside lookup: the box and the map name are right, nothing is labelled "Lancaster", and nothing in
-system 6.1's geometry needs to change.
+block REALISTIC. **UNREALISTIC if the developer is solo (Q2).** The box and the map name were verified locally against
+the extract, with no outside lookup; nothing is labelled "Lancaster", and nothing in system 6.1's geometry needs to
+change.
 
-*Blocking items (open):*
+*Blocking items:*
 1. **Q2 is unanswered** (team size, budget, runway; A14, R7). Every timeline rests on an assumed team of 5 plus
    USD 0.6–1.0M outsourcing. If the team is one or two people the verdict is UNREALISTIC, and the "smaller First Map
    Complete" re-cut that R7 and A14 point to is not defined anywhere. Only the user can close this.
+   *Status:* open (needs the user). The re-cut is now defined as the Slice Early Access tier (Scope Tiers, A49), so an
+   answer to Q2 has a plan to land on.
 2. **The MVP success criteria measure work the build plan does not schedule.** They require 70% of testers to rate gun
    feel 4+/5 for "weighty and grounded" and melee to read as viable, but the audio pass is excluded, placeholder
    animation is accepted, and no block or owner produces placeholder weapon audio, positional horde audio, or
@@ -1704,6 +1709,8 @@ system 6.1's geometry needs to change.
    types). The assumed team has no animator or audio designer. *Adjustment:* add an owned, budgeted "MVP placeholder
    audio and animation" block (contracted, extending the month-1 test set), or reword the criteria; expect about
    +1 month or outsourcing cost.
+   *Status:* answered in the text by revision 2.3: an owned, budgeted block (about USD 50–100k) with delivery months
+   tied to the blocks that consume it; integration grows by a month, so the MVP is about 15–16 months (A47).
 3. **First Map Complete (month 29–30) is under-scheduled, and the funding horizon is pinned to it.** Only the MVP
    has a 20% buffer; the tiers after it (months 15–30) have none and no release-readiness work (QA, performance and
    minimum spec on a listen-server host, onboarding, options and settings, store and Early Access preparation, crash
@@ -1712,32 +1719,42 @@ system 6.1's geometry needs to change.
    Slice B and then, in 4 months, public matchmaking, solo tuning, leaderboards, gear, supply drops and a meta stub.
    *Adjustment:* add a release-hardening block and a 15–20% buffer to the post-MVP tiers, restate First Map Complete as
    about month 33–36, and move the funding horizon and the USD 1.5–2.1M figure with it.
+   *Status:* answered in the text by revision 2.3: a buffer per post-MVP tier (16–19% overall) and a 2-month
+   release-hardening block; First Map Complete about month 35–36; funding to it roughly USD 1.8–2.6 million; 1.0 about
+   month 52–56 (A48).
 
 *Remaining concerns:*
 1. **Q18 before the engine bake.** The user should confirm A44's home capture zone (Anne Marie Avenue / Patricia
    Avenue junctions) and the slice placement before the month 1–3 engine bake, because moving the slice afterwards
    costs bake, nav and interior rework.
 2. **Privacy wording on a public repository (outside remit; a hard rule).** The location-check wording in system 6.1,
-   U10 and Q1 narrows a user-specified point to a short stretch of one street and ties the user to it, and it is
-   already in committed HEAD. Reword it to "the box and the map name were verified", with no margins and no reference
-   to an area the user named, and fold the history question into the purge decision (R5). *Status:* not changed yet;
-   the revision 2.2 note at the top of the document uses the same kind of wording.
+   U10 and Q1 said more than the design needs, and it is already in commit history. Reword it to "the box and the map
+   name were verified", and fold the history question into the purge decision (R5). *Status:* reworded throughout in
+   revision 2.3, including the revision notes at the top (A50); the commit history is part of the R5 purge decision.
 3. **The tracked raw extract and generated level files** are still public with every building footprint. The action
    has an owner but no date and no build-plan block; do it before the next push. Minor accuracy: the extract has no
-   house-number tags but does have two `addr:state` tags.
+   house-number tags but does have two `addr:state` tags. *Status:* the action now names every tracked file that
+   carries the box or footprints, has an owner (the producer) and is due before the next push, no later than
+   2026-11-26 (system 6.1, A50); the `addr:state` note is applied. Not done yet.
 4. **The tools/tech engineer is a single point of failure** on an unmarked critical path (engine bake and nav-link
    generator months 1–3, round system and spawn director 4–5, horde AI with the far tier 6–8, soak harness 9), with no
    slack and no time for pipeline maintenance while interiors land in months 5–8. The gameplay-layer generator
    (system 6, pipeline step 4) has no block; say whether the MVP slice is hand-placed, and mark the critical path.
+   *Status:* the critical path is marked and the buffer covers it first; the MVP slice's gameplay layer is
+   hand-placed, and the generator is a Vertical Slice A block (A51).
 5. **Production gunplay starts in month 3,** before the netcode spike's end-of-month-3 verdict on hit validation, and
    the month 2 and 3 PROCEED/PIVOT verdicts have no time reserved for a pivot; the only buffer is at the end.
+   *Status:* month 3 of production gunplay builds only what both spike outcomes need, and hit validation starts in
+   month 4; a PIVOT draws on the buffer right after the critical path (A51). No separate pivot time is reserved.
 6. **The squad layer** (four roles, five gadgets, downed and revive, ping, squad-gap kit) has one engineer for months
    8–9, and the designer-producer builds the economy and HUD in Blueprint/UMG at two-thirds time. Both are tight and
-   both carry U2 and U3.
+   both carry U2 and U3. *Status:* open; watched at the month-9 sector-loop playtest.
 7. **Nothing can ship before about month 30.** Define a smaller, earlier fallback (the MVP slice at the realism bar
-   with audio) so the most likely cut point is graceful; it is also the natural solo re-cut.
+   with audio) so the most likely cut point is graceful; it is also the natural solo re-cut. *Status:* defined as the
+   Slice Early Access tier (about month 24–26 for the team of 5; A49).
 8. **Open questions with large scope effects:** Q11 (vehicles), Q6 (gore and rating) and Q20 (authorising the month-3
-   fallbacks that weaken U9 and U4). Weather is in no tier, although U7's dust and smoke are covered.
+   fallbacks that weaken U9 and U4). Weather is in no tier, although U7's dust and smoke are covered. *Status:* open
+   (user decisions).
 
 *History:* round 1 on revision 2: OPTIMISTIC (6 blocking, answered by A43); round 2 on revision 2.1: OPTIMISTIC
 (4 blocking; three answered by A46, Q2 carried over).
@@ -1754,26 +1771,31 @@ and first-person parry over the network, a four-role squad holding sectors) are 
 
 1. `/setup-engine`: configure Unreal Engine 5.8 and its version-aware reference docs. *(Completed in another
    session.)*
-2. **Director gates.** Round 1 ran on revision 2 and round 2 on revision 2.1 (2026-11-19); revision 2.2 applies
-   round 2 (Director Gate Reviews). Re-check **PR-SCOPE** (`producer`) against revision 2.2 (its last blocking item
-   is Q2), and re-run **CD-PILLARS** and **TD-FEASIBILITY** on the current text, because their round-2 output quoted
-   revision-2 text. AD-CONCEPT-VISUAL is STRONG; its notes go to the art bible.
+2. **Director gates.** All four gates ran round 1 on revision 2; AD-CONCEPT-VISUAL and PR-SCOPE ran round 2 on
+   revision 2.1, and PR-SCOPE ran round 3 on revision 2.2 (2026-11-19). Revision 2.3 applies PR-SCOPE round 3 and the
+   first `/design-review` (Director Gate Reviews). Re-check **PR-SCOPE** (`producer`) on revision 2.3 (two of its
+   three blocking items are answered in the text; the third is Q2), and re-run **CD-PILLARS** and **TD-FEASIBILITY**
+   on the current text, because their only run reviewed revision 2. AD-CONCEPT-VISUAL is STRONG; its notes go to the
+   art bible.
 3. **Before the prototypes start:** the user answers **Q2** (team, budget, runway; gating), confirms or overrules the
-   facilitator assumptions (A22–A46, especially A44's reading of U10 via Q18, which must be settled before the
-   engine bake), and answers Q6 (rating), Q11 (vehicles), Q16 (sensitive sites), Q17 (block sectors), Q19 (night
-   curve) and Q20 (the month-3 fallbacks). **Repository hygiene:** the producer and technical director untrack the
-   first map's raw extract and generated level files and decide whether to purge them from history (system 6.1, R5).
+   facilitator assumptions (A22–A51, especially A44's home-sector and slice placement via Q18 and the school's place
+   via Q16, both of which must be settled before the engine bake), and answers Q6 (rating), Q11 (vehicles), Q17
+   (block sectors), Q19 (night curve) and Q20 (the month-3 fallbacks). **Repository hygiene (before the next push, no
+   later than 2026-11-26; owner: the producer):** untrack or rewrite every tracked file that carries the first map's
+   box or footprints and decide whether to purge history, including this document's earlier revisions (system 6.1,
+   R5, A50).
 4. `/prototype first-person ballistics, recoil and melee against a capped horde`: the local feel prototype, including
    two roles' gadgets (PROCEED / PIVOT / KILL).
 5. `/prototype --spike replicated panel destruction, projectile fire events and hit claims, and a 24-zombie horde on a
    listen server`: the netcode budget spike (R1, R2, R8), including the 48-zombie stretch case, the far tier at 300 m,
    four players in four sectors, a Lumen/Nanite stress scene on the host, and 200 ms latency.
    In parallel: the first UE 5.8 bake of the MVP slice (A44); before the level GDD, re-extract the first map with the
-   box widened west and snapped to a coarse grid, keep the result out of the repository, then re-measure the system
-   6.1 facts.
+   box widened west and its edges set from landmarks and a coarse grid only, keep the result out of the repository,
+   then re-measure the system 6.1 facts.
 6. If both PROCEED: `/art-bible`, seeded with the "Ground Truth" anchor. It is required before the Technical Setup
    gate at `full`.
-7. `/design-review design/gdd/game-concept.md`: check the concept is complete.
+7. `/design-review design/gdd/game-concept.md` at full, with specialist agents: the first run (2026-11-19, NEEDS
+   REVISION, applied in revision 2.3) was effectively lean, so it does not cover a full review.
 8. `/map-systems`: systems index and dependencies. Expected systems: rounds and sectors, roles and gadgets, squad
    play, economy, destruction, OSM pipeline, gunplay and ballistics, attachments, melee, horde AI, co-op/session, HUD.
 9. `/design-system` for each system from step 8, then `/create-architecture` → `/architecture-decision` (one ADR per
@@ -1782,10 +1804,11 @@ and first-person parry over the network, a four-role squad holding sectors) are 
 10. `/vertical-slice` before committing to sprints, then `/gate-check` before Production.
 
 - [x] Run the real director gates on revision 2 (round 1, 2026-11-19: CD CONCERNS, AD CONCERNS, TD CONCERNS, PR OPTIMISTIC) and apply them (revision 2.1)
-- [x] Run round 2 of the director gates on revision 2.1 (2026-11-19: CD CONCERNS, AD STRONG, TD CONCERNS, PR OPTIMISTIC) and apply it (revision 2.2)
-- [ ] Re-check PR-SCOPE on revision 2.2; re-run CD-PILLARS and TD-FEASIBILITY on the current text; get concept approval from creative-director
-- [ ] User answers Q2 (gating) and Q20, and confirms A44 (Q18) before the engine bake
-- [ ] Untrack the first map's raw extract and generated level files; decide on purging history (R5)
+- [x] Run round 2 of AD-CONCEPT-VISUAL and PR-SCOPE on revision 2.1 (2026-11-19: AD STRONG, PR OPTIMISTIC; CD-PILLARS and TD-FEASIBILITY had no blocking items and did not re-run) and apply it (revision 2.2)
+- [x] Run PR-SCOPE round 3 on revision 2.2 (OPTIMISTIC, 3 blocking) and the first `/design-review` (NEEDS REVISION, 5 blocking); apply the text-fixable items (revision 2.3)
+- [ ] Re-check PR-SCOPE on revision 2.3; re-run CD-PILLARS and TD-FEASIBILITY on the current text; re-run `/design-review` at full; get concept approval from creative-director
+- [ ] User answers Q2 (gating) and Q20, and settles Q18 (A44) and Q16 before the engine bake
+- [ ] Before the next push (no later than 2026-11-26; owner: the producer): untrack or rewrite every tracked file carrying the first map's box or footprints; decide on purging history, including this document's earlier revisions (R5)
 - [x] Fill in the CLAUDE.md technology stack from the engine choice (`/setup-engine`; completed elsewhere)
 - [ ] Create the game pillars document (`/design-review` to validate)
 - [ ] **Prototype the core idea**: the feel prototype and the netcode spike (above)

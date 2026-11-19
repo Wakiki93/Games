@@ -70,3 +70,11 @@ commands:
   test: '"C:/Program Files/Epic Games/UE_5.8/Engine/Binaries/Win64/UnrealEditor-Cmd.exe" "$(pwd -W 2>/dev/null || pwd)/Holdout.uproject" -ExecCmds="Automation RunTests Holdout.; Quit" -unattended -nullrhi -stdout -FullStdOutLogOutput'
   run: '"C:/Program Files/Epic Games/UE_5.8/Engine/Binaries/Win64/UnrealEditor.exe" "$(pwd -W 2>/dev/null || pwd)/Holdout.uproject" -game -windowed -ResX=1280 -ResY=720'
   smoke: '"C:/Program Files/Epic Games/UE_5.8/Engine/Binaries/Win64/UnrealEditor-Cmd.exe" "$(pwd -W 2>/dev/null || pwd)/Holdout.uproject" -game -nullrhi -unattended -stdout -ExecCmds="Quit"'
+
+platform:
+  gamepad_support: Full
+  multiplayer: true
+  online: true
+  primary_input: Keyboard/Mouse
+  touch_support: None
+  cert_tier: steam

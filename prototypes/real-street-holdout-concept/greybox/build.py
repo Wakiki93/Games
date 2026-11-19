@@ -359,6 +359,7 @@ def main():
         frag = (frag.replace('/*@@THREE@@*/', bundle_three())
                     .replace('/*@@LEVEL@@*/', 'var HOLDOUT_HOSTED=true;' + level_js)
                     .replace('/*@@GAME@@*/', game))
+        HOSTED_OUT.parent.mkdir(parents=True, exist_ok=True)
         HOSTED_OUT.write_text(frag, encoding='utf-8')
         print(f'wrote hosted variant {HOSTED_OUT}: {HOSTED_OUT.stat().st_size / 1024:.0f} KB')
     print(f"map: {lv['name']}  buildings {len(lv['buildings'])}  roads {len(lv['roads'])}  ground {len(lv['ground'])}")
