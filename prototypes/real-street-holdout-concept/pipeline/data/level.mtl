@@ -1,0 +1,121 @@
+# PROTOTYPE - NOT FOR PRODUCTION
+# Holdout blockout materials (flat colors)
+newmtl ground
+Kd 0.550 0.600 0.450
+Ka 0 0 0
+Ks 0 0 0
+d 1
+illum 1
+
+newmtl bld_wall
+Kd 0.860 0.830 0.780
+Ka 0 0 0
+Ks 0 0 0
+d 1
+illum 1
+
+newmtl bld_roof_gable
+Kd 0.480 0.300 0.240
+Ka 0 0 0
+Ks 0 0 0
+d 1
+illum 1
+
+newmtl bld_roof_flat
+Kd 0.520 0.520 0.540
+Ka 0 0 0
+Ks 0 0 0
+d 1
+illum 1
+
+newmtl road_major
+Kd 0.220 0.220 0.240
+Ka 0 0 0
+Ks 0 0 0
+d 1
+illum 1
+
+newmtl road_residential
+Kd 0.300 0.300 0.320
+Ka 0 0 0
+Ks 0 0 0
+d 1
+illum 1
+
+newmtl road_service
+Kd 0.400 0.400 0.420
+Ka 0 0 0
+Ks 0 0 0
+d 1
+illum 1
+
+newmtl road_foot
+Kd 0.760 0.720 0.640
+Ka 0 0 0
+Ks 0 0 0
+d 1
+illum 1
+
+newmtl gnd_park
+Kd 0.450 0.660 0.340
+Ka 0 0 0
+Ks 0 0 0
+d 1
+illum 1
+
+newmtl gnd_grass
+Kd 0.500 0.700 0.380
+Ka 0 0 0
+Ks 0 0 0
+d 1
+illum 1
+
+newmtl gnd_wood
+Kd 0.200 0.420 0.200
+Ka 0 0 0
+Ks 0 0 0
+d 1
+illum 1
+
+newmtl gnd_scrub
+Kd 0.520 0.560 0.300
+Ka 0 0 0
+Ks 0 0 0
+d 1
+illum 1
+
+newmtl gnd_water
+Kd 0.250 0.450 0.750
+Ka 0 0 0
+Ks 0 0 0
+d 1
+illum 1
+
+newmtl gnd_parking
+Kd 0.500 0.500 0.500
+Ka 0 0 0
+Ks 0 0 0
+d 1
+illum 1
+
+newmtl gnd_stream
+Kd 0.300 0.520 0.820
+Ka 0 0 0
+Ks 0 0 0
+d 1
+illum 1
+
+newmtl gnd_rail
+Kd 0.420 0.340 0.280
+Ka 0 0 0
+Ks 0 0 0
+d 1
+illum 1
+
+newmtl marker
+Kd 1.000 0.100 0.100
+Ka 0 0 0
+Ks 0 0 0
+d 1
+illum 1
+

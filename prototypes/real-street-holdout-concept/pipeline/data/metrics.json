@@ -1,0 +1,120 @@
+{
+ "schema": "holdout.metrics/0.1",
+ "name": "Tinley Park, IL (60477)",
+ "source": {
+  "mode": "file",
+  "file": "tinley-park-60477.osm"
+ },
+ "bbox_lonlat": [
+  -87.77776,
+  41.58094,
+  -87.76335,
+  41.59172
+ ],
+ "extent_m": [
+  1201.6,
+  1197.3
+ ],
+ "area_m2": 1438628,
+ "area_ha": 143.86,
+ "counts": {
+  "buildings": 745,
+  "buildings_outside_bbox": 11,
+  "buildings_untyped": 398,
+  "road_ways": 163,
+  "road_parts": 164,
+  "road_ways_split": 1,
+  "road_ways_outside_bbox": 0,
+  "ground": 29,
+  "ground_outside_bbox": 0,
+  "barrier_ways": 0,
+  "tree_nodes": 0
+ },
+ "building_density_per_ha": 5.18,
+ "building_coverage_pct": 9.42,
+ "heights": {
+  "inferred_pct": 100.0,
+  "sources": {
+   "inferred:type+area": 325,
+   "inferred:area": 400,
+   "inferred:type": 20
+  }
+ },
+ "roofs": {
+  "gable": 693,
+  "flat": 52,
+  "gable_mesh": 524,
+  "sources": {
+   "inferred:type": 347,
+   "inferred:area": 398
+  },
+  "gable_meshes_in_obj": 524
+ },
+ "ground_area_m2": {
+  "water": 8746,
+  "grass": 69209,
+  "park": 76023,
+  "scrub": 1753,
+  "wood": 198699
+ },
+ "nav": {
+  "graph_nodes": 914,
+  "graph_edges": 997,
+  "components": 6,
+  "largest_component_length_pct": 95.8,
+  "walkable_length_m": 26746.5,
+  "component_lengths_m": [
+   25636.0,
+   736.3,
+   159.8,
+   150.2,
+   45.4,
+   18.8
+  ],
+  "dangling_ends_interior": 25,
+  "near_miss_dangles": 0,
+  "components_if_snapped_5m": 6,
+  "buildings_within_reach_pct": 95.2,
+  "buildings_within_reach_of_main_pct": 93.2,
+  "max_building_to_road_m": 67.6,
+  "buildings_beyond_reach": 36,
+  "reach_m": 40.0,
+  "merge_m": 0.5,
+  "free_space_cell_m": 1.0,
+  "free_space_m2": 1293867,
+  "free_space_reachable_pct": 100.0,
+  "unreachable_pockets": 0,
+  "unreachable_pockets_ge_25m2": 0,
+  "unreachable_m2": 0
+ },
+ "obj": {
+  "objects": 940,
+  "vertices": 14589,
+  "faces": 13512,
+  "gable_meshes": 524
+ },
+ "timing_s": {
+  "convert": 0.084,
+  "nav": 1.144,
+  "obj": 0.07,
+  "preview": 1.128,
+  "total": 2.451
+ },
+ "files": {
+  "level.json": 352100,
+  "level.obj": 702549,
+  "level.mtl": 1262,
+  "preview.png": 579943
+ },
+ "warnings": [
+  "100% of building heights are inferred (no height / building:levels tags): verticality is a guess",
+  "398 buildings are untyped (building=yes): height/roof from footprint size only",
+  "street graph has 6 components; largest holds 95.8% of walkable length (6 if dangling ends within 5 m were snapped)",
+  "36 buildings have their centroid > 40 m from any walkable road",
+  "no barrier=* ways (fences, hedges, walls): yards are open, so free-space connectivity is trivially high",
+  "no natural=tree nodes: no cover/props from OSM",
+  "no terrain elevation: ground is a flat plane at z=0",
+  "3 multipolygon inner rings ignored (holes filled)",
+  "169 of 693 gable-hinted footprints are not near-rectangles (< 0.85) and got flat roofs in the OBJ"
+ ]
+}
