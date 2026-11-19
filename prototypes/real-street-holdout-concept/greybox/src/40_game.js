@@ -5,6 +5,7 @@
 
 const GAME = {
   phase: 'menu',            // menu | pre | round | intermission | dead
+  paused: false,
   round: 0, phaseT: 0, roundT: 0, time: 0, spec: roundSpec(1),
   queue: [], queueIdx: 0, spawnCd: 0,
   salvage: CFG.econ.start, salvageEarned: 0, salvageSpent: 0,

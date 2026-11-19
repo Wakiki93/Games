@@ -31,8 +31,13 @@ CLIP = 600.0                 # never keep geometry beyond +-600 m of the map cen
 MAJOR = {'motorway', 'trunk', 'primary', 'secondary', 'tertiary'}
 LANDMARK_KINDS = {'park', 'wood', 'grass', 'school', 'schoolyard', 'cemetery', 'pitch', 'recreation_ground', 'playground'}
 SENSITIVE = {'school': 'School Grounds', 'schoolyard': 'School Grounds', 'cemetery': 'Cemetery'}   # generic labels only
-# per-map design hints from design/gdd/game-concept.md (6.1): the 167th Street home sector sits at the Ridgeland Avenue crossing
-MAP_HINTS = {'Tinley Park, IL (60477)': {'corridor_prefer': {'Ridgeland Avenue': '167th Street'}}}
+# Per-map design hints. Junction ("corridor") sectors on a curated map are hand-picked: only the crossings listed here can become one.
+# Each key is (major road, crossing street), each value the sector label, in order of preference. The first one is the
+# 167th Street home sector from design/gdd/game-concept.md (6.1), at the Ridgeland Avenue crossing.
+MAP_HINTS = {'Tinley Park, IL (60477)': {'corridors': {
+    ('167th Street', 'Ridgeland Avenue'): '167th Street',
+    ('167th Street', 'Patricia Avenue'): '167th Street & Patricia Avenue',
+}}}
 SECTOR_RADIUS = 25.0
 SECTOR_MIN_SPACING = 200.0
 CORRIDOR_MIN_FROM_SPAWN = 250.0   # corridor sectors stay well away from the spawn point
@@ -174,7 +179,12 @@ def nearest_street(x, y, roads):
 
 def pick_sectors(buildings, roads, ground, hints):
     """Capture sectors at public places only: large park/wood/grass polygons and major-road corridor
-    junctions. Centres are never taken from a building."""
+    junctions. Centres are never taken from a building.
+
+    hints is the map's MAP_HINTS entry, or None for a map without one. With an entry, junction sectors
+    come only from its 'corridors' allow-list (the distance, spacing and count rules below can still
+    drop a listed one, never add another). Without an entry, every qualifying junction is a candidate."""
+    allow = None if hints is None else hints.get('corridors', {})
     cands = []
     bcent = [(b['_c'], b['footprint']) for b in buildings]
 
@@ -227,7 +237,7 @@ def pick_sectors(buildings, roads, ground, hints):
             if r is m or not r.get('name') or r['name'] == m['name'] or r['kind'] in ('footway', 'cycleway', 'service'):
                 continue
             key = (m['name'], r['name'])
-            if key in seen:
+            if key in seen or (allow is not None and key not in allow):
                 continue
             for i in range(len(m['points']) - 1):
                 hit = None
@@ -237,11 +247,12 @@ def pick_sectors(buildings, roads, ground, hints):
                         break
                 if hit:
                     seen.add(key)
-                    prefer = hints.get('corridor_prefer', {})
                     if math.hypot(*hit) >= CORRIDOR_MIN_FROM_SPAWN and free_point(*hit):
-                        cands.append({'name': prefer.get(r['name'], f"{m['name']} & {r['name']}"), 'kind': 'corridor',
-                                      'x': r1(hit[0]), 'y': r1(hit[1]),
-                                      'score': -math.hypot(*hit) + (10000 if r['name'] in prefer else 0)})
+                        if allow is None:      # no curated list: label by the two streets, nearer junctions first
+                            name, score = f"{m['name']} & {r['name']}", -math.hypot(*hit)
+                        else:                  # curated list: its labels, in its order
+                            name, score = allow[key], -list(allow).index(key)
+                        cands.append({'name': name, 'kind': 'corridor', 'x': r1(hit[0]), 'y': r1(hit[1]), 'score': score})
                     break
 
     cands.sort(key=lambda c: -c['score'])
@@ -256,6 +267,10 @@ def pick_sectors(buildings, roads, ground, hints):
     for c in [c for c in cands if c['kind'] == 'corridor']:
         if len(chosen) < MAX_SECTORS and spaced(c):
             chosen.append(c)
+    if allow:
+        missing = [name for name in allow.values() if not any(c['kind'] == 'corridor' and c['name'] == name for c in chosen)]
+        if missing:
+            print('WARNING: hand-picked junction sector(s) not placed on this map:', ', '.join(missing))
     seen_names = {}
     for c in chosen:                       # keep labels unique
         if c['name'] in seen_names:
@@ -307,7 +322,7 @@ def process_level(level):
             for pl in clip_polyline(g['line'], box):
                 ground.append({'kind': g['kind'], 'line': pl, 'width_m': float(g.get('width_m') or 3)})
 
-    sectors = pick_sectors(buildings, roads, ground, MAP_HINTS.get(level.get('name'), {}))
+    sectors = pick_sectors(buildings, roads, ground, MAP_HINTS.get(level.get('name')))
     for b in buildings:
         del b['_c']
     return {

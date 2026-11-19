@@ -64,7 +64,8 @@ html,body { margin:0; height:100%; overflow:hidden; background:#0b0f12; color:#d
 #markers { position:absolute; inset:0; }
 .mk { position:absolute; transform:translate(-50%,-100%); font-size:11px; text-align:center; white-space:nowrap;
   text-shadow:0 1px 2px #000; }
-.mk b { display:block; margin:0 auto 1px; width:10px; height:10px; transform:rotate(45deg); border:2px solid currentColor; }
+.mk b { display:block; box-sizing:border-box; margin:0 auto 2px; width:9px; height:9px; border:2px solid currentColor; }   /* pings, buildings: small upright square */
+.mk.sec b { width:14px; height:14px; border-radius:50%; }                                                                /* sector / objective: plain ring */
 .mk.zom { color:#ff5a48; } .mk.bld { color:var(--own); } .mk.sec { color:var(--amber); }
 #attrib { position:fixed; left:50%; bottom:6px; transform:translateX(-50%); font-size:11px; color:#cfd8dc;
   background:rgba(0,0,0,0.45); padding:2px 8px; pointer-events:none; z-index:30; }
@@ -107,6 +108,10 @@ body:not(.dev-kbm) #c { cursor:none; }
 #kbTable td { color:#9ab; }
 .card .dev { color:#8696a0; font-size:11px; margin-top:10px; }
 #pauseWhy { color:var(--amber); }
+#pause { z-index:11; }      /* a pause that starts while the buy screen is open must be on top of it */
+#summary { z-index:12; }
+#buyMsg { min-height:1.5em; margin:8px 0 0; color:#9ab; }
+#buyMsg.bad { color:var(--danger); } #buyMsg.own { color:var(--own); }
 .padhint { color:#9ab; margin-top:10px !important; }
 body:not(.dev-kbm) .item.sel { border-color:#fff; outline:3px solid var(--ui); outline-offset:1px; background:rgba(127,231,242,0.14); }
 body:not(.dev-kbm) .item.sel .n:before { content:"\25B8  "; color:var(--ui); }
@@ -186,6 +191,7 @@ body:not(.dev-kbm) .item.cant.sel { opacity:0.75; }
     <div id="buyTop"><span>INTERMISSION &mdash; <span id="buyTimer">20</span> s</span><span class="s" id="buySalvage"></span></div>
     <p style="color:#9ab">Spend Salvage. Every attachment is a trade-off. Fortify with the Sapper's Reinforce tool (<span class="pad-only">hold B</span><span class="kbm-only">hold F</span> on a building) &mdash; you can close this screen and walk around while the timer runs.</p>
     <div id="buyGrid"></div>
+    <p id="buyMsg">&nbsp;</p>
     <p class="padhint pad-only"><span class="k">D-pad / left stick</span> select &middot; <span class="k">(A)</span> buy &middot; <span class="k">(B)</span> or <span class="k">View</span> back to the street &middot; <span class="k">(Y)</span> or <span class="k">Menu</span> ready</p>
     <button class="btn" id="buyClose"><span class="pad-only">(B)</span><span class="kbm-only">[B]</span> Back to the street</button><button class="btn" id="buyReady"><span class="pad-only">(Y)</span><span class="kbm-only">[Enter]</span> Ready &mdash; start round</button>
   </div>

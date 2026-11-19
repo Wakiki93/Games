@@ -88,7 +88,7 @@ function frame() {
 
 applyLighting(1);
 if (window.__holdoutHarness) window.__holdoutState = () => ({          // read-only test hook
-  yaw: P.yaw, pitch: P.pitch, paused: GAME.paused, freeLook: UI.freeLook, phase: GAME.phase, ammo: P.ammo, x: P.x, z: P.z,
+  yaw: P.yaw, pitch: P.pitch, paused: !!GAME.paused, freeLook: UI.freeLook, phase: GAME.phase, ammo: P.ammo, x: P.x, z: P.z,
   t: GAME.time, round: GAME.round, speed: Math.hypot(P.vx, P.vz), fov: camera.fov, ads: P.ads, salvage: GAME.salvage, weapon: P.weapon,
   reserve: P.reserve, reloading: P.reloading, charges: P.charges, hp: P.hp, stamina: P.stamina, alive: P.alive, sprinting: P.sprinting, blocking: P.blocking,
   buyOpen: UI.buyOpen, buySel: UI.buySel, lookSens: PAD.sens, mapOn: UI.mapOn, debugOn: UI.debugOn, summaryShown: !!UI.summaryShown,
@@ -99,5 +99,5 @@ if (AUTOTEST) {
   el.start.classList.add('hidden');
   el.hud.classList.remove('hidden');
   startGame();
-}
+} else padRestartCheck();              // (A) Restart on the summary reloads the page: go straight into the new game
 renderer.setAnimationLoop(frame);

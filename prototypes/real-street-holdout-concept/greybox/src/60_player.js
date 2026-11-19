@@ -341,7 +341,7 @@ function updatePlayer(dt) {
   if (P.reloading) speed *= 0.85;
   const rub = onRubble(P.x, P.z);
   if (rub) speed *= 0.6;
-  speed *= INPUT.moveScale;            // analog stick: partial tilt walks slower (always 1 for keys and the bot)
+  if (!P.sprinting) speed *= INPUT.moveScale;      // analog stick: partial tilt walks slower (always 1 for keys and the bot)
   const k = Math.min(1, dt * 12);
   P.vx += (wx * speed - P.vx) * k; P.vz += (wz * speed - P.vz) * k;
   P.x += P.vx * dt; P.z += P.vz * dt;

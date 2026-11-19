@@ -32,10 +32,12 @@ const PADCFG = {
   sprintFwd: 0.35,        // forward tilt needed to sprint
   menuTilt: 0.5, repeatDelay: 0.38, repeatRate: 0.14,              // buy-screen highlight: stick threshold and key repeat (s)
   buyGuard: 0.3,          // seconds after the buy screen opens before (A) can buy (it opens by itself at round end)
+  summaryGuard: 1.5,      // seconds after the summary appears before (A) can restart (it appears by itself, mid-fight)
+  deviceHold: 0.3,        // seconds without keyboard/mouse input before HELD controller input takes the prompts back (a new press does at once)
   rumble: true,
   collapseRange: 30,      // metres: a building collapsing this close rumbles
 };
-const PAD_SENS_KEY = 'holdout.padSens';
+const PAD_SENS_KEY = 'holdout.padSens', PAD_RESTART_KEY = 'holdout.padRestart';
 
 // ------------------------------------------------------------- state
 const PAD_N = 17;
@@ -43,11 +45,13 @@ const PAD = {
   off: false,             // this browser has no Gamepad API
   blocked: false,         // a permissions policy forbids it, or getGamepads threw: never polled again
   connected: false, index: -1, rawId: '', name: '', standard: true, fresh: false, warn: 0, error: null,
+  axesOk: true,           // false = non-standard pad that has not pressed a button yet: its sticks are ignored
+  kbmAt: -1e9, stickWas: false,      // last keyboard/mouse input (performance.now), and whether a stick was off-centre last frame
   act: null, trigOk: false,
   down: new Uint8Array(PAD_N), prev: new Uint8Array(PAD_N), eat: new Uint8Array(PAD_N),
   mx: 0, my: 0, mmag: 0, rx: 0, ry: 0, rmag: 0,
   sprintOn: false, sens: PADCFG.sensDefault, slow: 1, slowT: 0, onTarget: false, rampT: 0,
-  ctx: -1, buyT: 0, navX: 0, navY: 0, navT: 0, navLock: false,
+  ctx: -1, buyT: 0, navX: 0, navY: 0, navT: 0, navLock: false, navAxis: 0,
   rumUntil: 0, rumPrio: 0, rumbles: 0,
   wasPaused: false, wasAlive: true,
 };
@@ -89,11 +93,10 @@ function padStatus() {                 // start card: live status + the start pr
   padEl.go.textContent = go;
 }
 padStatus();
-function padDevice(d) {                // whichever device was used last picks the labels
+function padDevice(d) {                // whichever device was used last picks the labels (CSS only: .pad-only / .kbm-only)
   if (d === DEVICE) return;
   DEVICE = d;
   document.body.classList.toggle('dev-kbm', d === 'kbm');
-  if (UI.buyOpen) renderShop();
 }
 function padStartGame() {
   el.start.classList.add('hidden'); el.hud.classList.remove('hidden');
@@ -113,10 +116,10 @@ function padInGame() { return GAME.phase !== 'menu' && GAME.phase !== 'dead'; }
 
 // keyboard / mouse = developer fallback. Capture phase, so the device is known before the game's own handlers run.
 // Only real (trusted) input counts: the (Y) log download below clicks a button from script.
-function padKbmUsed(e) { if (!AUTOTEST && e.isTrusted) padDevice('kbm'); }
+function padKbmUsed(e) { if (!AUTOTEST && e.isTrusted) { PAD.kbmAt = performance.now(); padDevice('kbm'); } }
 addEventListener('keydown', (e) => {
   if (AUTOTEST || !e.isTrusted) return;
-  padDevice('kbm');
+  PAD.kbmAt = performance.now(); padDevice('kbm');
   if (e.code === 'KeyK' && !e.repeat && GAME.phase === 'menu') padEl.kb.classList.toggle('hidden');
 }, true);
 addEventListener('mousedown', padKbmUsed, true);
@@ -128,39 +131,46 @@ addEventListener('mousemove', (e) => {       // the mouse only counts while it i
 }, true);
 addEventListener('gamepadconnected', () => { if (!AUTOTEST) padPoll(0); });
 addEventListener('gamepaddisconnected', () => { if (!AUTOTEST) padPoll(0); });
-addEventListener('blur', () => {              // window lost focus while playing on the controller: pause
-  if (!AUTOTEST && DEVICE === 'pad' && PAD.connected && padInGame() && !GAME.paused) padPause('');
+addEventListener('blur', () => {              // window lost focus: drop held keys (their keyup never arrives) and pause, whatever the device
+  if (AUTOTEST) return;
+  for (const k in KEYS) KEYS[k] = false;
+  MOUSE.l = MOUSE.r = false;
+  if (padInGame() && !GAME.paused) padPause('');
 });
 
 // ------------------------------------------------------------- connect / disconnect / faults
 function padClearHeld() {
   PAD.down.fill(0); PAD.prev.fill(0); PAD.eat.fill(0);
   PAD.mx = PAD.my = PAD.mmag = PAD.rx = PAD.ry = PAD.rmag = 0;
-  PAD.sprintOn = false; PAD.navX = PAD.navY = 0; PAD.rampT = 0; PAD.slow = 1; PAD.onTarget = false;
+  PAD.sprintOn = false; PAD.navX = PAD.navY = 0; PAD.navAxis = 0; PAD.rampT = 0; PAD.slow = 1; PAD.onTarget = false; PAD.stickWas = false;
 }
 function padFound(gp) {
   PAD.connected = true; PAD.index = gp.index; PAD.rawId = gp.id; PAD.name = padName(gp.id);
   PAD.standard = gp.mapping === 'standard';
+  PAD.axesOk = PAD.standard;           // a non-standard device may rest its axes off-centre (throttle, pedals): wait for a button
   PAD.fresh = true;                    // buttons already held when the pad appears do not count as presses
   PAD.trigOk = false;
   try { const fx = gp.vibrationActuator && gp.vibrationActuator.effects; PAD.trigOk = !!(fx && fx.indexOf && fx.indexOf('trigger-rumble') >= 0); } catch (e) { /* no effects list */ }
   if (!PAD.standard && PAD.warn === 0) PAD.warn = 1;
   padStatus();
   toast('Controller connected: ' + PAD.name, 'own');
-  if (GAME.paused && !padEl.pauseWhy.classList.contains('hidden')) padEl.pauseWhy.textContent = 'Controller connected.';
+  if (GAME.paused && !padEl.pauseWhy.classList.contains('hidden')) padEl.pauseWhy.textContent = 'Now using controller: ' + PAD.name + '.';
 }
-function padLost(msg) {
+function padLost(msg, how) {
   const wasActive = DEVICE === 'pad';
   padRumbleStop();
   PAD.connected = false; PAD.act = null; PAD.index = -1; PAD.rawId = '';
   padClearHeld();
   padStatus();
   toast(msg, 'bad');
-  if (wasActive && padInGame()) padPause(msg + ' Reconnect it and press Menu, or click to continue with keyboard and mouse.');
+  if (wasActive && padInGame()) padPause(msg + (how || ' Reconnect it and press Menu, or click to continue with keyboard and mouse.'));
 }
 function padBlocked() {
   PAD.blocked = true;
-  if (PAD.connected) padLost('Controller input was blocked by this viewer.');
+  if (PAD.connected) {                 // blocked mid-game: the controller is never polled again, so show the mouse prompt, not "press Menu"
+    padLost('Controller input was blocked by this viewer.', ' Click to continue with keyboard and mouse, or open the standalone index.html file in Chrome or Edge.');
+    padDevice('kbm');
+  }
   padStatus();
 }
 function padFault(e) {                 // a bug in this file must not stop the game: note it once, drop held inputs
@@ -204,37 +214,50 @@ function padPoll(dt) {                 // once per rendered frame; dt = real sec
   }
   if (P.alive !== PAD.wasAlive) { PAD.wasAlive = P.alive; if (!P.alive) padRumbleStop(); }
   if (PAD.off || PAD.blocked) return;
-  let gp = null;
+  let gp = null, cur = null;
   try {
     const list = navigator.getGamepads();
     const n = list ? list.length : 0;
     for (let i = 0; i < n; i++) {
       const g = list[i];
       if (!g || g.connected === false) continue;         // null entries and stale slots
-      if (g.mapping === 'standard') { gp = g; break; }
-      if (!gp) gp = g;                                   // non-standard: still try the standard indices
+      if (PAD.connected && g.index === PAD.index && g.id === PAD.rawId) cur = g;       // the pad in use is still listed
+      if (g.mapping === 'standard') { if (!gp || gp.mapping !== 'standard') gp = g; }  // first standard pad
+      else if (!gp) gp = g;                              // non-standard: still try the standard indices
     }
   } catch (e) { padBlocked(); return; }
-  if (!gp) { if (PAD.connected) padLost('Controller disconnected.'); return; }
+  // The pad in use went away: say so and pause, even when another device is listed (it is picked up on the next poll,
+  // while the game is paused). Otherwise keep the pad in use; only a non-standard one gives way to a standard pad.
+  if (PAD.connected && !cur) { padLost('Controller disconnected.'); return; }
+  if (cur && (PAD.standard || gp.mapping !== 'standard')) gp = cur;
+  if (!gp) return;
   try { padUpdate(gp, dt); } catch (e) { padFault(e); }
 }
 
 function padUpdate(gp, dt) {
   if (!PAD.connected || PAD.index !== gp.index || PAD.rawId !== gp.id) padFound(gp);
   PAD.act = gp.vibrationActuator || null;
-  const ax = gp.axes;
-  padStick(+ax[0] || 0, +ax[1] || 0, PADCFG.moveCurve); PAD.mx = _sx; PAD.my = -_sy; PAD.mmag = _sm;
-  padStick(+ax[2] || 0, +ax[3] || 0, PADCFG.lookCurve); PAD.rx = _sx; PAD.ry = _sy; PAD.rmag = _sm;
-  let any = PAD.mmag > 0 || PAD.rmag > 0;
+  let any = false, edge = false;
   for (let i = 0; i < PAD_N; i++) {
     const v = padVal(gp, i);
     const d = i === 6 || i === 7 ? (PAD.down[i] ? v > PADCFG.triggerRelease : v >= PADCFG.triggerPress) : v > 0.5;
     PAD.prev[i] = PAD.down[i]; PAD.down[i] = d ? 1 : 0;
-    if (d) any = true; else PAD.eat[i] = 0;
+    if (d) { any = true; if (!PAD.prev[i]) edge = true; } else PAD.eat[i] = 0;
   }
+  if (!PAD.axesOk && any) PAD.axesOk = true;
+  const ax = gp.axes;
+  if (PAD.axesOk) {
+    padStick(+ax[0] || 0, +ax[1] || 0, PADCFG.moveCurve); PAD.mx = _sx; PAD.my = -_sy; PAD.mmag = _sm;
+    padStick(+ax[2] || 0, +ax[3] || 0, PADCFG.lookCurve); PAD.rx = _sx; PAD.ry = _sy; PAD.rmag = _sm;
+  } else PAD.mx = PAD.my = PAD.mmag = PAD.rx = PAD.ry = PAD.rmag = 0;
+  const stick = PAD.mmag > 0 || PAD.rmag > 0;
+  if (stick) { any = true; if (!PAD.stickWas) edge = true; }
+  PAD.stickWas = stick;
   if (PAD.fresh) { PAD.fresh = false; for (let i = 0; i < PAD_N; i++) { PAD.prev[i] = PAD.down[i]; PAD.eat[i] = PAD.down[i]; } }
-  if (any) padDevice('pad');
-  if (PAD.warn === 1 && GAME.phase !== 'menu') { PAD.warn = 2; toast('Controller layout may be off (non-standard mapping). Chrome or Edge is recommended.', 'bad'); }
+  // Active device: a new press (button, trigger, or a stick leaving rest) takes the prompts at once. Input that is only
+  // being HELD takes them back after a short quiet time on the keyboard and mouse, so mixed use does not flip every frame.
+  if (edge || (any && performance.now() - PAD.kbmAt > PADCFG.deviceHold * 1000)) padDevice('pad');
+  if (PAD.warn === 1 && !PAD.standard && GAME.phase !== 'menu') { PAD.warn = 2; toast('Controller layout may be off (non-standard mapping). Chrome or Edge is recommended.', 'bad'); }
 
   const ctx = padContext();
   if (ctx !== PAD.ctx) { PAD.ctx = ctx; PAD.buyT = 0; PAD.navLock = true; PAD.navX = PAD.navY = 0; }
@@ -244,13 +267,20 @@ function padUpdate(gp, dt) {
   }
   if (ctx === CTX_START) { if (padHit(0) || padHit(9)) padStartGame(); return; }
   if (ctx === CTX_SUMMARY) {
-    if (padHit(0)) location.reload();
-    else if (padHit(3) && !padEl.log.classList.contains('hidden')) padEl.log.click();
+    PAD.buyT += dt;                    // the summary appears by itself: a tap meant for the fight must not restart and lose the log
+    if (padHit(0) && PAD.buyT >= PADCFG.summaryGuard) {
+      // The page reloads, and a browser hides the controller from the new page until the next press: remember that the
+      // restart came from the controller, so the new page starts the game by itself (padRestartCheck).
+      try { sessionStorage.setItem(PAD_RESTART_KEY, '1'); } catch (e) { /* storage may be blocked: the start card shows instead */ }
+      location.reload();
+    } else if (padHit(3) && !padEl.log.classList.contains('hidden')) padEl.log.click();
     return;
   }
   if (ctx === CTX_BUY) { padBuy(dt); return; }      // the D-pad moves the highlight there
-  if (padHit(12)) UI.toggleMap();
-  if (padHit(13)) UI.toggleDebug();
+  if (!(ctx === CTX_PAUSE && UI.buyOpen)) {         // (paused over the buy screen: nothing behind the cards may change)
+    if (padHit(12)) UI.toggleMap();
+    if (padHit(13)) UI.toggleDebug();
+  }
   if (ctx === CTX_DEADWAIT) return;
   if (ctx === CTX_PAUSE) {
     if (padHit(9) || padHit(0)) padResume();
@@ -279,7 +309,8 @@ function padMergeInput() {
   if (!PAD.connected || UI.buyOpen) return;
   if (INPUT.fwd === 0 && INPUT.right === 0 && PAD.mmag > 0) {      // analog move; a held WASD key wins
     INPUT.fwd = PAD.my; INPUT.right = PAD.mx;
-    INPUT.moveScale = PAD.sprintOn ? 1 : PAD.mmag;                 // direction is normalised later, so diagonals are not faster
+    INPUT.moveScale = PAD.mmag;                                    // direction is normalised later, so diagonals are not faster;
+                                                                   // ignored while actually sprinting (updatePlayer)
   }
   if (PAD.sprintOn && PAD.my > PADCFG.sprintFwd) INPUT.sprint = true;
   if (padHeld(7)) INPUT.fire = true;
@@ -311,14 +342,14 @@ function padCrosshairOnZombie() {      // is the crosshair over a visible zombie
   return rayBuildings(P.x, P.y, P.z, ax, ay, az, best, true) === Infinity;       // not through a wall
 }
 function padLook(dt) {
-  if (PAD.rmag <= 0) { PAD.rampT = 0; PAD.slow += (1 - PAD.slow) * Math.min(1, dt * PADCFG.slowBlend); return; }
   let target = 1;
-  if (PADCFG.aimSlowdown) {
+  if (PADCFG.aimSlowdown) {            // checked every 50 ms, stick moving or not, so a correction that starts on a target is already slowed
     PAD.slowT -= dt;
     if (PAD.slowT <= 0) { PAD.slowT = 0.05; PAD.onTarget = padCrosshairOnZombie(); }
     if (PAD.onTarget) target = PADCFG.slowFactor;
   }
   PAD.slow += (target - PAD.slow) * Math.min(1, dt * PADCFG.slowBlend);
+  if (PAD.rmag <= 0) { PAD.rampT = 0; return; }
   PAD.rampT = PAD.rmag >= PADCFG.rampAt && P.ads < 0.5 ? PAD.rampT + dt : 0;
   const ramp = 1 + PADCFG.rampExtra * clamp((PAD.rampT - PADCFG.rampDelay) / PADCFG.rampTime, 0, 1);
   const zoom = BASE_FOV / camera.fov;                // aiming: slower in proportion to the zoom
@@ -357,12 +388,18 @@ function padBuyMove(nx, ny) {
 }
 function padBuy(dt) {
   PAD.buyT += dt;
-  let nx = (PAD.down[15] ? 1 : 0) - (PAD.down[14] ? 1 : 0), ny = (PAD.down[13] ? 1 : 0) - (PAD.down[12] ? 1 : 0);
-  if (!nx && !ny) {                    // left stick works as a D-pad
+  let rx = (PAD.down[15] ? 1 : 0) - (PAD.down[14] ? 1 : 0), ry = (PAD.down[13] ? 1 : 0) - (PAD.down[12] ? 1 : 0);
+  let preferX = false;                 // both directions pressed in the same frame: the D-pad goes up/down (more rows than columns)
+  if (!rx && !ry) {                    // left stick works as a D-pad
     const T = PADCFG.menuTilt;
-    if (Math.abs(PAD.mx) >= Math.abs(PAD.my)) nx = PAD.mx > T ? 1 : PAD.mx < -T ? -1 : 0;
-    else ny = PAD.my > T ? -1 : PAD.my < -T ? 1 : 0;
+    rx = PAD.mx > T ? 1 : PAD.mx < -T ? -1 : 0; ry = PAD.my > T ? -1 : PAD.my < -T ? 1 : 0;
+    preferX = Math.abs(PAD.mx) >= Math.abs(PAD.my);
   }
+  // One axis at a time. The axis that was pressed first is kept until it is released, so a D-pad press that brushes a
+  // second direction, or a stick resting near the diagonal, moves the highlight once and not once per change.
+  if ((PAD.navAxis === 1 && !rx) || (PAD.navAxis === 2 && !ry)) PAD.navAxis = 0;
+  if (!PAD.navAxis && (rx || ry)) PAD.navAxis = rx && (!ry || preferX) ? 1 : 2;
+  const nx = PAD.navAxis === 1 ? rx : 0, ny = PAD.navAxis === 2 ? ry : 0;
   if (!nx && !ny) { PAD.navX = PAD.navY = 0; PAD.navLock = false; }
   else if (!PAD.navLock) {             // (locked until neutral when the screen opens while the stick is already tilted)
     if (nx !== PAD.navX || ny !== PAD.navY) { PAD.navX = nx; PAD.navY = ny; PAD.navT = PADCFG.repeatDelay; padBuyMove(nx, ny); }
@@ -371,6 +408,19 @@ function padBuy(dt) {
   if (padHit(0) && PAD.buyT >= PADCFG.buyGuard) buyItem(SHOP[clamp(UI.buySel, 0, SHOP.length - 1)]);
   if (padHit(1) || padHit(8)) UI.closeBuy();
   else if (padHit(3) || padHit(9)) readyUp();
+}
+
+// ------------------------------------------------------------- restart from the summary
+// Called once at the end of 90_main.js (never in autotest). (A) Restart on the summary left a flag before it reloaded the
+// page: start the new game at once. The mouse Restart button leaves no flag, because that path needs a click to capture
+// the mouse. A plain reload shows the start card as usual. If storage is blocked, the start card shows (as before).
+function padRestartCheck() {
+  let again = false;
+  try { again = sessionStorage.getItem(PAD_RESTART_KEY) === '1'; sessionStorage.removeItem(PAD_RESTART_KEY); } catch (e) { /* storage may be blocked */ }
+  if (!again || AUTOTEST || PAD.off || PAD.blocked) return;
+  padStartGame();
+  padPoll(0);
+  if (!PAD.connected) toast('New game. Press any button or move a stick on the controller to continue.', 'own');
 }
 
 // ------------------------------------------------------------- rumble (guarded; stops on pause, death and disconnect)

@@ -10,7 +10,7 @@ const el = {
   street: $('street'), toasts: $('toasts'), cross: $('cross'), hit: $('hitmark'), reddot: $('reddot'), scope: $('scope'), prompt: $('prompt'),
   ring: $('repairRing'), center: $('center'), hp: $('hpBar'), st: $('stBar'), status: $('statusLine'), weapon: $('weapon'), ammo: $('ammo'),
   attach: $('attach'), charges: $('charges'), map: $('minimap'), vig: $('vignette'), markers: $('markers'), debug: $('debug'),
-  start: $('start'), pause: $('pause'), buy: $('buy'), buyGrid: $('buyGrid'), buyTimer: $('buyTimer'), buySalvage: $('buySalvage'), summary: $('summary'), sumStats: $('sumStats'),
+  start: $('start'), pause: $('pause'), buy: $('buy'), buyGrid: $('buyGrid'), buyTimer: $('buyTimer'), buySalvage: $('buySalvage'), buyMsg: $('buyMsg'), summary: $('summary'), sumStats: $('sumStats'),
 };
 const UI = {
   debugOn: false, mapOn: true, buyOpen: false, buySel: 0, freeLook: false, lockFails: 0, lockFailAt: 0, lockSeq: 0, grantedSeq: 0, everLocked: false, popT: 0, popSum: 0, hitT: 0, vig: 0, centerT: 0, stFlash: 0, fpsHist: [], dbgT: 0, mapT: 0,
@@ -29,7 +29,7 @@ const UI = {
     }
   },
   openBuy() {
-    this.buyOpen = true; el.buy.classList.remove('hidden'); renderShop();
+    this.buyOpen = true; el.buy.classList.remove('hidden'); buyMsg('', ''); renderShop();
     if (!AUTOTEST && document.pointerLockElement) document.exitPointerLock();
   },
   closeBuy(fromRound) {
@@ -79,27 +79,29 @@ function centerMsg(big, small, dur) {
 // ------------------------------------------------------------- shop
 function ownedSlot(it) { return it.slot && P.att[it.slot] === it.id; }
 function itemCost(it) { return it.id === 'patch' ? patchNearbyCost(false).cost : it.cost; }
-function renderShop() {
-  el.buyGrid.innerHTML = '';
-  const pad = DEVICE === 'pad';
+function buyMsg(text, cls) {             // one line inside the buy card: toasts are drawn behind this screen
+  el.buyMsg.textContent = text || '\u00a0'; el.buyMsg.className = cls || '';
+}
+function renderShop() {                // labels for both devices are in every item and switched by CSS (body.dev-kbm):
+  el.buyGrid.innerHTML = '';           // a device change must not rebuild the grid, or a mouse click on an item is lost
   SHOP.forEach((it, i) => {
     const d = document.createElement('div');
     const cost = itemCost(it), owned = ownedSlot(it);
     const cant = owned || GAME.salvage < cost || (it.id === 'charge' && P.charges >= CFG.charge.max) || (it.id === 'patch' && cost === 0) || (it.id === 'ammo' && P.reserve >= CFG.rifle.reserve);
     d.className = 'item' + (owned ? ' owned' : '') + (cant ? ' cant' : '') + (i === UI.buySel ? ' sel' : '');     // .sel = controller highlight
     const extra = it.id === 'charge' ? ` (have ${P.charges})` : it.id === 'patch' ? (cost ? '' : ' (nothing damaged nearby)') : '';
-    d.innerHTML = `<span class="c">${owned ? 'EQUIPPED' : cost + ' S'}</span><div class="n">${pad ? '' : `[${i + 1}] `}${it.name}${extra}</div><div class="d">${it.desc.replace('{throw}', pad ? 'RB' : 'G')}</div>`;
+    d.innerHTML = `<span class="c">${owned ? 'EQUIPPED' : cost + ' S'}</span><div class="n"><span class="kbm-only">[${i + 1}] </span>${it.name}${extra}</div><div class="d">${it.desc.replace('{throw}', '<span class="pad-only">RB</span><span class="kbm-only">G</span>')}</div>`;
     d.onclick = () => buyItem(it);
     el.buyGrid.appendChild(d);
   });
 }
 function buyItem(it) {
   const cost = itemCost(it);
-  if (ownedSlot(it)) return false;
-  if (it.id === 'charge' && P.charges >= CFG.charge.max) return false;
-  if (it.id === 'patch' && cost === 0) return false;
-  if (it.id === 'ammo' && P.reserve >= CFG.rifle.reserve) return false;
-  if (!spend(cost)) { toast('Not enough Salvage', 'bad'); return false; }
+  if (ownedSlot(it)) { buyMsg(`${it.name}: already equipped`, 'bad'); return false; }
+  if (it.id === 'charge' && P.charges >= CFG.charge.max) { buyMsg(`Breach charges: already at the maximum (${CFG.charge.max})`, 'bad'); return false; }
+  if (it.id === 'patch' && cost === 0) { buyMsg('Nothing damaged nearby to patch', 'bad'); return false; }
+  if (it.id === 'ammo' && P.reserve >= CFG.rifle.reserve) { buyMsg('Reserve ammo is already full', 'bad'); return false; }
+  if (!spend(cost)) { buyMsg(`Not enough Salvage for ${it.name} (${cost} S)`, 'bad'); toast('Not enough Salvage', 'bad'); return false; }
   if (it.slot) P.att[it.slot] = it.id;
   else if (it.id === 'charge') P.charges++;
   else if (it.id === 'ammo') P.reserve = CFG.rifle.reserve;
@@ -107,6 +109,7 @@ function buyItem(it) {
   GAME.purchases.push(it.id);
   logEvent('buy', { item: it.id, cost });
   toast(`Bought ${it.name}  -${cost}`, 'own');
+  buyMsg(`Bought ${it.name}  -${cost} S`, 'own');
   renderShop();
   return true;
 }
@@ -159,7 +162,7 @@ el.start.addEventListener('click', () => {
   if (GAME.phase === 'menu') startGame();
   requestLock();
 });
-el.pause.addEventListener('click', () => requestLock());
+el.pause.addEventListener('click', () => { if (UI.buyOpen) padResume(); else requestLock(); });   // paused over the buy screen: just resume into it
 canvas.addEventListener('click', () => { if (!AUTOTEST && GAME.phase !== 'menu' && GAME.phase !== 'dead' && !UI.buyOpen) requestLock(); });
 document.addEventListener('pointerlockchange', () => {
   const locked = document.pointerLockElement === canvas;
