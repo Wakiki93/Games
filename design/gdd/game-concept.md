@@ -773,10 +773,13 @@ No zombie is a child, and none emerges from a grave (A29).
 - **MVP:** actor-based zombies, StateTree behaviour, lightweight custom movement, and the active cap. Full zombies
   exist only near the frontline; distant horde-held sectors hold queued zombies, not simulated ones.
 - **Far-zombie tier (MVP):** inside the same actor model, zombies on the open axes beyond about 150 m from every
-  player use path-following without the full movement component, replicate at 2–5 Hz, play minimal animation, and
-  count as a fraction of a full zombie against the active cap (starting value: one quarter). They are promoted to
-  full zombies when they come within about 150 m. This is what gives Pillar 3's long band its targets; the netcode
-  spike includes a 300 m engagement test.
+  player use path-following without the full movement component, replicate position at 2–5 Hz with no animation
+  state, and count as a fraction of a full zombie against the active cap (starting value: one quarter). Each client
+  plays **one looping signature gait cycle per type** locally (never replicated), so the long-band gait reads
+  (the Detonator's rocking walk, the Howler's stop-and-call) survive the tier (AD-CONCEPT-VISUAL round 2; settle the
+  detail with technical art and the technical director before the horde GDD). They are promoted to full zombies when
+  they come within about 150 m. This is what gives Pillar 3's long band its targets; the netcode spike includes a
+  300 m engagement test.
 - **After the MVP:** evaluate Mass for queued and distant horde representation. MassGameplay and MassCrowd are
   Experimental in UE 5.8.
 
@@ -927,7 +930,9 @@ run per band.
    (round 10)**; full night arrives around **rounds 15–20**. From then on every light is motivated: moonlight as the
    key light, the suburb's surviving streetlights until they are destroyed, fires from collapses, Detonator blasts and
    burning wrecks, the squad's work lights at held sectors, flares (including supply-drop flares), and muzzle flash.
-   Streetlights die as infrastructure breaks; the squad's own lights mark the sectors it holds.
+   Streetlights die as infrastructure breaks; the squad's own lights mark the sectors it holds. **Houses are dark**:
+   the power is failing, so porch and window lights are off from round 1 and can never be mistaken for squad light
+   (A45).
    *Minimum readability at night, per band:* close: always readable (weapon lights, work lights, muzzle flash);
    street: readable under any surviving streetlight, fire or work light, and a zombie's silhouette never goes fully
    black against the sky; long: readable only where a motivated source lights the axis or the Spotter has marked the
