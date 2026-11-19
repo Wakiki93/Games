@@ -1,0 +1,164 @@
+<!-- PROTOTYPE - NOT FOR PRODUCTION
+     Question: If players defend a real neighborhood they recognize, with destructible cover, do they make protect/sacrifice choices?
+     Date: 2026-11-19 -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Holdout greybox</title>
+<style>
+:root { --ui:#7fe7f2; --ui2:#3d9aa6; --danger:#ff4636; --own:#f2c230; --amber:#ffb347; --panel:rgba(6,12,16,0.78); }
+html,body { margin:0; height:100%; overflow:hidden; background:#0b0f12; color:#dce7ea;
+  font-family: ui-monospace, "Cascadia Mono", Consolas, Menlo, "DejaVu Sans Mono", monospace; }
+#c { position:fixed; inset:0; width:100%; height:100%; display:block; }
+.hidden { display:none !important; }
+#hud { position:fixed; inset:0; pointer-events:none; }
+#tl { position:absolute; left:16px; top:14px; font-size:14px; line-height:1.5; text-shadow:0 1px 2px #000; }
+#roundLbl { font-size:22px; color:var(--ui); letter-spacing:2px; }
+#salvage { color:var(--own); font-size:18px; }
+#salvagePop { color:var(--own); font-size:14px; height:18px; }
+#obj { position:absolute; left:50%; top:12px; transform:translateX(-50%); text-align:center; min-width:360px;
+  background:var(--panel); border:1px solid var(--ui2); padding:6px 12px; font-size:13px; }
+#obj .bar { height:6px; background:#22313a; margin-top:4px; }
+#obj .bar i { display:block; height:100%; width:0; background:var(--ui); }
+#street { position:absolute; left:50%; top:78px; transform:translateX(-50%); color:var(--ui); font-size:15px;
+  letter-spacing:1px; text-shadow:0 1px 3px #000; }
+#toasts { position:absolute; left:50%; top:104px; transform:translateX(-50%); text-align:center; font-size:14px; }
+#toasts div { background:var(--panel); padding:3px 10px; margin-top:4px; border-left:3px solid var(--ui); }
+#toasts div.bad { border-left-color:var(--danger); }
+#toasts div.own { border-left-color:var(--own); }
+#cross { position:absolute; left:50%; top:50%; width:0; height:0; }
+#cross i { position:absolute; background:rgba(230,250,255,0.9); box-shadow:0 0 2px #000; }
+#cross .t,#cross .b { width:2px; height:8px; left:-1px; }
+#cross .l,#cross .r { height:2px; width:8px; top:-1px; }
+#hitmark { position:absolute; left:50%; top:50%; width:22px; height:22px; margin:-11px 0 0 -11px; opacity:0;
+  background: linear-gradient(45deg, transparent 45%, #fff 45%, #fff 55%, transparent 55%),
+              linear-gradient(-45deg, transparent 45%, #fff 45%, #fff 55%, transparent 55%); }
+#hitmark.kill { filter: drop-shadow(0 0 2px #f33) sepia(1) saturate(8) hue-rotate(-50deg); }
+#reddot { position:absolute; left:50%; top:50%; width:5px; height:5px; margin:-2.5px; border-radius:50%;
+  background:#ff3030; box-shadow:0 0 4px #f00; }
+#scope { position:absolute; inset:0; background: radial-gradient(circle at 50% 50%, transparent 0 30vh, #000 30.5vh); }
+#scope:before, #scope:after { content:""; position:absolute; background:#000; }
+#scope:before { left:50%; top:20vh; bottom:20vh; width:1px; }
+#scope:after { top:50%; left:calc(50% - 30vh); right:calc(50% - 30vh); height:1px; }
+#prompt { position:absolute; left:50%; top:calc(50% + 40px); transform:translateX(-50%); font-size:13px;
+  background:var(--panel); padding:3px 8px; white-space:nowrap; }
+#prompt .k { color:var(--own); }
+#repairRing { position:absolute; left:50%; top:50%; width:40px; height:40px; margin:-20px; border-radius:50%; }
+#center { position:absolute; left:50%; top:34%; transform:translate(-50%,-50%); font-size:34px; letter-spacing:4px;
+  color:#fff; text-shadow:0 2px 6px #000; text-align:center; transition:opacity .3s; }
+#center small { display:block; font-size:15px; letter-spacing:1px; color:var(--ui); }
+#bl { position:absolute; left:16px; bottom:34px; width:260px; font-size:12px; }
+.bar2 { height:10px; background:#1b2329; border:1px solid #33444d; margin:2px 0 7px; }
+.bar2 i { display:block; height:100%; width:100%; }
+#hpBar i { background:#e8eef0; } #hpBar.low i { background:var(--danger); }
+#stBar i { background:var(--ui); } #stBar.out i { background:#557; }
+#br { position:absolute; right:16px; bottom:34px; text-align:right; font-size:13px; }
+#ammo { font-size:30px; }
+#ammo small { font-size:16px; color:#9ab; }
+#attach { color:#9ab; font-size:12px; }
+#minimap { position:absolute; right:14px; top:14px; width:200px; height:200px; border:1px solid var(--ui2);
+  background:rgba(10,16,18,0.7); }
+#vignette { position:absolute; inset:0; opacity:0; background: radial-gradient(circle, transparent 45%, rgba(200,0,0,0.75) 100%); }
+#markers { position:absolute; inset:0; }
+.mk { position:absolute; transform:translate(-50%,-100%); font-size:11px; text-align:center; white-space:nowrap;
+  text-shadow:0 1px 2px #000; }
+.mk b { display:block; margin:0 auto 1px; width:10px; height:10px; transform:rotate(45deg); border:2px solid currentColor; }
+.mk.zom { color:#ff5a48; } .mk.bld { color:var(--own); } .mk.sec { color:var(--amber); }
+#attrib { position:fixed; left:50%; bottom:6px; transform:translateX(-50%); font-size:11px; color:#cfd8dc;
+  background:rgba(0,0,0,0.45); padding:2px 8px; pointer-events:none; z-index:30; }
+#debug { position:fixed; left:16px; top:150px; margin:0; padding:8px 10px; background:rgba(0,0,0,0.78); color:#b9f6c9;
+  font-size:12px; line-height:1.4; border:1px solid #2b5; pointer-events:none; z-index:20; min-width:430px; }
+.overlay { position:fixed; inset:0; display:flex; align-items:center; justify-content:center; z-index:10;
+  background:rgba(4,8,10,0.72); }
+.card { background:var(--panel); border:1px solid var(--ui2); padding:22px 28px; max-width:880px; max-height:88vh; overflow:auto; }
+.card h1 { margin:0 0 4px; color:var(--ui); letter-spacing:6px; font-size:34px; }
+.card h2 { margin:0 0 12px; color:var(--ui); font-size:18px; letter-spacing:2px; }
+.card p { font-size:13px; line-height:1.5; margin:6px 0; }
+.card table { font-size:12px; border-collapse:collapse; }
+.card td { padding:2px 12px 2px 0; vertical-align:top; }
+.card .k { color:var(--own); white-space:nowrap; }
+.btn { pointer-events:auto; display:inline-block; margin:10px 10px 0 0; padding:8px 16px; border:1px solid var(--ui);
+  color:var(--ui); background:transparent; font:inherit; cursor:pointer; }
+.btn:hover { background:rgba(127,231,242,0.15); }
+#start .go { font-size:18px; color:#fff; margin-top:14px; letter-spacing:2px; }
+#buyGrid { display:grid; grid-template-columns: 1fr 1fr; gap:8px; margin-top:8px; }
+.item { border:1px solid #2c3e46; padding:8px 10px; cursor:pointer; font-size:12px; }
+.item:hover { border-color:var(--ui); }
+.item .n { font-size:14px; color:#fff; } .item .c { float:right; color:var(--own); }
+.item .d { color:#9ab; margin-top:3px; }
+.item.owned { border-color:var(--own); } .item.owned .c { color:#9ab; }
+.item.cant { opacity:0.45; }
+#buyTop { display:flex; justify-content:space-between; font-size:14px; }
+#buyTop .s { color:var(--own); }
+#sumStats td:first-child { color:#9ab; }
+#sumStats td:last-child { color:#fff; text-align:right; }
+</style>
+</head>
+<body>
+<canvas id="c"></canvas>
+<div id="hud" class="hidden">
+  <div id="markers"></div>
+  <div id="tl"><div id="roundLbl">ROUND 0</div><div id="zLeft"></div><div id="salvage">SALVAGE 0</div><div id="salvagePop"></div></div>
+  <div id="obj"><div id="objTxt"></div><div class="bar"><i id="objBar"></i></div></div>
+  <div id="street"></div>
+  <div id="toasts"></div>
+  <div id="scope" class="hidden"></div>
+  <div id="cross"><i class="t"></i><i class="b"></i><i class="l"></i><i class="r"></i></div>
+  <div id="reddot" class="hidden"></div>
+  <div id="hitmark"></div>
+  <div id="repairRing" class="hidden"></div>
+  <div id="prompt" class="hidden"></div>
+  <div id="center"></div>
+  <div id="bl">HEALTH<div class="bar2" id="hpBar"><i></i></div>STAMINA<div class="bar2" id="stBar"><i></i></div><div id="statusLine"></div></div>
+  <div id="br"><div id="weapon"></div><div id="ammo"></div><div id="attach"></div><div id="charges"></div></div>
+  <canvas id="minimap" width="200" height="200"></canvas>
+  <div id="vignette"></div>
+</div>
+<div id="attrib">Map data &copy; OpenStreetMap contributors, ODbL 1.0</div>
+<pre id="debug" class="hidden"></pre>
+
+<div id="start" class="overlay">
+  <div class="card">
+    <h1>HOLDOUT</h1>
+    <p style="color:#9ab">Greybox concept prototype &middot; <span id="mapName"></span> &middot; single-player &middot; not a feel test</p>
+    <p>Hold a real neighborhood against escalating rounds. Every building is cover &mdash; and the horde (Breachers) or your own breach charges can bring it down. Each round, capture and hold the objective sector for bonus Salvage.</p>
+    <table>
+      <tr><td class="k">WASD / Shift</td><td>move / sprint (stamina)</td><td class="k">Mouse / LMB / RMB</td><td>look / fire / aim (zoom with optics)</td></tr>
+      <tr><td class="k">R</td><td>reload</td><td class="k">1 / 2 / wheel</td><td>rifle / bat</td></tr>
+      <tr><td class="k">V</td><td>melee swing (stamina)</td><td class="k">C (hold)</td><td>block &middot; tap just before a hit lands = PARRY</td></tr>
+      <tr><td class="k">G</td><td>throw breach charge (sticks to walls)</td><td class="k">F (hold)</td><td>Engineer repair tool: reinforce the building you look at</td></tr>
+      <tr><td class="k">Q</td><td>ping / spot zombie or building</td><td class="k">B</td><td>buy screen (between rounds)</td></tr>
+      <tr><td class="k">M</td><td>minimap on/off</td><td class="k">F3</td><td>debug / instrumentation panel</td></tr>
+    </table>
+    <div class="go">CLICK TO START</div>
+  </div>
+</div>
+<div id="pause" class="overlay hidden"><div class="card"><h2>PAUSED</h2><p>Click to resume.</p></div></div>
+<div id="buy" class="overlay hidden">
+  <div class="card" style="min-width:760px">
+    <div id="buyTop"><span>INTERMISSION &mdash; <span id="buyTimer">20</span> s</span><span class="s" id="buySalvage"></span></div>
+    <p style="color:#9ab">Spend Salvage. Every attachment is a trade-off. Fortify with the Engineer repair tool (hold F on a building) &mdash; you can close this screen and walk around while the timer runs.</p>
+    <div id="buyGrid"></div>
+    <button class="btn" id="buyClose">[B] Back to the street</button><button class="btn" id="buyReady">[Enter] Ready &mdash; start round</button>
+  </div>
+</div>
+<div id="summary" class="overlay hidden">
+  <div class="card" style="min-width:460px">
+    <h2>OVERRUN</h2>
+    <table id="sumStats"></table>
+    <button class="btn" id="restartBtn">Restart</button><button class="btn" id="logBtn">Download session log (JSON)</button>
+  </div>
+</div>
+<script>
+/*@@THREE@@*/
+</script>
+<script>
+/*@@LEVEL@@*/
+</script>
+<script>
+/*@@GAME@@*/
+</script>
+</body>
+</html>
