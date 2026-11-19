@@ -56,8 +56,17 @@ holding its placeholder is incomplete; a later run fills only those.
 > button glyphs (7.2, 8.1). Nothing in the visual direction changed. The AD-ART-BIBLE verdict below predates the
 > re-sync.
 >
+> **Re-sync 2026-11-19 (concept revision 2.5).** A second adversarial check of the concept and this bible against the
+> user's directions, privacy, IP and consistency (concept A61–A67; AB-28 to AB-30 here). Carried in: the Corpsman's
+> revive kit also heals, so the HUD shows a recovery-ceiling notch and a low-health flag (5.2, 7.2); squad orders
+> show on the compass and sector board (7.2); the MVP optics include a reflex sight and a 2× prism (3.5); no UI text
+> names an individual building (7.2). Fixed here: 167th Street sits about two-thirds of the way north, not across the
+> middle (2.2); the horde is anonymous and never presented as the town's residents (5.4); the Quartermaster's icon no
+> longer uses cartridges (7.4); `/map-systems` may run in parallel with the concept's prototypes (AB-23). The visual
+> direction is unchanged.
+>
 > **Sources.** The Visual Identity Anchor ("Ground Truth"), pillars, signature systems, risks and decisions in
-> `design/gdd/game-concept.md` (written on revision 2.2, read and not edited; re-synced to revision 2.4 above); the
+> `design/gdd/game-concept.md` (written on revision 2.2, read and not edited; re-synced to revisions 2.4 and 2.5 above); the
 > AD-CONCEPT-VISUAL round-2 notes addressed to this document; `.claude/docs/technical-preferences.md` (performance
 > budgets; `project.yaml` has no `performance` block); the pinned engine reference in `docs/engine-reference/unreal/`;
 > and aggregate building statistics from the first map's local pipeline output (counts and size distributions only;
@@ -217,7 +226,8 @@ with dawn toward each evac window, a dawn state mirroring dusk is added to this 
 | 15–19 | Night | Moon high in the east to south-east, rendered cool and desaturated, low intensity | Deep blue-black sky; **city skyglow low on the north-east horizon** (neutral grey, faintly warm), the dependable silhouette backdrop | High: pools of light in darkness | 0–3 (game-compressed; real moonlight is darker); unlit ground stays dark, never pure black | Fires from collapses, Detonator blasts and burning wrecks; flares | Islands: amber squad pools, cool streetlight pools, flickering red-orange fire with smoke |
 | 20 and later | Deep night | Moon lower in the west (or as rounds 15–19 if Q19 keeps a fixed moon) | Skyglow remains | Highest | Same clamp as rounds 15–19 | **Streetlights die progressively** as infrastructure fails (by round and by destruction) | The suburb goes dark except where the squad holds: the frontline can be read as a line of light |
 
-**Map-relative light direction on the first map.** 167th Street runs east–west across the middle of the map. In the
+**Map-relative light direction on the first map.** 167th Street runs east–west about two-thirds of the way north
+across the map (concept 6.1, measured in the extract; the planned re-extraction may move it nearer the middle). In the
 golden and dusk rounds, a squad looking **west** along 167th Street faces the low sun or the bright dusk band, so
 zombies on that axis are backlit silhouettes with rim; looking **east** they are front-lit and flatter. North–south
 residential streets get side light. This is a gift for the long band (the silhouette tests in Section 3 run on the
@@ -432,8 +442,10 @@ same kind of mess); the squad's infrastructure carries its yellow marker in the 
   names or trade dress (AB-09). Each class has a first-person silhouette no other class shares: pistol (short block),
   shotgun (long tube with a pump), assault rifle (curved magazine and rail), DMR (long barrel with the magnified
   optic's hump).
-- **Attachments change the silhouette** in first and third person: a long or heavy barrel extends the line, a
-  suppressor adds a fat tube, a brake adds a ported block, a magnified optic adds a hump. The trade-off an attachment
+- **Attachments change the silhouette** in first and third person: a long or heavy barrel extends the line (the
+  heavy one thicker), a short barrel cuts it, a suppressor adds a fat tube, a compensator a slotted cap and a brake a
+  ported block, a reflex sight a small open window, a 2× prism a short squared box, and the 4× magnified optic a long
+  hump (the MVP's nine; concept A66). The trade-off an attachment
   carries (Pillar 3) should be visible before it is read: heavier-looking means slower handling.
 - **Melee weapons** read by head mass: blunt (a thick head on a short handle), heavy (a long handle and a large head,
   sledge or axe, the one that breaches), blade (a long thin edge). They are tools and implements a suburb would have.
@@ -672,7 +684,7 @@ The squad's palette is muted and military, which separates it from the horde's c
 
 | Role | Primitive (Section 3.3) | Kit pieces on the body | Gadgets (MVP in bold) | First-person identity |
 | ---- | ---- | ---- | ---- | ---- |
-| **Corpsman** | Hump | Rounded medical pack low on the back with a rounded side bag on each hip (about 72 cm across in all, Section 3.3); drag strap across the shoulders; bulky thigh pouches; tourniquet on the sleeve | **Revive kit**; dressing pack (VS) | Tourniquet and trauma-shears pocket on the sleeve; the revive kit's soft rounded pouch in the gadget hand |
+| **Corpsman** | Hump | Rounded medical pack low on the back with a rounded side bag on each hip (about 72 cm across in all, Section 3.3); drag strap across the shoulders; bulky thigh pouches; tourniquet on the sleeve | **Revive kit** (revives and heals; concept A61); dressing pack (VS) | Tourniquet and trauma-shears pocket on the sleeve; the revive kit's soft rounded pouch in the gadget hand |
 | **Quartermaster** | Block | Tall frame pack loaded with ammo cans, its rigid rails and top bar keeping the block when the crate is off; squared shoulder line; extra magazine pouches | **Resupply crate**; bandolier (VS) | Leather work gloves; a magazine-heavy chest rig seen when looking down; the crate's squared box carried two-handed |
 | **Sapper** | Diagonal | Long-handled reinforce tool in a rigid, padded scabbard (at least 17 cm wide) slung across the back, which keeps the diagonal when the tool is drawn; heavy charge bag on one hip; knee pads | **Reinforce tool**, **breach charge**; collapse charge (Alpha) | Heavy work gloves with knuckle protection; the long tool's head in view when braced; the flat charge plate with its strap |
 | **Spotter** | Spike | Collapsible sensor mast rising from the back, topped by a sensor head at least 20 cm across; it stays on the back when the sensor tripod is placed; long scope case; light kit | **Sensor**; survey glass (VS) | Thin shooting gloves; a wrist display that shows the sensor's status in squad cyan (a small emissive, Section 4.4) |
@@ -712,12 +724,14 @@ the highest-detail characters in the game (Section 8.5):
 
 ### 5.4 The horde
 
-**Who they were.** Ordinary adult residents of a generic suburb, turned recently (days, not months): mottled
-grey-olive skin, livor, wounds, dirt, and torn late-autumn civilian clothes. They are **never** children (absolute
+**Who they were.** Anonymous adults in ordinary civilian clothes, turned recently (days, not months): mottled
+grey-olive skin, livor, wounds, dirt, and torn late-autumn clothes. They are **never presented as the residents of the
+real town** (AB-30): the map was evacuated (6.8), the horde came in from elsewhere, and nothing on a zombie (clothing,
+props, a pose at a particular house) ties it to the place or to any household. They are **never** children (absolute
 rule from the concept), never real people, and never depicted emerging from graves.
 
-**Wardrobe** (modular, late autumn, civilian): hoodies, puffer vests, flannel shirts, work jackets, sweaters, jeans,
-sweatpants, office trousers, a bathrobe or pyjamas (it happened at night), generic work coveralls. Rules:
+**Wardrobe** (modular, late autumn, civilian, dressed for outdoors; no nightwear): hoodies, puffer
+vests, flannel shirts, work jackets, sweaters, jeans, sweatpants, office trousers, generic work coveralls. Rules:
 
 - **No text, logos or brands** on any garment; no sports-team apparel; no political or religious symbols.
 - **No real-world uniforms or insignia**: no police, fire, military, postal, school-staff or other agency uniforms.
@@ -967,16 +981,16 @@ The visual language is set here; the layout and behaviour are specified in `desi
 | Stamina | Contextual: only below full or while blocking | Thin arc around the crosshair | Arc in HUD white; breath audio does the rest |
 | Ammo | Contextual: on reload, when low (25% or less), at a crate or supply point; fades after 3 s | Bottom right | Magazine and reserve numerals in tabular figures; a held reload button performs a diegetic magazine check |
 | Gadget charges | Contextual: on change and while the gadget is equipped | Beside ammo | The gadget glyph with charge ticks |
-| Own health | Contextual: while below full | Bottom left | A thin bar, plus a damage edge vignette (capped opacity) and directional damage arcs toward the source |
+| Own health | Contextual: while below full | Bottom left | A thin bar with a notch at the **recovery ceiling** (50; health above it comes only from a heal, concept system 3), plus a damage edge vignette (capped opacity) and directional damage arcs toward the source |
 | Salvage | Contextual: on change, at an armory or workbench, and during intermissions | Above ammo | Numerals with the salvage glyph |
-| Squad list | Persistent, compact | Left edge | Four rows: role icon, name, state (alive, downed with bleed-out ring, dead with redeploy timer); a small low-health flag |
+| Squad list | Persistent, compact | Left edge | Four rows: role icon, name, state (alive, downed with bleed-out ring, dead with redeploy timer); a small low-health flag below the recovery ceiling ("needs a heal") |
 | Squad markers | Persistent; fade with distance; outlined when occluded | Over each squadmate | Cyan chevron with role icon and name |
 | Pings and spotted zombies | For their lifetime (pings 5 s, specials 8 s) | In the world | Squad cyan chevron (position), survey tick (zombie: horde green-grey for every type, specials included, with an optional type glyph inside; danger red only for the types and moments listed in Section 4.3), square (items); hollow when occluded |
-| Compass strip | Persistent | Top centre | A cartographic bearing strip with markers, plus **the real name of the street the player is on** (Pillar 2 in one line of text) |
-| Sector board | Persistent | Under the compass | A chip per sector with its sector label (concept 6.1: real street, park, creek and trail names, for example "167th Street" or "Lewis Park Fields"; generic labels only for sensitive sites; the wooded park's creek label is the logged exception): held (amber mast-and-cone glyph), horde-held (green-grey survey tick, hatched), capturing (progress ring), contested (both glyphs, ring paused), overrun (danger hazard stripe) |
+| Compass strip | Persistent | Top centre | A cartographic bearing strip with markers, plus **the real name of the street the player is on** (Pillar 2 in one line of text) and the bearing to the **squad order's** sector (concept A63) |
+| Sector board | Persistent | Under the compass | A chip per sector with its sector label (concept 6.1: real street, park, creek and trail names, for example "167th Street" or "Lewis Park Fields"; generic labels only for sensitive sites; the wooded park's creek label is the logged exception): held (amber mast-and-cone glyph), horde-held (green-grey survey tick, hatched), capturing (progress ring), contested (both glyphs, ring paused), overrun (danger hazard stripe). The ordered sector's chip carries a squad-cyan outline (concept A63) |
 | Round and phase | Persistent, small; the intermission timer is large while it runs | Top right | Round number; intermission countdown; Push or Dig In vote state |
 | Squad events | Contextual, at most three lines, fading | Top right, under the round | Squad actions only ("revived", "resupplied", "reinforced"), which rewards Pillar 4. No kill feed |
-| Interaction prompts | Contextual | Below the crosshair | Xbox-layout button glyph (the game is controller-only, concept U11), verb and cost ("Reinforce · 150"); revive and capture progress as a thin bar |
+| Interaction prompts | Contextual | Below the crosshair | Xbox-layout button glyph (the game is controller-only, concept U11), verb and cost ("Reinforce · 150"); revive, heal and capture progress as a thin bar. A prompt or ping names an object by its kind ("door", "garage", "window"), **never an individual building**, not even by its street (concept 6.1) |
 | Hit confirmation | On **impact**, not on firing (projectiles take time to land) | Around the crosshair | Four short ticks; a kill adds a brief inward motion; a headshot is marked by sound. **No damage numbers** |
 | Parry feedback | On a parry | Diegetic first | Sparks, the zombie's large stagger and the sound; at most a 120 ms crosshair pulse |
 | Panel states | Diegetic (outlines, Section 3.4) | In the world | While a Sapper holds the reinforce tool, an overlay outlines nearby panels: squad-owned reinforced (yellow), about to fail (danger red) |
@@ -985,7 +999,8 @@ The visual language is set here; the layout and behaviour are specified in `desi
 | Subtitles | For every voice callout | Bottom centre | HUD white on a plate |
 
 **No persistent minimap at MVP** (AB-15): the compass strip, world markers and the hold-to-open tactical map carry
-orientation. Playtests decide whether a corner minimap returns as an option.
+orientation. Playtests decide whether a corner minimap returns as an option. The browser greybox prototype draws one
+for debugging; that is a listed prototype divergence, not a precedent (concept Next Steps).
 
 ### 7.3 Typography
 
@@ -1019,7 +1034,7 @@ plate wherever it overlaps the world.
 | Icon | Holdout's design | Never |
 | ---- | ---- | ---- |
 | Corpsman | A pulse trace (a heartbeat line) inside a circle | A red cross, red crescent or red crystal on any background: these are protected emblems under the Geneva Conventions, and the Red Cross movement asks games not to use them (AB-17) |
-| Quartermaster | Three cartridges side by side | The reference series' class icon |
+| Quartermaster | A frame pack: an upright rectangle with a top bar and two straps, the role's block primitive (AB-29) | Cartridges, bullets, magazines or ammo belts (common for the reference series' support role), or the reference series' class icon |
 | Sapper | A brace: a diagonal across a square frame (it echoes the reinforced panel) | The reference series' class icon |
 | Spotter | A mast with two arcs (the sensor) | An eye, or the reference series' class icon |
 | Spotted zombie | The survey tick | A diamond (concept A45) |
@@ -1423,11 +1438,14 @@ Every question the skill would have put to the user, answered by the facilitator
 | AB-20 | Art versus technical trade-offs (Section 8.13) | Ideal; constrained; both | **As recorded in 8.13** (mostly "both, tiered" or "constrained default with exceptions") | Keeps the ideal visible without making it the baseline | Section 8 budgets change |
 | AB-21 | Exact meaning-colour values | The concept's descriptions at usual values; retuned values | **Retuned**: lighter, slightly pink danger red; darker amber | Simulation showed red and amber merging for deuteranopes | Section 4.3 and 4.7 |
 | AB-22 | AD-ART-BIBLE gate | Agent-run; self-check | **Self-check** (Appendix C.2). *Superseded 2026-11-19:* the gate was run by the `art-director` agent (CONCERNS; Appendix C.1) | No agent-spawning tool in the first run | — |
-| AB-23 | Next step (Phase 6) | `/map-systems`; `/create-architecture`; stop | **`/map-systems` (recommended)** | No systems index exists yet; the engine is configured | — |
+| AB-23 | Next step (Phase 6) | `/map-systems`; `/create-architecture`; stop | **`/map-systems` (recommended)**, run in parallel with the concept's feel prototype and netcode spike; GDDs of the systems those prototypes test stay provisional until a PROCEED verdict (concept Next Steps, A67) | No systems index exists yet; the engine is configured. The concept's path is prototype-first, but mapping the systems does not depend on the prototypes' verdicts | — |
 | AB-24 | Spotted specials' marker colour (gate blocking item 1) | Danger red for every special; green-grey for every special; green-grey with danger red only for explosive or structure-threatening types | **Green-grey survey tick for every type, with an optional type glyph inside. Danger red only for the Detonator, and for the Breacher or Wrecker while attacking a panel** (stated once in 4.3; 7.2 points to it) | Red on every special diluted the top-priority channel and, with danger's pulse and stripe, filled late-round HUDs with pulsing red that competed with downed squadmates and breach warnings | 4.3 and 7.2 change; the 4.7 checks are unaffected |
 | AB-25 | Role primitive sizes and gadget carry (gate blocking item 2) | Keep thin masts, handles and a shallow hump; set a minimum on-screen size and rebuild the primitives | **Minimum 2 px (17 cm) at 80 m, target 20 cm or more** (3.2). Corpsman pack widened sideways to about 72 cm. Sapper diagonal carried by a rigid scabbard at least 17 cm wide and the tool head. Spotter mast topped by a sensor head at least 20 cm across. **Deploying or drawing a gadget never removes the back primitive. Light gadgets are compact and hip-carried** (3.3, 3.5, 5.2) | At 12 px per metre at 80 m, a 3 cm part is about 0.4 px and vanishes under TSR, and a 7 cm hump is under 1 px from the front; the old primitives failed the bible's own size rule and the concept's MVP role test | Kit proportions in 3.3 and 5.2 change; the role test would need another distinguishing method |
 | AB-26 | On-screen size table (gate concern) | Keep the first table; correct it to the exact projection | **Corrected**: 960 ÷ d px per metre; a 1.8 m figure is about 58 / 22 / 11.5 / 5.8 / 4.3 px at 30 / 80 / 150 / 300 / 400 m (230 / 86 / 46 / 23 / 17 through a 4× optic); the role-test figure is about 22 px | The first table was about 10% too large, and the section calls itself "measured, not guessed" | — |
 | AB-27 | Re-sync with concept revision 2.4 (concept A52–A60, U11) | Leave the bible on revision 2.2; re-sync | **Re-sync** without changing the visual direction: real-name sector labels with generic labels only for sensitive sites and one creek-label exception (7.2, 7.8, plus a tactical-map text rule); gadget renames (3.5, 5.2); the light breach-charge form removed (5.2); movement keeps the role primitives (3.3, 5.3); fences inside vault and mantle heights (6.6, 8.6); Xbox-layout button glyphs and a controller-only platform row (7.2, 7.7, 8.1) | The concept changed things this bible depends on, and it took up the bible's open items for the concept owner (AB-08, AB-13, AB-14) | The listed sections revert to their revision 2.2 wording |
+| AB-28 | Re-sync with concept revision 2.5 (concept A61–A67) | Leave the bible on revision 2.4; re-sync | **Re-sync** without changing the visual direction: the recovery-ceiling notch and the "needs a heal" flag (7.2); the revive kit's heal (5.2); squad orders on the compass and sector board (7.2); the MVP's nine attachments as silhouettes (3.5); no UI text names an individual building (7.2); the minimap in the browser greybox logged as a prototype divergence (7.2); 167th Street's measured position (2.2); `/map-systems` in parallel with the prototypes (AB-23) | The concept added health, orders and attachments this bible draws, and the check found the 2.2 wording and AB-23 out of step with the concept | The listed sections revert |
+| AB-29 | Quartermaster role icon (IP check) | Three cartridges; a crate; a frame pack | **A frame pack** (the role's block primitive) | Ammunition glyphs are a common class-icon motif for the reference series' support role, and the check could not verify the similarity online; the frame pack repeats Holdout's own primitive, and the plain crate is already the infrastructure glyph | 7.4 changes; the IP checklist (concept R12) re-checks it either way |
+| AB-30 | Who the horde were | Residents of the suburb; anonymous adults from elsewhere | **Anonymous adults, never presented as the real town's residents**; no nightwear in the wardrobe | The map is a real, named town and the concept's rule is "never shown: anything about residents"; "it happened at night" with pyjamas also sat against 6.8's evacuation story | 5.4 changes |
 
 ## Appendix B: Open items and hand-offs
 
@@ -1444,7 +1462,8 @@ Every question the skill would have put to the user, answered by the facilitator
 | **Gate concern:** world-space marker contrast. 4.6's 4:1 guarantee holds only against the HUD plate and the dark chart. Markers drawn in the world can fall below 3:1 over white siding, concrete or the bright dusk sky (road-marking yellow and squad cyan). Make the dark keyline the default for world-space markers, and keep "thicken outlines" as the option (4.6, 4.7, 7.6) | `/ux-design` (HUD specification), with the art director | MVP HUD block |
 | **Gate concern:** kit-family tie-break in 6.2. Raised ranch and two-storey both match a near-square footprint of about 120 m². Specify the tie-break, for example a choice weighted by target mix ratios and seeded by the OSM way ID, so the regional mix is controlled and deterministic | Technical artist, with tools | Kit selection in the generator for Vertical Slice A |
 | **Gate concern:** naming rules still missing for outsourcers (8.3): how source and DCC files are named before import, and whether size tiers appear in names or only in texture groups | Technical artist | Outsourcing starts |
-| **Gate privacy note (outside this file):** the concept's 6.1 "Location check" wording is now a neutral boundary note (concept A50). The raw `.osm` extract and the generated level files with every building footprint are still tracked under `prototypes/real-street-holdout-concept/pipeline/` and are already on the public remote; the concept's action is "no further push until they are untracked", with a history-purge decision by the repository owner (concept A60, R5) | Producer; repository owner | Before any further push; the purge decision by 2026-11-26 |
+| **Gate privacy note (outside this file):** the concept's 6.1 "Location check" wording is now a neutral boundary note (concept A50). The raw `.osm` extract and the generated level files with every building footprint are still tracked under `prototypes/real-street-holdout-concept/pipeline/` and are already on the public remote; the concept's action is "no further push until they are untracked and the origin moves to the home sector", with a history-purge decision by the repository owner that covers every branch (concept A60, A65, R5) | Producer; repository owner | Before any further push; the purge decision by 2026-11-26 |
+| **Prototype art and UI rules (outside this file; concept A65):** the browser greybox draws a spotted zombie as a red rotated square (a diamond, which AB-10 rules out) and must use the survey tick in horde green-grey (4.3); its README pairs the reference series' class name with a gadget and must say "Sapper reinforce tool"; it names buildings by street in prompts and pings (7.2 rules that out); and it labels two parks after nearby streets instead of their OSM names (7.2, 7.8) | Prototype owner (gameplay engineer), with the art director | Before any further push of the prototype |
 | Nanite foliage with wind on 5.8; runtime virtual texturing on 5.8; Lumen Lite status | Technical artist, `unreal-specialist` | Creek Woods' art pass |
 | HLOD versus destruction method (AB-18) | Technical director (destruction ADR) | The first full-map bake |
 | Reconcile the horde count in `technical-preferences.md` with the concept (AB-19) | Technical director (`/settings`) | Any budget review |
