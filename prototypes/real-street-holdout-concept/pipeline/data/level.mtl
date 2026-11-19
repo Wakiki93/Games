@@ -112,6 +112,20 @@ Ks 0 0 0
 d 1
 illum 1
 
+newmtl gnd_cemetery
+Kd 0.600 0.660 0.550
+Ka 0 0 0
+Ks 0 0 0
+d 1
+illum 1
+
+newmtl gnd_schoolyard
+Kd 0.800 0.740 0.620
+Ka 0 0 0
+Ks 0 0 0
+d 1
+illum 1
+
 newmtl marker
 Kd 1.000 0.100 0.100
 Ka 0 0 0

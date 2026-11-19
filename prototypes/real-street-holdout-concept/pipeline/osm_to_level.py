@@ -12,12 +12,12 @@
 # Unreal import: UE is left-handed, Z-up, centimeters -> X = x*100, Y = -y*100, Z = z*100 (see README).
 #
 # PRIVACY: the repo is public. Never store addr:* tags, house numbers, or the --place text.
-# The origin must be a neighborhood centroid, never a specific home.
+# The origin must be the map / neighborhood center, never a specific building.
 #
 # Data (c) OpenStreetMap contributors, ODbL 1.0. https://www.openstreetmap.org/copyright
 #
-# Usage (offline): python3 osm_to_level.py data/lancaster-highlands.osm --name "Lancaster Highlands, Tinley Park IL" \
-#                      --origin 41.5849928,-87.7719624 --out data/level.json
+# Usage (offline): python3 osm_to_level.py data/tinley-park-60477.osm --name "Tinley Park, IL (60477)" \
+#                      --origin 41.586328,-87.770554 --out data/level.json
 # Usage (fetch):   python3 osm_to_level.py --place "<neighborhood, city>" --name "<display name>" --out data/level.json
 
 import argparse
@@ -61,7 +61,8 @@ GROUND_KINDS = {
     ("leisure", "park"): "park", ("leisure", "garden"): "park", ("landuse", "grass"): "grass",
     ("landuse", "meadow"): "grass", ("natural", "wood"): "wood", ("natural", "scrub"): "scrub",
     ("natural", "water"): "water", ("landuse", "forest"): "wood", ("leisure", "pitch"): "grass",
-    ("amenity", "parking"): "parking",
+    ("amenity", "parking"): "parking", ("landuse", "cemetery"): "cemetery", ("amenity", "grave_yard"): "cemetery",
+    ("amenity", "school"): "schoolyard", ("amenity", "kindergarten"): "schoolyard",
 }
 STREAM_TYPES = ("stream", "river", "ditch", "canal")
 LINE_WIDTH_M = {"stream": 3, "rail": 3.5}
@@ -470,7 +471,7 @@ def convert(osm_path, origin=None, name="", bbox=None):
     def ring_pts(refs):
         return [project(*nodes[r], lat0, lon0) for r in refs]
 
-    def add_ground_polygon(wid, kind, pts, rel_id=None):
+    def add_ground_polygon(wid, kind, pts, rel_id=None, name=None):
         poly = clip_polygon(pts, rect)
         if not poly:
             stats["ground_outside_bbox"] += 1
@@ -480,6 +481,8 @@ def convert(osm_path, origin=None, name="", bbox=None):
         item = {"id": wid, "kind": kind, "polygon": [list(p) for p in poly], "area_m2": round(polygon_area(poly), 1)}
         if rel_id is not None:
             item["relation"] = rel_id
+        if name:
+            item["name"] = name  # public feature names only (parks, creeks); never addresses
         ground.append(item)
 
     ground_way_ids = set()
@@ -554,7 +557,7 @@ def convert(osm_path, origin=None, name="", bbox=None):
             for (k, v), kind in GROUND_KINDS.items():
                 if tags.get(k) == v and len(pts) >= 4 and pts[0] == pts[-1]:
                     ground_way_ids.add(wid)
-                    add_ground_polygon(int(wid), kind, dedupe(pts[:-1]))
+                    add_ground_polygon(int(wid), kind, dedupe(pts[:-1]), name=tags.get("name"))
                     break
             else:
                 line_kind = None
@@ -567,8 +570,11 @@ def convert(osm_path, origin=None, name="", bbox=None):
                     if not parts:
                         stats["ground_outside_bbox"] += 1
                     for i, part in enumerate(parts):
-                        ground.append({"id": int(wid), "part": i, "kind": line_kind, "line": [list(p) for p in part],
-                                       "width_m": LINE_WIDTH_M[line_kind]})
+                        item = {"id": int(wid), "part": i, "kind": line_kind, "line": [list(p) for p in part],
+                                "width_m": LINE_WIDTH_M[line_kind]}
+                        if tags.get("name"):
+                            item["name"] = tags["name"]
+                        ground.append(item)
 
     # multipolygon relations: closed outer member ways only (inner rings ignored -> warning)
     for rel in root.findall("relation"):
@@ -592,7 +598,7 @@ def convert(osm_path, origin=None, name="", bbox=None):
                 continue
             refs = ways[ref][1]
             if len(refs) >= 4 and refs[0] == refs[-1]:
-                add_ground_polygon(int(ref), kind, dedupe(ring_pts(refs)[:-1]), rel_id=int(rel.get("id")))
+                add_ground_polygon(int(ref), kind, dedupe(ring_pts(refs)[:-1]), rel_id=int(rel.get("id")), name=tags.get("name"))
             else:
                 info["mp_missing_members"] += 1  # open outer chains are not stitched in this prototype
 
@@ -611,7 +617,7 @@ def convert(osm_path, origin=None, name="", bbox=None):
         "schema": SCHEMA,
         "name": name,
         "attribution": ATTRIBUTION,
-        "units": "meters; x=east, y=north, z=up; origin is the neighborhood centroid",
+        "units": "meters; x=east, y=north, z=up; origin is the map center (never a specific building)",
         "bounds": {"min": [x0, y0], "max": [x1, y1]},
         "geo": {
             "origin_lat": round(lat0, 7), "origin_lon": round(lon0, 7),
@@ -733,6 +739,18 @@ def nav_analysis(level, merge_m=NAV_MERGE_M, reach_m=NAV_REACH_M, cell_m=NAV_CEL
                     snap_parent[rb] = ra
     comps_if_snapped = len({sfind(i) for i in range(len(ranked))})
 
+    # describe minor components: do they only connect outside the play area (clipping artifact)?
+    minor = []
+    main_mask = seg_comp == 0
+    for c in range(1, len(ranked)):
+        cn = [n for n in range(len(node_xy)) if rank[find(n)] == c]
+        pts = np.array([node_xy[n] for n in cn], float)
+        touches = bool(np.any(np.minimum.reduce([pts[:, 0] - xmin, xmax - pts[:, 0], pts[:, 1] - ymin, ymax - pts[:, 1]]) <= 1.0))
+        gap = float(_seg_dist(pts, A[main_mask], B[main_mask]).min()) if main_mask.any() else None
+        names = sorted({(r["name"] or r["kind"]) for r in roads if r["component"] == c})
+        minor.append({"rank": c, "length_m": round(comp_len[ranked[c]], 1), "touches_border": touches,
+                      "gap_to_main_m": round(gap, 1) if gap is not None else None, "roads": names})
+
     # --- building centroids within reach of a walkable road
     bld = level["buildings"]
     far_ids = []
@@ -841,6 +859,8 @@ def nav_analysis(level, merge_m=NAV_MERGE_M, reach_m=NAV_REACH_M, cell_m=NAV_CEL
         "dangling_ends_interior": len(dangles),
         "near_miss_dangles": near_miss,
         "components_if_snapped_5m": comps_if_snapped,
+        "minor_components": minor,
+        "minor_components_touching_border": sum(1 for m in minor if m["touches_border"]),
         "buildings_within_reach_pct": round(100.0 * within_any / len(bld), 1) if bld else 0.0,
         "buildings_within_reach_of_main_pct": round(100.0 * within_main / len(bld), 1) if bld else 0.0,
         "max_building_to_road_m": round(max_dist, 1) if max_dist is not None else None,
@@ -866,7 +886,8 @@ MATERIALS = {
     "road_service": (0.40, 0.40, 0.42), "road_foot": (0.76, 0.72, 0.64), "gnd_park": (0.45, 0.66, 0.34),
     "gnd_grass": (0.50, 0.70, 0.38), "gnd_wood": (0.20, 0.42, 0.20), "gnd_scrub": (0.52, 0.56, 0.30),
     "gnd_water": (0.25, 0.45, 0.75), "gnd_parking": (0.50, 0.50, 0.50), "gnd_stream": (0.30, 0.52, 0.82),
-    "gnd_rail": (0.42, 0.34, 0.28), "marker": (1.0, 0.1, 0.1),
+    "gnd_rail": (0.42, 0.34, 0.28), "gnd_cemetery": (0.60, 0.66, 0.55), "gnd_schoolyard": (0.80, 0.74, 0.62),
+    "marker": (1.0, 0.1, 0.1),
 }
 
 
@@ -1033,7 +1054,7 @@ def write_obj(level, obj_path, mtl_path, up="y"):
 
 PREVIEW_COLORS = {
     "surface": "#fcfcfb", "ground": "#eceee4", "park": "#cfe3b4", "grass": "#d6e8bf", "wood": "#a3c98f",
-    "scrub": "#cdd8a2", "water": "#9cc3e6", "parking": "#d9d7d2", "stream": "#5b97d1", "rail": "#7a6a5a",
+    "scrub": "#cdd8a2", "water": "#9cc3e6", "parking": "#d9d7d2", "cemetery": "#bccab0", "schoolyard": "#e8dcc4", "stream": "#5b97d1", "rail": "#7a6a5a",
     "road_major": "#4a4a4f", "road_residential": "#727278", "road_service": "#94949a", "road_foot": "#b39f80",
     "flag": "#e34948", "ink": "#2b2b29", "ink_muted": "#6b6b66",
 }
@@ -1123,7 +1144,8 @@ def render_preview(level, png_path, extras=None):
     handles = [Patch(facecolor=C[k], label=lbl) for k, lbl in (
         ("road_major", "major road"), ("road_residential", "residential"), ("road_service", "service"),
         ("road_foot", "footway / path"), ("park", "park"), ("grass", "grass"), ("wood", "wood"),
-        ("scrub", "scrub"), ("water", "water / stream"), ("rail", "rail"))]
+        ("scrub", "scrub"), ("cemetery", "cemetery"), ("schoolyard", "school grounds"), ("water", "water / stream"),
+        ("rail", "rail"))]
     handles.append(Patch(facecolor="white", edgecolor=C["flag"], linewidth=1.2, label=f"> {NAV_REACH_M:.0f} m from road"))
     handles.append(Patch(facecolor=C["flag"], label="unreachable open ground"))
     fig.legend(handles=handles, loc="upper left", bbox_to_anchor=(0.815, 0.94), fontsize=7.5, frameon=False,
@@ -1260,8 +1282,9 @@ def build_warnings(level, info, nav, obj_stats):
         warns.append(f"{info['untyped_buildings']} buildings are untyped (building=yes): height/roof from footprint size only")
     if nav and nav["components"] > 1:
         warns.append(f"street graph has {nav['components']} components; largest holds {nav['largest_component_length_pct']}% "
-                     f"of walkable length ({nav['components_if_snapped_5m']} if dangling ends within "
-                     f"{NAV_SNAP_HINT_M:.0f} m were snapped)")
+                     f"of walkable length; {nav['minor_components_touching_border']} of {nav['components'] - 1} minor ones "
+                     f"touch the bbox edge (they join the network outside the play area); "
+                     f"{nav['components_if_snapped_5m']} components if dangling ends within {NAV_SNAP_HINT_M:.0f} m were snapped")
     if nav and nav["buildings_beyond_reach"]:
         warns.append(f"{nav['buildings_beyond_reach']} buildings have their centroid > {NAV_REACH_M:.0f} m from any walkable road")
     if nav and nav["unreachable_pockets_ge_25m2"]:
@@ -1288,7 +1311,7 @@ def fmt_bytes(n):
     return f"{n / 1024:.0f} KB" if n < 1024 * 1024 else f"{n / 1024 / 1024:.1f} MB"
 
 
-def print_summary(m):
+def print_summary(m, extra_files=None):
     c, n, t = m["counts"], m["nav"], m["timing_s"]
     print(f"== Holdout map pipeline: {m['name']} ==")
     print(f"play area     {m['extent_m'][0]:.0f} m x {m['extent_m'][1]:.0f} m  ({m['area_ha']:.1f} ha)")
@@ -1299,15 +1322,18 @@ def print_summary(m):
     print(f"roads         {c['road_ways']} ways -> {c['road_parts']} clipped parts ({c['road_ways_split']} split), "
           f"{n['walkable_length_m'] / 1000:.2f} km walkable")
     print(f"ground        {c['ground']} items {m['ground_area_m2']}")
-    print(f"nav graph     {n['components']} components (largest {n['largest_component_length_pct']}% of length); "
-          f"{n['near_miss_dangles']} dangling ends < {NAV_SNAP_HINT_M:.0f} m from another component -> "
-          f"{n['components_if_snapped_5m']} if snapped")
+    print(f"nav graph     {n['components']} components (largest {n['largest_component_length_pct']}% of length; "
+          f"{n['minor_components_touching_border']} minor ones touch the bbox edge); "
+          f"{n['near_miss_dangles']} dangling ends < {NAV_SNAP_HINT_M:.0f} m from another component")
+    for mc in n["minor_components"]:
+        print(f"                #{mc['rank']}: {mc['length_m']:.0f} m {mc['roads']} edge={mc['touches_border']} "
+              f"gap to main {mc['gap_to_main_m']} m")
     print(f"reachability  {n['buildings_within_reach_pct']}% of building centroids within {n['reach_m']:.0f} m of a walkable road "
           f"({n['buildings_within_reach_of_main_pct']}% via the main component); max {n['max_building_to_road_m']} m")
     print(f"free space    {n['free_space_reachable_pct']}% of open ground reachable from the main street network "
           f"({n['free_space_cell_m']:.0f} m raster); {n['unreachable_pockets']} unreachable pockets")
     print("timing        " + ", ".join(f"{k} {v:.2f} s" for k, v in t.items()))
-    print("files         " + ", ".join(f"{k} {fmt_bytes(v)}" for k, v in m["files"].items()))
+    print("files         " + ", ".join(f"{k} {fmt_bytes(v)}" for k, v in {**m["files"], **(extra_files or {})}.items()))
     if m["warnings"]:
         print("warnings:")
         for w in m["warnings"]:
@@ -1419,8 +1445,7 @@ def run(args):
     mpath = os.path.join(out_dir, "metrics.json")
     with open(mpath, "w") as f:
         json.dump(metrics, f, indent=1)
-    files["metrics.json"] = os.path.getsize(mpath)
-    print_summary(metrics)
+    print_summary(metrics, {"metrics.json": os.path.getsize(mpath)})
     return metrics
 
 
@@ -1431,7 +1456,7 @@ def main(argv=None):
     ap.add_argument("--margin-m", type=float, default=100.0, help="fetch mode: margin around the matched area (m)")
     ap.add_argument("--osm-cache", help="fetch mode: where to save the downloaded .osm (default: <out dir>/<name slug>.osm)")
     ap.add_argument("--bbox", help="play area minlon,minlat,maxlon,maxlat (default: the .osm <bounds>)")
-    ap.add_argument("--origin", help="lat,lon of the map origin (neighborhood centroid, never a home; default: bbox center)")
+    ap.add_argument("--origin", help="lat,lon of the map origin (map center, never a specific building; default: bbox center)")
     ap.add_argument("--name", required=True, help="display name stored in level.json")
     ap.add_argument("--out", default=os.path.join(HERE, "data", "level.json"))
     ap.add_argument("--obj-up", choices=("y", "z"), default="y", help="OBJ up axis (default y = OBJ/Blender convention)")
