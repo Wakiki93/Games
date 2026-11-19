@@ -1549,11 +1549,17 @@ The workflow's run history has no such runs; those entries restated the round-1 
 | CD-PILLARS | CONCERNS | Revision 2 (round 1) | None | None; not re-run (no blocking items) |
 | AD-CONCEPT-VISUAL | **STRONG** | Revision 2.1 (round 2) | None | Round 1: CONCERNS (2 blocking) |
 | TD-FEASIBILITY | CONCERNS (conditional on Q2) | Revision 2 (round 1) | None; HIGH RISK if the team is one or two people | None; not re-run (no blocking items) |
-| PR-SCOPE | OPTIMISTIC | Revision 2.2 (round 3) | 3: Q2; MVP audio and animation unscheduled; First Map Complete under-scheduled | Round 1: OPTIMISTIC (6 blocking); round 2: OPTIMISTIC (4 blocking) |
+| PR-SCOPE | OPTIMISTIC | Revision 2.2 (round 3) | 3: Q2; MVP audio and animation unscheduled; First Map Complete under-scheduled (the second and third answered in the text by revision 2.3, A47 and A48; not yet confirmed by the gate) | Round 1: OPTIMISTIC (6 blocking); round 2: OPTIMISTIC (4 blocking) |
 
-**Next gate step:** PR-SCOPE stays OPTIMISTIC until its three blocking items are resolved; two can be fixed in the
-text, and Q2 needs the user. CD-PILLARS and TD-FEASIBILITY should re-run on the current text to confirm the fixes made
-since revision 2.
+**`/design-review`** (first run, 2026-11-19; not a director gate): NEEDS REVISION, 5 blocking items (privacy wording,
+gate-status consistency, and PR-SCOPE round 3's three blocking items), all applied in revision 2.3 (A47–A50), plus
+recommendations applied as A51. It was logged as an effectively lean review, because no specialist agents could be
+spawned, so a full re-run is still due. Log: `design/gdd/reviews/game-concept-review-log.md`.
+
+**Next gate step:** PR-SCOPE should re-check revision 2.3: two of its three blocking items are answered in the text
+(A47, A48), and A49 defines the small-team plan the third pointed to, but Q2 itself needs the user, so PR-SCOPE cannot
+return REALISTIC yet. CD-PILLARS and TD-FEASIBILITY should re-run on the current text to confirm the fixes made since
+revision 2. Then `/design-review` re-runs at full with specialist agents.
 
 ### CD-PILLARS (`creative-director`, round 1 on revision 2, 2026-11-19): CONCERNS
 *Verdict:* no blocking items. The four pillars are falsifiable, each has a usable design test, and the tension table is
@@ -1563,15 +1569,15 @@ Pillar 1 has two unlogged exceptions. One item needs a user decision before the 
 did not verify the extract's geolocation.
 
 *Remaining concerns:*
-1. **"Lancaster" emphasis vs the user's correction (U10).** The map name is right everywhere, but the reviewer read the
-   default home sector as "Lancaster Woods" and the MVP as a south-west slice built around it, while the user says the
-   area is not "Lancaster". The park name is real OSM data, so this is not a violation, but the user should decide:
-   keep the label, relabel it (for example after the creek), or move the home sector and the MVP slice.
-   *Status:* no label uses "Lancaster"; home is the middle stretch of 167th Street, the woods are "Creek Woods", and the
-   MVP slice is centred near the middle of the box (A38, A44). The user confirms via Q18.
+1. **"Lancaster" emphasis (U10).** The map name is right everywhere, but the reviewer read the default home sector as
+   "Lancaster Woods" and the MVP as a south-west slice built around it, against U10. The park name is real OSM data,
+   so this is not a violation, but the user should decide: keep the label, relabel it (for example after the creek),
+   or move the home sector and the MVP slice.
+   *Status:* no label uses "Lancaster"; the woods are "Creek Woods"; home is on the 167th Street spine for design
+   reasons (A38, A44). The user confirms via Q18.
 2. **Geolocation not verified in this gate.** The reviewer confirmed only that the extract exists with a bounds
-   element. *Status:* TD-FEASIBILITY and PR-SCOPE later verified the box and the map name locally against the extract;
-   no outside lookup was made.
+   element. *Status:* the box and the map name were verified locally against the extract (by TD-FEASIBILITY and
+   PR-SCOPE); no outside lookup was made.
 3. **Privacy side-note (outside remit).** The concept text is clean (no addresses, house numbers or coordinates, no
    stated connection to the neighbourhood), but the committed `.osm` extract carries a bounding box; snap or offset it.
    *Status:* the re-extraction uses a grid-snapped box, and the tracked extract is a known gap (system 6.1, R5); open.
@@ -1629,8 +1635,8 @@ round-1 blocking items are fixed with testable rules. The remaining issues are f
     repository, against system 6.1's hygiene rule. Untrack them, consider history, and grid-snap the re-extraction.
     *Status:* recorded as a known gap with an action (system 6.1, R5); not done yet.
 11. **The location check is outside this gate.** The reviewer geolocated nothing and sent nothing to an outside
-    service; whether to re-centre the box on the 167th Street corridor belongs to the level GDD and Q18.
-    *Status:* A44 centres the home sector and the MVP slice on 167th Street; Q18 is open.
+    service. *Status:* the box and the map name were verified locally against the extract; sector placement belongs
+    to the level GDD and Q18, which is open.
 
 *History:* round 1 on revision 2: CONCERNS (2 blocking: no shape language; colour meanings not limited to a layer),
 fixed in revision 2.1 (A41).
@@ -1642,8 +1648,8 @@ match the pinned engine reference. Main gaps: 300 m ballistics against a 24-zomb
 load on a listen-server host across a streamed 1.44 km² map with realism rendering; spike criteria that missed the 48
 cap, higher latency and spread-out players. **The verdict holds only for the assumed team of 5 with two
 network-capable engineers (A14); it becomes HIGH RISK if the team is one or two people, and the concept must then be
-re-cut to the Vertical Slice tier (Q2).** The reviewer verified the box and the map name against the extract; Lewis
-Park sits half outside the box.
+re-cut to the Vertical Slice tier (Q2).** The box and the map name were verified locally against the extract; Lewis
+Park sits half outside the box. (The small-team re-cut is now defined as Slice Early Access; A49.)
 
 *Remaining concerns:*
 1. **Condition on Q2:** answer it before the prototypes start. *Status:* open; Q2 is the gating question.
