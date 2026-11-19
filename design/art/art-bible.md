@@ -1,14 +1,16 @@
 # Art Bible: Holdout
 
-> **Status**: Draft (revised after the agent-run AD-ART-BIBLE gate)
+> **Status**: Draft (revised for the user's decisions U11–U15; AD-ART-BIBLE is being re-run on this revision)
 > **Owned By**: art-director
 > **Last Updated**: 2026-11-19
-> **Art Director Sign-Off (AD-ART-BIBLE)**: **CONCERNS (agent-run, `art-director`, 2026-11-19)**. No REJECT-level
-> inconsistency. Both blocking items are applied in this revision: danger red for specials (4.3 and 7.2) and the role
-> primitives' size and deploy rules (3.2, 3.3, 3.5, 5.2, 5.3, 5.6). Two of the eleven concerns are also fixed here (the
-> on-screen size table, and the wording slips). The other nine are open and tracked in Appendix B. The art director
-> confirms the two blocking fixes, or the gate is re-run, to reach APPROVE before asset production begins (Appendix
-> C.1). The earlier self-check is kept as history in Appendix C.2
+> **Art Director Sign-Off (AD-ART-BIBLE)**: **Re-run in progress on this revision; no verdict yet.** The last
+> verdict was **CONCERNS (agent-run, `art-director`, 2026-11-19)**, on the previous revision, with no REJECT-level
+> inconsistency. Both blocking fixes it asked for stay applied and unchanged, and the re-run is what confirms them:
+> danger red for specials (4.3 and 7.2) and the role primitives' size and deploy rules (3.2, 3.3, 3.5, 5.2, 5.3, 5.6).
+> Of its eleven concerns, three are fixed (the on-screen size table, the wording slips and, in this revision, the
+> default keyline on world-space markers), the privacy concern is closed by the user's decisions U13 and U15, and
+> seven stay open in Appendix B. Nothing here claims APPROVE: asset production waits for the re-run's verdict
+> (Appendix C.3). The earlier verdict and the first self-check are kept as history in Appendix C.1 and C.2
 
 `/art-bible` writes these nine sections in this order and replaces each
 section's placeholder line as that section is approved. A section still
@@ -21,9 +23,10 @@ holding its placeholder is incomplete; a later run fills only those.
 > logged in **Appendix A** (AB-01 onward). Every row there can be overruled. The user's own directions are
 > authoritative and were not diluted; they were restated for this run as D1–D9 (D1 feel, D2 roles and gadgets, D3
 > squad play, D4 ballistics, D5 four-player co-op, D6 waves plus capture-and-hold sectors, D7 grounded realism, D8 the
-> first map, D9 everything from the original concept) and match U1–U10 in `design/gdd/game-concept.md`. The concept
-> has since added U11 (controller-only input, recorded as the user's decision in the project configuration), which
-> this document follows from the re-sync below.
+> first map, D9 everything from the original concept) and match U1–U10 in `design/gdd/game-concept.md`. The user has
+> since decided U11–U15 directly (controller-only input, a solo developer, the repository, vehicles and the first
+> map's box). They are the user's own decisions, not facilitator answers, and this document follows them from the
+> revision note of 2026-11-19 below (they are listed at the top of Appendix A).
 >
 > **Deviation from the skill, stated plainly.** The skill requires every section to be drafted by a spawned specialist
 > (`art-director`; `ux-designer` for Section 7; `technical-artist` for Section 8). This run had no agent-spawning tool,
@@ -65,6 +68,31 @@ holding its placeholder is incomplete; a later run fills only those.
 > longer uses cartridges (7.4); `/map-systems` may run in parallel with the concept's prototypes (AB-23). The visual
 > direction is unchanged.
 >
+> **Revision 2026-11-19 (user decisions U11–U15; the HUD re-arranged; the gate re-run).** The user decided five
+> things directly, and they are authoritative here. **U11:** the game is controller-only (confirmed twice; playtests
+> use an Xbox Elite Series 2; this closes concept Q22). **U12:** the project is one developer with AI tools, with no
+> team, no outsourcing and close to no cash, re-cut by the user as one map and one polished core loop first, with
+> features added only after it is fun. **U13:** the repository stays public, with its history and the first map's
+> data files as they are. **U14:** vehicles are out of scope (this closes Q11). **U15:** the first map's box and name
+> are confirmed. What changed in this document:
+> (1) **The HUD has its own arrangement** (7.2, AB-31): a clear field and four margin blocks, which are the sector
+> ladder, the squad block, the title block (a bearing dial, the street line, the round) and the kit block. It replaces
+> the top-centre compass strip and sector board, the left-edge squad list and the top-right round readout, which sat
+> too close to the layout Section 9.1 says to avoid. Where the older notes above say "compass" or "sector board",
+> read "bearing dial" and "sector ladder".
+> (2) **Every UI rule is controller-first** (7.9, AB-32): type, lines and glyphs sized for a television seen from
+> 3 m, plates and keylines for contrast, Holdout-drawn Xbox-layout prompt glyphs with outline rules for triggers and
+> sticks, focus navigation with no cursor and no hover-only state, a ping wheel and a gadget cross.
+> (3) **One marker shape table** (3.6, AB-33): the objective marker is a ring, and no rule or example uses a rotated
+> square.
+> (4) **The production plan is for one person** (8.12, AB-34): what is bought or downloaded, what is procedural,
+> what is hand-made, and a strict, small first-milestone list. Outsourcing and multi-artist assumptions are deleted.
+> No permanent cut to anything the user asked for is made or proposed.
+> (5) **A privacy and IP pass over the whole file** (AB-35, AB-36): the repository action items are replaced by the
+> user's decision U13, and the squad-shooter series is no longer named in this file.
+> (6) The two blocking fixes from the last gate are untouched, and AD-ART-BIBLE is being re-run on this revision
+> (Appendix C.3). The visual direction ("Ground Truth") is unchanged.
+>
 > **Sources.** The Visual Identity Anchor ("Ground Truth"), pillars, signature systems, risks and decisions in
 > `design/gdd/game-concept.md` (written on revision 2.2, read and not edited; re-synced to revisions 2.4 and 2.5 above); the
 > AD-CONCEPT-VISUAL round-2 notes addressed to this document; `.claude/docs/technical-preferences.md` (performance
@@ -72,9 +100,14 @@ holding its placeholder is incomplete; a later run fills only those.
 > and aggregate building statistics from the first map's local pipeline output (counts and size distributions only;
 > nothing narrower).
 >
-> **Privacy (the repository is public).** This document names the first test map, "Tinley Park, IL (60477)", and real
-> street and park names from OpenStreetMap, as the concept allows. It contains no address, house number or coordinate
-> of any building, and it describes the area only as the first test map.
+> **Privacy (the repository is public; the user's decisions U13 and U15).** The repository stays public, its history
+> is left as it is, the first map's data files stay tracked and pushing continues (U13). The first map's box and name
+> are confirmed (U15), so no check of the map is needed and none is described here. Going forward, nothing in this
+> document singles out a location. It names the first test map, "Tinley Park, IL (60477)", and street, park, creek
+> and trail names from OpenStreetMap, and nothing narrower. It contains no address, no house number and no
+> coordinates of any kind, and it describes the area only as the first test map. Every house is a generic kit fitted
+> to a footprint and no real house is replicated; houses that can be entered are chosen by gameplay criteria in the
+> engine and are referred to here only generically, never by street or position (6.6).
 
 ## 1. Visual Identity Statement
 
@@ -227,7 +260,7 @@ with dawn toward each evac window, a dawn state mirroring dusk is added to this 
 | 20 and later | Deep night | Moon lower in the west (or as rounds 15–19 if Q19 keeps a fixed moon) | Skyglow remains | Highest | Same clamp as rounds 15–19 | **Streetlights die progressively** as infrastructure fails (by round and by destruction) | The suburb goes dark except where the squad holds: the frontline can be read as a line of light |
 
 **Map-relative light direction on the first map.** 167th Street runs east–west about two-thirds of the way north
-across the map (concept 6.1, measured in the extract; the planned re-extraction may move it nearer the middle). In the
+across the map (concept 6.1; the map box is confirmed, U15). In the
 golden and dusk rounds, a squad looking **west** along 167th Street faces the low sun or the bright dusk band, so
 zombies on that axis are backlit silhouettes with rim; looking **east** they are front-lit and flatter. North–south
 residential streets get side light. This is a gift for the long band (the silhouette tests in Section 3 run on the
@@ -236,15 +269,16 @@ north-east skyglow gives a lighter sky behind anything on a ridge of rubble, a r
 
 ### 2.3 Mood targets by game state
 
-Each state's targets are written for a lighting artist and a VFX artist to work from. "Carrier" is the one visual
-element that must carry the state if everything else is cut.
+Each state's targets are written so that the lighting and the effects can be built from them directly. "Carrier" is
+the one visual element that must carry the state if everything else is cut. Under the solo plan (8.12) the first
+milestone builds only the states its core loop shows; the front-end scenes and the end states come later.
 
 | State | Emotional target | Lighting character | Atmosphere (3–5 words) | Energy | Carrier |
 | ---- | ---- | ---- | ---- | ---- | ---- |
 | **Front end** (main menu, lobby) | Unease inside the ordinary: "the street before" | An intact, empty residential street at late afternoon (sun higher than round 1, about 20°); every house dark in daylight | Still, ordinary, empty, crisp, wrong | Contemplative | One wrong note in an ordinary scene: dark windows in daylight, an untended leaf pile blowing across a driveway, a car door left open |
 | **Role select** | Readiness, belonging to a squad | The four squadmates in an open two-car garage lit by the squad's steady amber work light on a mast; grey daylight outside | Prepared, warm, cramped, purposeful | Measured | The amber work light: the game's first lesson that steady, mounted, coned amber light means the squad |
 | **Map select and loading** | Recognition: "that is a real place" | The dark cartographic sheet (Section 7): real street names drawing in over building footprints | Quiet, exact, documentary | Contemplative | Real street names and parks resolving on the map; the ODbL attribution sits on this screen |
-| **Deploy and round 0** (first intermission at the home sector) | Control, just barely: the squad sets up | Round 1 light; long views down 167th Street | Open, bright, exposed, purposeful | Measured | The squad raising the first work-light mast and dropping the first crate at the home crossing |
+| **Deploy and round 0** (first intermission at the home sector) | Control, just barely: the squad sets up | Round 1 light; long views down 167th Street | Open, bright, exposed, purposeful | Measured | The squad raising the first work-light mast and dropping the first crate in the home sector |
 | **Intermission** (every later round) | A held breath; decisions | The current round's light with no muzzle flash; smoke and dust from the last wave drifting | Settling, smoky, ticking, quiet | Measured, tightening as the timer runs | **Settling motion**: dust falling and smoke drifting downwind, where combat dust rises and bursts |
 | **Wave, holding a sector** (Dig In) | Pressure on the line | Muzzle blast bouncing off house fronts; work-light cones full of dust | Loud, dusty, close, heavy, chaotic | Frenetic in bursts | Muzzle-blast bounce light on siding and the dust torn from boards at the openings the horde is attacking |
 | **Wave, pushing** (capturing a sector) | Going forward into the unknown | From the squad's amber ground into an unlit, horde-held sector; weapon lights and flares lead | Exposed, forward, cold, uncertain | Driving | **Light as territory**: the moment the new work light goes up as the capture completes |
@@ -423,7 +457,7 @@ Sapper's diagonal bracing, holes with torn edges, sagging headers, rubble wedges
 lanes, deployables set down at an angle to the street grid. Ownership is not shown by angle (both sides make the
 same kind of mess); the squad's infrastructure carries its yellow marker in the UI layer (Section 4).
 
-**Panel states change the outline** (the concept's rule, expanded for modellers):
+**Panel states change the outline** (the concept's rule, expanded for modelling):
 
 | State | Outline | Detail that supports it (never instead of it) |
 | ---- | ---- | ---- |
@@ -467,18 +501,33 @@ Grade"). Its shapes are drawn, not modelled: thin linework, ticks, hatching and 
 map-sheet corner ticks. There are no pill-shaped buttons, bevels, gloss, glows or military stencils, and nothing
 borrowed from any reference game's HUD.
 
-| Shape | Meaning | Notes |
-| ---- | ---- | ---- |
-| **Chevron** | Squadmate, squad ping | Points up; carries the role icon above it |
-| **Survey tick**: a notched, hatched triangle | Horde (spotted zombie, horde-held sector) | Never a diamond (AB-10; concept A45) |
-| **Square** with a solid outline | Player infrastructure (supply point, armory, workbench, deployed gadget, fortification you own) | |
-| **Hazard-stripe outline**, pulsing | Danger (breach warning, explosive, structural failure, a downed squadmate) | Applied around whichever shape it modifies |
-| **Mast-and-cone glyph** | A held sector (the squad's light) | The HUD twin of the work light |
-| **Hatched band** | The frontline on the tactical map | Hatching leans toward the horde side |
-| **Footprint outline** | Buildings on the map | The real OSM footprints |
+**The marker shape table.** This is the single statement of what each shape means (AB-33). Sections 4.3, 7.2, 7.4
+and 7.8 use these shapes and point here; if another section ever disagrees with this table, this table wins. A
+marker's **shape** says what kind of thing it is, and its **colour** shows the highest meaning that applies to it
+(Section 4.3).
 
-Line weights scale with the HUD scale option; at 1080p and 100% the base stroke is 2 px and no meaningful line is
-thinner than 1.5 px.
+| Shape | Drawn as | Means | Colour (Section 4.3) | Used for | Never |
+| ---- | ---- | ---- | ---- | ---- | ---- |
+| **Chevron, apex up** | An open two-stroke chevron | A squadmate | Squad cyan | Over each squadmate, with the role icon above it; squadmates on the tactical map | Filled solid; pointing down |
+| **Chevron, apex down** | The same chevron inverted, its apex resting on the pinged point | A squad ping on a place | Squad cyan | Position pings, for their lifetime | Carrying a role icon |
+| **Survey tick** | An upright triangle outline (apex up) with a notch cut in its base and hatching inside | The horde | Horde green-grey; danger red only for the types and moments listed in 4.3 | Spotted zombies, with an optional type glyph inside; horde-held sectors on the sector ladder and the map | A rotated square (AB-10; concept A45); a solid triangle; an apex-down triangle over a head |
+| **Square** | An upright square with a solid outline: edges horizontal and vertical | Player infrastructure and items | Road-marking yellow | Supply points, armories, workbenches, deployed gadgets, fortifications you own; item pings | Rotated 45° |
+| **Ring** | A thin closed circle, hollow, with the sector's state glyph inside it and the sector label beside or under it | **An objective**: a place to take or hold | The colour of the sector's state: sodium amber when held, horde green-grey when horde-held, danger red with the hazard stripe when overrun | A sector's capture point in the world, on the sector ladder and on the map; the evac landing zone | A letter or a number inside it (sectors carry their names); a flag; a rotated square |
+| **Double ring** | The ring with a second ring outside it | The **ordered** objective (the squad order) | The outer ring is squad cyan; the inner ring keeps its state colour | The ordered sector in the world, on the ladder, on the map and on the bearing dial | |
+| **Arc** | An open arc that fills or drains; never a closed circle | A quantity or a timer that belongs to the thing it wraps | The colour of the thing it wraps | Stamina (round the crosshair); capture progress (thickening the ring's own stroke clockwise); bleed-out (round a downed squadmate's role icon); hold, revive and heal progress (round a button glyph) | Standing alone as a marker |
+| **Hazard-stripe outline**, pulsing | A striped outline added round another shape; it pulses at 1.5 Hz at most | Danger | Danger red | Breach warnings, explosives, structural failure, a downed squadmate, an overrun sector, and the horde types listed in 4.3 | Drawn with no shape inside it |
+| **Mast-and-cone glyph** | A mast with a light cone | A held sector (the squad's light) | Sodium amber | Inside the ring of a held sector: the HUD twin of the work light | |
+| **Hatched band** | A band of hatching that leans toward the horde side | The frontline | Set by the HUD specification | The tactical map only | |
+| **Footprint outline** | The real OSM building outline | A building | The map footprint line (Section 4.6) | The tactical map only | A label on an individual building |
+
+**No rotated squares.** Checked for this revision: no rule and no example in this document uses a square rotated 45°
+(a diamond) for a marker, an icon, a sector state or a button prompt. The word appears only in "never" entries and
+in the log of the rejected option (AB-10). The objective marker is the ring, and sectors are never lettered or
+numbered.
+
+Line weights are set for a screen seen from 3 m (Section 7.9): at 1080p and HUD scale 100% the base stroke is 3 px
+and no meaningful line is thinner than 2 px. Every mark in a meaning colour that is drawn over the world or on a
+translucent plate carries a 2 px dark keyline by default (Section 4.6). Line weights scale with the HUD scale option.
 
 ### 3.7 Hero shapes and supporting shapes
 
@@ -538,6 +587,11 @@ work.
 | **Horde green-grey** | `#A3AC86` | 69 | The horde: horde-held sectors on the map, spotted-zombie markers | A drained, sickly tone: the colour of the dead and of the dormant ground they cross | The **survey tick** (a notched, hatched triangle, never a diamond); hatched fill on the map |
 | **Road-marking yellow** | `#F7D24A` | 85 | Player infrastructure: supply points, armories, workbenches, deployed gadgets, fortifications you own | The colour of things built and maintained for use, like road markings | The **square** with a solid outline |
 | **Sodium amber** | `#B8661C` (HUD); about 2,000 K (light) | 52 | Light the squad places (work lights at held sectors, flares) and held sectors in the HUD | The colour of a sodium work light someone deliberately put up | **Steady** (never flickers), **mounted** on a visible mast or housing, throwing a **defined cone**; in the HUD, the mast-and-cone glyph |
+
+**Shapes.** The non-hue cues in this table are shapes from the single marker shape table in Section 3.6. That table
+also defines two shapes that carry no colour of their own: the **ring** (an objective, which takes the colour of its
+sector's state) and the **arc** (a quantity, which takes the colour of the thing it wraps). The palette stays at
+five colours.
 
 **Why these exact values.** The concept's colour rules were checked by simulation (Section 4.7). A "saturated red" at
 the usual value and an amber at the usual value merge for deuteranopes (ΔE76 about 7). The danger red is therefore
@@ -599,7 +653,7 @@ sign) stay, because they are surfaces, not lights or markers.
 
 | Area (first map) | Day | Night | Rule |
 | ---- | ---- | ---- | ---- |
-| **167th Street** corridor (home sector) | Open and sky-dominated; broad neutral-grey asphalt; the warmest light in golden rounds comes straight down the axis from the west | Cool streetlight pools spaced along the axis until they die; warm squad pools at the home crossing | The long axis keeps the most even light so the long band is fair in daylight; at night only motivated stretches are readable |
+| **167th Street** corridor (home sector) | Open and sky-dominated; broad neutral-grey asphalt; the warmest light in golden rounds comes straight down the axis from the west | Cool streetlight pools spaced along the axis until they die; warm squad pools in the home sector | The long axis keeps the most even light so the long band is fair in daylight; at night only motivated stretches are readable |
 | **Residential blocks** | Warmer mid-values (brick, beige siding, leaf litter); cool in house shadows | The darkest ground between streetlights; warm only where the squad holds | No light source exists here that the squad did not bring, except streetlights and fires |
 | **Creek Woods** | Cool, low-value browns and the late green of the understory; dim even by day under the canopy edge | The darkest area of the map: no streetlights; weapon lights and work lights only | The close-quarters sector stays close-quarters at every hour; never add ambient fill to make it easier |
 | **School Grounds** | Pale dormant field; a generic pale-brick, single-storey institutional building | Unlit (field and building lights off) | Generic and quiet; no set-piece fires placed here (sensitivity, Section 6.7) |
@@ -619,8 +673,8 @@ and thin accent bars, never as text colour or large fills.
 | Role | Value | Notes |
 | ---- | ---- | ---- |
 | HUD text, primary | `#F2F0EA` (L* 95) | 15.7:1 against the HUD plate |
-| HUD text, secondary | `#B9BEC2` (L* 77) | 9.5:1 against the HUD plate |
-| HUD plate | `#14181B` at 60–75% opacity | Behind text wherever text sits over the world |
+| HUD text, secondary | `#B9BEC2` (L* 77) | 9.5:1 against the HUD plate. Used on opaque surfaces only (the tactical map, menus); text over the world is always primary |
+| HUD plate | `#14181B` at **90% opacity** by default (player option, 80–100%) | Behind text and glyph rows wherever they sit over the world. Raised from 60–75% for a screen seen from 3 m (see the contrast rules below) |
 | Tactical map background ("dark chart") | `#161B1F` | The map is a dark chart, not light paper (AB-12): one meaning palette works on both HUD and map, and it suits night play |
 | Map footprints | Line `#5E676F`, fill `#20262B` | Real OSM building outlines |
 | Map streets | 167th Street `#D5D9DC` (widest); residential `#9DA4AA`; footways and the trail dashed `#6F777E` | Real street names in HUD text colours |
@@ -629,6 +683,23 @@ and thin accent bars, never as text colour or large fills.
 
 All five meaning colours keep at least 4:1 contrast against the HUD plate and the dark chart (non-text graphics need
 3:1). Text is never set in a meaning colour; an alert is HUD-white text on a plate outlined in the meaning colour.
+
+**Contrast over the world, for a screen seen from 3 m (Section 7.9; AB-32).** A translucent plate takes on the
+brightness of whatever is behind it, so the figures above hold only on an opaque plate. The worst case is a
+display-white dusk sky or sunlit white siding behind the plate. Computed in linear light, primary text on a 90% plate
+keeps about 5.8:1 over display white and about 6.8:1 over white siding. On the earlier 60–75% plate it fell to
+between 2.0:1 and 3.0:1 over display white. Three rules follow:
+
+- **Text over the world is always primary HUD white on a plate at 90% opacity or more.** Secondary grey would fall to
+  about 3.6:1 there, so it is kept to opaque surfaces.
+- **Every mark in a meaning colour that is drawn over the world or on a translucent plate carries a 2 px dark
+  keyline** in the plate colour, by default. Against its keyline every meaning colour keeps at least 4.2:1 (sodium
+  amber is the lowest). Without one, squad cyan and road-marking yellow fall under 2:1 over white siding. The keyline
+  used to be a player option; making it the default answers the gate's concern about world-space markers (Appendix
+  C.1, concern 5).
+- **These are computed figures.** The engine's own UI blending decides the real ones, so each is measured again on
+  captures of the worst-case scenes (a west-facing dusk sky, sunlit white siding) before the HUD is called done
+  (Appendix B).
 
 ### 4.7 Colour-blind safety
 
@@ -654,9 +725,10 @@ The two weakest pairs (danger against horde, and danger against amber) are exact
 hazard stripe are always present, so no meaning depends on their hue.
 
 **Rules for the options menu (Section 7.6):** no full-screen colour-blind filter (it would distort the world layer,
-which must stay real); instead an option to thicken marker outlines and add a dark keyline, and an option to remap any
-meaning colour to an alternative from a pre-validated set. Every HUD and map screenshot in review is run through the
-three simulations, and a marker fails if its meaning cannot be told from shape alone in greyscale.
+which must stay real); instead the dark keyline that every marker carries by default (Section 4.6), an option to
+thicken marker outlines, and an option to remap any meaning colour to an alternative from a pre-validated set. Every
+HUD and map screenshot in review is run through the three simulations, and a marker fails if its meaning cannot be
+told from shape alone in greyscale.
 
 ## 5. Character Design Direction
 
@@ -672,10 +744,11 @@ late-autumn cold, gloves, boots), but it identifies no real country, service, un
   wears **solid colours** (field grey-green shirts and jackets, coyote-tan carriers and pouches, dark grey helmets),
   or Holdout's own pattern if one is ever designed.
 - **No branded gear**: no visible maker's logos on helmets, optics, packs or boots.
-- **Two body frames** (male and female) for every role; every kit fits both.
+- **Body frames, staged.** One body frame at the first milestone (Section 8.12). The second frame, so that every
+  role has a male and a female frame, is deferred, not dropped: every kit is built to fit both.
 - **Generic faces**, built from licensed sources (a commercial scan library with model releases, or MetaHuman under
   its licence; verify the terms at acquisition). No real person's likeness. Helmets and eye protection cover much of
-  the face, which keeps head count and quality bar affordable.
+  the face, so the first milestone needs no bespoke heads at all.
 
 The squad's palette is muted and military, which separates it from the horde's civilian wardrobe. Role is shown by
 **shape, not colour** (all four share one palette), so the role test works in greyscale and for colour-blind players.
@@ -744,9 +817,11 @@ vests, flannel shirts, work jackets, sweaters, jeans, sweatpants, office trouser
 grounded way to pick up rim light at dusk and night. Eyes are clouded and **never glow**: zombies carry no emissives at
 all, so at night they read by silhouette, never by points of light.
 
-**Variation.** Three body frames (slight, average, heavy), at least 12 heads, 10 tops and 8 bottoms at the First Map
-Complete tier, plus damage masks and per-instance colour variation inside the wardrobe palette. No two identical
-combinations within any visible group of six.
+**Variation, staged (Section 8.12).** The first milestone has one body frame with at least 4 heads, 4 tops and 3
+bottoms from sourced packs (48 combinations before colour), plus damage masks and per-instance colour variation
+inside the wardrobe palette. The later target for the whole first map is three body frames (slight, average, heavy)
+with at least 12 heads, 10 tops and 8 bottoms. At every stage: no two identical combinations within any visible
+group of six.
 
 **Special types** push the same human anatomy under impossible stress, not into fantasy: no tentacles, glowing
 growths or mutations from a creature catalogue. The Breacher's shoulders have outgrown its shirt; the Detonator is
@@ -759,7 +834,7 @@ throat; the Wrecker is massive and asymmetric. All names are working names (conc
 
 | Who | Style | Specifics |
 | ---- | ---- | ---- |
-| Squad | Grounded and controlled; motion capture as the base | Idle weight shifts; deliberate reloads; pointing when pinging (third person); the kneel for a revive; a heavy drag (Corpsman passive, VS); faces neutral and focused; no emotes at MVP |
+| Squad | Grounded and controlled; library motion capture as the base (sourced clips, Section 8.12) | Idle weight shifts; deliberate reloads; pointing when pinging (third person); the kneel for a revive; a heavy drag (Corpsman passive, VS); faces neutral and focused; no emotes at MVP |
 | Horde | **Telegraph first**: broken and off-balance, with attack wind-ups exaggerated in amplitude and timing beyond realism so they read and can be parried | Wind-ups lift the arms above the head line or twist the torso so the attack is visible in silhouette; hit reactions are heavy and directional; a parried attack produces a large, clear stagger; the exact timings belong to the melee GDD |
 
 Exaggeration is allowed **only** in timing and amplitude of horde attacks and reactions (readability, Principle 3).
@@ -812,7 +887,8 @@ point. The worst night lands because the place is so recognisably normal.
 The style is **researched from generic public sources** about how and when the area was built: typology references
 for Chicago-area suburban housing of the post-war decades through the 1970s and 1980s (to be confirmed in a style
 research brief before the realism pass). It is **never** researched from street-level imagery or photographs of
-specific homes, and nobody photographs houses in the map area for reference (Principle 1; concept A29).
+specific homes, and no photograph of any real house, in the map area or anywhere else, is taken or used as reference
+for a kit (Principle 1; concept A29). Houses are generic kits; no real house is replicated.
 
 ### 6.2 House typology and kit families
 
@@ -888,8 +964,9 @@ the Sapper's bracing is steel strap plates plus 2×4 diagonal braces; deployable
 Substrate materials (on by default since 5.7). Why this, and not painted or stylised:
 
 - It is the user's direction (grounded realism, D7) and the only route to "the real suburb looking real" under Lumen.
-- A small team cannot paint a realistic suburb by hand; a scan library supplies believable bark, asphalt, concrete,
-  brick, soil and leaf litter, and the team spends its effort on the kit, the damage and the light.
+- One developer cannot paint a realistic suburb by hand (U12). Scan libraries supply believable bark, asphalt,
+  concrete, brick, soil and leaf litter, so the hand-made effort goes into the kit, the damage and the light (Section
+  8.12).
 - Calibrated materials respond correctly as the light changes across the rounds; painted lighting or stylised values
   would break the failing-light arc.
 
@@ -922,15 +999,26 @@ Substrate materials (on by default since 5.7). Why this, and not painted or styl
 | **School Grounds** | Sparse | A generic institution | The generic building, a parking lot with a few cars, the field | The building and cars | Signage, names, mascots, buses, child-specific props (Section 6.7) |
 | **Held sectors** (added by the squad) | Medium | The squad's infrastructure | Work-light masts, the resupply crate, the sector armory (a stack of hard cases and a rack), the workbench (a sawhorse table with tools), boards and bracing | The squad's own fortifications | Anything clean and perfectly aligned: everything here is askew |
 
+**Which houses can be entered.** Enterable houses and garages are chosen by gameplay criteria applied in the engine
+(the level GDD owns the criteria). This document, and every public document, screenshot caption and asset name,
+refers to them only generically ("an enterable house", "a garage cache"), never by street, block or position. Every
+house, enterable or sealed, is a generic kit fitted to a footprint. None is a replica of the real house at that spot
+(Principle 1).
+
+**Cars are props.** Parked cars and wrecks are static cover and set dressing. No vehicle can be driven or ridden:
+vehicles are out of scope by the user's decision (U14, which closes concept Q11).
+
 ### 6.7 Sensitive sites
 
-The concept's safeguards (A29) as render rules:
+The concept's safeguards (A29) as render rules. This table adds rendering rules only. Which places are sectors is set
+by the concept's system 6.1 alone; this document adds no sector and says nothing about places that are not on that
+list.
 
 | Site | Rendering | Rules |
 | ---- | ---- | ---- |
 | **School Grounds** (labelled generically) | A generic single-storey institutional brick building, a field, a parking lot | No name, signage, mascot or school colours; no school buses; no child-specific props; gore decals suppressed; no set-piece fires; never shown in marketing (concept R5); whether it stays a sector is open (Q16) |
 | **Cemetery** (labelled generically) | Open lawn, rows of low grey headstones, mature trees, a perimeter fence | Headstones are **nameless, generic and indestructible** (logged in the concept as an accepted exception to Pillar 1, A57), and take no decals (no scorch, blood or bullet marks); no open graves; no zombie ever emerges from a grave; never a landing zone |
-| **Places of worship** (three; never sectors) | Generic sealed masses with pitched roofs | **No religious iconography**; sealed and **not destructible** beyond cosmetic chips (AB-14; the concept's system 5 and Pillar 1 log this exception, A57); no gore decals; no set-piece fires |
+| **Places of worship** (three) | Generic sealed masses with pitched roofs | **No religious iconography**; sealed and **not destructible** beyond cosmetic chips (AB-14; the concept's system 5 and Pillar 1 log this exception, A57); no gore decals; no set-piece fires |
 | **Parks with playgrounds** | Open lawn and benches where OSM marks a playground | **Playground equipment omitted** (AB-14) |
 
 ### 6.8 Environmental storytelling
@@ -964,43 +1052,127 @@ Information reaches the player in this order of preference:
 2. **On the world** (spatial markers): chevrons, survey ticks and squares in the meaning colours, placed where the
    thing is.
 3. **On the screen** (a minimal screen-space HUD): only what cannot be shown in or on the world, much of it contextual
-   (it appears when it changes or matters, then fades).
+   (it appears when it changes or matters, then fades). It sits in the margin of the screen, never in the middle
+   (Section 7.2).
 
 The screen-space layer is drawn in **Holdout's own cartographic language** (the concept's "the map shows through, on
-the map only"): thin linework, ticks, hatching, real street names. The world itself is never stylised. No HUD look is
-borrowed from any reference game; Holdout's role icons and its survey tick replace the reference series' class icons
-and spotting marker (concept U1, R12).
+the map only"): thin linework, ticks, hatching, real street names. The world itself is never stylised. No HUD look
+and no HUD layout is borrowed from any reference game; Holdout's role icons, its survey tick, its objective ring and
+its own arrangement replace the reference series' class icons, spotting marker, objective markers and layout
+(concept U1, R12).
 
-### 7.2 HUD elements
+**Controller-only (U11).** The game is played with a gamepad on a screen seen from about 3 m. Every rule in this
+section is written for that: there is no cursor and no hover, text and linework are sized for the distance, and
+prompts are Holdout-drawn Xbox-layout glyphs. Section 7.9 holds the rules.
 
-The visual language is set here; the layout and behaviour are specified in `design/ux/hud.md` by `/ux-design`.
+### 7.2 HUD elements and arrangement
 
-| Element | Visibility | Position (starting) | Form |
+The visual language **and the arrangement** are set here (AB-31). `design/ux/hud.md`, written by `/ux-design`,
+specifies behaviour and may tune the sizes below. It does not move a block to another corner or add a persistent
+element to the field.
+
+**The idea: the field and the margin.** A map sheet has a field, which is the map itself, and a margin, which holds
+the title block, the legend and the bearings. Holdout's screen is laid out the same way. The **field** is the world,
+and it stays clear. Everything persistent sits in the **margin**, as four small blocks pinned to the corners of a
+safe frame. Each block answers one question and is closed by map-sheet corner ticks (Section 3.6). This is Section
+7.1's cartographic layer applied to layout, and it is Holdout's own.
+
+**Frame and field** (at 1920 × 1080 and HUD scale 100%; everything scales with the resolution and the HUD scale
+option):
+
+- **Safe frame:** the screen inset by 5% on every side (96 px left and right, 54 px top and bottom), because the game
+  is played on televisions (Section 7.9). A screen-margin option moves it between 0% and 10%. No HUD element crosses
+  it.
+- **The field:** the central 60% of the width and 60% of the height (1152 × 648 px). Only the crosshair cluster,
+  contextual prompts, world-space markers, the ping wheel while it is held and, briefly, a banner appear in it.
+- **The sky band:** the top 20% of the height, between 25% and 75% of the width (480 to 1440 px), holds no
+  persistent element. It is where figures are read against the sky from round 10 on (Section 2.2), and a bright sky is
+  the worst background for thin linework. Only a transient event tag may touch its edge, for a few seconds; banners
+  sit just under it.
+
+```text
++--------------------------------------------------------------------------------------------------+
+| safe frame: the screen inset by 5%                                                               |
+|                                                                                                  |
+|  SECTOR LADDER                                                         SQUAD BLOCK               |
+|  north at the top             . . . . . . . . . . . . . .            you  [health bar]  (icon)   |
+|  (o) sector name              .  sky band: nothing      .                   squadmate   (icon)   |
+|  (o)                          .  persistent here        .                   squadmate   (icon)   |
+|  (o) sector name              . . . . . . . . . . . . . .       [event tag] squadmate   (icon)   |
+|  (o)                                                                                             |
+|  (o)              +----------------------------------------------------------+                   |
+|                   |  THE FIELD: the central 60% x 60%                        |                   |
+|                   |                                                          |                   |
+|                   |                      crosshair cluster                   |                   |
+|                   |                      (A) prompt                          |                   |
+|                   |                                                          |                   |
+|                   +----------------------------------------------------------+                   |
+|                                                                                                  |
+|  TITLE BLOCK                                                                  KIT BLOCK          |
+|  ( dial )  167th Street                 subtitles                               salvage          |
+|  ( 268  )  Round 12, wave               (two lines at most)                gadget cross          |
+|                                                                                 24 / 96          |
++--------------------------------------------------------------------------------------------------+
+```
+
+**The four margin blocks.**
+
+| Block | Corner of the safe frame | The question it answers | Contents | Size at 1080p, HUD scale 100% |
+| ---- | ---- | ---- | ---- | ---- |
+| **Sector ladder** | Top left | What do we hold? | One row per sector, **ordered north to south as the sectors lie on the map** (ties run west to east), so the ladder is a one-line map: higher on the ladder is further north. Each row is the sector's **ring** with its state glyph (Section 3.6), then the sector label | Rows 52 px high; rings 40 px; at most 380 px wide with labels showing |
+| **Squad block** | Top right | Who is with me, and how are we? | Four rows, right-aligned, with the role icons at the outer edge. **The player's own row is first** and carries the health bar; the three squadmates follow | Rows 52 px high; role icons 48 px; at most 380 px wide |
+| **Title block** | Bottom left | Where am I, and when? | The **bearing dial**; to its right the **street line**, and under that the round and phase | Dial 120 px across; at most 480 px wide and 120 px high (160 px during an intermission) |
+| **Kit block** | Bottom right | What am I carrying? | From the bottom up: ammo, the **gadget cross**, salvage | At most 380 px wide and 200 px high |
+
+**Elements.** Shapes are those of the marker shape table (Section 3.6); text sizes are those of Section 7.3.
+
+| Element | Visibility | Position | Form |
 | ---- | ---- | ---- | ---- |
-| Crosshair | Hip fire only; hidden when aiming (the optic's reticle is diegetic) | Centre | A small dot with spread ticks; can be hidden in options |
-| Stamina | Contextual: only below full or while blocking | Thin arc around the crosshair | Arc in HUD white; breath audio does the rest |
-| Ammo | Contextual: on reload, when low (25% or less), at a crate or supply point; fades after 3 s | Bottom right | Magazine and reserve numerals in tabular figures; a held reload button performs a diegetic magazine check |
-| Gadget charges | Contextual: on change and while the gadget is equipped | Beside ammo | The gadget glyph with charge ticks |
-| Own health | Contextual: while below full | Bottom left | A thin bar with a notch at the **recovery ceiling** (50; health above it comes only from a heal, concept system 3), plus a damage edge vignette (capped opacity) and directional damage arcs toward the source |
-| Salvage | Contextual: on change, at an armory or workbench, and during intermissions | Above ammo | Numerals with the salvage glyph |
-| Squad list | Persistent, compact | Left edge | Four rows: role icon, name, state (alive, downed with bleed-out ring, dead with redeploy timer); a small low-health flag below the recovery ceiling ("needs a heal") |
-| Squad markers | Persistent; fade with distance; outlined when occluded | Over each squadmate | Cyan chevron with role icon and name |
-| Pings and spotted zombies | For their lifetime (pings 5 s, specials 8 s) | In the world | Squad cyan chevron (position), survey tick (zombie: horde green-grey for every type, specials included, with an optional type glyph inside; danger red only for the types and moments listed in Section 4.3), square (items); hollow when occluded |
-| Compass strip | Persistent | Top centre | A cartographic bearing strip with markers, plus **the real name of the street the player is on** (Pillar 2 in one line of text) and the bearing to the **squad order's** sector (concept A63) |
-| Sector board | Persistent | Under the compass | A chip per sector with its sector label (concept 6.1: real street, park, creek and trail names, for example "167th Street" or "Lewis Park Fields"; generic labels only for sensitive sites; the wooded park's creek label is the logged exception): held (amber mast-and-cone glyph), horde-held (green-grey survey tick, hatched), capturing (progress ring), contested (both glyphs, ring paused), overrun (danger hazard stripe). The ordered sector's chip carries a squad-cyan outline (concept A63) |
-| Round and phase | Persistent, small; the intermission timer is large while it runs | Top right | Round number; intermission countdown; Push or Dig In vote state |
-| Squad events | Contextual, at most three lines, fading | Top right, under the round | Squad actions only ("revived", "resupplied", "reinforced"), which rewards Pillar 4. No kill feed |
-| Interaction prompts | Contextual | Below the crosshair | Xbox-layout button glyph (the game is controller-only, concept U11), verb and cost ("Reinforce · 150"); revive, heal and capture progress as a thin bar. A prompt or ping names an object by its kind ("door", "garage", "window"), **never an individual building**, not even by its street (concept 6.1) |
-| Hit confirmation | On **impact**, not on firing (projectiles take time to land) | Around the crosshair | Four short ticks; a kill adds a brief inward motion; a headshot is marked by sound. **No damage numbers** |
+| Crosshair | Hip fire only; hidden when aiming (the optic's reticle is diegetic) | Centre of the field | A small dot with spread ticks; can be hidden in options |
+| Stamina | Contextual: only below full or while blocking | Round the crosshair | A thin arc in HUD white; breath audio does the rest |
+| Hit confirmation | On **impact**, not on firing (projectiles take time to land) | Round the crosshair | Four short ticks; a kill adds a brief inward motion; a headshot is marked by sound. **No damage numbers** |
 | Parry feedback | On a parry | Diegetic first | Sparks, the zombie's large stagger and the sound; at most a 120 ms crosshair pulse |
+| Interaction prompts | Contextual | In the field, centred, about 130 px below the crosshair | A Holdout-drawn Xbox-layout button glyph (Section 7.9), then the verb and cost ("Reinforce · 150") in Primary text on a plate. A hold, a revive, a heal and a capture show an arc filling round the glyph. A prompt or ping names an object by its kind ("door", "garage", "window"), **never an individual building**, not even by its street (concept 6.1) |
+| Downed | While downed | Centre of the field | A bleed-out arc; the nearest squadmate's distance and approach; the world view desaturated 40% at most, no blur in the central 60% |
+| Sector ladder | The column of rings is persistent. Labels show on the row of the sector the player is in, on the ordered sector's row and on any row whose state is changing; on every row during an intermission and for 4 s after any sector changes state. An option keeps every label on | Top-left block | Each row shows its sector's state: **held** (amber ring with the mast-and-cone glyph inside), **horde-held** (green-grey ring with the survey tick inside, hatched), **capturing** (the ring's stroke thickens clockwise as an arc in the capturer's colour), **contested** (both glyphs inside, the arc paused), **overrun** (danger hazard stripe, pulsing). The **ordered** sector's row has the double ring (concept A63). The row of the sector the player is in has a short solid bar at its outer edge. Labels are the concept's sector labels (6.1: real street, park, creek and trail names, for example "167th Street" or "Lewis Park Fields"; generic labels only for sensitive sites; the wooded park's creek label is the logged exception), written out in full in Secondary text, never abbreviated. **Sectors are never lettered or numbered** |
+| Squad block | Persistent, compact | Top-right block | Four rows: role icon, name, state (alive; downed, with a bleed-out arc round the role icon in danger red; dead, with a redeploy timer); a small low-health flag below the recovery ceiling ("needs a heal") |
+| Own health | The row is persistent; the bar is contextual and shows while health is below full | The first row of the squad block | A thin bar with a notch at the **recovery ceiling** (50; health above it comes only from a heal, concept system 3). In the field, a damage edge vignette (capped opacity) and directional damage arcs toward the source do the urgent work |
+| Squad events | Contextual: at most three at once, each fading after 4 s | Beside the row of the squadmate who acted, on the inner side of the squad block | A short tag drawn on next to the row. Squad actions only ("revived", "resupplied", "reinforced"), which rewards Pillar 4. It is not a feed, and there is **no kill feed** |
+| Bearing dial | Persistent | Title block | A ring 120 px across, drawn **heading-up**: the top of the dial is where the player is facing. On its rim: a labelled north mark that travels round as the player turns; the ordered sector's double ring at its bearing (concept A63); squad pings as cyan ticks; downed squadmates as danger ticks. In its centre: the cardinal letters over the three-digit heading, in tabular figures. Nothing else is drawn inside it. It shows bearings, never positions, distances or zombies, so it is not a minimap and not a radar |
+| Street line | Persistent | Title block, to the right of the dial | **The real name of the street the player is on**, in Primary text (Pillar 2 in one line of text). A name too long for the block steps down to Secondary text; it is never cut short. The HUD specification decides what the line shows away from a street; it never names a building |
+| Round and phase | Persistent, small; the intermission countdown is large while it runs | Title block, under the street line | Round number and phase. In an intermission: the countdown in Display text, and the Push or Dig In vote as a two-way directional choice (Section 7.9) |
+| Ammo | Contextual: on reload, when low (25% or less), at a crate or supply point; fades after 3 s | Kit block, bottom line | Magazine and reserve numerals in tabular figures; a held reload button performs a diegetic magazine check |
+| Gadget cross | Contextual: on change, while a gadget is equipped, and while the player is choosing | Kit block, above the ammo | Up to four gadget glyphs on a small upright cross, one per direction, each with its charge ticks; the equipped gadget is inverted (Section 7.9) |
+| Salvage | Contextual: on change, at an armory or workbench, and during intermissions | Kit block, top line | Numerals with the salvage glyph |
+| Squad markers | Persistent; fade with distance; outlined when occluded | In the world, over each squadmate | Cyan chevron, apex up, with the role icon and name |
+| Pings and spotted zombies | For their lifetime (pings 5 s, specials 8 s) | In the world | Cyan chevron, apex down (a place); survey tick (a zombie: horde green-grey for every type, specials included, with an optional type glyph inside; danger red only for the types and moments listed in Section 4.3); square (an item); each drawn hollow when occluded |
+| Objective marker | While a sector is ordered or being captured, and for the evac landing zone | In the world, over the capture point | **The ring**, with the sector's state glyph inside and its label under it; the double ring for the ordered sector; capture progress as the arc |
+| Ping wheel (Vertical Slice) | While the ping button is held (concept system 11); a tap sends a contextual ping with no wheel | Centred on the crosshair | A thin ring about 360 px across with glyphs on it, chosen by pointing a stick (Section 7.9) |
 | Panel states | Diegetic (outlines, Section 3.4) | In the world | While a Sapper holds the reinforce tool, an overlay outlines nearby panels: squad-owned reinforced (yellow), about to fail (danger red) |
-| Downed | While downed | Centre | Bleed-out ring; the nearest squadmate's distance and approach; the world view desaturated 40% at most, no blur in the central 60% |
+| Banners | Transient: a round starting, the evac call, a sector won or lost; 2.5 s at most | One line centred at about 24% of the screen's height: just under the sky band, at the top edge of the field | Display text on a plate, drawn on and wiped off (Section 7.5). The information then stays in the title block or the ladder |
 | Tactical map | Hold to open | Full screen | The dark chart (Section 7.8) |
-| Subtitles | For every voice callout | Bottom centre | HUD white on a plate |
+| Subtitles | For every voice callout | Bottom centre, between the title block and the kit block; at most 760 px wide and two lines | HUD white on a plate, in Primary text by default |
 
-**No persistent minimap at MVP** (AB-15): the compass strip, world markers and the hold-to-open tactical map carry
-orientation. Playtests decide whether a corner minimap returns as an option. The browser greybox prototype draws one
-for debugging; that is a listed prototype divergence, not a precedent (concept Next Steps).
+**Why this arrangement.**
+
+- **It follows the game's own content.** Holdout's sectors have real names, and a name needs a line of its own. A
+  vertical ladder can spell "Lewis Park Fields" in full, in text large enough to read from 3 m, where a row of small
+  markers could only abbreviate it. Ordering the ladder north to south turns it into a strip of the map.
+- **It suits a stick.** A heading-up dial shows all 360° at once, so a player who turns with a stick sees what is
+  behind before committing to the turn. The heading numerals keep spoken bearings possible, and the street line gives
+  the callout this game is built for ("Runners on 167th").
+- **It keeps the sky.** The top centre is where silhouettes are read at dusk and at night.
+- **One glance, one question.** From 3 m a 55-inch screen spans about 23°, so a corner is a short glance away, and
+  each corner holds one subject. The player's own health sits with the squad's, because in this game health is a
+  squad matter (the Corpsman's heal, the "needs a heal" flag).
+- **It is not a borrowed layout** (Section 9.1). There is no row of objective icons across the top centre, no
+  lettered objective, no bearing tape, no squad list stacked on a corner minimap, no health readout paired with the
+  ammo, and no kill feed.
+
+**No persistent minimap at MVP** (AB-15): the bearing dial, the street line, world markers and the hold-to-open
+tactical map carry orientation. Playtests decide whether a minimap returns as an option; if it does, it goes in the
+margin under the same rules, and its place is decided then. The browser greybox prototype draws one for debugging;
+that is a listed prototype divergence, not a precedent (concept Next Steps).
 
 ### 7.3 Typography
 
@@ -1011,25 +1183,36 @@ of a US suburb, and it ties the HUD to the real street signs in the world.
   Open Font Licence and LGPL). **Numerals: Overpass Mono** (tabular). The same typeface sets the in-world street-name
   signs. *Fallback:* IBM Plex Sans Condensed and Plex Mono (SIL OFL). Verify both licences and the glyph coverage
   needed for the later cities' street names before shipping (AB-16).
-- **Case:** sentence case everywhere, except short labels of 12 characters or fewer (sector chips, the compass
-  letters), which may be capitals with 5% extra tracking.
+- **Case:** sentence case everywhere, except short labels of 12 characters or fewer (the dial's cardinal letters,
+  button labels such as "LB"), which may be capitals with 5% extra tracking. Sector labels are written the way the
+  street or park is written, never in capitals.
 
-| Level | Size at 1080p, HUD scale 100% | Weight | Used for |
-| ---- | ---- | ---- | ---- |
-| Display | 40 px | Bold | Round banner, intermission countdown, evac call |
-| Primary | 24 px | Semibold | Prompts, sector labels, the street-name readout |
-| Secondary | 20 px | Regular | Squad names, salvage, ammo reserve, subtitles (default) |
-| Tertiary | 18 px | Regular | Map labels for residential streets, legends |
-| Legal | 16 px | Regular | ODbL attribution and licence line |
+**Sized for 3 m (U11).** The design condition is a 55-inch 16:9 television seen from 3 m (Section 7.9). There, one
+pixel of a 1080p image is about 0.73 arcminutes, so a desk-distance scale (18–24 px, the first draft of this table)
+is too small: type has to be roughly twice the size it would be on a monitor at arm's length to look the same.
 
-**Minimum readable size:** 18 px at 1080p for any gameplay information; 16 px only for legal text, which must still
-be legible. Sizes scale with the HUD scale option (80–150%) and with a separate text-size option. Text sits on the HUD
-plate wherever it overlaps the world.
+| Level | Size at 1080p, HUD scale 100% | Angle at 3 m on a 55-inch screen | Weight | Used for |
+| ---- | ---- | ---- | ---- | ---- |
+| Display | 64 px | about 47 arcmin | Bold | Banners, the intermission countdown, the evac call |
+| Primary | 36 px | about 26 arcmin | Semibold | Prompts, the street line, the magazine count, subtitles (default), menu items |
+| Secondary | 30 px | about 22 arcmin | Regular; Semibold for sector labels | Sector labels, squad names, salvage, the ammo reserve, the heading, event tags, menu detail text |
+| Tertiary | 26 px | about 19 arcmin | Regular | Tactical-map labels for residential streets, legends, the menu legend line |
+| Legal | 22 px | about 16 arcmin | Regular | ODbL attribution and licence line |
+
+**Minimum readable size:** 26 px at 1080p for any gameplay information; 22 px only for legal text, which must still
+be legible from 3 m. Anything a player reads as a sentence under time pressure (prompts, subtitles) is Primary or
+larger: vision-science reviews of print size put fluent reading at an x-height of about 0.2° (12 arcminutes) and
+above, and Primary is the first level expected to reach it on this typeface (to be confirmed by measuring the font
+file's x-height; Appendix B). Subtitles at Primary run to about 38 characters a line. Sizes scale with the HUD scale
+option (80–150%, set by a size check at first launch, Section 7.9) and with a separate text-size option. Text over the
+world always sits on the HUD plate and is always primary HUD white (Section 4.6).
 
 ### 7.4 Iconography
 
-**Flat, outlined, cartographic.** Glyphs are single-colour linework (2 px stroke at 1080p and 100%) on a 24 px grid
-(32 px for role icons), coloured by meaning, with no gradients, bevels, glows or photographic rendering.
+**Flat, outlined, cartographic.** Glyphs are single-colour linework (3 px stroke at 1080p and HUD scale 100%) on a
+40 px grid (48 px for role icons and for button prompts in the field), sized for a screen seen from 3 m (Section
+7.9) and coloured by meaning, with no gradients, bevels, glows or photographic rendering. Marker shapes are defined
+once, in Section 3.6.
 
 | Icon | Holdout's design | Never |
 | ---- | ---- | ---- |
@@ -1037,9 +1220,11 @@ plate wherever it overlaps the world.
 | Quartermaster | A frame pack: an upright rectangle with a top bar and two straps, the role's block primitive (AB-29) | Cartridges, bullets, magazines or ammo belts (common for the reference series' support role), or the reference series' class icon |
 | Sapper | A brace: a diagonal across a square frame (it echoes the reinforced panel) | The reference series' class icon |
 | Spotter | A mast with two arcs (the sensor) | An eye, or the reference series' class icon |
-| Spotted zombie | The survey tick | A diamond (concept A45) |
-| Infrastructure | A square holding a small glyph: a rack (armory), a vice (workbench), an ammo can (supply point), a crate | |
-| Held sector | The mast-and-cone glyph | |
+| Spotted zombie | The survey tick (Section 3.6) | A rotated square, that is a diamond (concept A45) |
+| Infrastructure | An upright square holding a small glyph: a rack (armory), a vice (workbench), an ammo can (supply point), a crate | A square rotated 45° |
+| Objective | The ring, with the sector's state glyph inside it (Section 3.6) | A letter, a number, a flag or a rotated square |
+| Held sector | The mast-and-cone glyph, inside the sector's ring | |
+| Button prompts | Holdout-drawn Xbox-layout shapes and letters (Section 7.9) | A platform logo, any platform holder's own glyph art, colour-coded face buttons, a keyboard key or a mouse |
 | Weapons and attachments | Side-profile line drawings of Holdout's generic designs | Real product silhouettes or logos |
 | Squad emblem | A survey benchmark disc (a circle with a level bar), Holdout's own | Real military or agency insignia |
 
@@ -1054,47 +1239,155 @@ or cross-fade in 200 ms; no swooping parallax.
 
 ### 7.6 Accessibility options with a visual side
 
-HUD scale (80–150%) and a separate text size; marker outline thickness and a dark keyline; per-meaning colour remap
-from a pre-validated set (Section 4.7); **Night visibility assist** (raises the horde readability light's cap by up
-to two times, Section 2.5); **Reduce flashes** (lower muzzle-flash and explosion bloom and flare intensity); camera
-shake 0–100%; head bob off; field of view and aim field of view sliders; motion blur off; film grain off; damage
-vignette opacity; subtitle size and plate opacity; crosshair style and visibility; reduced gore (Section 5.8). By
-default no full-field flash exceeds three per second (muzzle flash, explosions and flares included). The full list
-belongs to `design/accessibility-requirements.md`.
+HUD scale (80–150%), set by a size check at first launch (Section 7.9), and a separate text size; screen margin
+(0–10%); marker outline thickness (the dark keyline is on by default, Section 4.6); plate opacity (80–100%);
+per-meaning colour remap from a pre-validated set (Section 4.7); always-on sector names (Section 7.2); **Night
+visibility assist** (raises the horde readability light's cap by up to two times, Section 2.5); **Reduce flashes**
+(lower muzzle-flash and explosion bloom and flare intensity); camera shake 0–100%; head bob off; field of view and
+aim field of view sliders; motion blur off; film grain off; damage vignette opacity; subtitle size and plate opacity;
+crosshair style and visibility; reduced gore (Section 5.8). By default no full-field flash exceeds three per second
+(muzzle flash, explosions and flares included).
+
+**Controller options with a visual side** (the settings themselves belong to the input GDD; concept system 11 makes
+them core systems from the MVP). Look sensitivity, aiming sensitivity and the sensitivity for each optic
+magnification are sliders with numerals. The stick deadzones and the response curve are each shown as a live line
+drawing in the UI's own linework (the stick's position inside its deadzone ring; the curve as a small graph with the
+current input marked on it), so they can be set by eye from the couch. Aim-assist strength is a stepped setting.
+Every hold prompt can be switched between hold and press, and every held state between hold and toggle. Every option
+on every screen is reached and changed with a gamepad alone; none needs a keyboard or a pointer.
+
+The full list belongs to `design/accessibility-requirements.md`.
 
 ### 7.7 Art direction versus readability: conflicts and decisions
 
 A specialist pair (`art-director` and `ux-designer`) would have argued these out; the user could not be asked, so
-each is decided with both positions recorded (AB-15). Every decision can be overruled.
+each is decided with both positions recorded (AB-15; rows 10–12 are AB-31 and AB-32, decided inside the user's
+controller-only decision U11). Every decision can be overruled, except U11 itself.
 
 | # | Conflict | Art direction's position | UX position | Decision |
 | ---- | ---- | ---- | ---- | ---- |
 | 1 | Ammo | No counter: magazine checks and the sound of a near-empty weapon | Finite ammo with no drops and a limited supply stock means players must plan resupply and call for the Quartermaster | **Contextual numerals** (on reload, when low, at supply) plus the diegetic magazine check |
 | 2 | Stamina | Breath audio and weapon sway only | Block and parry spend stamina; failing a block without warning feels unfair | **Contextual thin arc** at the crosshair, plus breath audio |
 | 3 | Health | Edge vignette only | Revive and Corpsman priorities need a clear state | **Own health: contextual bar plus vignette. Squadmates: downed and low-health flags only** |
-| 4 | Minimap | None: the world and the compass | A corner minimap reduces disorientation on a 1.2 km map | **None at MVP**; the compass strip shows the real street name; playtests decide on an optional minimap |
+| 4 | Minimap | None: the world and a bearing | A corner minimap reduces disorientation on a 1.2 km map | **None at MVP**; the title block's street line shows the real street name and the bearing dial shows bearings; playtests decide on an optional minimap |
 | 5 | Hit confirmation | Sound and impact effects only | With travel time, players need to know a shot landed | **Ticks on impact, no damage numbers** |
 | 6 | Downed view | Heavy desaturation and blur | The downed player still crawls and shoots and must see threats | **40% desaturation at most; no blur in the central 60%** |
 | 7 | Night | Dark nights that make the light plan matter | Threats must stay visible | The concept's per-band minimums (Section 2.4), the bounded readability light (Section 2.5) and **Night visibility assist** as an option |
 | 8 | Spotted markers through walls | Markers only in line of sight | Spotting is a squad hand-off and must survive cover | **Visible through walls for their lifetime, drawn hollow when occluded** |
 | 9 | Crosshair | No hip-fire crosshair | New players need a reference, and every player aims with a stick (concept U11) | **Small dot with spread ticks**, hideable |
+| 10 | Text and line size | Fine, small linework: the HUD as a quiet drawing | The game is played with a controller from about 3 m (U11), and desk-sized type cannot be read from there | **The 3 m scale** (Sections 7.3 and 7.9): 26 px minimum text and a 3 px base stroke; a size check at first launch; HUD scale down to 80% for anyone sitting close |
+| 11 | Plates | Light, translucent plates, so the world shows through | Text on a 60–75% plate drops to between 2:1 and 3:1 over a bright sky | **90% plates and a default dark keyline** (Section 4.6); plate opacity stays a player option |
+| 12 | Where the HUD sits | Almost nothing on screen | Sector state, squad state, bearings and the round have to be readable at a glance | **The field and the margin** (Section 7.2): four corner blocks, a clear field and an empty sky band |
 
 ### 7.8 The tactical map, the front end and attribution
 
 - **Tactical map (the hero UI):** a dark chart of the real OSM data: building footprints, streets with their real
-  names in a hierarchy (167th Street widest), water, neutral grey land cover, the sectors with their sector labels
-  (as on the sector board, 7.2),
-  the frontline as a hatched band, squad chevrons, pings, infrastructure squares and spotted ticks. **It shows the
+  names in a hierarchy (167th Street widest), water, neutral grey land cover, the sectors as rings with their sector
+  labels (as on the sector ladder, 7.2), the frontline as a hatched band, squad chevrons, pings, infrastructure
+  squares and spotted ticks (the shapes of Section 3.6). **It shows the
   squad's changes:** breached and destroyed walls appear as gaps and broken outlines in the footprints, so the map
   becomes a record of the match. **Text rule:** the only words drawn on the chart are street names and sector labels.
   OSM place, subdivision (named residential land use) and institution names are never drawn, so no subdivision name
   reaches the screen through the map data (concept 6.1, U10).
+- **The map with a controller (Section 7.9):** the map has no cursor. A fixed reticle sits at its centre and the
+  chart moves under it: a stick pans, the zoom steps between three fixed scales, and a directional press snaps the
+  reticle to the next sector ring or squadmate. Whatever is under the reticle has the focus, and its name and the
+  actions available on it show in the legend line. The redeploy screen uses the same snapping to choose the squadmate
+  to spawn on.
 - **Front end:** the main menu sits over the live "street before" scene (Section 2.3); role select is the open garage
-  under the squad's work light; the end-of-match summary is the map of what the squad held, broke and built.
+  under the squad's work light; the end-of-match summary is the map of what the squad held, broke and built. At the
+  first milestone the front end is the dark chart alone, with no 3D scene (Section 8.12). Every front-end screen
+  follows the focus rules of Section 7.9.
 - **Map select and loading:** the map is named **"Tinley Park, IL (60477)"** (never after a subdivision); its
   cartographic sheet draws in; no promotional imagery of real houses is used.
 - **ODbL attribution** ("© OpenStreetMap contributors", with a link to the licence) appears on map select, on loading
   screens, in a corner of the tactical map and in the credits, at the legal size or larger.
+
+### 7.9 Controller-only rules (U11)
+
+**The user's decision.** Holdout is played with a gamepad and never with a keyboard (U11, confirmed twice by the user
+on 2026-11-19; playtests use an Xbox Elite Series 2; this closes concept Q22). A gamepad is the primary and only
+supported player input. Keyboard and mouse is a developer fallback: it is never advertised, never tuned and never
+shown in the UI. These rules bind every screen: the HUD, the tactical map, the front end, the armory and workbench,
+and the options. Where an older rule in this document assumed a pointer, this section replaces it.
+
+**1. The design condition: a 55-inch 16:9 television seen from 3 m**, at 1080p or above. From there the screen spans
+about 23°, and one 1080p pixel is about 0.73 arcminutes. That is finer than normal eyesight resolves (about one
+arcminute), so nothing meaningful may be one pixel wide. What follows, at 1080p and HUD scale 100%:
+
+| Thing | Rule | Stated in |
+| ---- | ---- | ---- |
+| Text | 26 px minimum for gameplay information; 36 px for anything read as a sentence; 22 px for legal text | Section 7.3 |
+| Lines | 3 px base stroke; nothing meaningful thinner than 2 px | Section 3.6 |
+| Glyphs | A 40 px grid; 48 px for role icons and for button prompts in the field | Section 7.4 |
+| World-space markers | Never drawn smaller than 32 px, however far away the thing is: they fade with distance, they do not shrink | Here; it applies to every world-space marker in Section 7.2 |
+| Contrast | Text over the world is primary white on a plate at 90% or more (about 5.8:1 in the worst case). Marks in a meaning colour carry a 2 px dark keyline by default | Section 4.6 |
+| Safe frame | 5% inset, adjustable from 0% to 10% | Section 7.2 |
+| Size check | At first launch, one screen shows a sample line and asks the player to step the HUD scale left and right until it reads comfortably from where they sit. A smaller television or a longer room goes up to 150%; a player sitting close goes down to 80% | Section 7.6 |
+
+**2. Button prompts: shapes and letters, drawn by Holdout.** Prompts use **Xbox-layout labels** (U11). They are
+drawn as generic shapes and letters in the game's own linework and belong to the glyph set of Section 7.4: a 3 px
+HUD-white outline on a dark plate, the letter in the UI typeface, one colour.
+
+| Control | Glyph | Rule |
+| ---- | ---- | ---- |
+| Face buttons | A circle holding the letter A, B, X or Y | One circle, one letter. Never colour-coded: colour belongs to the meaning palette (Section 4.3) |
+| Bumpers | A wide, low bar with a slightly arched top, holding LB or RB | Always wider than it is tall |
+| **Triggers** | A tall tab with one curved edge, holding LT or RT | Always **taller than it is wide**, so a trigger and a bumper differ by outline before the letters are read. A hold is an arc filling round the tab. No action needs a partial pull, so no prompt shows one |
+| **Sticks** | A small circle (the cap) inside a ring (the gate), holding L or R | **Moving a stick and pressing it never share a glyph.** *Move:* a direction tick outside the ring on the side to push, or a full outer arc when any direction will do. *Press:* the cap filled solid with a short tick under it, and no direction tick |
+| D-pad | An upright plus | The direction in use is filled; all four are outlined when any of them will do |
+| Menu and View | A square-cornered tag holding the word "Menu" or "View" | Words, not pictograms |
+| A hold, and two controls together | The verb says "Hold", and an arc fills round the glyph while the control is held. Two glyphs joined by a plus sign at most | No double-taps and no three-control chords |
+
+**Never in a prompt:** a platform's logo or its logo button; any platform holder's own glyph artwork, or shapes
+traced from it; another controller layout's symbols; a photograph or a 3D render of a controller; a keyboard key or a
+mouse; a back paddle. Back paddles are remaps that the player sets in the controller's own software, so the game
+never prompts for one and every action is reachable without them.
+
+**3. Focus navigation.** Every screen that is not the game view is used by moving a focus with the D-pad or the left
+stick.
+
+- **No cursor.** There is no pointer and no stick-driven virtual cursor on any screen, the tactical map included
+  (Section 7.8).
+- **Always exactly one focus.** One element is focused from a screen's first frame. Focus is never lost: if the
+  focused element goes away, focus moves to its nearest neighbour. Returning to a screen restores the last focus.
+- **Focus is a shape, not a hue.** The focused element **inverts** (a HUD-white plate with dark text and glyph) and
+  gains map-sheet corner ticks outside its outline, drawn on in 100–150 ms. It must be the most obvious thing on the
+  screen from 3 m. *Selected but not focused:* a solid bar on the element's leading edge. *Disabled:* a hatched plate
+  and thinner linework; it can still take the focus, so the detail panel can say why it is unavailable.
+- **No hover-only states.** Nothing is revealed, previewed or triggered by resting on an element, and there are no
+  pointer tooltips. The description, cost and comparison for the focused element show in a fixed detail panel on the
+  same screen.
+- **Built on rows and columns.** Menus are lists and grids whose elements line up, so a directional press lands where
+  the eye expects. There is no drag-and-drop (an attachment is fitted by choosing the slot, then the part), no scroll
+  bar to grab (a list scrolls to keep the focus in view), no double-click, and no control that only a pointer could
+  reach. Rows are at least 64 px high.
+- **Sliders and values** step left and right on the focused row, speed up when held, and always show their number.
+- **The legend line.** Every screen ends with one line at the bottom of the safe frame that lists each control that
+  does something on that screen: the glyph, then the verb. Confirm and back are the same two controls on every
+  screen, and back never needs the focus to be moved first.
+- **Text entry.** No screen needs a physical keyboard. Where characters have to be entered (a lobby code), the screen
+  offers a gamepad character picker or the platform's own on-screen keyboard.
+
+**4. Choosing among things: a wheel or a cross, never a list.** In the game view, a choice among gadgets or among
+ping types is made by direction.
+
+- **The ping wheel** (Vertical Slice; concept system 11: a tap pings, a hold opens the wheel). A thin ring about
+  360 px across, centred on the crosshair, divided by tick marks into **four to eight** equal segments, with one
+  48 px glyph on the ring per segment. Pointing a stick highlights a segment, which inverts. The highlighted
+  choice's name shows in Primary text under the centre. Releasing the button sends it; letting the stick return to
+  the centre and releasing cancels. The world stays visible and the match does not pause.
+- **The gadget cross.** Each gadget a player carries owns one direction of an upright cross (up to four), shown in
+  the kit block with its charge ticks; the equipped gadget is inverted. The input GDD decides which control drives
+  the cross and may also give a gadget a button of its own. The HUD draws the cross either way.
+- **Two-way choices** (the Push or Dig In vote) are a left-or-right choice, shown with its two direction glyphs.
+- **Never:** a numbered bar, a list walked item by item, or a wheel aimed with a pointer. A choice with more than
+  eight options is split into two steps.
+- Wheels and crosses are Holdout linework: a ring with tick marks, an upright cross of slots. They use no
+  wedge-shaped text boxes round a centre, and no layout or wording from any reference game's request menu.
+
+**5. Aiming with sticks.** Aim assist (concept system 11) has no visual of its own: no bracket, no snapping reticle
+and no highlighted target. The crosshair, the hit ticks and the diegetic optic are the whole aiming display.
 
 ## 8. Asset Standards
 
@@ -1104,21 +1397,23 @@ each is decided with both positions recorded (AB-15). Every decision can be over
 | ---- | ---- | ---- |
 | Engine | Unreal Engine 5.8 (pinned; latest hotfix 5.8.4), C++ and Blueprint | `project.yaml`, `technical-preferences.md` |
 | Rendering | Lumen and Nanite (deferred); Substrate materials (on by default since 5.7); MegaLights production-ready in 5.8 (needs hardware or software ray-tracing support); Lumen Lite is Beta | `docs/engine-reference/unreal/modules/rendering.md` |
-| Platform | PC (Windows) on Steam; **controller-only for players** (an Xbox-layout gamepad); keyboard and mouse is a developer fallback | Concept U11, `technical-preferences.md`, `project.yaml` |
+| Platform | PC (Windows) on Steam; **controller-only for players** (an Xbox-layout gamepad); keyboard and mouse is a developer fallback, never advertised or tuned; the UI is designed for a television seen from 3 m (Section 7.9) | The user's decision U11 (confirmed twice, 2026-11-19), `technical-preferences.md`, `project.yaml` |
+| Team and money | **One developer with AI tools.** No team, no outsourcing, close to zero cash beyond free or low-cost marketplace assets, and an unknown number of hours a week (Section 8.12) | The user's decision U12 (2026-11-19) |
 | Performance target | **60 fps at 1080p on a mid-range GPU (RTX 3060 class)**, 4 players; 16.6 ms frame budget | `technical-preferences.md` (`project.yaml` has no `performance` block) |
 | The hard case | A **listen-server host** renders while it also simulates the horde, destruction, projectiles and World Partition streaming for all four players | Concept (system 10, R2, R10) |
 | Not yet configured | Draw-call budget, memory ceiling, minimum GPU | `technical-preferences.md`; concept R10 |
 | Horde count | **24 active zombies at MVP, 48 target, plus the far tier** (concept system 9). `technical-preferences.md` says "up to ~100 active zombies"; the budgets here use the concept's numbers and the mismatch is flagged (AB-19) | Concept, `technical-preferences.md` |
 
-Every budget in this section is a **starting value** for the technical director's netcode and rendering spike (MVP
-months 1–3, including the Lumen/Nanite stress scene on the host). The spike confirms or revises them; this section is
-then updated, not argued around.
+Every budget in this section is a **starting value** for the technical director's netcode and rendering spike (which
+includes the Lumen/Nanite stress scene on the host). The spike confirms or revises them; this section is then
+updated, not argued around. The hours available each week are unknown (U12), so this document orders work by
+milestone and gives no calendar dates.
 
 ### 8.2 File formats
 
 | Asset type | Authoring source | Into the engine | In the engine |
 | ---- | ---- | ---- | ---- |
-| Static meshes (kit, props, rubble) | Any DCC; Blender is the default (no licence cost for a small team or outsourcers) | FBX (glTF allowed for static meshes) | Static Mesh, Nanite enabled where Section 8.5 allows |
+| Static meshes (kit, props, rubble) | Any DCC; Blender is the default (no licence cost) | FBX (glTF allowed for static meshes) | Static Mesh, Nanite enabled where Section 8.5 allows |
 | Skeletal meshes and animation | Any DCC | FBX | Skeletal Mesh, Animation Sequence, Montage |
 | Textures, colour | 8-bit PNG or TIFF, sRGB | Same | Base colour BC7 (sRGB) |
 | Textures, data | 16-bit PNG or TIFF (normals, heights) | Same | Normal BC5; packed occlusion-roughness-metallic BC7 (linear); single masks BC4 |
@@ -1146,7 +1441,7 @@ PascalCase parts separated by underscores.
 | `NS_` / `NE_` | Niagara system / emitter | `NS_Dust_Gypsum_Burst` |
 | `DA_` / `DT_` | Data asset / data table | `DA_KitFamily_Ranch` |
 | `PCG_` | PCG graph | `PCG_YardDressing_Back` |
-| `BP_` / `WBP_` | Blueprint / widget Blueprint | `WBP_HUD_SectorBoard` |
+| `BP_` / `WBP_` | Blueprint / widget Blueprint | `WBP_HUD_SectorLadder` |
 | `L_` | Level | `L_TinleyPark60477` |
 
 **Panel states** are always one of `Intact`, `Damaged`, `Breached`, `Destroyed`; **reinforced** is a flag shown by
@@ -1172,7 +1467,7 @@ separate overlay meshes (`SM_KitBrace_…`). **Folders:** `Content/Holdout/` the
 | High | 2K | Zombie body and wardrobe sets; props in play spaces; scan-library surfaces (default); foliage atlases |
 | Medium | 1K | Small props; decals; distant kit variants |
 | Low | 512 | Backdrop props beyond the map; far-only assets |
-| UI | Vector source | Icons exported at 2× their 100% HUD size (typically 48–64 px at 1×) |
+| UI | Vector source | Glyphs exported at 2× their 100% HUD size: 80 px for a 40 px glyph, 96 px for a 48 px role icon or button prompt (Sections 7.4 and 7.9) |
 
 ### 8.5 Geometry budgets, material slots and LODs
 
@@ -1183,7 +1478,7 @@ separate overlay meshes (`SM_KitBrace_…`). **Folders:** `Content/Holdout/` the
 | Generated roof | Yes | By the generator; trim-sheet UVs | 2 | Nanite | Hip, gable and compound required (the roof gate) |
 | Rubble state (per collapsed segment) | Yes | 50,000 | 3 | Nanite | Gameplay state, authored and replicated |
 | Static props | Yes (opaque) | 1,000–20,000 | 2 | Nanite | Masked or translucent props are not Nanite |
-| Vehicle wrecks | Yes | 60,000 | 3 | Nanite | Generic designs, no badges or trade dress |
+| Parked cars and wrecks | Yes | 60,000 | 3 | Nanite | Generic designs, no badges or trade dress. Static props only: nothing can be driven (U14) |
 | Gadgets and deployables | Yes when static | 15,000 | 2 | Nanite or 3 LODs | |
 | Squad character (third person) | No | 60,000 (body and kit) | 4 (body, uniform, kit, head) | 4: 60k / 30k / 12k / 5k | The role primitive survives every LOD (Section 5.6) |
 | Zombie, common | No | 30,000 (body and wardrobe merged) | 3 (skin, wardrobe, gore) | 4 plus far tier: 30k / 15k / 7k / 3k / 1.5k | Wardrobe pieces merged into one mesh at spawn to save draw calls |
@@ -1234,8 +1529,10 @@ filler and opening modules exist for every family; exterior and interior faces a
 **wall-internals kit** (studs, sheathing edges, insulation, drywall edges, wire stubs) supplies the inside of every
 breach, modelled once and reused everywhere. **Automated checks** in the pipeline report: flat roofs on houses (must
 be zero), variation-rule violations, identical houses within 150 m on a street, overlapping modules, off-grid panels.
-**Determinism:** the same extract always produces the same street, on every client. **Repository hygiene:** generated
-level geometry and raw extracts are regenerated locally and are not committed (concept system 6.1).
+**Determinism:** the same extract always produces the same street, on every client. **Repository (the user's decision
+U13):** the repository stays public and the first map's data files stay tracked as they are. Nothing new that singles
+out a location is added: no address, no house number, no coordinates, and no document that lists which houses can be
+entered (Section 6.6).
 
 ### 8.7 Foliage and Creek Woods
 
@@ -1316,42 +1613,117 @@ choice except the Low tier's caps.
 
 ### 8.11 Sourcing and licences
 
-- **Fab** (which now distributes the Megascans library) is the default source for scanned surfaces, plants and
-  generic debris. Licence terms differ by asset and have changed over time: **verify each asset's licence at
-  acquisition** and record it.
-- A **licence ledger**, kept by the producer, records every sourced asset: name, source, licence, date, link and
-  modifications.
+- **Sources, cheapest first (U12).** Public-domain (CC0) libraries such as Poly Haven and ambientCG for surfaces,
+  skies and some models. Epic's free sample content for Unreal projects. **Fab** (which now distributes the Megascans
+  library) for scanned surfaces, plants, generic debris and low-cost kits. Free animation libraries for body motion.
+  Prices and licence terms differ by asset and have changed over time: **check the price and verify each asset's
+  licence at acquisition**, including whether it may be used in a shipped game, and record it. Nothing is bought
+  that a free source covers.
+- A **licence ledger**, kept by the developer (the `producer` agent maintains the file), records every sourced or
+  generated asset: name, source, licence, date, link, cost and modifications.
 - **Allowed:** scans of materials (brick, siding, asphalt, concrete, bark, soil, leaves) and of generic objects.
   **Never:** scans or photographs of real homes or identifiable buildings (anywhere, and above all in the map area),
   vehicles with trade dress, branded products, or real people without model releases. Logos and text are stripped
   from anything sourced.
+- **AI-generated art.** AI tools may draft concept sheets and the generation prompts that `/asset-spec` writes, and
+  may generate textures, decals and supporting props (tiers 3 and 4 in Section 3.7). The rules: a prompt never
+  contains a real address, a photograph of a real house or a real person, a brand, or the name or imagery of any
+  reference game. The output passes the same tests as any other asset (no text, logos, likenesses or insignia;
+  Sections 3–5). Nothing that carries Holdout's identity (the marker and prompt glyphs, the role primitives, the
+  house-kit modules) ships as raw generator output: it is redrawn or rebuilt to this bible's grids and sizes. Every
+  generated asset that ships is recorded in the ledger, because the store's content survey asks developers to
+  disclose AI-generated content (verify the current requirement at submission).
 - **Faces:** a licensed scan library with model releases, or MetaHuman under its licence. **Fonts:** SIL OFL (Section
   7.3). **Map data:** OpenStreetMap under the ODbL, attributed (Section 7.8).
 
-### 8.12 Production plan for a small team
+### 8.12 Production plan for one developer (U12)
 
-The concept assumes one in-house environment/tech artist, with character art, animation and part of the environment
-kit outsourced (A14, A43). The plan front-loads reuse:
+**The user's decision.** Holdout is made by **one developer with AI tools** (U12, 2026-11-19). There is no funded
+team and no outsourcing budget; cash is close to zero beyond free or low-cost marketplace assets; the number of hours
+a week is unknown. The user chose the re-cut: one map, one polished core loop first, and features added only after it
+is fun. Most of the earlier big-team plan is therefore deferred, and its outsourcing and multi-artist assumptions are
+deleted from this document. Because the hours are unknown, this section gives an order of work and ceilings, never
+dates.
 
-| Asset group | MVP (greybox) | Vertical Slice A (one residential block and the 167th Street corridor, at dusk) | First Map Complete (the whole first map) | Owner |
-| ---- | ---- | ---- | ---- | ---- |
-| House-kit meshes (all states) | About 40, one cladding family | About 150: siding and brick families, openings | About 250: all families, fillers, corners, civic | In-house; part outsourced |
-| Roof generator | Gable and flat | Hip, gable, compound (roof gate passed) | All | Tools, with art |
-| Materials | 5 greybox masters | About 8 masters, 60 instances | About 10 masters, 150 instances | In-house |
-| Props | About 20 blockouts | About 80 | About 160 | In-house and sourced |
-| Foliage species | 3 blockouts | 8 | About 15 | Sourced and adapted |
-| Vehicle wrecks | 2 blockouts | 4 bodies, 2 damage states each | 6 bodies, 2 damage states each | Outsourced |
-| Squad | Blockout role-kit packs on a mannequin | One body frame final, 4 kits | 2 frames, 4 kits, heads | Outsourced |
-| Horde | Blockout proportions and gaits for 3 types | Shambler, Runner, Breacher final; about 20 wardrobe pieces | 5 types; about 30 wardrobe pieces | Outsourced |
-| Weapons and melee | 4 guns and 9 attachments blocked out; 2 melee | 4 guns final in first person | 6 guns, about 15 attachments, 3 melee | Outsourced |
-| Gadgets | 5 blockouts | 5 final | About 8 (second gadgets) | Outsourced |
-| VFX | Greybox dust and muzzle flash | Dust, smoke, fire and impacts per material | Complete, tuned for the night curve | In-house |
-| UI | Minimal HUD glyphs (concept: month 9) | Full HUD visual pass | Complete, including the tactical map | In-house, with outsourcing |
+**Every feature the user asked for stays a goal of the game** (U1–U11). This plan stages them. It drops none.
+
+**Four rules, in this order.**
+
+1. **Buy or download before making.** If a free or low-cost library has it and it passes this bible's tests, use it.
+2. **Generate before placing.** Anything that repeats across 745 buildings is made by rule from the map data and is
+   never placed by hand.
+3. **Hand-make only what carries Holdout's identity**, or what cannot be had any other way: the house-kit modules,
+   the honest inside of a wall, the role primitives, the squad's own infrastructure and the whole glyph set.
+4. **Nothing is made ahead of the core loop.** An asset that the current milestone's loop does not show is not made
+   yet, however cheap it looks.
+
+**The source of each asset group.**
+
+| Group | Bought or downloaded (free or low-cost; Section 8.11) | Procedural (by rule, with no hand placement) | Hand-made by the developer |
+| ---- | ---- | ---- | ---- |
+| **Surfaces** | Photogrammetry and scan libraries: brick, asphalt, concrete, shingles, bark, soil, leaf litter, sheathing, drywall | Weathering by mask; cladding colour per instance inside the world swatches (Section 4.2); ground blending | One siding-and-trim profile sheet, if no library has a clean, unbranded one |
+| **Houses** | Nothing whole. Generic, logo-free parts from a marketplace kit (a door, a window frame, a garage door) may be used inside a module | **The house itself:** walls fitted to the footprint on the 1.22 m grid, storeys, the facade grammar, the roof, cladding and colour by the variation rule, and the yard (Section 8.6). **Damage states** are cut from each intact module by rule, using a few break-edge profiles and the shared wall-internals kit | The modules of one kit family, the break-edge profiles, the wall-internals kit, boards and braces. No real house is modelled, measured or photographed (Principle 1) |
+| **Streets and ground** | Library surfaces | Roads, curbs, sidewalks, driveways and lawns, all from the map data | Nothing |
+| **Props** | Marketplace and free packs: street furniture, yard and garage props, generic cars (static, U14) | Placement by rule (PCG) | Only the squad's own infrastructure: the work-light mast, the resupply crate, the armory stack, the workbench. Street-name signs are one blade mesh with the name set from the map data |
+| **Foliage** | Library trees and shrubs, bare where the season needs it, the nearest match to the species in Section 8.7 | Scatter by rule; Creek Woods by PCG | Nothing |
+| **Squad** | One generic soldier body with first-person arms, stripped of any insignia or brand (Section 5.1); library motion capture | The role is told by swapping the kit on one body | **The four role primitives** (Section 3.3) and the compact light-gadget forms (Section 5.2), sized to the 80 m minimums |
+| **Horde** | Marketplace civilian and zombie bodies and wardrobe that pass Section 5.4; library animation, retargeted | Variety from modular wardrobe, colour variation and damage masks; special types as proportion changes on the shared skeleton where Section 5.4 allows it | The attack wind-ups: library clips re-timed and pushed in amplitude until they telegraph (Section 5.5) |
+| **Weapons and melee** | A generic, unbranded firearms pack with attachments, and ordinary tools (Section 3.5); every mark and model name removed | Nothing | The changes that give each class its own outline and each attachment its visible change (Section 3.5) |
+| **VFX** | Niagara packs and engine sample effects | Driven by material class (Section 8.9) | Tuning to the limits in Sections 2.6 and 8.9 |
+| **UI** | The typefaces (SIL OFL) | The tactical map, the sector ladder and the street line, all drawn from the map data | **The whole glyph set:** the markers (Section 3.6), the role icons (Section 7.4), the button prompts (Section 7.9), the bearing dial |
+| **Light and sky** | Nothing | The engine's sky and the round-driven curve (Section 2.2) | Three light rigs: streetlight, work light, weapon light (Section 8.8) |
+
+**What the AI tools do.** They write and maintain the generator, the PCG graphs, the material graphs and the UI
+widgets. They draft concept sheets and the per-asset briefs and generation prompts that `/asset-spec` produces. They
+may generate textures, decals and supporting props under the rules in Section 8.11. They do not decide what is
+accepted: an asset is done when it passes the tests in Sections 3–5 and the standards in this section, whoever or
+whatever made it.
+
+**The first milestone's asset list (strict).** The first milestone is the user's "one polished core loop" on the
+first map. The concept's re-cut says which features are in it; this list is the **ceiling** on the art made for it.
+If the concept's milestone needs less, less is made. If it needs something that is not on this list, the list is
+changed first, in this document, before the asset is started.
+
+| Group | In the first milestone, at most | How it is made | Waits until the core loop is fun |
+| ---- | ---- | ---- | ---- |
+| House kit | **One kit family** (the ranch: one storey) in **one wall type** (siding). At most 10 hand-made intact modules: plain wall, window, picture window, entry door, patio door, garage door, stretchable filler, corner, foundation strip, eave and trim. All four panel states for each, cut by rule. Every footprint on the map gets a house from this one family, so the variation rule (Section 6.3) is met on cladding colour, roof form and garage side | Hand-made modules; states and fitting generated | The other families (raised ranch, split-level, two-storey); the brick-veneer wall type and its damage set; garage and shed kits beyond a plain box; apartment and civic kits (plain sealed blocks until then) |
+| Wall internals and fortification | One shared wall-internals kit (about 10 pieces); about 6 break-edge profiles; boards in two sizes and one brace set | Hand-made once and reused in every breach | Internals for wall types other than siding |
+| Roofs | Gable and hip, generated, including a hip roof over a footprint that is not a rectangle, so that the roof gate (Section 8.6) holds: no flat roof on a house | Procedural | Compound roofs that mix gables |
+| Interiors | Bare partitions and at most 10 generic furniture props, in the houses the engine makes enterable (Section 6.6) | Sourced props, placed by rule | Dressed rooms |
+| Materials | At most 6 master materials and about 20 instances | Library surfaces on Holdout's masters | The rest of the range in Section 8.5 |
+| Props | At most 20 unique meshes, of which at most 4 are hand-made (the work-light mast, the resupply crate, boards, the street-sign blade) | Sourced; placed by rule | The full prop list in Section 6.6; the armory stack and the workbench, unless the milestone's loop uses them |
+| Cars | At most 2 generic bodies, static | Sourced | Damage variants and more bodies. Never drivable (U14) |
+| Foliage | At most 4 kinds: one bare street tree, one evergreen shrub, one hedge, one understory bush | Sourced; scattered by rule | The 15 species in Section 8.7 |
+| Squad | One body frame in one uniform; helmet and eye protection, so no bespoke heads; one set of first-person arms with a glove material per role; the role primitive for each role the milestone includes (at most 4) | Sourced body; hand-made primitives | The second body frame; heads and faces; per-role sleeve meshes |
+| Horde | One skeleton and one body frame; at most 3 types (Shambler, Runner, Breacher); at least 4 heads, 4 tops and 3 bottoms; a hand-tuned wind-up for every attack the loop uses | Sourced bodies, wardrobe and clips; types as proportion changes | The other six types and the boss; more frames and wardrobe (Section 5.4) |
+| Weapons and melee | At most 2 guns finished in first person, 3 attachments and 1 melee weapon. Anything else the milestone needs stays a blockout | Sourced and adapted | Every further gun, attachment and melee weapon, added one at a time |
+| Gadgets | One per role the milestone includes, as clean, simple meshes that repeat the role's primitive (Section 3.5) | Hand-made | The second gadgets; the collapse charge |
+| VFX | At most 10 Niagara systems: a muzzle flash per gun; impacts for siding, wood, ground and flesh; one destruction dust burst tinted by material; blood and scorch decals | Sourced and tuned | Fire and smoke columns; material-specific sets; cosmetic fracture; volumetric smoke |
+| UI | The marker shapes of Section 3.6; 4 role icons; at most 15 button-prompt glyphs (Section 7.9); at most 12 other glyphs; the four HUD blocks (Section 7.2); the tactical map; one menu template (list, detail panel, legend line) | Glyphs hand-drawn; the map and the ladder generated | The ping wheel (Vertical Slice); the attachment screens at the workbench; the match-summary map |
+| Light | The curve from late afternoon to dusk, finished (rounds 1–14). The night bands run on the same curve, unpolished | Procedural sky; three light rigs | Night polish: tuning the readability light, streetlights dying, fires |
+| Front end | The dark chart as the background of every menu | Generated | The "street before" scene, the garage role select, and the aerial victory and defeat scenes (Section 2.3) |
+
+**After the first milestone.** Work is added one item at a time, in the order the concept's re-cut sets, and only
+once the core loop is fun. The longer-term targets elsewhere in this bible (nine horde types, four kit families, 15
+foliage species, two body frames, the night states) remain the direction. They are not commitments to a date.
+
+**Rule-cut damage states are unproven.** Cutting the damaged, breached and destroyed states from an intact module by
+rule is what makes one person's house kit possible, and it has not been tried yet. It is the first thing the kit
+work proves, on one module, against the 30 m outline test of Section 3.4. The fallback is to hand-model the three
+damage states for the plain wall and the window module only, and to let the other modules reuse them (Appendix B).
 
 **Reuse multipliers:** the shared wall-internals kit for every breach; trim sheets shared across kit families; one
-master material per surface family; wardrobe pieces shared by every zombie type; the generator dressing yards so no
-yard is placed by hand. **Outsourcing briefs** come from `/asset-spec`, built on this bible; an outsourced asset is
-accepted when it passes the tests in Sections 3–5 and the standards here.
+master material per surface family; wardrobe pieces shared by every zombie type; one skeleton for the whole horde;
+the generator dressing yards, so no yard is placed by hand.
+
+**Deleted from the plan (U12):** outsourcing and outsourcing briefs; a separate in-house environment artist;
+acceptance reviews of outside work; calendar months. `/asset-spec` still writes a brief for each asset, now for the
+developer and the AI tools.
+
+**Proposed cuts needing the user's approval: none.** This plan defers; it makes no permanent cut to anything the
+user asked for (U1–U11), and it does not count a deferral as a cut. If a later milestone shows that a feature the
+user asked for cannot be built by one person in any form, it is listed here first, with the reason and what cutting
+it would save, and it waits for the user's answer.
 
 ### 8.13 Art preference versus technical limit: recorded trade-offs
 
@@ -1372,14 +1744,15 @@ to the user. The user could not be reached, so each was decided with both positi
 
 Five references, each pointing in a different direction: motion and weight, damage anatomy, the mood of an intact
 suburb at dusk, silhouette readability at dusk, and the UI language. They are named for internal direction only.
-This is the only section of this document that names the squad-shooter series behind the user's feel direction (D1;
-concept U1); player-facing text never names it.
+The squad-shooter series behind the user's feel direction (D1; concept U1) is **not named in this document**: its
+name appears only in the concept's Inspiration and References and in the concept's decision log (AB-36). Here it is
+"the reference series", and player-facing text never names it.
 
 ### 9.1 The core references
 
 | # | Reference | Take exactly this | Avoid, so it never reads as a copy |
 | ---- | ---- | ---- | ---- |
-| 1 | ***Battlefield*** **series** (feel reference for mechanics, per the user's direction) | **How environmental VFX sell weapon mass**: dust and debris bursts sized to whatever caused them; muzzle blast that kicks up ground dust and briefly lights nearby surfaces; a building section coming down and its dust hanging in the air afterwards; distant gunfire and explosions that read at range. These feed Sections 2.6, 8.9 and Principle 3 | Its HUD layout, spotting marker, class icons and UI colours; its maps, names, characters, branding and class names; military-operator glamour; vehicle combat and large-scale battle framing; any entry's colour grade. Holdout's UI is cartographic (Section 7) and its world is ungraded (Section 4) |
+| 1 | **The reference series**, named in the concept's Inspiration and References (a feel reference for mechanics only, per the user's direction U1) | **How environmental VFX sell weapon mass**: dust and debris bursts sized to whatever caused them; muzzle blast that kicks up ground dust and briefly lights nearby surfaces; a building section coming down and its dust hanging in the air afterwards; distant gunfire and explosions that read at range. These feed Sections 2.6, 8.9 and Principle 3 | Its names, role and class names, mode names and map names; its HUD layout and its signature HUD shapes (spotting marker, class icons, objective markers, request menu); its UI colours, characters and branding; military-operator glamour; vehicle combat (vehicles are out of scope, U14) and large-scale battle framing; any entry's colour grade. Holdout's UI is cartographic, with its own arrangement and its own shapes (Sections 3.6, 7.2 and 7.9), and its world is ungraded (Section 4) |
 | 2 | **Storm-damage survey photography of wood-frame houses** (public damage surveys; the damage indicators of the Enhanced Fujita scale for one- and two-family homes) | **The anatomy and order of real failure**: trim, gutters, siding and shingles first, then glass, then garage doors, then roof deck and wall sections; what a broken stud wall, torn sheathing and exposed insulation actually look like. This feeds Principle 2 and Section 6.4 | Using any photograph as a texture or as a model of a specific house; anything showing an address, a house number or people; the tornado-specific look of debris thrown far across a neighbourhood (Holdout's damage is panelized and local) |
 | 3 | **Gregory Crewdson's suburban twilight photography** | **Dusk in an ordinary American suburb**: cool ambient twilight against small warm practical sources, and the stillness of a normal street with one thing wrong. This feeds the front end's "street before" scene and the dusk rounds (Section 2.3) | His lit house windows (Holdout's houses are dark); staged, surreal tableaux and figures; his cinematic colour grade; fog and rain effects |
 | 4 | **Roger Deakins's dusk silhouettes in *Sicario* (2015)** | **Figures reading as clean silhouettes against a bright band of dusk sky while the ground falls into darkness**: the round-10 state and the west-facing view down 167th Street (Sections 2.2 and 3.3) | Night-vision and thermal looks (Holdout never renders green or thermal views); military-operator glamour; the film's desert palette |
@@ -1411,8 +1784,20 @@ mood of the intact place; 4 governs how a figure reads when light fails; 5 gover
 
 ## Appendix A: Authoring decision log
 
-Every question the skill would have put to the user, answered by the facilitator in this non-interactive run.
-"Overrule" means the user can change it; the impact column names what would change.
+**The user's own decisions (2026-11-19).** These were stated by the user directly. They are not facilitator answers,
+and no later run of the skill may weaken or reverse them. U1–U10 are recorded in the concept's Assumptions and
+Decisions Log and stand as written there.
+
+| ID | The user's decision | Where this document applies it |
+| ---- | ---- | ---- |
+| U11 | **Controller-only.** A gamepad is the primary and only supported player input; keyboard and mouse is a developer fallback, never advertised or tuned. Confirmed twice; playtests use an Xbox Elite Series 2. Aim assist, stick deadzones, the response curve and sensitivity are core systems; every menu works with a gamepad alone; prompts use Xbox-layout labels. Closes concept Q22 | Sections 7.1, 7.2, 7.3, 7.6, 7.8, 7.9 and 8.1; 3.6 and 4.6 for size and contrast |
+| U12 | **A solo developer with AI tools.** No funded team, no outsourcing budget, close to zero cash beyond free or low-cost marketplace assets, hours per week unknown. One map and one polished core loop first; features added only after it is fun | Sections 8.1, 8.11 and 8.12; 5.1, 5.4, 6.5 and 2.3; the owners in Appendix B |
+| U13 | **The repository** stays public, its git history is left as it is, the first map's data files stay tracked, and pushing continues. Going forward, nothing new may single out a location | The privacy note at the top; Section 8.6; Appendix B; Appendix C.1, concern 11 |
+| U14 | **Vehicles are out of scope** (offered to the user as an option and not selected). Closes concept Q11 | Sections 6.6, 8.5, 8.12 and 9.1 |
+| U15 | **The first map's box and name are confirmed.** No further check of the map is needed, and none is described in any document | The privacy note at the top; Section 2.2 |
+
+**Facilitator decisions.** Every question the skill would have put to the user, answered by the facilitator in a
+non-interactive run. "Overrule" means the user can change it; the impact column names what would change.
 
 | ID | Decision point | Options | Chosen | Why | Impact if overruled |
 | ---- | ---- | ---- | ---- | ---- | ---- |
@@ -1437,58 +1822,76 @@ Every question the skill would have put to the user, answered by the facilitator
 | AB-19 | Horde count for budgets | `technical-preferences.md` (~100); concept (24, 48 target, far tier) | **Concept's numbers** | The concept is the newer, gate-reviewed source | Character budgets in 8.5 and 8.10 shrink |
 | AB-20 | Art versus technical trade-offs (Section 8.13) | Ideal; constrained; both | **As recorded in 8.13** (mostly "both, tiered" or "constrained default with exceptions") | Keeps the ideal visible without making it the baseline | Section 8 budgets change |
 | AB-21 | Exact meaning-colour values | The concept's descriptions at usual values; retuned values | **Retuned**: lighter, slightly pink danger red; darker amber | Simulation showed red and amber merging for deuteranopes | Section 4.3 and 4.7 |
-| AB-22 | AD-ART-BIBLE gate | Agent-run; self-check | **Self-check** (Appendix C.2). *Superseded 2026-11-19:* the gate was run by the `art-director` agent (CONCERNS; Appendix C.1) | No agent-spawning tool in the first run | — |
+| AB-22 | AD-ART-BIBLE gate | Agent-run; self-check | **Self-check** (Appendix C.2). *Superseded 2026-11-19:* the gate was run by the `art-director` agent (CONCERNS; Appendix C.1). *It is being re-run on the U11–U15 revision (Appendix C.3)* | No agent-spawning tool in the first run | — |
 | AB-23 | Next step (Phase 6) | `/map-systems`; `/create-architecture`; stop | **`/map-systems` (recommended)**, run in parallel with the concept's feel prototype and netcode spike; GDDs of the systems those prototypes test stay provisional until a PROCEED verdict (concept Next Steps, A67) | No systems index exists yet; the engine is configured. The concept's path is prototype-first, but mapping the systems does not depend on the prototypes' verdicts | — |
 | AB-24 | Spotted specials' marker colour (gate blocking item 1) | Danger red for every special; green-grey for every special; green-grey with danger red only for explosive or structure-threatening types | **Green-grey survey tick for every type, with an optional type glyph inside. Danger red only for the Detonator, and for the Breacher or Wrecker while attacking a panel** (stated once in 4.3; 7.2 points to it) | Red on every special diluted the top-priority channel and, with danger's pulse and stripe, filled late-round HUDs with pulsing red that competed with downed squadmates and breach warnings | 4.3 and 7.2 change; the 4.7 checks are unaffected |
 | AB-25 | Role primitive sizes and gadget carry (gate blocking item 2) | Keep thin masts, handles and a shallow hump; set a minimum on-screen size and rebuild the primitives | **Minimum 2 px (17 cm) at 80 m, target 20 cm or more** (3.2). Corpsman pack widened sideways to about 72 cm. Sapper diagonal carried by a rigid scabbard at least 17 cm wide and the tool head. Spotter mast topped by a sensor head at least 20 cm across. **Deploying or drawing a gadget never removes the back primitive. Light gadgets are compact and hip-carried** (3.3, 3.5, 5.2) | At 12 px per metre at 80 m, a 3 cm part is about 0.4 px and vanishes under TSR, and a 7 cm hump is under 1 px from the front; the old primitives failed the bible's own size rule and the concept's MVP role test | Kit proportions in 3.3 and 5.2 change; the role test would need another distinguishing method |
 | AB-26 | On-screen size table (gate concern) | Keep the first table; correct it to the exact projection | **Corrected**: 960 ÷ d px per metre; a 1.8 m figure is about 58 / 22 / 11.5 / 5.8 / 4.3 px at 30 / 80 / 150 / 300 / 400 m (230 / 86 / 46 / 23 / 17 through a 4× optic); the role-test figure is about 22 px | The first table was about 10% too large, and the section calls itself "measured, not guessed" | — |
-| AB-27 | Re-sync with concept revision 2.4 (concept A52–A60, U11) | Leave the bible on revision 2.2; re-sync | **Re-sync** without changing the visual direction: real-name sector labels with generic labels only for sensitive sites and one creek-label exception (7.2, 7.8, plus a tactical-map text rule); gadget renames (3.5, 5.2); the light breach-charge form removed (5.2); movement keeps the role primitives (3.3, 5.3); fences inside vault and mantle heights (6.6, 8.6); Xbox-layout button glyphs and a controller-only platform row (7.2, 7.7, 8.1) | The concept changed things this bible depends on, and it took up the bible's open items for the concept owner (AB-08, AB-13, AB-14) | The listed sections revert to their revision 2.2 wording |
-| AB-28 | Re-sync with concept revision 2.5 (concept A61–A67) | Leave the bible on revision 2.4; re-sync | **Re-sync** without changing the visual direction: the recovery-ceiling notch and the "needs a heal" flag (7.2); the revive kit's heal (5.2); squad orders on the compass and sector board (7.2); the MVP's nine attachments as silhouettes (3.5); no UI text names an individual building (7.2); the minimap in the browser greybox logged as a prototype divergence (7.2); 167th Street's measured position (2.2); `/map-systems` in parallel with the prototypes (AB-23) | The concept added health, orders and attachments this bible draws, and the check found the 2.2 wording and AB-23 out of step with the concept | The listed sections revert |
+| AB-27 | Re-sync with concept revision 2.4 (concept A52–A60, U11) | Leave the bible on revision 2.2; re-sync | **Re-sync** without changing the visual direction: real-name sector labels with generic labels only for sensitive sites and one creek-label exception (7.2, 7.8, plus a tactical-map text rule); gadget renames (3.5, 5.2); the light breach-charge form removed (5.2); movement keeps the role primitives (3.3, 5.3); fences inside vault and mantle heights (6.6, 8.6); Xbox-layout button glyphs and a controller-only platform row (7.2, 7.7, 8.1; the glyph rules are now in 7.9, AB-32) | The concept changed things this bible depends on, and it took up the bible's open items for the concept owner (AB-08, AB-13, AB-14) | The listed sections revert to their revision 2.2 wording |
+| AB-28 | Re-sync with concept revision 2.5 (concept A61–A67) | Leave the bible on revision 2.4; re-sync | **Re-sync** without changing the visual direction: the recovery-ceiling notch and the "needs a heal" flag (7.2); the revive kit's heal (5.2); squad orders on the compass and sector board (7.2; now the bearing dial and the sector ladder, AB-31); the MVP's nine attachments as silhouettes (3.5); no UI text names an individual building (7.2); the minimap in the browser greybox logged as a prototype divergence (7.2); 167th Street's measured position (2.2); `/map-systems` in parallel with the prototypes (AB-23) | The concept added health, orders and attachments this bible draws, and the check found the 2.2 wording and AB-23 out of step with the concept | The listed sections revert |
 | AB-29 | Quartermaster role icon (IP check) | Three cartridges; a crate; a frame pack | **A frame pack** (the role's block primitive) | Ammunition glyphs are a common class-icon motif for the reference series' support role, and the check could not verify the similarity online; the frame pack repeats Holdout's own primitive, and the plain crate is already the infrastructure glyph | 7.4 changes; the IP checklist (concept R12) re-checks it either way |
 | AB-30 | Who the horde were | Residents of the suburb; anonymous adults from elsewhere | **Anonymous adults, never presented as the real town's residents**; no nightwear in the wardrobe | The map is a real, named town and the concept's rule is "never shown: anything about residents"; "it happened at night" with pyjamas also sat against 6.8's evacuation story | 5.4 changes |
+| AB-31 | HUD arrangement. Section 9.1 says to avoid the reference series' HUD layout, yet 7.2 placed a compass strip at the top centre with sector chips under it, a squad list on the left edge and the round at the top right | Keep it; move single elements; a new arrangement built from the map identity | **The field and the margin** (7.2): a clear field, an empty sky band and four corner blocks. Sector ladder at the top left (north to south, full names, rings). Squad block at the top right (the player's own health in its first row; events as tags beside rows). Title block at the bottom left (a heading-up bearing dial, the street line, the round and phase). Kit block at the bottom right (ammo, gadget cross, salvage) | It is built from Holdout's own map language; real sector names need a line each; a heading-up dial suits a stick; none of the four placements in question survives; the information is the same as before | 7.2, 7.3, 7.7, 7.8 and `design/ux/hud.md` change. Any replacement still keeps the top centre empty and the sectors unlettered |
+| AB-32 | How the UI meets controller-only play (U11 is the user's decision; these are the facilitator's choices inside it) | A desk-sized UI with a scale option; a UI designed for the couch from the start | **A 3 m design condition** (a 55-inch television): 26 px minimum text, 36 px for sentences, 3 px strokes, 40 px and 48 px glyphs, a 5% safe frame, 90% plates, the dark keyline on by default, a size check at first launch. **Prompt glyphs** drawn by Holdout as shapes and letters, with outline rules for triggers and sticks. **Focus navigation:** no cursor, no hover-only state, inversion plus corner ticks. **A ping wheel and a gadget cross.** Aim assist has no visual | The game is played from a couch with a gamepad; computed contrast on the old 60–75% plate fell to between 2:1 and 3:1 over a bright sky; a platform holder's glyph art is not Holdout's to use | The sizes are starting values to be measured (Appendix B). The rules themselves follow from U11 and stay |
+| AB-33 | Marker shapes | Leave them spread over 3.6, 4.3, 7.2 and 7.4; one table | **One table, in 3.6:** chevron up (a squadmate), chevron down (a ping on a place), survey tick drawn apex up (the horde), upright square (infrastructure and items), **ring (an objective)**, double ring (the ordered objective), arc (a quantity), hazard stripe (danger), mast-and-cone (a held sector). No rotated square anywhere; sectors never lettered or numbered | The objective had no stated shape, "ring" named both the capture progress and the bleed-out timer, and the survey tick's orientation was unstated | 3.6 and the sections that point to it change |
+| AB-34 | The production plan under U12 | Keep the outsourced plan; a plan for one person | **A plan for one person** (8.12): buy or download first, generate next, hand-make only what carries the identity; a strict first-milestone ceiling (one kit family in one wall type, three horde types, two guns, the glyph set); everything else deferred. **No permanent cut is made or proposed** | It is the user's decision and the user's re-cut. The list is a ceiling, written while the concept was being re-cut | 8.12's list is re-synced to the concept's milestone (Appendix B) |
+| AB-35 | Repository and location items in this file | (Not a facilitator choice: the user's decisions U13 and U15, applied) | Every repository action item is removed from Appendix B and C.1 and replaced by U13, and 8.6 now says the first map's data files stay tracked. 2.2 states the map box as confirmed. 2.3 and 4.5 speak of the home sector. 6.7 sets render rules only and leaves the list of sectors to the concept's system 6.1. 6.6 states that enterable houses are chosen in the engine and named only generically | The user decided; and nothing in a public document may single out a location | — |
+| AB-36 | Naming the reference series in this file | Name it in Section 9; point to the concept | **Not named here.** Section 9 calls it "the reference series" and points to the concept's Inspiration and References, which, with the concept's decision log, is the only place it is named | The project's IP rule limits the name to those two places | Section 9 names it again |
 
 ## Appendix B: Open items and hand-offs
 
+Owners are the studio's agent roles. Under U12 the one person behind all of them is the developer, so an owner
+names the agent the developer works the item with. No row has a calendar date: the hours available are unknown.
+
 | Item | Owner | Needed before |
 | ---- | ---- | ---- |
+| ~~Controller input (concept Q22); vehicles (concept Q11); the repository question; the first map's box~~ **Closed by the user's decisions U11, U14, U13 and U15** (2026-11-19; listed at the top of Appendix A) | — | — |
 | Q19 night curve; Q6 gore and rating; Q16 the School Grounds as a sector | User | The realism art pass (Q6 also sets the gore budget) |
-| Confirm or revise every budget in 8.5 and 8.10 in the rendering and netcode spike, including the Lumen/Nanite stress scene on the host | Technical director, technical artist | End of MVP month 3 |
+| **Re-sync with the concept's U12 re-cut.** The first-milestone list in 8.12 is an art ceiling written while the concept was being re-cut. Match its milestone name and contents to the concept's, and re-check the tier names this bible still uses (MVP, Vertical Slice, First Map Complete, Alpha) | Art director, with the producer | The first asset on the first-milestone list |
+| **Outside this file:** the concept still says "compass" and "sector board" (its Visual Identity Anchor and A63). Read them as the bearing dial and the sector ladder (AB-31) until the concept is re-synced | Concept owner | The concept's next revision |
+| **Prove rule-cut damage states** on one module against the 30 m outline test (3.4, 8.12). Fallback: hand-model the three damage states for the plain wall and the window module only | Technical artist | Any second kit module is made |
+| **Measure the couch-distance figures** (AB-32): the typeface's x-height against the 3 m scale (7.3); the worst-case contrast of plates and keylines on engine captures of a west-facing dusk sky and sunlit white siding (4.6); the 32 px marker minimum in play (7.9) | `/ux-design`, with the art director | MVP HUD block |
+| Confirm or revise every budget in 8.5 and 8.10 in the rendering and netcode spike, including the Lumen/Nanite stress scene on the host | Technical director, technical artist | The end of the spike |
 | Minimum GPU and the Low tier's caps (concept R10). The anchor assigns the minimum GPU to this bible before the realism pass (gate concern) | Technical director, with the art director | **Vertical Slice A at the latest** |
-| **Gate concern:** state the internal resolution (TSR screen percentage) for the Medium tier in 8.10; 4.0 ms of software Lumen on an RTX 3060-class card is plausible only when TSR upscales from below 1080p. The 3.2 primitive minimum's 20 cm target assumes it | Technical director, technical artist | End of the MVP spike |
-| **Gate concern:** CPU cost on the listen-server host is not budgeted in 8.10 (animation for 24–48 zombies, Niagara, decals). It is handed to the TD spike explicitly | Technical director (spike) | End of MVP month 3 |
-| **Gate concern:** first-person silhouette and form guidance for the rest of the shippable tier. That means SMG, LMG and launcher classes (3.5 covers only pistol, shotgun, assault rifle and DMR), the magazine, grip and stock attachments, and the second gadgets (dressing pack, bandolier, survey glass; renamed in concept A58). First Map Complete needs 6 guns and about 15 attachments across six slots | Art director (next `/art-bible` revision) | `/asset-spec` briefs for weapons and gadgets |
-| **Gate concern:** name the 5 zombie types that ship at First Map Complete (3.3, 5.4 and 8.5 specify all 9; 8.12 says 5). This scopes outsourcing and decides which night and long-band silhouette tests must pass at ship | Art director, with the horde GDD owner | Horde outsourcing beyond Vertical Slice A |
-| **Gate concern:** texel density for surfaces players fight against. 512 px per metre is about half of native for a wall 1 m from the camera (about 960 px per metre at 1080p and 90°). Use 1,024 px per metre, or require detail normals and detail tiling, on interior partitions, the shared wall-internals kit, breach edges, garage interiors, and boards and bracing (8.4) | Technical artist | Vertical Slice A kit work |
-| **Gate concern:** world-space marker contrast. 4.6's 4:1 guarantee holds only against the HUD plate and the dark chart. Markers drawn in the world can fall below 3:1 over white siding, concrete or the bright dusk sky (road-marking yellow and squad cyan). Make the dark keyline the default for world-space markers, and keep "thicken outlines" as the option (4.6, 4.7, 7.6) | `/ux-design` (HUD specification), with the art director | MVP HUD block |
-| **Gate concern:** kit-family tie-break in 6.2. Raised ranch and two-storey both match a near-square footprint of about 120 m². Specify the tie-break, for example a choice weighted by target mix ratios and seeded by the OSM way ID, so the regional mix is controlled and deterministic | Technical artist, with tools | Kit selection in the generator for Vertical Slice A |
-| **Gate concern:** naming rules still missing for outsourcers (8.3): how source and DCC files are named before import, and whether size tiers appear in names or only in texture groups | Technical artist | Outsourcing starts |
-| **Gate privacy note (outside this file):** the concept's 6.1 "Location check" wording is now a neutral boundary note (concept A50). The raw `.osm` extract and the generated level files with every building footprint are still tracked under `prototypes/real-street-holdout-concept/pipeline/` and are already on the public remote; the concept's action is "no further push until they are untracked and the origin moves to the home sector", with a history-purge decision by the repository owner that covers every branch (concept A60, A65, R5) | Producer; repository owner | Before any further push; the purge decision by 2026-11-26 |
-| **Prototype art and UI rules (outside this file; concept A65):** the browser greybox draws a spotted zombie as a red rotated square (a diamond, which AB-10 rules out) and must use the survey tick in horde green-grey (4.3); its README pairs the reference series' class name with a gadget and must say "Sapper reinforce tool"; it names buildings by street in prompts and pings (7.2 rules that out); and it labels two parks after nearby streets instead of their OSM names (7.2, 7.8) | Prototype owner (gameplay engineer), with the art director | Before any further push of the prototype |
+| **Gate concern:** state the internal resolution (TSR screen percentage) for the Medium tier in 8.10; 4.0 ms of software Lumen on an RTX 3060-class card is plausible only when TSR upscales from below 1080p. The 3.2 primitive minimum's 20 cm target assumes it | Technical director, technical artist | The end of the spike |
+| **Gate concern:** CPU cost on the listen-server host is not budgeted in 8.10 (animation for 24–48 zombies, Niagara, decals). It is handed to the TD spike explicitly | Technical director (spike) | The end of the spike |
+| **Gate concern, deferred with the weapons it covers (8.12):** first-person silhouette and form guidance for the weapons beyond the first milestone's. That means SMG, LMG and launcher classes (3.5 covers only pistol, shotgun, assault rifle and DMR), the magazine, grip and stock attachments, and the second gadgets (dressing pack, bandolier, survey glass; renamed in concept A58). The first milestone's two guns, three attachments and one melee weapon are covered by 3.5 | Art director (a later `/art-bible` revision) | Any weapon or gadget beyond the first milestone's list is made |
+| **Gate concern, re-scoped by U12:** the first milestone's three types are named (Shambler, Runner, Breacher; 8.12). Still to name: which further types the whole first map ships with (3.3, 5.4 and 8.5 specify all 9). That decides which night and long-band silhouette tests must pass | Art director, with the horde GDD owner | Any type beyond the first three is made |
+| **Gate concern:** texel density for surfaces players fight against. 512 px per metre is about half of native for a wall 1 m from the camera (about 960 px per metre at 1080p and 90°). Use 1,024 px per metre, or require detail normals and detail tiling, on interior partitions, the shared wall-internals kit, breach edges, garage interiors, and boards and bracing (8.4) | Technical artist | The first milestone's kit modules are textured |
+| ~~**Gate concern:** world-space marker contrast~~ **Applied in the U11–U15 revision** (4.6, 7.9; AB-32): the dark keyline is now the default for every mark in a meaning colour drawn over the world, and "thicken outlines" stays the option. Measuring it on captures is the row above | `/ux-design` (HUD specification), with the art director | — |
+| **Gate concern:** kit-family tie-break in 6.2. Raised ranch and two-storey both match a near-square footprint of about 120 m². Specify the tie-break, for example a choice weighted by target mix ratios and seeded by the OSM way ID, so the regional mix is controlled and deterministic. The first milestone has one kit family (8.12), so nothing ties yet | Technical artist, with tools | The second kit family is added |
+| **Gate concern:** naming rules still missing (8.3): how source and DCC files are named before import, and whether size tiers appear in names or only in texture groups. With one developer the reason changes but the need stays: sourced, generated and hand-made files must trace back to the licence ledger | Technical artist | The first sourced asset is imported |
+| ~~**Gate privacy note (outside this file):** the tracked first-map data and the repository's history~~ **Closed by the user's decision U13 (2026-11-19):** the repository stays public, its git history is left as it is, the first map's data files stay tracked, and pushing continues. No other repository action remains anywhere in this document. Going forward, nothing new may single out a location (the privacy note at the top). The first map's box and name are confirmed (U15) | — | — |
+| **Prototype art and UI rules (outside this file; concept A65):** the browser greybox draws a marker as a rotated square (a diamond, which AB-10 and 3.6 rule out); a spotted zombie must use the survey tick in horde green-grey (4.3) and an objective the ring (3.6). Its README pairs the reference series' class name with a gadget and must say "Sapper reinforce tool". It names buildings by street in prompts and pings (7.2 rules that out), and it labels two parks after nearby streets instead of their OSM names (7.2, 7.8). Its HUD layout is its own and is not a precedent for 7.2. The prototype is being revised in parallel, so check each point against its current state | Prototype owner, with the art director | The prototype's next revision (pushing is not held, U13) |
 | Nanite foliage with wind on 5.8; runtime virtual texturing on 5.8; Lumen Lite status | Technical artist, `unreal-specialist` | Creek Woods' art pass |
 | HLOD versus destruction method (AB-18) | Technical director (destruction ADR) | The first full-map bake |
 | Reconcile the horde count in `technical-preferences.md` with the concept (AB-19) | Technical director (`/settings`) | Any budget review |
 | Typeface licences and glyph coverage (AB-16) | Producer | Any public build |
-| Style research brief on the region's house typology, from generic public sources only (6.1). **Gate concern:** it does not exist yet, and the house kit, the largest outsourced environment item, cannot be fully briefed without it | Environment/tech artist | Vertical Slice A kit work |
+| Style research brief on the region's house typology, from generic public sources only (6.1). **Gate concern:** it does not exist yet, and the house kit, the largest hand-made item in the plan (8.12), cannot be built to the regional style without it | Art director, with the technical artist | The first milestone's kit modules are modelled |
 | ~~Silhouette test wording in the concept's MVP criteria (AB-08)~~ Done in concept revision 2.4 (A59) | Concept owner | — |
 | The prototype pipeline (`prototypes/real-street-holdout-concept/pipeline/osm_to_level.py`) still infers 3.2 m per level; switch it to the kit's 2.75 m storey plus foundation reveal (AB-13, concept system 6) | Tools/tech engineer | Before pipeline output feeds kit fitting (the MVP engine bake) |
 | Fence and hedge heights in the yard generator inside the vault and mantle classes, with a traversal link on each (6.6, 8.6; concept system 11) | Technical artist, with tools | The MVP engine bake |
-| HUD specification (`design/ux/hud.md`) and accessibility requirements | `/ux-design` | MVP HUD block |
-| Per-asset specifications and outsourcing briefs | `/asset-spec` | Outsourcing starts |
-| Licence ledger for sourced assets | Producer | The first sourced asset |
-| ~~Re-run AD-ART-BIBLE with the `art-director` agent~~ Done 2026-11-19 (CONCERNS; Appendix C.1). Still open: the art director confirms the two blocking fixes (AB-24, AB-25), or the gate is re-run, for APPROVE | Art director | Asset production |
+| HUD specification (`design/ux/hud.md`) and accessibility requirements, built on the arrangement in 7.2 and the controller rules in 7.9 | `/ux-design` | MVP HUD block |
+| Per-asset specifications, with sourcing notes and generation prompts (8.11, 8.12) | `/asset-spec` | The first asset on the first-milestone list |
+| Licence ledger for sourced and generated assets (8.11) | Producer | The first sourced asset |
+| ~~Re-run AD-ART-BIBLE with the `art-director` agent~~ Done 2026-11-19 (CONCERNS; Appendix C.1). **The gate is being re-run on the U11–U15 revision** (Appendix C.3). It confirms the two blocking fixes (AB-24, AB-25), which are unchanged, and reviews the HUD arrangement, the controller rules and the plan for one developer | Art director | Asset production |
 
 ## Appendix C: AD-ART-BIBLE sign-off
 
-### C.1 Agent verdict (2026-11-19)
+### C.1 Agent verdict (2026-11-19, on the previous revision)
+
+*This verdict predates the U11–U15 revision. The gate is being re-run on that revision (C.3); until it returns, this
+is the last recorded verdict.*
 
 **Verdict: CONCERNS (agent-run, `art-director`, 2026-11-19).** The gate found the bible complete and faithful to the
 "Ground Truth" anchor in `design/gdd/game-concept.md`, and consistent with D1–D9. That covers grounded realism with no
 stylised grade, the measured meaning palette (its L* and contrast values were checked), Holdout's own role names and
 cartographic UI, sensitive-site curation, the "Tinley Park, IL (60477)" naming and the privacy rule. It also absorbs
-every AD-CONCEPT-VISUAL round-2 note. Nothing rose to REJECT. Two items blocked APPROVE; both are applied in this
-revision.
+every AD-CONCEPT-VISUAL round-2 note. Nothing rose to REJECT. Two items blocked APPROVE. Both were applied in the
+revision that answered the gate, and both are left in place, unchanged, in the U11–U15 revision. They wait for the
+re-run to confirm them.
 
-| # | Blocking item (gate) | Resolution in this revision |
+| # | Blocking item (gate) | Resolution (applied in the answering revision; unchanged since) |
 | ---- | ---- | ---- |
 | B1 | 7.2's "danger red for specials" contradicted danger's definition in 4.3. Red on every special diluted the top-priority channel, and with danger's pulse and stripe it filled late-round HUDs with pulsing red ticks | **Applied (AB-24).** 4.3 now holds the single rule: green-grey survey tick for every type, optional type glyph; danger red only for the Detonator, and for the Breacher or Wrecker while attacking a panel. 7.2 points to it; the 4.3 Meaning column notes it |
 | B2 | Three role primitives in 3.3 and 5.2 failed 3.2's own size rule at the 80 m role test. The Spotter's mast and the Sapper's handle were about 0.4 px; the Corpsman's hump was under 1 px and invisible from the front. There was no rule for deployed gadgets or light gadgets | **Applied (AB-25).** 3.2 adds the minimum (2 px, 17 cm; target 20 cm or more). 3.3 rebuilds the three primitives: the Corpsman pack about 72 cm across, the Sapper's rigid scabbard and tool head, and the Spotter's sensor head. It adds the rules "deploying or drawing a gadget never removes the back primitive" and "light gadgets are compact and hip-carried". 3.5, 5.2 (with a table of light-gadget forms, the solo kit's light reinforce tool included), 5.3 and 5.6 follow |
@@ -1496,20 +1899,19 @@ revision.
 | # | Concern (gate) | Status |
 | ---- | ---- | ---- |
 | 1 | 3.2's size table was about 10% too large | **Fixed** (AB-26); the role-test figure is now about 22 px |
-| 2 | No form guidance for the rest of the shippable tier: SMG, LMG, launchers, the magazine, grip and stock attachments, and the second gadgets | Open (Appendix B) |
-| 3 | The 5 zombie types that ship at First Map Complete are not named | Open (Appendix B) |
+| 2 | No form guidance for the rest of the shippable tier: SMG, LMG, launchers, the magazine, grip and stock attachments, and the second gadgets | Open, and deferred with those weapons under U12 (Appendix B) |
+| 3 | The 5 zombie types that ship at First Map Complete are not named | Open, re-scoped by U12: the first milestone's three types are named in 8.12; the full first map's set is not (Appendix B) |
 | 4 | Texel density is low for fought-against surfaces (8.4) | Open (Appendix B) |
-| 5 | World-space markers lack a default keyline (4.6) | Open (Appendix B) |
+| 5 | World-space markers lack a default keyline (4.6) | **Applied in the U11–U15 revision** (4.6, 7.9; AB-32): the dark keyline is the default. Measuring it on captures stays open (Appendix B) |
 | 6 | 8.10 states no internal resolution; host CPU is unbudgeted; the minimum GPU is unset | Open (Appendix B; the minimum GPU is due by Vertical Slice A at the latest) |
-| 7 | The kit-family rules in 6.2 overlap and have no tie-break | Open (Appendix B) |
+| 7 | The kit-family rules in 6.2 overlap and have no tie-break | Open; not needed until a second kit family is added (Appendix B) |
 | 8 | The regional style research brief does not exist yet | Open (Appendix B) |
 | 9 | Wording slips: the Plated "drags" its slab (5.4); the evac is "ringed by flares" (2.3); the "no contradictions" claim | **Fixed**: 5.4 and 2.3 are corrected; the C.2 row below is annotated; the header now carries the agent verdict |
 | 10 | Naming rules for source and DCC files and for size tiers (8.3) | Open (Appendix B) |
-| 11 | Privacy: this bible is clean (no address, house number, coordinates or subdivision name; the map is named only "Tinley Park, IL (60477)"). The concept's 6.1 "Location check" wording and the tracked raw extract are outside this file | The concept's wording is fixed (concept A50). The tracked extract and level files remain on the public remote; open, outside this file (Appendix B) |
+| 11 | Privacy: this bible is clean (no address, house number, coordinates or subdivision name; the map is named only "Tinley Park, IL (60477)"). The gate also noted two things outside this file: wording in the concept, and the first map's tracked data | **Closed.** The concept's wording was fixed (concept A50). The tracked data is settled by the user's decision U13: the repository stays public, with its history and the first map's data files as they are. The first map's box and name are confirmed (U15) |
 
-**Next:** the art director confirms B1 and B2, or the gate is re-run, to reach APPROVE before asset production. The
-open concerns have owners and deadlines in Appendix B; the gate classed them as clarification work, not blockers to
-APPROVE.
+**Next:** the gate is being re-run on the U11–U15 revision (C.3). The open concerns have owners in Appendix B; the
+gate classed them as clarification work, not blockers to APPROVE.
 
 ### C.2 Earlier self-check (history; superseded by C.1)
 
@@ -1524,10 +1926,36 @@ the pillars and core fantasy, the platform and performance constraints, and the 
 | Are the asset standards achievable within the platform constraints? | **Not yet shown.** The budgets are reasoned starting values; the minimum GPU is unset; Nanite foliage with wind and runtime virtual texturing are unverified on 5.8; the HLOD-versus-destruction method is open; `technical-preferences.md` disagrees with the concept on the horde count |
 | Does the character direction give artists enough without over-specifying? | Yes. Primitives, wardrobe rules, LOD rules and IP limits are fixed; the designs themselves are left to artists and `/asset-spec` |
 | Are there contradictions between sections? | None found after two fixes made while writing: flares now obey the squad light's non-hue cue (AB-11), and the danger red and amber were retuned after simulation showed them merging for deuteranopes (AB-21). *Wrong, per the 2026-11-19 agent gate:* 7.2 contradicted 4.3 on danger red for specials, and 5.4 and 2.3 had wording slips. All are fixed (C.1) |
-| Could an outsourcing team produce assets from this document alone? | For kit, props, characters and VFX, mostly yes, with `/asset-spec` briefs. The regional style research brief (6.1) is still to be written, and Q6 limits the gore brief |
+| Could an outsourcing team produce assets from this document alone? | For kit, props, characters and VFX, mostly yes, with `/asset-spec` briefs. The regional style research brief (6.1) is still to be written, and Q6 limits the gore brief. *This is the gate's standard question. There is no outsourcing under U12; read it as whether one developer with AI tools could produce assets from this document alone (8.12)* |
 
 **Self-check verdict (superseded by C.1): CONCERNS.** Sections needing clarification: **8** (budgets unconfirmed until
 the spike; minimum GPU; foliage and virtual-texturing verification; HLOD versus destruction; horde-count mismatch),
 **6** (the style research brief), **2** (Q19), **5** (Q6), **7** (typeface licences; the HUD specification belongs to
 `/ux-design`). No fundamental inconsistency was found, so nothing here would be a REJECT. The gate was re-run with the
 `art-director` agent on 2026-11-19 (C.1).
+
+### C.3 Re-run on the U11–U15 revision (2026-11-19): in progress
+
+**Status: AD-ART-BIBLE is being re-run on this revision. Verdict: pending.** This section is filled in when the gate
+returns. Until then the last recorded verdict is C.1's CONCERNS, and nothing in this document claims APPROVE.
+
+**What the re-run confirms (unchanged since C.1).**
+
+| # | Blocking fix | Where it stands |
+| ---- | ---- | ---- |
+| B1 | Danger red only for the Detonator, and for the Breacher or Wrecker while attacking a panel; every other spotted zombie keeps the green-grey survey tick (AB-24) | In place and unchanged: 4.3 holds the single rule and 7.2 points to it. The new marker shape table (3.6) repeats nothing of it; it points to 4.3 |
+| B2 | Role primitives sized to the 80 m role test; deploying or drawing a gadget never removes the back primitive; light gadgets are compact and hip-carried (AB-25) | In place and unchanged: 3.2, 3.3, 3.5, 5.2, 5.3 and 5.6 were not edited in this revision |
+
+**What is new for the gate to review.**
+
+| # | Change | Sections | Log |
+| ---- | ---- | ---- | ---- |
+| N1 | The HUD's own arrangement: the field and the margin, with four corner blocks, replacing an arrangement that sat too close to the layout 9.1 says to avoid | 7.2, 7.7, 7.8 | AB-31 |
+| N2 | Controller-only rules: the 3 m design condition, type and line sizes, plates and keylines, prompt glyph art, focus navigation, the ping wheel and the gadget cross | 3.6, 4.6, 7.3, 7.4, 7.6, 7.9, 8.1, 8.4 | AB-32 |
+| N3 | One marker shape table; the objective marker is a ring; no rotated square anywhere | 3.6, 4.3, 7.2, 7.4 | AB-33 |
+| N4 | The production plan for one developer, with a strict first-milestone ceiling and no permanent cut | 8.11, 8.12, 5.1, 5.4 | AB-34 |
+| N5 | The privacy and IP pass: U13 and U15 recorded; the reference series no longer named in this file | The header, 2.2, 6.6, 6.7, 8.6, 9, Appendix B | AB-35, AB-36 |
+
+**Known limits of this revision, for the gate.** The couch-distance sizes and contrast figures are computed, not yet
+measured in the engine (Appendix B). The first-milestone list was written while the concept was being re-cut and
+needs a re-sync with it (Appendix B). Rule-cut damage states are unproven (8.12).
